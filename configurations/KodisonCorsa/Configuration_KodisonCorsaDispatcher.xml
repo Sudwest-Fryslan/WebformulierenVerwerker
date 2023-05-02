@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="KodisonCorsa">
+       <Receiver>
+            <WebServiceListener address="Version,opslaanInkNatuurlijkPersoon" />
+        </Receiver>
+                
+        <Pipeline>
+
+            <WsdlXmlInputValidator name="VersionInputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="Version,opslaanInkNatuurlijkPersoon">
+                <Forward name="success" path="Wrapper" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlInputValidator>
+
+            <WsdlXmlOutputValidator name="VersionOutputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse" ignoreUnknownNamespaces="true">
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlOutputValidator>
+
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+            
+            <SoapWrapperPipe name="Wrapper" direction="UNWRAP" removeOutputNamespaces="true">
+                <Forward name="success" path="CheckOperation" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+            
+             <XmlSwitchPipe
+                name="CheckOperation"
+                xpathExpression="name(*)">
+                <Forward name="Version" path="CallVersion" />
+                <Forward name="opslaanInkNatuurlijkPersoon" path="CallopslaanInkNatuurlijkPersoon" />
+            </XmlSwitchPipe>
+            
+            <SenderPipe
+                name="CallVersion">
+                <IbisLocalSender
+                    name="VersionLocalSender"
+                    javaListener="VersionAction">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+            
+            <SenderPipe
+                name="CallopslaanInkNatuurlijkPersoon">
+                <IbisLocalSender
+                    name="opslaanInkNatuurlijkPersoonLocalSender"
+                    javaListener="opslaanInkNatuurlijkPersoonAction">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+            
+
+        </Pipeline>
+    </Adapter>
+
+
+ </Module>

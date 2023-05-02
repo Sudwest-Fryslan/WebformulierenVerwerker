@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="VersionAction">
+       <!--  <Receiver>
+            <WebServiceListener address="Version" />
+        </Receiver> -->
+        
+        <Receiver name="VersionAction">
+            <JavaListener name="VersionAction"/>
+        </Receiver>
+        <Pipeline>
+			<!-- 
+            <WsdlXmlInputValidator name="VersionInputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="Version">
+                <Forward name="success" path="ConvertToAboutRequest" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlInputValidator>
+
+            <WsdlXmlOutputValidator name="VersionOutputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="VersionResponse" ignoreUnknownNamespaces="true">
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlOutputValidator>
+			 -->
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <!-- Get Version from Corsa. -->
+            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl">
+                <Forward name="success" path="sendToCorsa" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="ExtractVersion" />
+            </SenderPipe>
+
+            <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
+                <Forward name="success" path="Wrapper" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="Wrapper">
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+        </Pipeline>
+    </Adapter>
+
+
+    <Adapter name="opslaanInkNatuurlijkPersoon">
+        <!-- <Receiver>
+            <WebServiceListener address="opslaanInkNatuurlijkPersoon" />
+        </Receiver> -->
+		 <Receiver name="opslaanInkNatuurlijkPersoonAction">
+            <JavaListener name="opslaanInkNatuurlijkPersoonAction"/>
+        </Receiver>
+        <Pipeline>
+            <!-- <WsdlXmlInputValidator name="opslaanInkNatuurlijkPersoonInputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="opslaanInkNatuurlijkPersoon">
+                <Forward name="success" path="ConvertToConnectRequest" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlInputValidator>
+
+            <WsdlXmlOutputValidator name="opslaanInkNatuurlijkPersoonOutputValidator"
+                wsdl="GeneriekeFormulierAfhandeling.wsdl"
+                soapBody="opslaanInkNatuurlijkPersoonResponse" ignoreUnknownNamespaces="true">
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="failure" path="EXCEPTION" />
+                <Forward name="parserError" path="EXCEPTION" />
+                <Forward name="exception" path="EXCEPTION" />
+            </WsdlXmlOutputValidator> -->
+
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
+             	<Param name="pwd" xpathExpression="'password'"/>
+                <Forward name="success" path="sendToCorsa1" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa1">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Unwrapper1" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP"  removeOutputNamespaces="true">
+                <Forward name="success" path="ConnectionSuccessCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="ConnectionSuccessCheck"
+                xpathExpression="ConnectResponse/ConnectResult = 'true'">
+                <Forward name="true" path="ConvertToCreatePerson" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+
+            <!-- If connected, create a person in Corsa. -->
+            <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
+                getInputFromSessionKey="originalMessage">
+                
+                <Forward name="success" path="sendToCorsa2" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa2">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Unwrapper2" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
+            	storeResultInSessionKey="PersonData">
+                <Forward name="success" path="CreatePersonResultCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="CreatePersonResultCheck"
+                xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
+                <Forward name="true" path="ConvertToCreateDocument" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+
+            <!-- If person is created, create a document in Corsa. -->
+            <!-- TODO: Link this to the CreateMetaPerson result -->
+            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
+            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Forward name="success" path="sendToCorsa3" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa3">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Wrapper3" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper3" removeOutputNamespaces="true" storeResultInSessionKey="DocumentDetails">
+                <Forward name="success" path="DocumentDetailsCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+            
+            <XmlSwitchPipe
+                name="DocumentDetailsCheck"
+                xpathExpression="//CreateMetaDocumentResult = 'true'">
+                <Forward name="true" path="ConvertToCreateFileVersion" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+            
+             <!-- If document is created, create a file version in Corsa. -->
+            <!-- TODO: Link this to the CreateMetaPerson result -->
+            
+            <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl">
+            	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
+                <Forward name="success" path="sendToCorsa4" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa4">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Wrapper4" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
+                <Forward name="success" path="FileVersionDetailsCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+            
+            <XmlSwitchPipe
+                name="FileVersionDetailsCheck"
+                xpathExpression="//CreateFileVersionResult = 'true'">
+                <Forward name="true" path="ConvertToCreateMetaDocumentForBijlage" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+            
+            <!-- If file version is created, create a meta document for bijlage toe in Corsa. -->
+            <!-- TODO: Link this to the CreateMetaPerson result -->
+            
+            <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
+            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Forward name="success" path="sendToCorsa5" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa5">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Wrapper5" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true" storeResultInSessionKey="DocumentForBijlage">
+                <Forward name="success" path="DocumentForBijlageCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+            
+            <XmlSwitchPipe
+                name="DocumentForBijlageCheck"
+                xpathExpression="//CreateMetaDocumentResult = 'true'">
+                <Forward name="true" path="ConvertToCreateFileVersionForBijlage" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+                        
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl">
+            	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+                <Forward name="success" path="sendToCorsa6" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa6">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Wrapper6" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
+                <Forward name="success" path="CreateFileVersionForBijlageCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+            
+            <XmlSwitchPipe
+                name="CreateFileVersionForBijlageCheck"
+                xpathExpression="//CreateFileVersionResult = 'true'">
+                <Forward name="true" path="ConvertToModObjectRelation" />
+                <Forward name="false" path="Exit" />
+            </XmlSwitchPipe>
+            
+            <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl">
+            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+                <Forward name="success" path="sendToCorsa7" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa7">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <Forward name="success" path="Wrapper7" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper7" removeOutputNamespaces="true">
+                <Forward name="success" path="Exit" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>		
+            
+            <FixedResultPipe name="Exit" returnString="&lt;opslaanInkNatuurlijkPersoonResponse/&gt;">
+            	<Forward name="success" path="Wrapper2" />
+            </FixedResultPipe>
+            
+			<SoapWrapperPipe name="Wrapper2">
+                <Forward name="success" path="SUCCESS" />
+            </SoapWrapperPipe>
+        </Pipeline>
+    </Adapter>
+</Module>

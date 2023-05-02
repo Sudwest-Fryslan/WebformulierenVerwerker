@@ -1,0 +1,8 @@
+<!DOCTYPE configuration [
+    <!ENTITY Frank2Corsa SYSTEM "Configuration_KodisonCorsa.xml">
+    <!ENTITY KodisonCorsaDispatcher SYSTEM "Configuration_KodisonCorsaDispatcher.xml">
+]>
+<Configuration name="KodisonCorsa">
+    &Frank2Corsa;
+    &KodisonCorsaDispatcher;
+</Configuration>

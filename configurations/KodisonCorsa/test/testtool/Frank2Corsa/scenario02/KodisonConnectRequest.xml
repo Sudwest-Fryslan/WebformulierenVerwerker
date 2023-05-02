@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:opslaanInkNatuurlijkPersoon>
+         <!--Optional:-->
+         <tem:afzenderbsn>123456789</tem:afzenderbsn>
+         <!--Optional:-->
+         <tem:vertrouwelijkheid>111</tem:vertrouwelijkheid>
+         <!--Optional:-->
+         <tem:behandelaarnaam>abc</tem:behandelaarnaam>
+         <!--Optional:-->
+         <tem:onderwerp>?</tem:onderwerp>
+         <!--Optional:-->
+         <tem:inhoud>?</tem:inhoud>
+         <!--Optional:-->
+         <tem:filename></tem:filename>
+         <!--Optional:-->
+         <tem:filedata></tem:filedata>
+      </tem:opslaanInkNatuurlijkPersoon>
+   </soapenv:Body>
+</soapenv:Envelope>
