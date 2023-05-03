@@ -1,0 +1,5 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><VersionResponse xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><VersionResult>
+      
+         Corsa/Webservice - BCT BV. Version: 7.2.194.100
+      
+   </VersionResult></VersionResponse></soapenv:Body></soapenv:Envelope>
