@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <opslaanBijlageResponse xmlns:bct="http://bct.nl" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+      <opslaanBijlageResult>true</opslaanBijlageResult>
+    </opslaanBijlageResponse>
+  </soapenv:Body>
+</soapenv:Envelope>

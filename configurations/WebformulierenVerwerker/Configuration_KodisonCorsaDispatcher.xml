@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter name="KodisonCorsa">
-        <Receiver>
-            <WebServiceListener address="Version,opslaanInkNatuurlijkPersoon,Info" />
+       <Receiver>
+            <WebServiceListener address="Version,opslaanInkNatuurlijkPersoon,opslaanBijlage,Info" />
         </Receiver>
-
+                
         <Pipeline>
 
             <WsdlXmlInputValidator name="VersionInputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="Version,opslaanInkNatuurlijkPersoon"
+                soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanBijlage,Info"
                 addNamespaceToSchema="true"
                 schemaLocation="http://tempuri.org/ schema1">
                 <Forward name="success" path="Wrapper" />
@@ -21,7 +20,7 @@
 
             <WsdlXmlOutputValidator name="VersionOutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse"
+                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
                 addNamespaceToSchema="true"
                 schemaLocation="http://tempuri.org/ schema1">
                 <Forward name="success" path="SUCCESS" />
@@ -34,31 +33,52 @@
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
-
+            
             <SoapWrapperPipe name="Wrapper" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="CheckOperation" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
-
-            <XmlSwitchPipe
+            
+             <XmlSwitchPipe
                 name="CheckOperation"
                 xpathExpression="name(*)">
                 <Forward name="Version" path="CallVersion" />
                 <Forward name="opslaanInkNatuurlijkPersoon" path="CallopslaanInkNatuurlijkPersoon" />
-                <Forward name="Info" path="CallInfo" />
-            </XmlSwitchPipe>
-
+            	<Forward name="opslaanBijlage" path="CallopslaanBijlage" />
+            	<Forward name="Info" path="CallInfo" />
+             </XmlSwitchPipe>
+            
             <SenderPipe
                 name="CallVersion">
                 <IbisLocalSender
                     name="VersionLocalSender"
                     javaListener="VersionAction">
                 </IbisLocalSender>
-                <Forward name="success" path="SUCCESS" />
+                <Forward name="success" path="SUCCESS"/>
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
-
+            
             <SenderPipe
+                name="CallopslaanInkNatuurlijkPersoon">
+                <IbisLocalSender
+                    name="opslaanInkNatuurlijkPersoonLocalSender"
+                    javaListener="opslaanInkNatuurlijkPersoon">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+            
+            <SenderPipe
+                name="CallopslaanBijlage">
+                <IbisLocalSender
+                    name="opslaanBijlageLocalSender"
+                    javaListener="opslaanBijlage">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+            
+			 <SenderPipe
                 name="CallInfo">
                 <IbisLocalSender
                     name="InfoLocalSender"
@@ -67,20 +87,9 @@
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
-
-            <SenderPipe
-                name="CallopslaanInkNatuurlijkPersoon">
-                <IbisLocalSender
-                    name="opslaanInkNatuurlijkPersoonLocalSender"
-                    javaListener="opslaanInkNatuurlijkPersoonAction">
-                </IbisLocalSender>
-                <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SenderPipe>
-
-
+			
         </Pipeline>
     </Adapter>
 
 
-</Module>
+ </Module>
