@@ -9,8 +9,9 @@
 
             <WsdlXmlInputValidator name="VersionInputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="Version,opslaanInkNatuurlijkPersoon">
-                <Forward name="success" path="Wrapper" />
+                soapBody="Version,opslaanInkNatuurlijkPersoon"
+                addNamespaceToSchema="true"
+                schemaLocation="http://tempuri.org/ schema1">                <Forward name="success" path="Wrapper" />
                 <Forward name="failure" path="EXCEPTION" />
                 <Forward name="parserError" path="EXCEPTION" />
                 <Forward name="exception" path="EXCEPTION" />
@@ -18,8 +19,9 @@
 
             <WsdlXmlOutputValidator name="VersionOutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse" ignoreUnknownNamespaces="true">
-                <Forward name="success" path="SUCCESS" />
+                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse"
+                addNamespaceToSchema="true"
+                schemaLocation="http://tempuri.org/ schema1">                <Forward name="success" path="SUCCESS" />
                 <Forward name="failure" path="EXCEPTION" />
                 <Forward name="parserError" path="EXCEPTION" />
                 <Forward name="exception" path="EXCEPTION" />
