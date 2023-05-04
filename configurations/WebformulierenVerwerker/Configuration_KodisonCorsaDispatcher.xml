@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
-    <Adapter name="KodisonCorsa">
-       <Receiver>
-            <WebServiceListener address="Version,opslaanInkNatuurlijkPersoon,opslaanBijlage,Info" />
+    <Adapter name="WebformulierenVerwerker">
+        <Receiver>
+            <WebServiceListener name="WebformulierenVerwerker" address="WebformulierenVerwerker" soap="false" />
         </Receiver>
-                
+<!--
+Meerdere receivers geeft wel meerdere operaties in de WSDL maar die krijgen allemaal soap:body parts="Part_Info" (eerste element uit soapBody input validator)
+Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
+        <Receiver>
+            <WebServiceListener name="Version" address="Version" soap="false" />
+        </Receiver>
+        <Receiver>
+            <WebServiceListener name="opslaanInkNatuurlijkPersoon" address="opslaanInkNatuurlijkPersoon" soap="false" />
+        </Receiver>
+        <Receiver>
+            <WebServiceListener name="opslaanBijlage" address="opslaanBijlage" soap="false" />
+        </Receiver>
+        <Receiver>
+            <WebServiceListener name="Info" address="Info" soap="false" />
+        </Receiver>
+ -->
         <Pipeline>
 
             <WsdlXmlInputValidator name="VersionInputValidator"
