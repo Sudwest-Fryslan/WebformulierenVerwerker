@@ -18,7 +18,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractInfo" />
             </SenderPipe>
 
@@ -74,7 +74,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractVersion" />
             </SenderPipe>
 
@@ -130,7 +130,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
                 <Forward name="success" path="Unwrapper1" />
             </SenderPipe>
 
@@ -155,7 +155,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa2">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
             </SenderPipe>
 
@@ -182,7 +182,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa3">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper3" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -209,7 +209,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa4">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper4" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -235,7 +235,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa5">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -259,7 +259,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa6">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper6" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -285,7 +285,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa7">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="Wrapper7" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -321,7 +321,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Unwrapper" />
             </SenderPipe>
 
