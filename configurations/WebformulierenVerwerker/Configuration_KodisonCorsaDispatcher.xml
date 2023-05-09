@@ -33,6 +33,10 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="exception" path="EXCEPTION" />
             </WsdlXmlInputValidator>
 
+            <!-- Somehow doesn't respect the InfoResponse in the comma seperated value of soapBody, it gives:
+                 /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
+                 Probably because we have SessionKey SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
+                 which is working for WsdlXmlInputValidator above.
             <WsdlXmlOutputValidator name="VersionOutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
                 soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
@@ -42,7 +46,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="failure" path="EXCEPTION" />
                 <Forward name="parserError" path="EXCEPTION" />
                 <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlOutputValidator>
+            </WsdlXmlOutputValidator> -->
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
