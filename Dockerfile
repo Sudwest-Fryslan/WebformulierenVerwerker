@@ -7,7 +7,7 @@ COPY --chown=tomcat classes/ /opt/frank/resources/
 COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
 # Compile custom class, this should be changed to a buildstep in the future
-COPY --chown=tomcat src/main/java /tmp/java
+COPY --chown=tomcat java /tmp/java
 RUN javac \
       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
