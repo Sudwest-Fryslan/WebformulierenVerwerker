@@ -8,7 +8,7 @@ COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.x
 
 # Copy dependencies
 COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
-COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+# COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Compile custom class, this should be changed to a buildstep in the future (lombok.jar added to lib/server for now to be able to compile custom code with Lombo annotations)
 COPY --chown=tomcat java /tmp/java
