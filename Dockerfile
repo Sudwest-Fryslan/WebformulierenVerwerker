@@ -1,4 +1,4 @@
-FROM nexus.frankframework.org/frank-framework:7.8
+FROM nexus.frankframework.org/frank-framework:7.9-SNAPSHOT
 
 # Copy Frank!
 COPY --chown=tomcat configurations/ /opt/frank/configurations/
