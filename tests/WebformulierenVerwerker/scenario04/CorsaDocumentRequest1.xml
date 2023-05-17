@@ -4,7 +4,7 @@
   <soap:Body>
     <bct:Connect>
       <bct:ApplicationID>KodsionformulierenNaarCorsa</bct:ApplicationID>
-      <bct:ConnectionID>111</bct:ConnectionID>
+      <bct:ConnectionID>Corsa</bct:ConnectionID>
       <bct:UserName>abc</bct:UserName>
       <bct:Password>password</bct:Password>
       <bct:EncodedPass>false</bct:EncodedPass>
