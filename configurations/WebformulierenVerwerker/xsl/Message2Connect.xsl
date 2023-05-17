@@ -13,7 +13,7 @@
                     <bct:Password>PASSWORD</bct:Password>
                     <bct:EncodedPass>false</bct:EncodedPass> -->
                     <bct:ApplicationID><xsl:value-of select="'KodsionformulierenNaarCorsa'"/></bct:ApplicationID>
-                    <bct:ConnectionID><xsl:value-of select="opslaanInkNatuurlijkPersoon/vertrouwelijkheid"/></bct:ConnectionID>
+                    <bct:ConnectionID>Corsa</bct:ConnectionID>
                     <bct:UserName><xsl:value-of select="opslaanInkNatuurlijkPersoon/behandelaarnaam"/></bct:UserName>
                     <bct:Password><xsl:value-of select="$pwd"/></bct:Password>
                     <bct:EncodedPass>false</bct:EncodedPass>
