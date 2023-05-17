@@ -5,8 +5,8 @@
 		<bct:Connect>
 			<bct:ApplicationID>KodsionformulierenNaarCorsa</bct:ApplicationID>
 			<bct:ConnectionID>Corsa</bct:ConnectionID>
-			<bct:UserName>abc</bct:UserName>
-			<bct:Password>password</bct:Password>
+			<bct:UserName>Local username test</bct:UserName>
+			<bct:Password>Local password test</bct:Password>
 			<bct:EncodedPass>false</bct:EncodedPass>
 		</bct:Connect>
 	</soap:Body>

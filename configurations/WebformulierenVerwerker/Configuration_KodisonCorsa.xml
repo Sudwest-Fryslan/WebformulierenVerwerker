@@ -124,7 +124,8 @@
             </Exits>
 
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="pwd" xpathExpression="'password'"/>
+             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+             	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
                 <Forward name="success" path="sendToCorsa1" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
