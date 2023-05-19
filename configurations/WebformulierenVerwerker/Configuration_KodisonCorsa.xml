@@ -183,7 +183,7 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa3">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument4" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper3" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
