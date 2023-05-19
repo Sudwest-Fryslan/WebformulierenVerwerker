@@ -203,7 +203,7 @@
              <!-- If document is created, create a file version in Corsa. -->
             <!-- TODO: Link this to the CreateMetaPerson result -->
             
-            <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl">
+            <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
                 <Forward name="success" path="sendToCorsa4" />
                 <Forward name="exception" path="EXCEPTION" />
