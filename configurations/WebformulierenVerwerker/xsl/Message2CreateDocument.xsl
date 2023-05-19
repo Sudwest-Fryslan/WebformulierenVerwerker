@@ -67,7 +67,7 @@
                         </bct:NameValue>
                         <bct:NameValue>
                             <bct:Name>obj_vert.vertrouw_id</bct:Name>
-                            <bct:Value><xsl:value-of select="$PersoonID"/></bct:Value>
+                            <bct:Value><xsl:value-of select="//vertrouwelijkheid"/></bct:Value>
                         </bct:NameValue>
                         <bct:NameValue>
                             <bct:Name>poststuk.soort_ext</bct:Name>
