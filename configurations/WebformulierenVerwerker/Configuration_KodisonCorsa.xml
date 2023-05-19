@@ -20,7 +20,13 @@
             <SenderPipe name="sendToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractInfo" />
+                <Forward name="exception" path="buildErrorMsg" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <XsltPipe name="ExtractInfo" styleSheetName="xsl/Response2Info.xsl">
                 <Forward name="success" path="Wrapper" />
@@ -76,7 +82,13 @@
             <SenderPipe name="sendToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractVersion" />
+                <Forward name="exception" path="buildErrorMsg" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
                 <Forward name="success" path="Wrapper" />
@@ -124,8 +136,7 @@
             </Exits>
 
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
-             	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+             	<Param name="pwd" xpathExpression="'password'"/>
                 <Forward name="success" path="sendToCorsa1" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -133,9 +144,15 @@
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
                 <Forward name="success" path="Unwrapper1" />
+                <Forward name="exception" path="buildErrorMsg1" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP"  removeOutputNamespaces="true">
+            <XsltPipe name="buildErrorMsg1"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="ConnectionSuccessCheck" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
@@ -150,18 +167,25 @@
             <!-- If connected, create a person in Corsa. -->
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
-                
+
                 <Forward name="success" path="sendToCorsa2" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa2">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}"
+                    soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
+                <Forward name="exception" path="buildErrorMsg2" />
             </SenderPipe>
 
+            <XsltPipe name="buildErrorMsg2"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
-            	storeResultInSessionKey="PersonData">
+                storeResultInSessionKey="PersonData">
                 <Forward name="success" path="CreatePersonResultCheck" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
@@ -183,10 +207,15 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa3">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument4" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper3" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg3" />
             </SenderPipe>
+            
+            <XsltPipe name="buildErrorMsg3"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper3" removeOutputNamespaces="true" storeResultInSessionKey="DocumentDetails">
                 <Forward name="success" path="DocumentDetailsCheck" />
@@ -212,8 +241,13 @@
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper4" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg4" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg4"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
                 <Forward name="success" path="FileVersionDetailsCheck" />
@@ -231,17 +265,22 @@
             <!-- TODO: Link this to the CreateMetaPerson result -->
             
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
-            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
             	<Forward name="success" path="sendToCorsa5" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa5">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument4" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg5" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg5"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true" storeResultInSessionKey="DocumentForBijlage">
                 <Forward name="success" path="DocumentForBijlageCheck" />
@@ -262,10 +301,16 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa6">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}"
+                    soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper6" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg6" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg6"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
                 <Forward name="success" path="CreateFileVersionForBijlageCheck" />
@@ -290,8 +335,13 @@
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="Wrapper7" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg7" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg7"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper7" removeOutputNamespaces="true">
                 <Forward name="success" path="Exit" />
@@ -324,9 +374,15 @@
             </XsltPipe>
 
             <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument4" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Unwrapper" />
+                <Forward name="exception" path="buildErrorMsg" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper" direction="UNWRAP"  removeOutputNamespaces="true">
                 <Forward name="success" path="Response" />
