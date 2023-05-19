@@ -1,8 +1,8 @@
 <!DOCTYPE configuration [
-    <!ENTITY Frank2Corsa SYSTEM "Configuration_KodisonCorsa.xml">
-    <!ENTITY KodisonCorsaDispatcher SYSTEM "Configuration_KodisonCorsaDispatcher.xml">
+    <!ENTITY WebformulierenVerwerker SYSTEM "Configuration_WebformulierenVerwerker.xml">
+    <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
-    &Frank2Corsa;
-    &KodisonCorsaDispatcher;
+    &WebformulierenVerwerker;
+    &WebformulierenVerwerkerDispatcher;
 </Configuration>
