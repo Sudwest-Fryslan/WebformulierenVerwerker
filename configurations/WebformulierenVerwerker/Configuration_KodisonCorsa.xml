@@ -231,6 +231,8 @@
             <!-- TODO: Link this to the CreateMetaPerson result -->
             
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
+            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
             	<Forward name="success" path="sendToCorsa5" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
