@@ -47,7 +47,7 @@
                         </bct:NameValue>
                         <bct:NameValue>
                             <bct:Name>poststuk.inhoud1</bct:Name>
-                            <bct:Value><xsl:value-of select="//bericht"/></bct:Value>
+                            <bct:Value><xsl:value-of select="//inhoud"/></bct:Value>
                         </bct:NameValue>
                         <bct:NameValue>
                             <bct:Name>poststuk.v_plaats_id</bct:Name>
