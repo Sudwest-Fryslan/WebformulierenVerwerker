@@ -208,11 +208,14 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
-                <Forward name="success" path="SUCCESS" />
+                <Forward name="success" path="RemoveXMLDeclaration" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
-            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
+            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl">
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
 
             <!-- <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
