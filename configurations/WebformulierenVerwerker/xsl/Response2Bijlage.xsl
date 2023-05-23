@@ -5,7 +5,7 @@
     <xsl:template match="/">
         <opslaanBijlageResponse xmlns="http://tempuri.org/">
             <opslaanBijlageResult>
-                <xsl:value-of select="//*[name()='$BijlageID']" />
+                <xsl:value-of select="$BijlageID" />
             </opslaanBijlageResult>
         </opslaanBijlageResponse>
     </xsl:template>
