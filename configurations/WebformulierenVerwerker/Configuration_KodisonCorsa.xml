@@ -281,7 +281,7 @@
                 <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
                         
-            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl">
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
                 <Forward name="success" path="sendToCorsa6" />
                 <Forward name="exception" path="EXCEPTION" />
