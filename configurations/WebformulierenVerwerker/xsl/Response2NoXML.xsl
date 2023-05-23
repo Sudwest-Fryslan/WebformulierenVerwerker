@@ -13,7 +13,7 @@
     <xsl:template match="/">
         <opslaanInkNatuurlijkPersoonResponse>
             <opslaanInkNatuurlijkPersoonResult>
-                <xsl:value-of select="//ObjectID" />
+                <xsl:value-of select="//*[name()='ObjectID']" />
             </opslaanInkNatuurlijkPersoonResult>
         </opslaanInkNatuurlijkPersoonResponse>
     </xsl:template>
