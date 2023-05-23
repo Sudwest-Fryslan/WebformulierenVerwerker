@@ -212,10 +212,10 @@
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
+            <!-- <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
+            </SoapWrapperPipe> -->
         </Pipeline>
     </Adapter>
 
