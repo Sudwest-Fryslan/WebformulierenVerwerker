@@ -213,14 +213,14 @@
             </SenderPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl">
-                <Forward name="success" path="SUCCESS" />
+                <Forward name="success" path="Wrapper4" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
-            <!-- <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
+            <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe> -->
+            </SoapWrapperPipe>
         </Pipeline>
     </Adapter>
 
