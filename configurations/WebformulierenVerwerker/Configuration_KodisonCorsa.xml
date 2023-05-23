@@ -294,16 +294,9 @@
             </SenderPipe>
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
-                <Forward name="success" path="CreateFileVersionForBijlageCheck" />
+                <Forward name="success" path="ConvertToModObjectRelation" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
-            
-            <XmlSwitchPipe
-                name="CreateFileVersionForBijlageCheck"
-                xpathExpression="//CreateFileVersionResult = 'true'">
-                <Forward name="true" path="ConvertToModObjectRelation" />
-                <Forward name="false" path="SUCCESS" />
-            </XmlSwitchPipe>
             
             <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
