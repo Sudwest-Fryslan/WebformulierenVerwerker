@@ -282,7 +282,7 @@
             </XmlSwitchPipe>
                         
             <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
-                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
                 <Forward name="success" path="sendToCorsa6" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -305,9 +305,8 @@
                 <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
             
-            <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl">
+            <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
                 <Forward name="success" path="sendToCorsa7" />
                 <Forward name="exception" path="EXCEPTION" />
