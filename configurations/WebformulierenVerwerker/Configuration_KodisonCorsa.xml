@@ -212,6 +212,8 @@
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
+            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
+
             <!-- <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="EXCEPTION" />
