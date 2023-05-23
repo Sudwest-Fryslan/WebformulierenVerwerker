@@ -13,8 +13,8 @@
 		         <bct:ObjectType>S</bct:ObjectType>
 		         <!--Optional:-->
 		         <bct:ObjectID><xsl:value-of select="$DocumentID"/></bct:ObjectID>
-		         <!--Optional:-->
-		         <bct:FileBytes></bct:FileBytes>
+				
+		         <bct:FileBytes><xsl:value-of select="//filedata"/></bct:FileBytes>
 		         <bct:FileType>ftNative</bct:FileType>
 		         <bct:FileVersion>0</bct:FileVersion>
 		         <!--Optional:-->
