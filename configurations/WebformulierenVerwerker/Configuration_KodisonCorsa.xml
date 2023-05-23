@@ -307,9 +307,15 @@
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
-                <Forward name="success" path="Wrapper7" />
+                <Forward name="success" path="ConverToBijlageResponse" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
+
+            <XsltPipe name="ConverToBijlageResponse" styleSheetName="xsl/Response2Bijlage.xsl" omitXmlDeclaration="true">
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+                <Forward name="success" path="Wrapper7" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper7" removeOutputNamespaces="true">
                 <Forward name="success" path="SUCCESS" />
