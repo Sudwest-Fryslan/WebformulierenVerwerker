@@ -1,4 +1,4 @@
 <ConnectResponse>
-         <ConnectResult>false</ConnectResult>
-         <LastError/>
-      </ConnectResponse>
+   <ConnectResult>true</ConnectResult>
+   <LastError />
+</ConnectResponse>
