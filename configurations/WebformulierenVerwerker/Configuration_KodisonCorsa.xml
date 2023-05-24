@@ -255,7 +255,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="ConvertToCreateMetaDocumentForBijlage" />
-                <Forward name="false" path="SUCCESS" />
+                <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
