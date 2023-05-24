@@ -11,7 +11,7 @@
     xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
     <xsl:output method="xml" indent="yes"/>
     <xsl:template match="/">
-        <opslaanInkNatuurlijkPersoonResponse>
+        <opslaanInkNatuurlijkPersoonResponse xmlns="http://tempuri.org/">
             <opslaanInkNatuurlijkPersoonResult>
                 <xsl:value-of select="//*[name()='ObjectID']" />
             </opslaanInkNatuurlijkPersoonResult>
