@@ -30,6 +30,9 @@
                     <reason>Some negative response </reason>
                 </xsl:otherwise>
             </xsl:choose>
+            <details>
+                <xsl:value-of select="concat(/root/code, ' ', /root/title, ' ', /root/status, ' ', /root/detail)" />
+            </details>
         </error>
     </xsl:template>
 </xsl:stylesheet>
