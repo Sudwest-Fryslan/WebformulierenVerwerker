@@ -239,8 +239,13 @@
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="RemoveXMLDeclaration" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="buildErrorMsg4" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg4"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl">
                 <Forward name="success" path="Wrapper4" />
@@ -274,7 +279,13 @@
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
                 <Forward name="success" path="Unwrapper1" />
+                <Forward name="exception" path="buildErrorMsg1" />
             </SenderPipe>
+
+            <XsltPipe name="buildErrorMsg1"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP"  removeOutputNamespaces="true">
                 <Forward name="success" path="ConnectionSuccessCheck" />
