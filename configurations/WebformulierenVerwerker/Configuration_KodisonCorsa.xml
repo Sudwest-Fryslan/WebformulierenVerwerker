@@ -124,7 +124,8 @@
             </Exits>
 
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="pwd" xpathExpression="'password'"/>
+             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+             	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
                 <Forward name="success" path="sendToCorsa1" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -143,7 +144,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="ConvertToCreatePerson" />
-                <Forward name="false" path="Exit" />
+                <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
 
             <!-- If connected, create a person in Corsa. -->
@@ -169,7 +170,7 @@
                 name="CreatePersonResultCheck"
                 xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
                 <Forward name="true" path="ConvertToCreateDocument" />
-                <Forward name="false" path="Exit" />
+                <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
 
             <!-- If person is created, create a document in Corsa. -->
@@ -196,13 +197,10 @@
                 name="DocumentDetailsCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersion" />
-                <Forward name="false" path="Exit" />
+                <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
             
-             <!-- If document is created, create a file version in Corsa. -->
-            <!-- TODO: Link this to the CreateMetaPerson result -->
-            
-            <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl">
+            <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
                 <Forward name="success" path="sendToCorsa4" />
                 <Forward name="exception" path="EXCEPTION" />
@@ -210,27 +208,58 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
-                <Forward name="success" path="Wrapper4" />
+                <Forward name="success" path="RemoveXMLDeclaration" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
+            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl">
+                <Forward name="success" path="Wrapper4" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
             <SoapWrapperPipe name="Wrapper4" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails">
-                <Forward name="success" path="FileVersionDetailsCheck" />
+                <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
-            
+        </Pipeline>
+    </Adapter>
+
+    <Adapter name="opslaanBijlage">
+         <Receiver name="opslaanBijlage">
+            <JavaListener name="opslaanBijlage"/>
+        </Receiver>
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
+             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+             	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+                <Forward name="success" path="sendToCorsa1" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe name="sendToCorsa1">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
+                <Forward name="success" path="Unwrapper1" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP"  removeOutputNamespaces="true">
+                <Forward name="success" path="ConnectionSuccessCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
             <XmlSwitchPipe
-                name="FileVersionDetailsCheck"
-                xpathExpression="//CreateFileVersionResult = 'true'">
+                name="ConnectionSuccessCheck"
+                xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="ConvertToCreateMetaDocumentForBijlage" />
-                <Forward name="false" path="Exit" />
+                <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
-            
-            <!-- If file version is created, create a meta document for bijlage toe in Corsa. -->
-            <!-- TODO: Link this to the CreateMetaPerson result -->
-            
+
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
-            	<Forward name="success" path="sendToCorsa5" />
+                <Forward name="success" path="sendToCorsa5" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
@@ -249,11 +278,11 @@
                 name="DocumentForBijlageCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersionForBijlage" />
-                <Forward name="false" path="Exit" />
+                <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
                         
-            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl">
-            	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
+                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
                 <Forward name="success" path="sendToCorsa6" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -265,20 +294,12 @@
             </SenderPipe>
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
-                <Forward name="success" path="CreateFileVersionForBijlageCheck" />
+                <Forward name="success" path="ConvertToModObjectRelation" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
             
-            <XmlSwitchPipe
-                name="CreateFileVersionForBijlageCheck"
-                xpathExpression="//CreateFileVersionResult = 'true'">
-                <Forward name="true" path="ConvertToModObjectRelation" />
-                <Forward name="false" path="Exit" />
-            </XmlSwitchPipe>
-            
-            <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl">
-            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
+            <XsltPipe name="ConvertToModObjectRelation" styleSheetName="xsl/Message2ModObjectRelation.xsl" getInputFromSessionKey="originalMessage">
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
                 <Forward name="success" path="sendToCorsa7" />
                 <Forward name="exception" path="EXCEPTION" />
@@ -286,57 +307,19 @@
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
-                <Forward name="success" path="Wrapper7" />
+                <Forward name="success" path="ConverToBijlageResponse" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="Wrapper7" removeOutputNamespaces="true">
-                <Forward name="success" path="Exit" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>		
-            
-            <FixedResultPipe name="Exit" returnString="&lt;opslaanInkNatuurlijkPersoonResponse/&gt;">
-            	<Forward name="success" path="Wrapper2" />
-            </FixedResultPipe>
-            
-			<SoapWrapperPipe name="Wrapper2">
-                <Forward name="success" path="SUCCESS" />
-            </SoapWrapperPipe>
-        </Pipeline>
-    </Adapter>
-    <Adapter name="opslaanBijlage">
-         <Receiver name="opslaanBijlage">
-            <JavaListener name="opslaanBijlage"/>
-        </Receiver>
-        <Pipeline>
-            <Exits>
-                <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
-            </Exits>
-
-            <XsltPipe name="ConvertToopslaanBijlageRequest" styleSheetName="xsl/Message2opslaanBijlage.xsl">
-             	<Param name="pwd" xpathExpression="'password'"/>
-                <Forward name="success" path="sendToCorsa" />
+            <XsltPipe name="ConverToBijlageResponse" styleSheetName="xsl/Response2Bijlage.xsl" omitXmlDeclaration="true">
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
+                <Forward name="success" path="Wrapper7" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
-            <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
-                <Forward name="success" path="Unwrapper" />
-            </SenderPipe>
-
-            <SoapWrapperPipe name="Unwrapper" direction="UNWRAP"  removeOutputNamespaces="true">
-                <Forward name="success" path="Response" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
-
-            <XsltPipe name="Response" styleSheetName="xsl/Response2opslaanBijlage.xsl">
-                <Forward name="success" path="Wrapper2" />
-                <Forward name="exception" path="EXCEPTION" />
-            </XsltPipe>	
-            
-            <SoapWrapperPipe name="Wrapper2">
+            <SoapWrapperPipe name="Wrapper7" removeOutputNamespaces="true">
                 <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
         </Pipeline>
     </Adapter>

@@ -8,17 +8,18 @@
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:bct="http://bct.nl">
 		   <soap:Header/>
 		   <soap:Body>
+		   <!-- TODO: Replace with Xpath -->
 		      <bct:CreateFileVersion>
 		         <!--Optional:-->
 		         <bct:ObjectType>S</bct:ObjectType>
 		         <!--Optional:-->
 		         <bct:ObjectID><xsl:value-of select="$DocumentID"/></bct:ObjectID>
-		         <!--Optional:-->
-		         <bct:FileBytes></bct:FileBytes>
+				
+		         <bct:FileBytes><xsl:value-of select="//filedata"/></bct:FileBytes>
 		         <bct:FileType>ftNative</bct:FileType>
 		         <bct:FileVersion>0</bct:FileVersion>
 		         <!--Optional:-->
-		         <bct:FileExtension>.png</bct:FileExtension>
+		         <bct:FileExtension>.pdf</bct:FileExtension>
 		         <!--Optional:-->
 		         <bct:DocumentName>Het swf logo</bct:DocumentName>
 		         <!--Optional:-->

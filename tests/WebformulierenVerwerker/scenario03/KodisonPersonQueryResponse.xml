@@ -1,5 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-  <soapenv:Body>
-    <opslaanInkNatuurlijkPersoonResponse/>
-  </soapenv:Body>
-</soapenv:Envelope>
+<CreateMetaPersonResponse>
+  <CreateMetaPersonResult>0</CreateMetaPersonResult>
+  <aanmelderIdentificatie>123456</aanmelderIdentificatie>
+</CreateMetaPersonResponse>
