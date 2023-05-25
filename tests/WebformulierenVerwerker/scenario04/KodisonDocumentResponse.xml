@@ -1,7 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-  <soapenv:Body>
-    <opslaanInkNatuurlijkPersoonResponse xmlns="http://tempuri.org/" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-      <opslaanInkNatuurlijkPersoonResult>I23.080115</opslaanInkNatuurlijkPersoonResult>
-    </opslaanInkNatuurlijkPersoonResponse>
-  </soapenv:Body>
-</soapenv:Envelope>
