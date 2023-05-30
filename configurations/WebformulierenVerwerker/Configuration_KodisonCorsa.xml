@@ -25,33 +25,12 @@
     </Adapter>
     
     <Adapter name="VersionAction">
-       <!--  <Receiver>
-            <WebServiceListener address="Version" />
-        </Receiver> -->
         
         <Receiver name="VersionAction">
             <JavaListener name="VersionAction"/>
         </Receiver>
         <Pipeline>
-			<!-- 
-            <WsdlXmlInputValidator name="VersionInputValidator"
-                wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="Version">
-                <Forward name="success" path="ConvertToAboutRequest" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlInputValidator>
 
-            <WsdlXmlOutputValidator name="VersionOutputValidator"
-                wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="VersionResponse" ignoreUnknownNamespaces="true">
-                <Forward name="success" path="SUCCESS" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlOutputValidator>
-			 -->
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
@@ -72,30 +51,11 @@
 
 
     <Adapter name="opslaanInkNatuurlijkPersoon">
-        <!-- <Receiver>
-            <WebServiceListener address="opslaanInkNatuurlijkPersoon" />
-        </Receiver> -->
+
 		 <Receiver name="opslaanInkNatuurlijkPersoon">
             <JavaListener name="opslaanInkNatuurlijkPersoon"/>
         </Receiver>
         <Pipeline>
-            <!-- <WsdlXmlInputValidator name="opslaanInkNatuurlijkPersoonInputValidator"
-                wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="opslaanInkNatuurlijkPersoon">
-                <Forward name="success" path="ConvertToConnectRequest" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlInputValidator>
-
-            <WsdlXmlOutputValidator name="opslaanInkNatuurlijkPersoonOutputValidator"
-                wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="opslaanInkNatuurlijkPersoonResponse" ignoreUnknownNamespaces="true">
-                <Forward name="success" path="SUCCESS" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlOutputValidator> -->
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />

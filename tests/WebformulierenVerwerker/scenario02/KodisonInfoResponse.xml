@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><InfoResponse xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><InfoResponse xmlns="http://tempuri.org/" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
 	<InfoResult>
       
          Corsa/Webservice - BCT BV. Version: 7.2.194.100
