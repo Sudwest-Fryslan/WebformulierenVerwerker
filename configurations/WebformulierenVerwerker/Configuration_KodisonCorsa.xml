@@ -109,11 +109,6 @@
 
             <SoapWrapperPipe name="WrapConnectRequest" />
 
-            <!-- LAST DONE:
-            Added wrappers and validators. Connect validation works. 
-            Info and Version adapters still function. 
-            Removed forwards for developer experience.-->
-
             <WsdlXmlValidatorPipe name="ValidateConnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Connect" throwException="true"/>
 
