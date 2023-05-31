@@ -22,31 +22,25 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
  -->
         <Pipeline>
 
-            <WsdlXmlInputValidator name="VersionInputValidator"
+            <WsdlXmlInputValidator name="InputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
                 soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanBijlage,Info"
                 addNamespaceToSchema="true"
-                schemaLocation="http://tempuri.org/ schema1">
-                <Forward name="success" path="Wrapper" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
+                schemaLocation="http://tempuri.org/ schema1"
+                throwException="true">
             </WsdlXmlInputValidator>
 
             <!-- Somehow doesn't respect the InfoResponse in the comma seperated value of soapBody, it gives:
                  /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
                  Probably because we have SessionKey SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
-                 which is working for WsdlXmlInputValidator above.
-            <WsdlXmlOutputValidator name="VersionOutputValidator"
+                 which is working for WsdlXmlInputValidator above. -->
+            <WsdlXmlOutputValidator name="OutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
                 soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
                 addNamespaceToSchema="true"
-                schemaLocation="http://tempuri.org/ schema1">
-                <Forward name="success" path="SUCCESS" />
-                <Forward name="failure" path="EXCEPTION" />
-                <Forward name="parserError" path="EXCEPTION" />
-                <Forward name="exception" path="EXCEPTION" />
-            </WsdlXmlOutputValidator> -->
+                schemaLocation="http://tempuri.org/ schema1"
+                throwException="true">
+            </WsdlXmlOutputValidator>
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
