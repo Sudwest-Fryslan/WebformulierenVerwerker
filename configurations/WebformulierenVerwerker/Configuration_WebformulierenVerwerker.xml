@@ -149,7 +149,6 @@
             </XmlSwitchPipe>
 
             <!-- If person is created, create a document in Corsa. -->
-            <!-- TODO: Link this to the CreateMetaPerson result -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
