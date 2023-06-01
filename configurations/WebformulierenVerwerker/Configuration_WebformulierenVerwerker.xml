@@ -203,6 +203,38 @@
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
 
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails"/>
+
+            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Message2Disconnect.xsl"/>
+
+            <SoapWrapperPipe name="WrapDisconnectRequest" />
+
+            <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="Disconnect" throwException="true"/>
+
+            <SenderPipe name="SendDisconnectRequest">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                <Forward name="success" path="UnwrapDisconnectResponse" />
+                <Forward name="exception" path="buildErrorMsg1" />
+            </SenderPipe>
+
+            <XsltPipe name="buildDisconnectErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
+                <Forward name="success" path="DisconnectSuccessCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="DisconnectSuccessCheck"
+                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                <Forward name="true" path="ReturnResult" />
+                <Forward name="false" path="EXCEPTION" />
+            </XmlSwitchPipe>
+
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
         </Pipeline>
     </Adapter>
 
@@ -328,7 +360,39 @@
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"/>
+            <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true" storeResultInSessionKey="BijlageResults"/>
+
+            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Message2Disconnect.xsl"/>
+
+            <SoapWrapperPipe name="WrapDisconnectRequest" />
+
+            <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="Disconnect" throwException="true"/>
+
+            <SenderPipe name="SendDisconnectRequest">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                <Forward name="success" path="UnwrapDisconnectResponse" />
+                <Forward name="exception" path="buildErrorMsg1" />
+            </SenderPipe>
+
+            <XsltPipe name="buildDisconnectErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
+                <Forward name="success" path="DisconnectSuccessCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="DisconnectSuccessCheck"
+                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                <Forward name="true" path="ReturnResult" />
+                <Forward name="false" path="EXCEPTION" />
+            </XmlSwitchPipe>
+
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults"/>
         </Pipeline>
     </Adapter>
 </Module>
