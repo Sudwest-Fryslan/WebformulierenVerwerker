@@ -69,7 +69,7 @@
 				<bct:NameValue>
 					<bct:Name>obj_vert.vertrouw_id</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="$PersoonID" />
+						<xsl:value-of select="//vertrouwelijkheid" />
 					</bct:Value>
 				</bct:NameValue>
 			</bct:FieldValues>
@@ -85,7 +85,7 @@
 				<bct:NameValue>
 					<bct:Name>ontvdat</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="$systemdate" />
+						<xsl:value-of select="translate($systemdate,'/','-')" />
 					</bct:Value>
 				</bct:NameValue>
 				<bct:NameValue>
