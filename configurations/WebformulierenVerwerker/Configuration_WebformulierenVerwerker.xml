@@ -138,6 +138,7 @@
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
              	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+                <Param name="ConnectionID" value="${ConnectionID}"/>
                 <Forward name="success" path="sendToCorsa1" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -272,6 +273,7 @@
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
              	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+                <Param name="ConnectionID" value="${ConnectionID}"/>
                 <Forward name="success" path="sendToCorsa1" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>

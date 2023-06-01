@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:bct="http://bct.nl">
-  <soap:Header/>
-  <soap:Body>
-    <bct:CreateFileVersion>
-      <bct:ObjectType>S</bct:ObjectType>
-      <bct:ObjectID>BIJ.360830</bct:ObjectID>
-      <bct:FileBytes/>
-      <bct:FileType>ftNative</bct:FileType>
-      <bct:FileVersion>0</bct:FileVersion>
-      <bct:FileExtension>.pdf</bct:FileExtension>
-      <bct:DocumentName>Het swf logo</bct:DocumentName>
-      <bct:VersionDescription>Eerste versie</bct:VersionDescription>
-    </bct:CreateFileVersion>
-  </soap:Body>
+<soap:Envelope xmlns:bct="http://bct.nl" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<soap:Header/>
+	<soap:Body>
+		<bct:CreateFileVersion>
+			<bct:ObjectType>S</bct:ObjectType>
+			<bct:ObjectID>BIJ.360830</bct:ObjectID>
+			<bct:FileBytes/>
+			<bct:FileType>ftNative</bct:FileType>
+			<bct:FileVersion>0</bct:FileVersion>
+			<bct:FileExtension>txt</bct:FileExtension>
+			<bct:DocumentName>abc</bct:DocumentName>
+			<bct:VersionDescription>Eerste versie</bct:VersionDescription>
+		</bct:CreateFileVersion>
+	</soap:Body>
 </soap:Envelope>

@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
     <xsl:output method="xml" indent="yes"/>
     
@@ -19,9 +19,9 @@
 		         <bct:FileType>ftNative</bct:FileType>
 		         <bct:FileVersion>0</bct:FileVersion>
 		         <!--Optional:-->
-		         <bct:FileExtension>.pdf</bct:FileExtension>
+		         <bct:FileExtension><xsl:value-of select="/opslaanBijlage/filename/replace(tokenize(., '/')[last()], '.*\.', '')"/></bct:FileExtension>
 		         <!--Optional:-->
-		         <bct:DocumentName>Het swf logo</bct:DocumentName>
+		         <bct:DocumentName><xsl:value-of select="tokenize(/opslaanBijlage/filename, '\.|/')[last() - 1]"/></bct:DocumentName>
 		         <!--Optional:-->
 		         <bct:VersionDescription>Eerste versie</bct:VersionDescription>
 		         <!--Optional:-->

@@ -119,7 +119,8 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 soapBodyStyleSheet="xsl/CreateFo03Response.xslt"
             >
                 <Param name="errorCode" sessionKey="errorCode" />
-                <Param name="errorMessage" sessionKey="errorMessage" />
+                <Param name="errorReason" sessionKey="errorReason"/>
+                <Param name="errorDetailText" sessionKey="errorDetailText"/>
                 <Forward name="success" path="SUCCESS" />
             </SoapWrapperPipe>
 
