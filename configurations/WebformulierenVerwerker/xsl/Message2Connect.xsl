@@ -4,23 +4,12 @@
 	<xsl:param name="password"/>
     <xsl:param name="ConnectionID"/>
     <xsl:template match="/">
-        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
-            xmlns:bct="http://bct.nl">
-            <soap:Header />
-            <soap:Body>
-                <bct:Connect>
-                    <!-- <bct:ApplicationID>APPLICATIONID</bct:ApplicationID>
-                    <bct:ConnectionID>CONNECTIONID</bct:ConnectionID>
-                    <bct:UserName>USERNAME</bct:UserName>
-                    <bct:Password>PASSWORD</bct:Password>
-                    <bct:EncodedPass>false</bct:EncodedPass> -->
+                <bct:Connect xmlns:bct="http://bct.nl">
                     <bct:ApplicationID><xsl:value-of select="'KodsionformulierenNaarCorsa'"/></bct:ApplicationID>
                     <bct:ConnectionID><xsl:value-of select="$ConnectionID"/></bct:ConnectionID>
                     <bct:UserName><xsl:value-of select="$username"/></bct:UserName>
                     <bct:Password><xsl:value-of select="$password"/></bct:Password>
                     <bct:EncodedPass>false</bct:EncodedPass>
                 </bct:Connect>
-            </soap:Body>
-        </soap:Envelope>
     </xsl:template>
 </xsl:stylesheet>

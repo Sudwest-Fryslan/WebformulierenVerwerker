@@ -1,9 +1,5 @@
 <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
   <soap:Body>
-    <bct:Version xmlns:bct='http://tempuri.org/'>
-<!-- optional -->
-<!-- This element may be left empty if xsi:nil='true' is set. -->
-      <bct:version>?XXX?</bct:version>
-    </bct:Version>
+    <bct:Info xmlns:bct='http://tempuri.org/'/>
   </soap:Body>
 </soap:Envelope>

@@ -5,9 +5,6 @@
     <xsl:param name="systemdate"/>
     <xsl:param name="DocumentID"/>
     <xsl:template match="/">
-        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:bct="http://bct.nl">
-		   <soap:Header/>
-		   <soap:Body>
 		   <!-- TODO: Replace with Xpath -->
 		      <bct:CreateFileVersion>
 		         <!--Optional:-->
@@ -31,8 +28,6 @@
 		            <bct:DSAction>?</bct:DSAction>
 		         </bct:Action>
 		         -->
-		      </bct:CreateFileVersion>
-		   </soap:Body>
-		</soap:Envelope>
-    </xsl:template>
+			</bct:CreateFileVersion>
+	</xsl:template>
 </xsl:stylesheet>
