@@ -4,7 +4,7 @@
 	<bct:FileBytes/>
 	<bct:FileType>ftNative</bct:FileType>
 	<bct:FileVersion>0</bct:FileVersion>
-	<bct:FileExtension>.pdf</bct:FileExtension>
-	<bct:DocumentName>Het swf logo</bct:DocumentName>
+	<bct:FileExtension/>
+	<bct:DocumentName/>
 	<bct:VersionDescription>Eerste versie</bct:VersionDescription>
 </bct:CreateFileVersion></soapenv:Body></soapenv:Envelope>

@@ -85,7 +85,7 @@
 				<bct:NameValue>
 					<bct:Name>ontvdat</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="$systemdate" />
+						<xsl:value-of select="translate($systemdate,'/','-')" />
 					</bct:Value>
 				</bct:NameValue>
 				<bct:NameValue>
