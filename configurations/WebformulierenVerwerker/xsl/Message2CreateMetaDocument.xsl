@@ -69,7 +69,7 @@
 				<bct:NameValue>
 					<bct:Name>obj_vert.vertrouw_id</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="//vertrouwelijkheid" />
+						<xsl:value-of select="$PersoonID" />
 					</bct:Value>
 				</bct:NameValue>
 			</bct:FieldValues>
