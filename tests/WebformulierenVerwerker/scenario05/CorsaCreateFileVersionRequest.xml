@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><bct:CreateFileVersion xmlns:bct="http://bct.nl" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<bct:ObjectType>S</bct:ObjectType>
+	<bct:ObjectID>I23.080115</bct:ObjectID>
+	<bct:FileBytes/>
+	<bct:FileType>ftNative</bct:FileType>
+	<bct:FileVersion>0</bct:FileVersion>
+	<bct:FileExtension/>
+	<bct:DocumentName/>
+	<bct:VersionDescription>Eerste versie</bct:VersionDescription>
+</bct:CreateFileVersion></soapenv:Body></soapenv:Envelope>

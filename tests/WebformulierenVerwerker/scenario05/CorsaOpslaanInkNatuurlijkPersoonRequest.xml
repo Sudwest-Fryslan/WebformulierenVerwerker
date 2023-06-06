@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bct:CreateMetaPerson xmlns:bct="http://bct.nl" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<bct:ObjectID/>
+	<bct:ObjectKind>STUF</bct:ObjectKind>
+	<bct:ReferenceValues>
+		<bct:NameValue>
+			<bct:Name>BRSpSofi</bct:Name>
+			<bct:Value>123456789</bct:Value>
+		</bct:NameValue>
+	</bct:ReferenceValues>
+</bct:CreateMetaPerson>
