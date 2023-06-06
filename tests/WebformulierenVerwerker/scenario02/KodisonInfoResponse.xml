@@ -1,7 +1,13 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><InfoResponse xmlns="http://tempuri.org/" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-	<InfoResult>
+	<InfoResult>Corsa Version: 
       
          Corsa/Webservice - BCT BV. Version: 7.2.194.100
       
-   </InfoResult>
+   Stage: LOC
+User Domain: INTERPAR
+Username: delano
+Server Type: TOMCAT
+OS Name: Windows 10
+Directory: C:\Users\Delano\Documents\Franks\WebformulierenVerwerker\configurations
+</InfoResult>
 </InfoResponse></soapenv:Body></soapenv:Envelope>

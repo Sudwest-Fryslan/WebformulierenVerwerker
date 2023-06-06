@@ -26,6 +26,12 @@
             </XsltPipe>
 
             <XsltPipe name="ExtractInfo" styleSheetName="xsl/Response2Info.xsl">
+                <Param name="stage" value="${dtap.stage}" />
+                <Param name="userdomain" value="${USERDOMAIN}" />
+                <Param name="username" value="${USERNAME}" />
+                <Param name="serverType" value="${application.server.type}" />
+                <Param name="osName" value="${os.name}" />
+                <Param name="directory" value="${configurations.directory}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -150,7 +156,6 @@
             </XmlSwitchPipe>
 
             <!-- If person is created, create a document in Corsa. -->
-            <!-- TODO: Link this to the CreateMetaPerson result -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
