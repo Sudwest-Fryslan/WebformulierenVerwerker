@@ -4,7 +4,7 @@
     <xsl:template match="/">
         <VersionResponse xmlns="http://tempuri.org/">
             <VersionResult>
-                <xsl:value-of select="soap:Envelope/soap:Body" />
+                Frank! Version 1 - 07/06/2023
             </VersionResult>
         </VersionResponse>
     </xsl:template>
