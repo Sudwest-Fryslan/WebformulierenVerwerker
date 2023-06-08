@@ -26,4 +26,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push image
-      run: docker push
+      run: docker push wearefrank/webformulierenverwerker:${{ steps.versionProps.outputs.version }}
