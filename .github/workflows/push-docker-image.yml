@@ -1,0 +1,16 @@
+name: "Push docker image"
+
+on:
+  push:
+    branches: [master, pushDockerImage]
+
+jobs:
+  push-docker-image:
+    name: "Build and push docker image"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Docker build
+      run: docker build .
