@@ -67,14 +67,9 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     name="VersionLocalSender"
                     javaListener="VersionAction">
                 </IbisLocalSender>
-                <Forward name="success" path="SetSoapActionKeyVersion" />
+                <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="BackEndError" />
             </SenderPipe>
-
-            <EchoPipe name="SetSoapActionKeyVersion">
-                <Param sessionKey="SOAPAction" value="VersionResponse"/>
-                <Forward name="success" path="SUCCESS" />
-            </EchoPipe>
 
             <SenderPipe
                 name="CallopslaanInkNatuurlijkPersoon">
@@ -82,14 +77,9 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     name="opslaanInkNatuurlijkPersoonLocalSender"
                     javaListener="opslaanInkNatuurlijkPersoon">
                 </IbisLocalSender>
-                <Forward name="success" path="SetSoapActionKeyOpslaanInk" />
+                <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="BackEndError" />
             </SenderPipe>
-
-            <EchoPipe name="SetSoapActionKeyOpslaanInk">
-                <Param sessionKey="SOAPAction" value="opslaanInkNatuurlijkPersoonResponse"/>
-                <Forward name="success" path="SUCCESS" />
-            </EchoPipe>
 
             <SenderPipe
                 name="CallopslaanBijlage">
@@ -97,14 +87,9 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     name="opslaanBijlageLocalSender"
                     javaListener="opslaanBijlage">
                 </IbisLocalSender>
-                <Forward name="success" path="SetSoapActionKeyOpslaanBijl" />
+                <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="BackEndError" />
             </SenderPipe>
-
-            <EchoPipe name="SetSoapActionKeyOpslaanBijl">
-                <Param sessionKey="SOAPAction" value="opslaanBijlageResponse"/>
-                <Forward name="success" path="SUCCESS" />
-            </EchoPipe>
 
             <SenderPipe
                 name="CallInfo">
@@ -112,14 +97,9 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     name="InfoLocalSender"
                     javaListener="InfoAction">
                 </IbisLocalSender>
-                <Forward name="success" path="SetSoapActionKeyInfo" />
+                <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="BackEndError" />
             </SenderPipe>
-
-            <EchoPipe name="SetSoapActionKeyInfo">
-                <Param sessionKey="SOAPAction" value="InfoResponse"/>
-                <Forward name="success" path="SUCCESS" />
-            </EchoPipe>
 
             <PutInSessionPipe name="BackEndError" unlessSessionKey="errorCode">
                 <Param name="errorCode" styleSheetName="xsl/BackEndError.xsl" />
