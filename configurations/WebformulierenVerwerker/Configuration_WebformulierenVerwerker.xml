@@ -52,21 +52,9 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <!-- Get Version from Corsa. -->
-            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl"/>
-
-            <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
-                <Forward name="success" path="ExtractVersion" />
-                <Forward name="exception" path="buildErrorMsg" />
-            </SenderPipe>
-
-            <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
-
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
+                <Param name="version" value="${version}" />
+                <Param name="versionDate_ddmmyy" value="${versionDate_ddmmyy}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
