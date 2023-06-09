@@ -17,11 +17,11 @@ jobs:
       uses: christian-draeger/read-properties@1.1.1
       with:
         path: './classes/DeploymentSpecifics.properties'
-        properties: 'version versionData_mmddyyyy'
+        properties: 'version versionDate_mmddyyyy'
     - name: Show version of docker image - also in SOAP version response
       run: echo '${{ steps.versionProps.outputs.version }}'
     - name: Show release date returned in SOAP version response
-      run: echo '${{ steps.versionProps.outputs.versionData_mmddyyyy }}'
+      run: echo '${{ steps.versionProps.outputs.versionDate_mmddyyyy }}'
     - name: Docker build
       run: docker build -t wearefrank/webformulierenverwerker:${{ steps.versionProps.outputs.version }} . --no-cache
     - name: Login to DockerHub
