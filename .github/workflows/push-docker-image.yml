@@ -17,7 +17,7 @@ jobs:
       uses: christian-draeger/read-properties@1.1.1
       with:
         path: './classes/DeploymentSpecifics.properties'
-        properties: 'version'
+        properties: 'version versionData_mmddyyyy'
     - name: Show version of docker image - also in SOAP version response
       run: echo '${{ steps.versionProps.outputs.version }}'
     - name: Show release date returned in SOAP version response
