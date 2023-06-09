@@ -61,23 +61,19 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
             	<Forward name="Info" path="InfoSoapActionSetter" />
              </XmlSwitchPipe>
 
-             <PutInSessionPipe name="VersionSoapActionSetter">
-                <Param sessionKey="SOAPAction" value="VersionResponse"/>
+             <PutInSessionPipe name="VersionSoapActionSetter" sessionKey="SOAPAction" value="VersionResponse">
                 <Forward name="success" path="CallVersion" />
              </PutInSessionPipe>
 
-             <PutInSessionPipe name="InfoSoapActionSetter">
-                <Param sessionKey="SOAPAction" value="InfoResponse"/>
+             <PutInSessionPipe name="InfoSoapActionSetter" sessionKey="SOAPAction" value="InfoResponse">
                 <Forward name="success" path="CallInfo" />
              </PutInSessionPipe>
 
-             <PutInSessionPipe name="PersoonSoapActionSetter">
-                <Param sessionKey="SOAPAction" value="opslaanInkNatuurlijkPersoonResponse"/>
+             <PutInSessionPipe name="PersoonSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNatuurlijkPersoonResponse">
                 <Forward name="success" path="CallopslaanInkNatuurlijkPersoon" />
              </PutInSessionPipe>
 
-             <PutInSessionPipe name="BijlageSoapActionSetter">
-                <Param sessionKey="SOAPAction" value="opslaanBijlageResponse"/>
+             <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction" value="opslaanBijlageResponse">
                 <Forward name="success" path="CallopslaanBijlage" />
              </PutInSessionPipe>
 
