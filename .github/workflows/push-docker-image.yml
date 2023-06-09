@@ -18,6 +18,10 @@ jobs:
       with:
         path: './classes/DeploymentSpecifics.properties'
         properties: 'version'
+    - name: Show version of docker image - also in SOAP version response
+      run: echo '${{ steps.versionProps.outputs.version }}'
+    - name: Show release date returned in SOAP version response
+      run: echo '${{ steps.versionProps.outputs.versionData_mmddyyyy }}'
     - name: Docker build
       run: docker build -t wearefrank/webformulierenverwerker:${{ steps.versionProps.outputs.version }} . --no-cache
     - name: Login to DockerHub
