@@ -106,11 +106,44 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="ConvertToCreatePerson" />
+                <Forward name="true" path="ConvertToQueryRequest" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
-            <!-- If connected, create a person in Corsa. -->
+            <!-- Query to see if person exists -->
+            <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/Message2QueryPerson.xsl">
+             	<Param name="afzenderbsn" xpathExpression="//afzenderbsn" sessionKey="originalMessage"/>
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapQueryRequest" />
+
+            <WsdlXmlValidatorPipe name="ValidateQueryRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="QueryExecute" throwException="true"/>
+
+            <SenderPipe name="sendQueryToCorsa">
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+                <Forward name="success" path="UnwrapQueryResponse" />
+                <Forward name="exception" path="buildQueryErrorMsg" />
+            </SenderPipe>
+
+            <XsltPipe name="buildQueryErrorMsg"
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP" removeOutputNamespaces="true">
+                <Forward name="success" path="QueryResultCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <!-- If person does not exist, create a person in Corsa. -->
+            <XmlSwitchPipe
+                name="QueryResultCheck"
+                xpathExpression="not(//QueryExecuteResult/node())">
+                <Forward name="true" path="ConvertToCreateDocument" />
+                <Forward name="false" path="ConvertToCreatePerson" />
+            </XmlSwitchPipe>
+
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
 

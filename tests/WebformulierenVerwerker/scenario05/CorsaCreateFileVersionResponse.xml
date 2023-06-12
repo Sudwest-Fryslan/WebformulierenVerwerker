@@ -1,0 +1,37 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <env:Header xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+      <wsa:Action>http://bct.nl/CreateFileVersionResponse</wsa:Action>
+      <wsa:MessageID>urn:uuid:65f91bcc-cd49-49ed-907a-69e3a8179ab0</wsa:MessageID>
+      <wsa:RelatesTo>urn:uuid:01c83baf-d4f6-4e32-88ba-bf2b6551c438</wsa:RelatesTo>
+      <wsa:To>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:To>
+      <wsse:Security>
+         <wsu:Timestamp wsu:Id="Timestamp-722068e5-486e-492a-a452-dda0366c014a">
+            <wsu:Created>2023-02-01T17:00:35Z</wsu:Created>
+            <wsu:Expires>2023-02-01T17:05:35Z</wsu:Expires>
+         </wsu:Timestamp>
+      </wsse:Security>
+   </env:Header>
+   <soap:Body>
+      <CreateFileVersionResponse xmlns="http://bct.nl">
+         <CreateFileVersionResult>true</CreateFileVersionResult>
+         <VersionInfo>
+            <ObjectType>S</ObjectType>
+            <ObjectID>I23.080115</ObjectID>
+            <ObjectKind>INK</ObjectKind>
+            <DeviceID>DS71DATA</DeviceID>
+            <Version>1</Version>
+            <VersionDate>01/02/23</VersionDate>
+            <VersionTime>18:00:35</VersionTime>
+            <Author>EduWitt1</Author>
+            <FileExtension>.png</FileExtension>
+            <FileSize>48658</FileSize>
+            <VersionDescription>Eerste versie</VersionDescription>
+            <DocumentName>Het swf logo</DocumentName>
+            <FTI>false</FTI>
+            <PDF>true</PDF>
+            <OCR>false</OCR>
+         </VersionInfo>
+         <LastError/>
+      </CreateFileVersionResponse>
+   </soap:Body>
+</soap:Envelope>
