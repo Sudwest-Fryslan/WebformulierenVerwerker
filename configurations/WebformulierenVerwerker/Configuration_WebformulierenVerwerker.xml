@@ -52,21 +52,9 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <!-- Get Version from Corsa. -->
-            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl"/>
-
-            <SenderPipe name="sendToCorsa">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
-                <Forward name="success" path="ExtractVersion" />
-                <Forward name="exception" path="buildErrorMsg" />
-            </SenderPipe>
-
-            <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
-
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
+                <Param name="version" value="${version}" />
+                <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -159,9 +147,11 @@
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
 
-                <Forward name="success" path="sendToCorsa2" />
+                <Forward name="success" path="WrapCreatePersonRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
+
+            <SoapWrapperPipe name="WrapCreatePersonRequest" />
 
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender methodType="POST" url="${corsa.url}"
@@ -321,9 +311,11 @@
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
-                <Forward name="success" path="sendToCorsa5" />
+                <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
+
+            <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest" />
 
             <SenderPipe name="sendToCorsa5">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
