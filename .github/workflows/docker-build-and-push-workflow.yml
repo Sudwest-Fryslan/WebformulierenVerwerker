@@ -33,7 +33,7 @@ jobs:
     steps:
     -
       name: Show inputs
-      run: "echo 'docker-image-repo: ${{ vars.docker-image-repo }}' && echo 'publish: ${{ vars.publish }}' && echo 'version: ${{ vars.version }}' && echo 'latest-tag: ${{ vars.latest-tag }}'"
+      run: "echo 'docker-image-repo: ${{ inputs.docker-image-repo }}' && echo 'publish: ${{ inputs.publish }}' && echo 'version: ${{ inputs.version }}' && echo 'latest-tag: ${{ inputs.latest-tag }}'"
     - 
       name: Checkout
       uses: actions/checkout@v3
