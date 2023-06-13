@@ -98,7 +98,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     -
       name: Push Docker image
-      run: docker push $env:DOCKER_IMAGE_REPOSITORY --all-tags
+      run: docker push ${{ vars.DOCKER_IMAGE_REPOSITORY }} --all-tags
 
   release: 
     runs-on: ubuntu-latest
