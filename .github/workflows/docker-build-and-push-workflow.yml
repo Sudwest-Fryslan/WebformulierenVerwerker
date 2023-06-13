@@ -31,6 +31,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    -
+      name: Show inputs
+      run: "echo 'docker-image-repo: ${{ docker-image-repo }}' && echo 'publish: ${{ publish }}' && echo 'version: ${{ version }}' && echo 'latest-tag: ${{ latest-tag }}'"
     - 
       name: Checkout
       uses: actions/checkout@v3

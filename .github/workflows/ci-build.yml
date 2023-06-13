@@ -56,7 +56,7 @@ jobs:
             github.ref == 'refs/heads/main' ||
             github.ref == 'refs/heads/master') &&
             github.event_name == 'push' }}
-      docker-image-repo: ${{ env.DOCKER_IMAGE_REPOSITORY }}
+      docker-image-repo: ${{ vars.DOCKER_IMAGE_REPOSITORY }}
       upload-sarif-to-security: >- 
         ${{ (startsWith(github.ref, 'refs/tags/') ||
           github.ref == 'refs/heads/main' ||
