@@ -17,6 +17,9 @@ jobs:
   analyze-commits:
     runs-on: ubuntu-latest
     steps:
+    -
+      name: Echo DOCKER_IMAGE_REPOSITORY
+      run: echo '${{ env.DOCKER_IMAGE_REPOSITORY }}'
     - 
       name: Checkout
       uses: actions/checkout@v3
