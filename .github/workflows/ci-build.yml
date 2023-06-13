@@ -10,16 +10,13 @@ on:
       - main
       - master
 
-env:
-  DOCKER_IMAGE_REPOSITORY: docker.io/wearefrank/webformulierenverwerker # ${{vars.DOCKER_IMAGE_REPOSITORY}}
-
 jobs:
   analyze-commits:
     runs-on: ubuntu-latest
     steps:
     -
       name: Echo DOCKER_IMAGE_REPOSITORY
-      run: echo '${{ env.DOCKER_IMAGE_REPOSITORY }}'
+      run: "echo DOCKER_IMAGE_REPOSITORY: '${{ vars.DOCKER_IMAGE_REPOSITORY }}'"
     - 
       name: Checkout
       uses: actions/checkout@v3
