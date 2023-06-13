@@ -20,4 +20,4 @@ RUN rm -rf /tmp/java
 
 # Martijn May 2 2023: Copied from ZaakBrug and edited in a trivial way.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
-  CMD curl --fail --silent http://localhost/iaf/api/server/health || (curl --silent http://localhost/iaf/api/server/health && exit 1)
+  CMD curl --fail --silent http://localhost:8080/iaf/api/server/health || (curl --silent http://localhost:8080/iaf/api/server/health && exit 1)
