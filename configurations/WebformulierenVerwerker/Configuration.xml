@@ -2,6 +2,7 @@
     <!ENTITY WebformulierenVerwerker SYSTEM "Configuration_WebformulierenVerwerker.xml">
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
+<!-- This comment should be present from release 2.0.0 onwards -->
 <Configuration>
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
