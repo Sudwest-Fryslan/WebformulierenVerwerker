@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frank:
+    image: wearefrank/webformulierenverwerker:latest
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      application.server.type.custom: NARAYANA
+      credentialFactory.class: nl.nn.credentialprovider.PropertyFileCredentialFactory
+      credentialFactory.map.properties: /opt/frank/secrets/credentials.properties
+    env_file:
+      - .env
+    volumes:
+      - ./context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+      - ./secrets:/opt/frank/secrets
+    restart: unless-stopped
+
