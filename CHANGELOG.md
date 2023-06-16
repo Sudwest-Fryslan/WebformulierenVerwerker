@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.0.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v1.0.1...v1.0.2) (2023-06-15)
+
+
+### 🐛 Bug Fixes
+
+* Dummy commit for major release ([94376e6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/94376e6f8734883b32f38318c6617e0e37f96f2b))
+
 ## [1.0.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v1.0.0...v1.0.1) (2023-06-13)
 
 
