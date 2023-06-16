@@ -5,4 +5,14 @@
         factory="org.apache.naming.factory.BeanFactory"
         URL="jdbc:h2:/opt/frank/h2/webformulierenverwerker"
     />
+
+    <Resource name="jdbc/webformulierenverwerker-postgresql" auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://${jdbc.hostname}:5432/${jdbc.database}"
+        username="${jdbc/username}"
+        password="${jdbc/password}"
+        maxTotal="10"
+        maxWaitMillis="5000"
+    />
 </Context>
