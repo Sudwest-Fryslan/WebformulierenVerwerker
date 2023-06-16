@@ -132,16 +132,23 @@
             </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP" removeOutputNamespaces="true">
-                <Forward name="success" path="QueryResultCheck" />
+                <Forward name="success" path="RemoveResultTags" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
+
+            <XsltPipe name="RemoveResultTags" xpathExpression="//QueryExecuteResult" />
+
+            <Base64Pipe name="DecodeQueryResult"
+				direction="DECODE"
+                charset="UTF-8">
+			</Base64Pipe>
 
             <!-- If person does not exist, create a person in Corsa. -->
             <XmlSwitchPipe
                 name="QueryResultCheck"
-                xpathExpression="not(//QueryExecuteResult/node())">
-                <Forward name="true" path="ConvertToCreateDocument" />
-                <Forward name="false" path="ConvertToCreatePerson" />
+                xpathExpression="not(//QueryExecResult/node())">
+                <Forward name="true" path="ConvertToCreatePerson" />
+                <Forward name="false" path="ConvertToCreateDocument" />
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
