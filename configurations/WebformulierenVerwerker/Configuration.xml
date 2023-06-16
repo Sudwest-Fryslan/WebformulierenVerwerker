@@ -2,7 +2,7 @@
     <!ENTITY WebformulierenVerwerker SYSTEM "Configuration_WebformulierenVerwerker.xml">
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
-<!-- This comment should be present from release 2.0.0 onwards -->
+<!-- This comment should be present from release 2.0.0 onwards. June 16 2023 bis -->
 <Configuration>
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
