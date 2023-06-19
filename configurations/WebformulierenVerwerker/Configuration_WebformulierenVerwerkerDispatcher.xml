@@ -47,7 +47,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
             
-            <SoapWrapperPipe name="Wrapper" direction="UNWRAP" removeOutputNamespaces="true">
+            <SoapWrapperPipe name="Unwrapper" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="CheckOperation" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
@@ -74,7 +74,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
              </PutInSessionPipe>
 
              <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction" value="opslaanBijlageResponse">
-                <Forward name="success" path="CallopslaanBijlage" />
+                <Forward name="success" path="UnwrapBijlageRequest" />
              </PutInSessionPipe>
 
             
@@ -97,6 +97,13 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="BackEndError" />
             </SenderPipe>
+
+            <!-- OperationChecker adds a few random variables on top of the message.
+            To mitigate this, we get the originalMessage and unwrap it. -->
+            <SoapWrapperPipe name="UnwrapBijlageRequest" direction="UNWRAP" removeOutputNamespaces="true" getInputFromSessionKey="originalMessage">
+                <Forward name="success" path="CallopslaanBijlage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
 
             <SenderPipe
                 name="CallopslaanBijlage">
