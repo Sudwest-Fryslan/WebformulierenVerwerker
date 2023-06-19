@@ -146,7 +146,7 @@
             <!-- If person does not exist, create a person in Corsa. -->
             <XmlSwitchPipe
                 name="QueryResultCheck"
-                xpathExpression="not(//QueryExecResult/node())">
+                xpathExpression="not(/NewDataSet/schema/element/complexType/choice/element/complexType/sequence/node())">
                 <Forward name="true" path="ConvertToCreatePerson" />
                 <Forward name="false" path="ConvertToCreateDocument" />
             </XmlSwitchPipe>
