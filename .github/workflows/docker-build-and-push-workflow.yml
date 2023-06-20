@@ -20,7 +20,7 @@ on:
         type: boolean
         required: false
         description: Add latest flavor
-        default: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') }}
+        default: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
       upload-sarif-to-security:
         type: boolean
         required: false
