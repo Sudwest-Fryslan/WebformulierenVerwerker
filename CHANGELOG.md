@@ -6,5 +6,3 @@
 ### 🍕 Features
 
 * Remove dummy comment that was added in 2.0.0 ([cce920d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cce920d3ec2a3a3924d2c748ebfefe08c0223936))
-
-## [2.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v1.0.3...v2.0.0) (2023-06-16)
