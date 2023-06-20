@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [2.2.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.1.0...v2.2.0) (2023-06-20)
+
+
+### 🍕 Features
+
+* decode incoming base64 ([#26](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/26)) ([f6d7284](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f6d7284456e240896f14c4c7683e60e85c165df5))
+
+
+### 🐛 Bug Fixes
+
+* add the deployment to the code ([#25](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/25)) ([f34cbdb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f34cbdbb6fe5992450c1086b423d26fca2b28173))
+* layer order in Dockerfile ([#28](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/28)) ([a107b53](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a107b531fff87ad56119cfea8635488acc64bddf))
+
 ## [2.1.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.0.0...v2.1.0) (2023-06-16)
 
 
