@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [2.2.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.4...v2.2.5) (2023-06-21)
+
+
+### 🐛 Bug Fixes
+
+* write BuildInfo.properties in time ([a85d84a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a85d84ad1a247fda66e7ecbe233140bd7f6e0ac9))
+
 ## [2.2.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.3...v2.2.4) (2023-06-21)
 
 
