@@ -96,7 +96,7 @@ jobs:
       ${{ (startsWith(github.ref, 'refs/tags/') ||
           github.ref == 'refs/heads/main') &&
           github.event_name == 'push' }} &&
-          ${{ needs.analyze-commits.outputs.release-version }} != ''
+          needs.analyze-commits.outputs.release-version != ''
     steps:
     -
       name: Show release version
