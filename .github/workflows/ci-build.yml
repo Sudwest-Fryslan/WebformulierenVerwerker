@@ -98,6 +98,9 @@ jobs:
           github.event_name == 'push' }} &&
           ${{ needs.analyze-commits.outputs.release-version }} != ''
     steps:
+    -
+      name: Show release version
+      run: echo "Pushing docker image for version ${{ needs.analyze-commits.outputs.release-version }}"
     - 
       name: Checkout
       uses: actions/checkout@v3
