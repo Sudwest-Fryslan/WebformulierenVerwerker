@@ -63,7 +63,7 @@
     [
       "@semantic-release/exec", {
         "verifyReleaseCmd": "echo '::set-output name=release-tag::v${nextRelease.version}'; echo '::set-output name=release-version::${nextRelease.version}'",
-        "generateNotes": "echo Writing BuildInfo.properties && /bin/bash .github/workflows/writeBuildInfo.sh ${nextRelease.version}"
+        "generateNotesCmd": "echo Writing BuildInfo.properties && /bin/bash .github/workflows/writeBuildInfo.sh ${nextRelease.version}"
       }
     ],
     [
