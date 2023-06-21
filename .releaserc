@@ -67,7 +67,7 @@
     ],
     [
       "@semantic-release/exec", {
-        "generateNotes": "/bin/bash .github/workflows/writeBuildInfo.sh ${nextRelease.version}"
+        "generateNotes": "echo Writing BuildInfo.properties && /bin/bash .github/workflows/writeBuildInfo.sh ${nextRelease.version}"
       }
     ],
     [
