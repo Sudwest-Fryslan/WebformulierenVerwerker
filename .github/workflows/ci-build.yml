@@ -40,7 +40,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     -
       name: Update BuildInfo.properties if there is a version
-      run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ nextRelease.version }}
+      run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ steps.next-version.outputs.release-version }}
     outputs:
       release-tag: ${{ steps.next-version.outputs.release-tag }}
       release-version: ${{ steps.next-version.outputs.release-version }}
