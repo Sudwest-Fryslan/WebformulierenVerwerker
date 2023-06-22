@@ -128,4 +128,3 @@ jobs:
     -
       name: Push Docker image
       run: docker push ${{ vars.DOCKER_IMAGE_REPOSITORY }} --all-tags
-
