@@ -1,5 +1,14 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.0.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.1...v6.0.2) (2023-06-22)
+
+
+### 🐛 Bug Fixes
+
+* CONTRIBUTING.md links ([f028902](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f028902687f13043de050b30c13e409efd5c7a50))
+* CONTRIBUTING.md links ([f704734](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f704734f5c1224f911b5bb9f948ae304fb6c2230))
+* CONTRIBUTING.md links ([ad50835](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ad5083594a4f4dab1a199889e7c90d7bc1a7a8ae))
+
 ## [6.0.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.0...v6.0.1) (2023-06-22)
 
 ## [6.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v5.0.0...v6.0.0) (2023-06-22)
