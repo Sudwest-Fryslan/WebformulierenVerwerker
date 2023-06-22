@@ -1,5 +1,7 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [2.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.6...v2.2.7) (2023-06-22)
+
 ## [2.2.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.5...v2.2.6) (2023-06-21)
 
 
