@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [4.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v3.0.0...v4.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This is what breaks
+
+chore: We have some other chore
+
+### chore
+
+* testing a realistic breaking change ([23478ec](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/23478ec363e8d3484fa1e6bd2d57966b637ee153))
+
 ## [3.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.8...v3.0.0) (2023-06-22)
 
 
