@@ -1,6 +1,6 @@
 # CI/CD
 
-Releases are created automatically by GitHub Actions, see [.github/ci_build.yml](.github/ci_build.yml).
+Releases are created automatically by GitHub Actions, see [.github/workflows/ci_build.yml](.github/ci_build.yml).
 
 Please take care to write meaningful commit messages that result in meaningful entries in [CHANGELOG.md](CHANGELOG.md). Here is an example of the commit message for a breaking change:
 
@@ -10,7 +10,7 @@ Please take care to write meaningful commit messages that result in meaningful e
 
 This commit message appears as follows in the release notes:
 
-![changeLogScreenshot.jpg](changeLogScreenshot.jpg)
+![changeLogScreenshot.jpg](./changeLogScreenshot.jpg)
 
 A breaking change means that this version is not backwards compatible with the previous release. A breaking change should result in a major release (first number of semantic version is incremented). Please note the following:
 
