@@ -1,6 +1,6 @@
 # CI/CD
 
-Releases are created automatically by GitHub Actions, see [.github/workflows/ci-build.yml](.github/workflows/ci_build.yml).
+Releases are created automatically by GitHub Actions, see [.github/workflows/ci-build.yml](.github/workflows/ci-build.yml).
 
 Please take care to write meaningful commit messages that result in meaningful entries in [CHANGELOG.md](CHANGELOG.md). Here is an example of the commit message for a breaking change:
 
