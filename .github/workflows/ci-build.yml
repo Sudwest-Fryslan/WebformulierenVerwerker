@@ -93,10 +93,11 @@ jobs:
     - release
     - analyze-commits
     if: >- 
-      ${{ (startsWith(github.ref, 'refs/tags/') ||
+      (startsWith(github.ref, 'refs/tags/') ||
           github.ref == 'refs/heads/main') &&
-          github.event_name == 'push' }} &&
-          "x${{ needs.analyze-commits.outputs.release-version }}" != 'x'
+          github.event_name == 'push' &&
+          needs.analyze-commits.outputs.release-version != '' &&
+          needs.analyze-commits.outputs.release-version != null
     steps:
     -
       name: Show release version
