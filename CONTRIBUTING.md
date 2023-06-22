@@ -1,6 +1,26 @@
 # CI/CD
 
-Releases are created automatically by GitHub Actions, see [.githuv/ci_build.yml](.githuv/ci_build.yml). Here is a checklist for testing the CI/CD.
+Releases are created automatically by GitHub Actions, see [.github/ci_build.yml](.github/ci_build.yml).
+
+Please take care to write meaningful commit messages that result in meaningful entries in [CHANGELOG.md](CHANGELOG.md). Here is an example of the commit message for a breaking change:
+
+    chore: example of a chore that breaks
+
+    BREAKING: This is what breaks
+
+This commit message appears as follows in the release notes:
+
+![changeLogScreenshot.jpg](changeLogScreenshot.jpg)
+
+A breaking change means that this version is not backwards compatible with the previous release. A breaking change should result in a major release (first number of semantic version is incremented). Please note the following:
+
+* The word BREAKING should appear on the last line of the commit message.
+* The word BREAKING is followed by a `:` and a description. This description appears in the release notes in a bullet that explains what is breaking.
+* The commit type (e.g. chore) is still relevant for breaking changes. This information appears in the release notes in the same way as a non-breaking change.
+* For non-breaking changes, omit the line with BREAKING and make a commit message like the first line shown.
+
+
+Here is a checklist for testing the CI/CD.
 
 * Testing goes best when you make hot fixes on the main branch. Check with the team that you are allowed to do this.
 * Do a commit on main that has a commit message starting with `fix:`. The following should happen:
