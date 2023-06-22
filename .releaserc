@@ -18,7 +18,7 @@
           {"type": "test", "release": "patch"},
           {"type": "build", "release": "patch"},
           {"type": "ci", "release": "patch"},
-          {"type": "chore", "release": false}
+          {"type": "chore", "release": "patch"}
         ],
         "parserOpts": {
           "noteKeywords": [

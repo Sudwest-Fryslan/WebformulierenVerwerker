@@ -13,5 +13,5 @@ Releases are created automatically by GitHub Actions, see [.githuv/ci_build.yml]
   * Check on dockerhub that tags that should not have been updated do not have the current time as creation time.
   * Run the docker image using `docker run -p 8080:8080 wearefrank/webformulierenverwerker:3.2.1`. Check the name of the docker container you started using `docker ps -a`. Login to the docker container using `docker exec -it <container name> bash`. Check that `/opt/frank/resources/BuildInfo.property` contains the right version and the right date.
 * Check a breaking change like above. A commit message has a header, a body and a footer. Have the word `BREAKING` in the footer. This should update the major version.
-* Make a chore commit. Check that no release is made and that no docker image is pushed.
+* Do a commit with \[skip ci\] in the commit message before the `:`. It should not make a release and it should not push a docker image.
 * Make a pull request. Check that no release is made and that no docker image is pushed.
