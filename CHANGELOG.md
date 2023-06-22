@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v5.0.0...v6.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This is what breaks
+
+### chore
+
+* example of a chore that breaks ([9b1bb23](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9b1bb23b8f145f3cf0394e5f70efc7bc9a6b81b6))
+
 ## [5.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v4.0.0...v5.0.0) (2023-06-22)
 
 
