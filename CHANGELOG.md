@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [3.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.8...v3.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* the footer
+
+### chore
+
+* test breaking change ([994b9f3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/994b9f396a39d89f4affcda8595b69c97d20f66d))
+
 ## [2.2.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.7...v2.2.8) (2023-06-22)
 
 ## [2.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.6...v2.2.7) (2023-06-22)
