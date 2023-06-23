@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.1...v6.1.2) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* adjust incorrect DATETIME format ([113e141](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/113e1414e8f409f40d67f9074cf940a3a6446298))
+
 ## [6.1.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.0...v6.1.1) (2023-06-23)
 
 
