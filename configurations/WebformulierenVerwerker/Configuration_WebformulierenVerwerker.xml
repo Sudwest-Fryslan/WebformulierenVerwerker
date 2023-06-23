@@ -338,7 +338,7 @@
                 <Forward name="else" path="EXCEPTION" />
             </XmlIfPipe>
             
-            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//VERTROUWELIJKHEID"/>
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//field[@name='VERTROUWELIJKHEID']"/>
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
