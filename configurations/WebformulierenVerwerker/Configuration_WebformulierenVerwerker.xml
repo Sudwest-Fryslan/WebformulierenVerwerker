@@ -274,7 +274,7 @@
                 <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?)" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
-                <Param name= "STOREDATE" xpathExpression="current-dateTime()"/>
+                <Param name= "STOREDATE" formatString="YYYY-MM-DD hh:mm:ss" xpathExpression="current-dateTime()"/>
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
