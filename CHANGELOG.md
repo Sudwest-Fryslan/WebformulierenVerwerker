@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.5...v6.1.6) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* allow CreatePerson to be called ([4f78865](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4f78865bac6c024d597cd687c2695745e7222c64))
+
 ## [6.1.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.4...v6.1.5) (2023-06-23)
 
 
