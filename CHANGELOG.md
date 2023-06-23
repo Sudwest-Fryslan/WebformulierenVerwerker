@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.4...v6.1.5) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* vertrouwelijkheid xpath error ([2757585](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/275758593bc64a9c22b0231b0fcc00cc8224131f))
+
 ## [6.1.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.3...v6.1.4) (2023-06-23)
 
 
