@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.0...v6.1.1) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* remove wrong datasource value ([1a6099d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1a6099dafcee6f5fffabe93e8525a21117ac91d4))
+
 ## [6.1.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.2...v6.1.0) (2023-06-23)
 
 
