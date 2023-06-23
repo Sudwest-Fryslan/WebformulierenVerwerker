@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd"
 >
-	<changeSet id="dropTable0" author="Delano Brouwer" runAlways="true">
+	<changeSet id="dropTable1" author="Delano Brouwer" runAlways="true">
 		<preConditions onFail="MARK_RAN">
 			<tableExists tableName="VERTROUWELIJKHEID_CACHE" />
 		</preConditions>
