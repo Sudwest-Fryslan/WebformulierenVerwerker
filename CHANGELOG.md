@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.3...v6.1.4) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* correct database typing ([71e80e8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/71e80e86c26d5b8b2a7e676351d9af91d7227d80))
+
 ## [6.1.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.2...v6.1.3) (2023-06-23)
 
 
