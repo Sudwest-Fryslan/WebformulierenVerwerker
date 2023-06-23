@@ -266,15 +266,19 @@
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
-                <Forward name="true" path="StoreVertrouwelijkheid" />
+                <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
+
+            <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl" storeResultInSessionKey="StoreDate">
+                <Param name="datetime" xpathExpression="current-dateTime()"/>
+            </XsltPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?)" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
-                <Param name= "STOREDATE" formatString="YYYY-MM-DD hh:mm:ss" xpathExpression="current-dateTime()"/>
+                <Param name= "STOREDATE" sessionKey="StoreDate"/>
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>

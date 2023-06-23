@@ -10,14 +10,14 @@
 		<dropTable tableName="VERTROUWELIJKHEID_CACHE" />
 	</changeSet>
 
-	<changeSet id="VERTROUWELIJKHEID_CACHE1" author="Delano Brouwer" runAlways="true" >
+	<changeSet id="VERTROUWELIJKHEID_CACHE2" author="Delano Brouwer" runAlways="true" >
 		<comment>Add VERTROUWELIJKHEID_CACHE Table</comment>
 		<createTable tableName="VERTROUWELIJKHEID_CACHE">
 			<column name="REGISTRATIENUMMER" type="java.sql.Types.VARCHAR(256)">
 				<constraints primaryKey="true" nullable="false" primaryKeyName="PK_VERTROUWELIJKHEID_CACHE" />
 			</column>
 			<column name="VERTROUWELIJKHEID" type="java.sql.Types.VARCHAR(256)" />
-			<column name="STOREDATE" type="DATETIME" />
+			<column name="STOREDATE" type="DATE" />
 		</createTable>
 	</changeSet>
 </databaseChangeLog>
