@@ -266,9 +266,17 @@
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
-                <Forward name="true" path="ReturnResult" />
+                <Forward name="true" path="StoreVertrouwelijkheid" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender datasourceName="jdbc/webformulierenverwerker"
+                query="INSERT INTO SWFStore VALUES (?, ?, ?)" />
+                <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
+                <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "ENDTIME" xpathExpression="current-dateTime()"/>
+            </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
         </Pipeline>
@@ -311,9 +319,24 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="ConvertToCreateMetaDocumentForBijlage" />
+                <Forward name="true" path="RequestVertrouwelijkheid" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
+
+            <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender queryType="SELECT" datasourceName="jdbc/webformulierenverwerker"
+                query="SELECT VERTROUWELIJKHEID FROM SWFSTORE WHERE REGISTRATIENUMMER = ?" />
+                <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
+            </SenderPipe>
+
+            <XmlIfPipe name="CheckForVertrouwelijkheid" xpathExpression="count(//rowset/row) > 0">
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="then" path="GetVertrouwelijkheid" />
+                <Forward name="else" path="EXCEPTION" />
+            </XmlIfPipe>
+            
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//VERTROUWELIJKHEID"/>
+            <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>

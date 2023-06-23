@@ -1,0 +1,23 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd"
+>
+	<changeSet id="dropTable0" author="Delano Brouwer" runAlways="true">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="SWFSTORE" />
+		</preConditions>
+		<dropTable tableName="SWFSTORE" />
+	</changeSet>
+
+	<changeSet id="SWFSTORE0" author="Delano Brouwer" runAlways="true" >
+		<comment>Add SWFSTORE Table</comment>
+		<createTable tableName="SWFSTORE">
+			<column name="REGISTRATIENUMMER" type="java.sql.Types.VARCHAR(256)">
+				<constraints primaryKey="true" nullable="false" primaryKeyName="PK_SWFSTORE" />
+			</column>
+			<column name="VERTROUWELIJKHEID" type="java.sql.Types.VARCHAR(256)" />
+			<column name="STOREDATE" type="DATETIME" />
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
