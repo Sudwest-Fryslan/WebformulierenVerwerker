@@ -53,7 +53,7 @@
             </Exits>
 
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
-                <Param name="version" value="${version}" />
+                <Param name="version" value="${instance.version}" />
                 <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
