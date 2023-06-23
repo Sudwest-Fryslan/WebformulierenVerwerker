@@ -1,5 +1,64 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.0.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.1...v6.0.2) (2023-06-22)
+
+
+### 🐛 Bug Fixes
+
+* CONTRIBUTING.md links ([f028902](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f028902687f13043de050b30c13e409efd5c7a50))
+* CONTRIBUTING.md links ([f704734](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f704734f5c1224f911b5bb9f948ae304fb6c2230))
+* CONTRIBUTING.md links ([ad50835](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ad5083594a4f4dab1a199889e7c90d7bc1a7a8ae))
+
+## [6.0.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.0...v6.0.1) (2023-06-22)
+
+## [6.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v5.0.0...v6.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This is what breaks
+
+### chore
+
+* example of a chore that breaks ([9b1bb23](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9b1bb23b8f145f3cf0394e5f70efc7bc9a6b81b6))
+
+## [5.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v4.0.0...v5.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This breaks
+
+Additional information about the breaking change
+
+### chore
+
+* the first chore ([12928e4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/12928e4d896acb740b6eb762d515761067e94544))
+
+## [4.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v3.0.0...v4.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This is what breaks
+
+chore: We have some other chore
+
+### chore
+
+* testing a realistic breaking change ([23478ec](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/23478ec363e8d3484fa1e6bd2d57966b637ee153))
+
+## [3.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.8...v3.0.0) (2023-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* the footer
+
+### chore
+
+* test breaking change ([994b9f3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/994b9f396a39d89f4affcda8595b69c97d20f66d))
+
 ## [2.2.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.7...v2.2.8) (2023-06-22)
 
 ## [2.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v2.2.6...v2.2.7) (2023-06-22)
