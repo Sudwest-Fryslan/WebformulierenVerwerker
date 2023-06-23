@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.2...v6.1.0) (2023-06-23)
+
+
+### 🍕 Features
+
+* implement vertrouwelijkheid cache ([#36](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/36)) ([8abedd8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8abedd8f9552981b941b045c83fd9e355f78bb86))
+
 ## [6.0.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.1...v6.0.2) (2023-06-22)
 
 
