@@ -1,6 +1,26 @@
 # CI/CD
 
-Releases are created automatically by GitHub Actions, see [.githuv/ci_build.yml](.githuv/ci_build.yml). Here is a checklist for testing the CI/CD.
+Releases are created automatically by GitHub Actions, see [.github/workflows/ci-build.yml](.github/workflows/ci-build.yml).
+
+Please take care to write meaningful commit messages that result in meaningful entries in [CHANGELOG.md](CHANGELOG.md). Here is an example of the commit message for a breaking change:
+
+    chore: example of a chore that breaks
+
+    BREAKING: This is what breaks
+
+This commit message appears as follows in the release notes:
+
+![changeLogScreenshot.jpg](./changeLogScreenshot.jpg)
+
+A breaking change means that this version is not backwards compatible with the previous release. A breaking change should result in a major release (first number of semantic version is incremented). Please note the following:
+
+* The word BREAKING should appear on the last line of the commit message.
+* The word BREAKING is followed by a `:` and a description. This description appears in the release notes in a bullet that explains what is breaking.
+* The commit type (e.g. chore) is still relevant for breaking changes. This information appears in the release notes in the same way as a non-breaking change.
+* For non-breaking changes, omit the line with BREAKING and make a commit message like the first line shown.
+
+
+Here is a checklist for testing the CI/CD.
 
 * Testing goes best when you make hot fixes on the main branch. Check with the team that you are allowed to do this.
 * Do a commit on main that has a commit message starting with `fix:`. The following should happen:
@@ -12,6 +32,6 @@ Releases are created automatically by GitHub Actions, see [.githuv/ci_build.yml]
   * The docker image for the release has been created on http://www.dockerhub.com. The `latest` tag should have been updated - creation time should be the current time. Depending on the type of release, the `3.2.1`, the `3.2` or the `3` tags should be the current date.
   * Check on dockerhub that tags that should not have been updated do not have the current time as creation time.
   * Run the docker image using `docker run -p 8080:8080 wearefrank/webformulierenverwerker:3.2.1`. Check the name of the docker container you started using `docker ps -a`. Login to the docker container using `docker exec -it <container name> bash`. Check that `/opt/frank/resources/BuildInfo.property` contains the right version and the right date.
-* Check a breaking change like above. A commit message has a header, a body and a footer. Have the word `BREAKING` in the footer. This should update the major version.
+* Check a breaking change like above. This should update the major version.
 * Do a commit with \[skip ci\] in the commit message. It should not make a release and it should not push a docker image.
 * Make a pull request. Check that no release is made and that no docker image is pushed.
