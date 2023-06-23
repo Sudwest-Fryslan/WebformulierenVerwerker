@@ -93,6 +93,13 @@
                 <Forward name="exception" path="buildErrorMsg1" />
             </SenderPipe>
 
+            <IsXmlIfPipe name="IsConnectErrorXML">
+                <Forward name="then" path="buildErrorMsg1" />
+                <Forward name="else" path="ConnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ConnectError2XML"/>
+
             <XsltPipe name="buildErrorMsg1"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
                 <Forward name="success" path="EXCEPTION" />
@@ -122,9 +129,16 @@
 
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
-                <Forward name="success" path="UnwrapQueryResponse" />
-                <Forward name="exception" path="buildQueryErrorMsg" />
+                <Forward name="success" path="IsQueryExecuteErrorXML" />
+                <Forward name="exception" path="IsQueryExecuteErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsQueryExecuteErrorXML">
+                <Forward name="then" path="buildQueryErrorMsg" />
+                <Forward name="else" path="QueryExecuteError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="QueryExecuteError2XML"/>
 
             <XsltPipe name="buildQueryErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -164,8 +178,15 @@
                 <WebServiceSender methodType="POST" url="${corsa.url}"
                     soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
-                <Forward name="exception" path="buildErrorMsg2" />
+                <Forward name="exception" path="IsCreatePersonErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsCreatePersonErrorXML">
+                <Forward name="then" path="buildErrorMsg2" />
+                <Forward name="else" path="CreatePersonError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreatePersonError2XML"/>
 
             <XsltPipe name="buildErrorMsg2"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -199,8 +220,15 @@
             <SenderPipe name="sendToCorsa3">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
-                <Forward name="exception" path="buildErrorMsg3" />
+                <Forward name="exception" path="IsCreateMetaDocumentErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsCreateMetaDocumentErrorXML">
+                <Forward name="then" path="buildErrorMsg3" />
+                <Forward name="else" path="CreateMetaDocumentError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateMetaDocumentError2XML"/>
             
             <XsltPipe name="buildErrorMsg3"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -228,8 +256,15 @@
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="RemoveXMLDeclaration" />
-                <Forward name="exception" path="buildErrorMsg4" />
+                <Forward name="exception" path="IsCreateFileVersionErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsCreateFileVersionErrorXML">
+                <Forward name="then" path="buildErrorMsg4" />
+                <Forward name="else" path="CreateFileVersionError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateFileVersionError2XML"/>
 
             <XsltPipe name="buildErrorMsg4"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -250,8 +285,15 @@
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="buildErrorMsg1" />
+                <Forward name="exception" path="IsDisconnectErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsDisconnectErrorXML">
+                <Forward name="then" path="buildDisconnectErrorMsg" />
+                <Forward name="else" path="DisconnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="DisconnectError2XML"/>
 
             <XsltPipe name="buildDisconnectErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -295,8 +337,15 @@
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="buildErrorMsg1" />
+                <Forward name="exception" path="IsConnectErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsConnectErrorXML">
+                <Forward name="then" path="buildErrorMsg1" />
+                <Forward name="else" path="ConnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ConnectError2XML"/>
 
             <XsltPipe name="buildErrorMsg1"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -327,8 +376,15 @@
             <SenderPipe name="sendToCorsa5">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
-                <Forward name="exception" path="buildErrorMsg5" />
+                <Forward name="exception" path="IsCreateMetaDocumentErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsCreateMetaDocumentErrorXML">
+                <Forward name="then" path="buildErrorMsg5" />
+                <Forward name="else" path="CreateMetaDocumentError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateMetaDocumentError2XML"/>
 
             <XsltPipe name="buildErrorMsg5"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -362,8 +418,15 @@
                 <Forward name="exception" path="buildErrorMsg6" />
             </SenderPipe>
 
+            <IsXmlIfPipe name="IsFileVersionErrorXML">
+                <Forward name="then" path="buildErrorMsg6" />
+                <Forward name="else" path="FileVersionError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="FileVersionError2XML"/>
+
             <XsltPipe name="buildErrorMsg6"
-                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                styleSheetName="xsl/ParseNegativeHttpResult.xsl" > 
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
 
@@ -385,8 +448,15 @@
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="ConvertToBijlageResponse" />
-                <Forward name="exception" path="buildErrorMsg7" />
+                <Forward name="exception" path="IsModObjectRelationErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsModObjectRelationErrorXML">
+                <Forward name="then" path="buildErrorMsg7" />
+                <Forward name="else" path="ModObjectRelationError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ModObjectRelationError2XML"/>
             
             <XsltPipe name="buildErrorMsg7"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
@@ -411,8 +481,15 @@
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="buildErrorMsg1" />
+                <Forward name="exception" path="IsDisconnectErrorXML" />
             </SenderPipe>
+
+            <IsXmlIfPipe name="IsDisconnectErrorXML">
+                <Forward name="then" path="buildDisconnectErrorMsg" />
+                <Forward name="else" path="DisconnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="DisconnectError2XML"/>
 
             <XsltPipe name="buildDisconnectErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResult.xsl">
