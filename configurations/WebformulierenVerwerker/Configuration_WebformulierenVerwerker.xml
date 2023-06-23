@@ -271,8 +271,7 @@
             </XmlSwitchPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender datasourceName="jdbc/webformulierenverwerker"
-                query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?)" />
+                <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?)" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
                 <Param name= "STOREDATE" xpathExpression="current-dateTime()"/>
@@ -324,7 +323,7 @@
             </XmlSwitchPipe>
 
             <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender queryType="SELECT" datasourceName="jdbc/webformulierenverwerker"
+                <FixedQuerySender queryType="SELECT"
                 query="SELECT VERTROUWELIJKHEID FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
                 <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
             </SenderPipe>
