@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.8...v6.2.0) (2023-06-26)
+
+
+### 🍕 Features
+
+* make release for upload in HIP ([87f747a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/87f747a7b4f3234a8936976e4fea111ef46d0718))
+* make release for upload in hit ([b3ffa29](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b3ffa2978917a7b4bfc44aca1e8e66981cfdd610))
+
+
+### 🤖 Build System
+
+* try to fix it ([40678a1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/40678a15d11c7d14431625ea4539861a13820faf))
+
 ## [6.1.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.7...v6.1.8) (2023-06-26)
 
 
