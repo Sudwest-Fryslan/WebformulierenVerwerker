@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.6...v6.1.7) (2023-06-26)
+
+
+### 🐛 Bug Fixes
+
+* incorrect obtaining of afzender value ([#40](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/40)) ([b29080d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b29080d4825917c08417b5dcc3dda336f02e3952))
+* replace incorrect xpath ([#41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/41)) ([2f59a42](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2f59a42cb6cdc4a789975df0a10850f010697b43))
+
 ## [6.1.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.5...v6.1.6) (2023-06-23)
 
 
