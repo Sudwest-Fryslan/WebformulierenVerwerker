@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.1...v6.2.2) (2023-06-26)
+
+
+### 🤖 Build System
+
+* try to fix it ([a17498b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a17498b17b76ddd91b6af0b9fa5de701bd636209))
+
 ## [6.2.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.0...v6.2.1) (2023-06-26)
 
 
