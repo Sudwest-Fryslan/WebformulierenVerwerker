@@ -3,7 +3,7 @@
 	<xsl:output method="xml" indent="yes" />
 
 	<xsl:param name="systemdate" />
-	<xsl:param name="PersoonID" />
+	<xsl:param name="Vertrouwelijkheid" />
 	<xsl:template match="/">
 		<bct:CreateMetaDocument xmlns:bct="http://bct.nl">
 			<!--Optional:-->
@@ -69,7 +69,7 @@
 				<bct:NameValue>
 					<bct:Name>obj_vert.vertrouw_id</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="$PersoonID" />
+						<xsl:value-of select="$Vertrouwelijkheid" />
 					</bct:Value>
 				</bct:NameValue>
 			</bct:FieldValues>
