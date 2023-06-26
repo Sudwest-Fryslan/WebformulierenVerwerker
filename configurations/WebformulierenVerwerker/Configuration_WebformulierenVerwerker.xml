@@ -351,7 +351,7 @@
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
