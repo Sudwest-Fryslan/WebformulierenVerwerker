@@ -97,6 +97,7 @@ jobs:
       name: Release on GitHub
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: v${{ needs.analyze-commits.outputs.release-version }}
         files: /tmp/WebformulierenVerwerker.jar
       if: >- 
         (startsWith(github.ref, 'refs/tags/') ||
