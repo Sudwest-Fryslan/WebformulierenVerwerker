@@ -89,8 +89,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - 
-      name: Release
+    -
+      name: Pull commit that holds the newly created tag - if applicable
+      run: git pull origin main
+      if: github.ref == 'refs/heads/main'
+    -
+      name: Release on GitHub
       uses: softprops/action-gh-release@v1
       with:
         files: /tmp/WebformulierenVerwerker.jar
