@@ -72,7 +72,20 @@ jobs:
     -
       name: Update BuildInfo.properties if there is a version
       run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ needs.analyze-commits.outputs.release-version }}
-    - 
+    -
+      name: Make JAR of configuration
+      run: jar cvf /tmp/WebformulierenVerwerker.jar -C configurations WebformulierenVerwerker
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: /tmp/WebformulierenVerwerker.jar
+      if: >- 
+        (startsWith(github.ref, 'refs/tags/') ||
+            github.ref == 'refs/heads/main') &&
+            github.event_name == 'push' &&
+            needs.analyze-commits.outputs.release-version != '' &&
+            needs.analyze-commits.outputs.release-version != null
+    -
       name: "🔧 setup node"
       uses: actions/setup-node@v2.1.5
       with:
@@ -80,7 +93,7 @@ jobs:
     - 
       name: Install dependencies
       run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer conventional-changelog-conventionalcommits
-    - 
+    -
       name: Semantic Release
       run: "semantic-release"
       env:
