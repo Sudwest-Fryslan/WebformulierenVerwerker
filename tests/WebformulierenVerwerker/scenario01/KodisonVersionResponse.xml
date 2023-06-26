@@ -1,5 +1,5 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><VersionResponse xmlns="http://tempuri.org/" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
 	<VersionResult>
-                Frank! Version 1.0.0 - 09/06/2023
+                Frank! Version 6.1.0 - 23/06/2023
             </VersionResult>
 </VersionResponse></soapenv:Body></soapenv:Envelope>

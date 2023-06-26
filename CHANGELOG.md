@@ -1,5 +1,73 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.6...v6.1.7) (2023-06-26)
+
+
+### 🐛 Bug Fixes
+
+* incorrect obtaining of afzender value ([#40](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/40)) ([b29080d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b29080d4825917c08417b5dcc3dda336f02e3952))
+* replace incorrect xpath ([#41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/41)) ([2f59a42](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2f59a42cb6cdc4a789975df0a10850f010697b43))
+
+## [6.1.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.5...v6.1.6) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* allow CreatePerson to be called ([4f78865](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4f78865bac6c024d597cd687c2695745e7222c64))
+
+## [6.1.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.4...v6.1.5) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* vertrouwelijkheid xpath error ([2757585](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/275758593bc64a9c22b0231b0fcc00cc8224131f))
+
+## [6.1.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.3...v6.1.4) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* correct database typing ([71e80e8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/71e80e86c26d5b8b2a7e676351d9af91d7227d80))
+
+## [6.1.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.2...v6.1.3) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* show version in console ([a16f2fa](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a16f2fa14d59dbccffcd3f32d37c1c82c90d8e1a))
+
+## [6.1.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.1...v6.1.2) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* adjust incorrect DATETIME format ([113e141](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/113e1414e8f409f40d67f9074cf940a3a6446298))
+
+## [6.1.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.0...v6.1.1) (2023-06-23)
+
+
+### 🐛 Bug Fixes
+
+* remove wrong datasource value ([1a6099d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1a6099dafcee6f5fffabe93e8525a21117ac91d4))
+
+## [6.1.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.2...v6.1.0) (2023-06-23)
+
+
+### 🍕 Features
+
+* implement vertrouwelijkheid cache ([#36](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/36)) ([8abedd8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8abedd8f9552981b941b045c83fd9e355f78bb86))
+
+## [6.0.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.1...v6.0.2) (2023-06-22)
+
+
+### 🐛 Bug Fixes
+
+* CONTRIBUTING.md links ([f028902](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f028902687f13043de050b30c13e409efd5c7a50))
+* CONTRIBUTING.md links ([f704734](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f704734f5c1224f911b5bb9f948ae304fb6c2230))
+* CONTRIBUTING.md links ([ad50835](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ad5083594a4f4dab1a199889e7c90d7bc1a7a8ae))
+
+## [6.0.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.0.0...v6.0.1) (2023-06-22)
+
 ## [6.0.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v5.0.0...v6.0.0) (2023-06-22)
 
 
