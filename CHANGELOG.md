@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.1.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.7...v6.1.8) (2023-06-26)
+
+
+### 🐛 Bug Fixes
+
+* prevent unique primarykey error ([e17f58e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e17f58ec57f6516aa790f110b2c07d4f90bf9ebe))
+
 ## [6.1.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.1.6...v6.1.7) (2023-06-26)
 
 
