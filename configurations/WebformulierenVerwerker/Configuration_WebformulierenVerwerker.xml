@@ -147,9 +147,14 @@
             <XmlSwitchPipe
                 name="QueryResultCheck"
                 xpathExpression="boolean(//QueryExecResult/_x0024_id_x0024_)">
-                <Forward name="true" path="ConvertToCreateDocument" />
+                <Forward name="true" path="GetSPNum" />
                 <Forward name="false" path="ConvertToCreatePerson" />
             </XmlSwitchPipe>
+
+            <XsltPipe name="GetSPNum" xpathExpression="//QueryExecResult/_x0024_id_x0024_"/>
+            <PutInSessionPipe name="StoreSPNum" sessionKey="SPNum">
+                <Forward name="success" path="ConvertToCreateDocument" />
+            </PutInSessionPipe>
 
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
@@ -181,14 +186,17 @@
             <XmlSwitchPipe
                 name="CreatePersonResultCheck"
                 xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
-                <Forward name="true" path="ConvertToCreateDocument" />
+                <Forward name="true" path="GetNewSPNum" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
+            <XsltPipe name="GetNewSPNum" xpathExpression="//NewObjectID"/>
+            <PutInSessionPipe name="StoreNewSPNum" sessionKey="SPNum"/>
+            
             <!-- If person is created, create a document in Corsa. -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Param name="PersoonID" sessionKey="SPNum"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateDocumentRequest" />
