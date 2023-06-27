@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.2...v6.2.3) (2023-06-27)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change CreateFileVersion XSLT ([0b2d785](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0b2d785f49b1ac6a5dbb939aca566f7265dc72fc))
+
 ## [6.2.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.1...v6.2.2) (2023-06-26)
 
 
