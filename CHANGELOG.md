@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.3...v6.2.4) (2023-06-27)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change vertrouwelijkheid_cache query ([c107277](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c107277f3cc18204418e9c46c65fec1f9ef8559b))
+
 ## [6.2.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.2...v6.2.3) (2023-06-27)
 
 
