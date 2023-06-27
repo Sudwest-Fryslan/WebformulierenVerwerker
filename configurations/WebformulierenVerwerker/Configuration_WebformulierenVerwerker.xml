@@ -387,8 +387,8 @@
 
             <SoapWrapperPipe name="WrapCreateFileVersionRequest" />
 
-            <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="CreateFileVersion" throwException="true"/>
+            <!-- <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="CreateFileVersion" throwException="true"/> -->
 
             <SenderPipe name="sendToCorsa6">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
@@ -413,8 +413,8 @@
 
             <SoapWrapperPipe name="WrapModObjectRelationRequest" />
 
-            <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="ModObjectRelation" throwException="true"/>
+            <!-- <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="ModObjectRelation" throwException="true"/> -->
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
