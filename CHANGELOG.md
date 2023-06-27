@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.4...v6.2.5) (2023-06-27)
+
+
+### 🧑‍💻 Code Refactoring
+
+* add soapNamespace attribute ([8ba301b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8ba301b90261c0653c0109798594a7969ea5e72e))
+
 ## [6.2.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.3...v6.2.4) (2023-06-27)
 
 
