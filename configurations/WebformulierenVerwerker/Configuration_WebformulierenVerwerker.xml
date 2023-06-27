@@ -283,7 +283,7 @@
             </XsltPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender query="MERGE INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?)" />
+                <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?) ON CONFLICT DO NOTHING;" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
