@@ -309,7 +309,7 @@
                 <Param name="ConnectionID" value="${ConnectionID}"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapConnectRequest" />
+            <SoapWrapperPipe name="WrapConnectRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
 
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
@@ -385,7 +385,7 @@
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreateFileVersionRequest" />
+            <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
 
             <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateFileVersion" throwException="true"/>
@@ -411,7 +411,7 @@
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapModObjectRelationRequest" />
+            <SoapWrapperPipe name="WrapModObjectRelationRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
 
             <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="ModObjectRelation" throwException="true"/>
