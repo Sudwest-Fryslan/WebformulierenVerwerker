@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.12](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.11...v6.2.12) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* restore Ladybug default values for truncating messages ([b0cbe6f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b0cbe6ff72ec2d1f95ff0c7c513e42e65eac19c7))
+
 ## [6.2.11](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.10...v6.2.11) (2023-06-28)
 
 
