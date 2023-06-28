@@ -381,11 +381,11 @@
                 <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
                         
-            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersionBijlage.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
+            <!-- <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/> -->
 
             <!-- <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateFileVersion" throwException="true"/> -->
