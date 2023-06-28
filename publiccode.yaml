@@ -1,5 +1,5 @@
 publiccodeYmlVersion: "0.2"
-# Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publicorganisation.md#jouw-organisatie-toevoegen-aan-open-catalogi-via-github
+# Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publiccode.md
 name: WebformulierenVerwerker
 url: "https://github.com/Sudwest-Fryslan/WebformulierenVerwerker.git"
 #softwareVersion: "dev"    # Optional
