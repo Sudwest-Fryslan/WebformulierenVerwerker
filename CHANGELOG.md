@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.7...v6.2.8) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* enable XA ([f147d41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f147d41924e37e6d46f19354c84a685454c3e02b))
+
 ## [6.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.6...v6.2.7) (2023-06-28)
 
 
