@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.8...v6.2.9) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* adjust incorrect xpathexpression ([f4b38bb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f4b38bbd9daa251567d1782804ac3652a072e0cf))
+
 ## [6.2.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.7...v6.2.8) (2023-06-28)
 
 
