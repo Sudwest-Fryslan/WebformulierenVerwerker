@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.9...v6.2.10) (2023-06-28)
+
+
+### 🧑‍💻 Code Refactoring
+
+* deactivate wrapper ([9fc4501](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9fc4501889fb89080b8f596f8b614da2fd45c164))
+
 ## [6.2.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.8...v6.2.9) (2023-06-28)
 
 
