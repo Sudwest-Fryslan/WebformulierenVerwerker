@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.6...v6.2.7) (2023-06-28)
+
+
+### 🧑‍💻 Code Refactoring
+
+* attempt to send correct message to corsa ([a1a9b61](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a1a9b61edc9607b6d99ffa23166eb1b700caba46))
+
 ## [6.2.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.5...v6.2.6) (2023-06-27)
 
 
