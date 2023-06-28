@@ -346,7 +346,7 @@
                 <Forward name="else" path="EXCEPTION" />
             </XmlIfPipe>
             
-            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//field[@name='VERTROUWELIJKHEID']"/>
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
@@ -356,7 +356,7 @@
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest" />
+            <!-- <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest" /> -->
 
             <SenderPipe name="sendToCorsa5">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
