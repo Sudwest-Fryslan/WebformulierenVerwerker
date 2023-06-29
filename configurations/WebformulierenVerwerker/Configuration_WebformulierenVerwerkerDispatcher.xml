@@ -36,7 +36,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                  which is working for WsdlXmlInputValidator above. -->
             <WsdlXmlOutputValidator name="OutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
+                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse,Fault"
                 addNamespaceToSchema="true"
                 schemaLocation="http://tempuri.org/ schema1"
                 throwException="true">
