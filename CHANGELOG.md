@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.14](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.13...v6.2.14) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* add tcpKeepAlive to psql url ([915ea03](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/915ea03b887365d4f07ade8749b4c4df39a63cb2))
+
 ## [6.2.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.12...v6.2.13) (2023-06-29)
 
 
