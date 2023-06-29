@@ -11,7 +11,7 @@
         auth="Container"
         factory="org.apache.naming.factory.BeanFactory"
         type="org.postgresql.xa.PGXADataSource"
-        url="jdbc:postgresql://${jdbc.hostname}:5432/${jdbc.database}${jdbc.adittionalUrlParameters}"
+        url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.adittionalUrlParameters}"
         user="${jdbc/username}"
         password="${jdbc/password}"
     />
