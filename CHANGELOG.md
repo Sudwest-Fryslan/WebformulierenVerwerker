@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.2.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.12...v6.2.13) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* add additional url parameters string to the psql resource ([4a40ebe](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4a40ebe503db5cfdcbff3e66fc39d00e7fc82839))
+
 ## [6.2.12](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.11...v6.2.12) (2023-06-28)
 
 
