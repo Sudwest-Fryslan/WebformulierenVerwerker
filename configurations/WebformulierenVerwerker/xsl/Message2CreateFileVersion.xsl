@@ -20,9 +20,13 @@
 			<bct:FileType>ftNative</bct:FileType>
 			<bct:FileVersion>0</bct:FileVersion>
 			<!--Optional:-->
-			<bct:FileExtension><xsl:value-of select="//filename/replace(tokenize(., '/')[last()], '.*\.', '')"/></bct:FileExtension>
+			<bct:FileExtension>
+				<xsl:value-of select=" //filename/replace(tokenize(., '/')[last()], '.*\.', '.')" />
+			</bct:FileExtension>
 			<!--Optional:-->
-			<bct:DocumentName><xsl:value-of select="tokenize(//filename, '\.|/')[last() - 1]"/></bct:DocumentName>
+			<bct:DocumentName>
+				<xsl:value-of select="tokenize(//filename, '\.|/')[last() - 1]" />
+			</bct:DocumentName>
 			<!--Optional:-->
 			<bct:VersionDescription>Eerste versie</bct:VersionDescription>
 			<!--Optional:-->

@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   frank:
+    build: .
     image: wearefrank/webformulierenverwerker:latest
     ports:
       - "${PORT:-8080}:8080"
@@ -12,7 +13,6 @@ services:
     env_file:
       - .env
     volumes:
-      - ./context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
       - ./secrets:/opt/frank/secrets
     restart: unless-stopped
 

@@ -1,0 +1,66 @@
+publiccodeYmlVersion: "0.2"
+# Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publiccode.md
+name: WebformulierenVerwerker
+url: "https://github.com/Sudwest-Fryslan/WebformulierenVerwerker.git"
+#softwareVersion: "dev"    # Optional
+releaseDate: "2023-07-01"
+platforms:
+  - frankframework
+
+categories:
+  - translation
+
+developmentStatus: stable
+
+softwareType: "standalone/other"
+
+description:
+  en:
+    shortDescription: >
+          The CorsaKoppeling component is a SOAP-based web service designed to facilitate interaction between web forms in Kodision and the Corsa system. 
+          Its primary focus is on ensuring statelessness and reliable data saving through the issuance of Corsa registration numbers. 
+          By maintaining loose coupling and providing error tracking capabilities, CorsaKoppeling acts as an intermediary, 
+          offering an esb-like functionality that enhances the robustness and detectability of potential issues.
+          
+    longDescription: >
+        The CorsaKoppeling component is a SOAP-based web service that serves as a crucial intermediary for facilitating seamless interaction between web forms in the Kodision platform and the Corsa system. Its primary objective is to ensure smooth data exchange and reliable data saving processes, while adhering to the principles of statelessness and atomicity.
+        One of the core features of CorsaKoppeling is its stateless nature. This means that the component does not retain any session-specific information or context between consecutive requests. Each interaction with the web service is treated independently, ensuring that data operations remain independent and self-contained. This statelessness guarantees the integrity and consistency of the data saving process. Upon successful completion of an operation, CorsaKoppeling returns a unique Corsa registration number, serving as a confirmation that the data has been securely saved.
+        By acting as an intermediary between Kodision and Corsa, CorsaKoppeling facilitates loose coupling between the two systems. Instead of direct communication, Kodision communicates with Corsa via the CorsaKoppeling web service. This decoupling provides several advantages, such as enhanced flexibility, scalability, and maintainability. It allows each system to evolve independently without tightly coupling their functionalities. Furthermore, it simplifies error tracking and debugging processes. When errors occur during data exchange or saving, it is easier to identify and trace the specific component or interaction responsible, enabling efficient issue resolution.
+        CorsaKoppeling exhibits functionalities similar to an Enterprise Service Bus (ESB). It serves as an integration layer, orchestrating the communication and data flow between Kodision and Corsa. This ESB-like functionality streamlines the overall integration process and ensures reliable and seamless data exchange. It acts as a mediator, abstracting the complexities of direct integration between the two systems and providing a standardized interface that simplifies the development and maintenance efforts.
+        Overall, the CorsaKoppeling component plays a vital role in enabling effective and secure communication between web forms in Kodision and the Corsa system. Through its stateless and atomic design, it guarantees reliable data saving, while its loose coupling and error tracking capabilities enhance the robustness and detectability of potential issues. By functioning as an intermediary with ESB-like functionalities, CorsaKoppeling streamlines the integration process, promoting flexibility, scalability, and maintainability in the Kodision-Corsa ecosystem.
+
+    features:
+       - Statelessness
+       - Atomicity
+       - Loose Coupling
+       - Error Tracking
+       - Standardized Interface
+
+legal:
+  license: European Union Public License 1.2
+
+maintenance:
+  type: "community"
+
+  contacts:
+    - name: Eduard Witteveen
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - en
+# De Nederlandse uitbreiding op de Common Ground standaard
+nl:
+  countryExtensionVersion: "1.0"
+  commonground:
+  - layerType: "integration"
+  - installationType: "docker"
+  - intendedOrganisations: "https://github.com/Sudwest-Fryslan"
+  gemma:
+    bedrijfsfuncties:
+      - "sadsad"
+      - "sadsad"
+    bedrijfsservices:
+      - "sadsad"
+      - "sadsad"
+    applicatiefunctie: "referentie component"

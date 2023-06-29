@@ -53,7 +53,7 @@
             </Exits>
 
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
-                <Param name="version" value="${version}" />
+                <Param name="version" value="${instance.version}" />
                 <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
@@ -160,10 +160,15 @@
             <!-- If person does not exist, create a person in Corsa. -->
             <XmlSwitchPipe
                 name="QueryResultCheck"
-                xpathExpression="not(/NewDataSet/schema/element/complexType/choice/element/complexType/sequence/node())">
-                <Forward name="true" path="ConvertToCreatePerson" />
-                <Forward name="false" path="ConvertToCreateDocument" />
+                xpathExpression="boolean(//QueryExecResult/_x0024_id_x0024_)">
+                <Forward name="true" path="GetSPNum" />
+                <Forward name="false" path="ConvertToCreatePerson" />
             </XmlSwitchPipe>
+
+            <XsltPipe name="GetSPNum" xpathExpression="//QueryExecResult/_x0024_id_x0024_"/>
+            <PutInSessionPipe name="StoreSPNum" sessionKey="SPNum">
+                <Forward name="success" path="ConvertToCreateDocument" />
+            </PutInSessionPipe>
 
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
@@ -202,14 +207,17 @@
             <XmlSwitchPipe
                 name="CreatePersonResultCheck"
                 xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
-                <Forward name="true" path="ConvertToCreateDocument" />
+                <Forward name="true" path="GetNewSPNum" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
+            <XsltPipe name="GetNewSPNum" xpathExpression="//NewObjectID"/>
+            <PutInSessionPipe name="StoreNewSPNum" sessionKey="SPNum"/>
+            
             <!-- If person is created, create a document in Corsa. -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Param name="PersoonID" sessionKey="SPNum"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateDocumentRequest" />
@@ -308,9 +316,20 @@
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
-                <Forward name="true" path="ReturnResult" />
+                <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
+
+            <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl" storeResultInSessionKey="StoreDate">
+                <Param name="datetime" xpathExpression="current-dateTime()"/>
+            </XsltPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
+                <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "STOREDATE" sessionKey="StoreDate"/>
+            </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
         </Pipeline>
@@ -332,7 +351,7 @@
                 <Param name="ConnectionID" value="${ConnectionID}"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapConnectRequest" />
+            <SoapWrapperPipe name="WrapConnectRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
 
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
@@ -360,13 +379,28 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="ConvertToCreateMetaDocumentForBijlage" />
+                <Forward name="true" path="RequestVertrouwelijkheid" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
+            <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender queryType="SELECT"
+                query="SELECT VERTROUWELIJKHEID FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
+                <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
+            </SenderPipe>
+
+            <XmlIfPipe name="CheckForVertrouwelijkheid" xpathExpression="count(//rowset/row) > 0">
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="then" path="GetVertrouwelijkheid" />
+                <Forward name="else" path="EXCEPTION" />
+            </XmlIfPipe>
+            
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
+            <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <Param name="PersoonID" xpathExpression="//NewObjectID" sessionKey="PersonData"/>
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -403,14 +437,14 @@
                 <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
                         
-            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersionBijlage.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreateFileVersionRequest" />
+            <!-- <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/> -->
 
-            <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="CreateFileVersion" throwException="true"/>
+            <!-- <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="CreateFileVersion" throwException="true"/> -->
 
             <SenderPipe name="sendToCorsa6">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
@@ -440,10 +474,10 @@
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapModObjectRelationRequest" />
+            <SoapWrapperPipe name="WrapModObjectRelationRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
 
-            <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="ModObjectRelation" throwException="true"/>
+            <!-- <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="ModObjectRelation" throwException="true"/> -->
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />

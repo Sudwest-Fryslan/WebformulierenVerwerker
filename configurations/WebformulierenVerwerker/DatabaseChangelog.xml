@@ -1,0 +1,23 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd"
+>
+	<changeSet id="dropTable1" author="Delano Brouwer" runAlways="true">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="VERTROUWELIJKHEID_CACHE" />
+		</preConditions>
+		<dropTable tableName="VERTROUWELIJKHEID_CACHE" />
+	</changeSet>
+
+	<changeSet id="VERTROUWELIJKHEID_CACHE2" author="Delano Brouwer" runAlways="true" >
+		<comment>Add VERTROUWELIJKHEID_CACHE Table</comment>
+		<createTable tableName="VERTROUWELIJKHEID_CACHE">
+			<column name="REGISTRATIENUMMER" type="java.sql.Types.VARCHAR(256)">
+				<constraints primaryKey="true" nullable="false" primaryKeyName="PK_VERTROUWELIJKHEID_CACHE" />
+			</column>
+			<column name="VERTROUWELIJKHEID" type="java.sql.Types.VARCHAR(256)" />
+			<column name="STOREDATE" type="DATE" />
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
