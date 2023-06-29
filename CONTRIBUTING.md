@@ -1,3 +1,13 @@
+# Deliverables
+
+This project builds the following artifacts:
+* A docker image that can be used to run this application stand-alone.
+* A .jar file with only the Frank configuration of this project. The .jar file can be uploaded in het-integratie-platform, see https://github.com/wearefrank/het-integratie-platform. 
+
+# Guidelines for contributors
+
+This source code is managed by version control system Git, see https://git-scm.com/. When a developer fixes a bug or adds a feature, he first d
+
 # CI/CD
 
 Releases are created automatically by GitHub Actions, see [.github/workflows/ci-build.yml](.github/workflows/ci-build.yml).
