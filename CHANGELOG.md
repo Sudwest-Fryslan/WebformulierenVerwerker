@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.14...v6.3.0) (2023-06-30)
+
+
+### 🍕 Features
+
+* re-use afzender & onderwerp ([6bb560e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6bb560eae45d396c94f876bde76065ef5c0c20a0))
+
 ## [6.2.14](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.13...v6.2.14) (2023-06-29)
 
 
