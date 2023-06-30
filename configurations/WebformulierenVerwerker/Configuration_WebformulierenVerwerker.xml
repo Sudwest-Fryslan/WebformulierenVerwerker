@@ -336,7 +336,7 @@
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
-            <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage">
+            <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage" storeResultInSessionKey="QueryResponse">
                 <FixedQuerySender queryType="SELECT"
                 query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?" />
                 <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
@@ -351,10 +351,10 @@
             <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
-            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" outputType="TEXT"/>
+            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" getInputFromSessionKey="QueryResponse"/>
             <PutInSessionPipe name="SetKeyAfzender" sessionKey="Afzender"/>
 
-            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" outputType="TEXT"/>
+            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" getInputFromSessionKey="QueryResponse"/>
             <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
