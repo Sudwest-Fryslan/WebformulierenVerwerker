@@ -1,5 +1,96 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.3...v6.3.4) (2023-06-30)
+
+
+### 🐛 Bug Fixes
+
+* incorrect input for XSLTPipes ([832ed1f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/832ed1f1a1c772010ef78001109c0081fdc94f78))
+
+## [6.3.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.2...v6.3.3) (2023-06-30)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change sessionkey type ([e9fc89b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e9fc89ba9985bd7d3460aa7ed9b22e007d901755))
+
+## [6.3.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.1...v6.3.2) (2023-06-30)
+
+
+### 🧑‍💻 Code Refactoring
+
+* incorrect table name ([68096ea](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/68096ea7acd188c198cd89ec99b35bfb3f5e1fad))
+
+## [6.3.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.0...v6.3.1) (2023-06-30)
+
+
+### 🧑‍💻 Code Refactoring
+
+* incorrect names and values ([5c9308e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5c9308e3bf27b426f5119d0e9cbe88c43e4803c3))
+
+## [6.3.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.14...v6.3.0) (2023-06-30)
+
+
+### 🍕 Features
+
+* re-use afzender & onderwerp ([6bb560e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6bb560eae45d396c94f876bde76065ef5c0c20a0))
+
+## [6.2.14](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.13...v6.2.14) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* add tcpKeepAlive to psql url ([915ea03](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/915ea03b887365d4f07ade8749b4c4df39a63cb2))
+
+## [6.2.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.12...v6.2.13) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* add additional url parameters string to the psql resource ([4a40ebe](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4a40ebe503db5cfdcbff3e66fc39d00e7fc82839))
+
+## [6.2.12](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.11...v6.2.12) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* restore Ladybug default values for truncating messages ([b0cbe6f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b0cbe6ff72ec2d1f95ff0c7c513e42e65eac19c7))
+
+## [6.2.11](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.10...v6.2.11) (2023-06-28)
+
+
+### 🧑‍💻 Code Refactoring
+
+* re-enable wrapper properly ([358d72a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/358d72a836547e5202e4d9a31c7a6d79491db731))
+
+## [6.2.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.9...v6.2.10) (2023-06-28)
+
+
+### 🧑‍💻 Code Refactoring
+
+* deactivate wrapper ([9fc4501](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9fc4501889fb89080b8f596f8b614da2fd45c164))
+
+## [6.2.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.8...v6.2.9) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* adjust incorrect xpathexpression ([f4b38bb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f4b38bbd9daa251567d1782804ac3652a072e0cf))
+
+## [6.2.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.7...v6.2.8) (2023-06-28)
+
+
+### 🐛 Bug Fixes
+
+* enable XA ([f147d41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f147d41924e37e6d46f19354c84a685454c3e02b))
+
+## [6.2.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.6...v6.2.7) (2023-06-28)
+
+
+### 🧑‍💻 Code Refactoring
+
+* attempt to send correct message to corsa ([a1a9b61](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a1a9b61edc9607b6d99ffa23166eb1b700caba46))
+
 ## [6.2.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.2.5...v6.2.6) (2023-06-27)
 
 

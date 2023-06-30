@@ -283,9 +283,11 @@
             </XsltPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <FixedQuerySender query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
+                <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
             </SenderPipe>
 
@@ -330,13 +332,13 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="RequestVertrouwelijkheid" />
+                <Forward name="true" path="RequestInfo" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
-            <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+            <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage" storeResultInSessionKey="QueryResponse">
                 <FixedQuerySender queryType="SELECT"
-                query="SELECT VERTROUWELIJKHEID FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
+                query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?" />
                 <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
             </SenderPipe>
 
@@ -346,12 +348,20 @@
                 <Forward name="else" path="EXCEPTION" />
             </XmlIfPipe>
             
-            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//field[@name='VERTROUWELIJKHEID']"/>
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+
+            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" getInputFromSessionKey="QueryResponse"/>
+            <PutInSessionPipe name="SetKeyAfzender" sessionKey="Afzender"/>
+
+            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" getInputFromSessionKey="QueryResponse"/>
+            <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+                <Param name="Afzender" sessionKey="Afzender"/>
+                <Param name="Onderwerp" sessionKey="Onderwerp"/>
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -381,11 +391,11 @@
                 <Forward name="false" path="SUCCESS" />
             </XmlSwitchPipe>
                         
-            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersionBijlage.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/>
+            <!-- <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/> -->
 
             <!-- <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateFileVersion" throwException="true"/> -->
