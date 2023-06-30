@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.3...v6.3.4) (2023-06-30)
+
+
+### 🐛 Bug Fixes
+
+* incorrect input for XSLTPipes ([832ed1f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/832ed1f1a1c772010ef78001109c0081fdc94f78))
+
 ## [6.3.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.2...v6.3.3) (2023-06-30)
 
 
