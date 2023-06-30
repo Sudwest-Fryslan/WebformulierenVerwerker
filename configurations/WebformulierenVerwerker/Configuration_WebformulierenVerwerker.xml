@@ -286,6 +286,8 @@
                 <FixedQuerySender query="INSERT INTO VERTROUWELIJKHEID_CACHE VALUES (?, ?, ?) ON CONFLICT DO NOTHING;" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
+                <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
             </SenderPipe>
 
@@ -336,7 +338,7 @@
 
             <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender queryType="SELECT"
-                query="SELECT VERTROUWELIJKHEID FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
+                query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
                 <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
             </SenderPipe>
 
@@ -349,9 +351,17 @@
             <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
+            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" />
+            <PutInSessionPipe name="SetKeyAfzender" sessionKey="Afzender"/>
+
+            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" />
+            <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp"/>
+
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+                <Param name="Afzender" sessionKey="Afzender"/>
+                <Param name="Onderwerp" sessionKey="Onderwerp"/>
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>

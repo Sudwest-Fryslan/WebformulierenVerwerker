@@ -4,6 +4,8 @@
 
 	<xsl:param name="systemdate" />
 	<xsl:param name="Vertrouwelijkheid" />
+	<xsl:param name="Afzender" />
+	<xsl:param name="Onderwerp" />
 	<xsl:template match="/">
 		<bct:CreateMetaDocument xmlns:bct="http://bct.nl">
 			<!--Optional:-->
@@ -33,7 +35,7 @@
 				<bct:NameValue>
 					<bct:Name>poststuk.onderwerp</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="//onderwerp" />
+						<xsl:value-of select="$Onderwerp" />
 					</bct:Value>
 				</bct:NameValue>
 				<bct:NameValue>
@@ -45,7 +47,7 @@
 				<bct:NameValue>
 					<bct:Name>poststuk.v_plaats_id</bct:Name>
 					<bct:Value>
-						<xsl:value-of select="//behandelaarnaam" />
+						<xsl:value-of select="$Afzender" />
 					</bct:Value>
 				</bct:NameValue>
 				<bct:NameValue>
