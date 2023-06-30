@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.2...v6.3.3) (2023-06-30)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change sessionkey type ([e9fc89b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e9fc89ba9985bd7d3460aa7ed9b22e007d901755))
+
 ## [6.3.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.1...v6.3.2) (2023-06-30)
 
 
