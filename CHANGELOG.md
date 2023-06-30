@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.1...v6.3.2) (2023-06-30)
+
+
+### 🧑‍💻 Code Refactoring
+
+* incorrect table name ([68096ea](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/68096ea7acd188c198cd89ec99b35bfb3f5e1fad))
+
 ## [6.3.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.0...v6.3.1) (2023-06-30)
 
 
