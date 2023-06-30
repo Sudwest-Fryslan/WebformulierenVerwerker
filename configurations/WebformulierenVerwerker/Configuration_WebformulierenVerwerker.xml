@@ -332,13 +332,13 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="RequestVertrouwelijkheid" />
+                <Forward name="true" path="RequestInfo" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
-            <SenderPipe name="RequestVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+            <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender queryType="SELECT"
-                query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM VERTROUWELIJKHEID_CACHE WHERE REGISTRATIENUMMER = ?" />
+                query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?" />
                 <Param name= "REGISTRATIENUMMER" xpathExpression="//registratienummer"/>
             </SenderPipe>
 
