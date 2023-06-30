@@ -351,10 +351,10 @@
             <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
-            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" />
+            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']" outputType="TEXT"/>
             <PutInSessionPipe name="SetKeyAfzender" sessionKey="Afzender"/>
 
-            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" />
+            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']" outputType="TEXT"/>
             <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp"/>
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage" styleSheetName="xsl/Message2CreateMetaDocument.xsl" getInputFromSessionKey="originalMessage">
