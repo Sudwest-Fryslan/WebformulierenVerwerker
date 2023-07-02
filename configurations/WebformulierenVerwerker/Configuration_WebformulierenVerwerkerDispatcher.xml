@@ -95,7 +95,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanInkNatuurlijkPersoon">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
             </SenderPipe>
 
             <!-- OperationChecker adds a few random variables on top of the message.
