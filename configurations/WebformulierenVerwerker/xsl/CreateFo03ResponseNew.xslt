@@ -3,14 +3,12 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     version="2.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" />
-    <xsl:param name="senderPipeName" select="''" as="xs:string" />
-    <xsl:param name="corsaResponse" select="''" as="xs:string" />
 
     <xsl:template match="/">
         <SOAP-ENV:Fault>
             <faultcode>SOAP-ENV:Server</faultcode>
             <faultstring>
-                <xsl:value-of select="concat(concat($senderPipeName, 'Response: ' ), $corsaResponse)" />
+                <xsl:value-of select="concat(concat(error/senderPipeName, 'Response: ' ), error/corsaResponse)" />
             </faultstring>
         </SOAP-ENV:Fault>
     </xsl:template>
