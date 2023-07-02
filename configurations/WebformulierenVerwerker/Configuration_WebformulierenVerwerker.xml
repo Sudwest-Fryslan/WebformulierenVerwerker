@@ -12,7 +12,7 @@
             </Exits>
 
             <!-- Get Info from Corsa. -->
-            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl"/>
+            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl" storeResultInSessionKey="corsaRequest"/>
 
             <SenderPipe name="sendToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
@@ -22,6 +22,7 @@
 
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl">
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" type="STRING" />
                 <Param name="senderPipeName" value="InfoAction/sendToCorsa" />
                 <Forward name="success" path="EXCEPTION" />

@@ -8,7 +8,7 @@
         <SOAP-ENV:Fault>
             <faultcode>SOAP-ENV:Server</faultcode>
             <faultstring>
-                <xsl:value-of select="concat(concat(error/senderPipeName, 'Response: ' ), error/corsaResponse)" />
+                <xsl:value-of select="concat(concat(concat(concat(error/senderPipeName, ' Response: ' ), error/corsaResponse), ' Request: '), /error/corsaRequest)" />
             </faultstring>
         </SOAP-ENV:Fault>
     </xsl:template>
