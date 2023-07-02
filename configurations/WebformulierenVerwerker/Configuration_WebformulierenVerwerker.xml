@@ -21,7 +21,9 @@
             </SenderPipe>
 
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResult.xsl">
+                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl">
+                <Param name="corsaResponse" type="STRING" />
+                <Param name="senderPipeName" value="InfoAction/sendToCorsa" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
 

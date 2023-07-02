@@ -122,9 +122,23 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="InfoAction">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="BackEndErrorNew" />
             </SenderPipe>
 
+            <PutInSessionPipe name="BackEndErrorNew">
+                <Param name="senderPipeName" xpathExpression="error/senderPipeName" />
+                <Param name="corsaResponse" xpathExpression="error/corsaResponse" />
+                <Forward name="success" path="WrapFo03ResponseNew" />
+            </PutInSessionPipe>
+
+            <SoapWrapperPipe
+                name="WrapFo03ResponseNew"
+                soapBodyStyleSheet="xsl/CreateFo03ResponseNew.xslt"
+            >
+                <Param name="senderPipeName" sessionKey="senderPipeName" />
+                <Param name="corsaResponse" sessionKey="corsaResponse"/>
+                <Forward name="success" path="SUCCESS" />
+            </SoapWrapperPipe>
 
             <PutInSessionPipe name="BackEndError" unlessSessionKey="errorCode">
                 <Param name="errorCode" styleSheetName="xsl/BackEndError.xsl" />
