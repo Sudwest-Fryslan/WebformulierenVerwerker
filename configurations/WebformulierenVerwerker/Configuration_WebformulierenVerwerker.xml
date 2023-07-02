@@ -445,7 +445,7 @@
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaDocumen" />
+                <Param name="soapAction" value="http://bct.nl/CreateMetaDocument" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
 

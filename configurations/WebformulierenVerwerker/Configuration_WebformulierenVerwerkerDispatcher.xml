@@ -34,6 +34,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                  /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
                  Probably because we have SessionKey SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
                  which is working for WsdlXmlInputValidator above. -->
+            <!--
             <WsdlXmlOutputValidator name="OutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
                 soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
@@ -41,7 +42,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 schemaLocation="http://tempuri.org/ schema1"
                 throwException="true">
             </WsdlXmlOutputValidator>
-
+            -->
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
@@ -112,7 +113,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanBijlage">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
             </SenderPipe>
 
             <SenderPipe
