@@ -180,13 +180,13 @@
             </PutInSessionPipe>
 
             <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/Message2CreatePerson.xsl"
-                getInputFromSessionKey="originalMessage" storeResultInSessionKey="corsaRequest">
+                getInputFromSessionKey="originalMessage">
 
                 <Forward name="success" path="WrapCreatePersonRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapCreatePersonRequest" />
+            <SoapWrapperPipe name="WrapCreatePersonRequest" storeResultInSessionKey="corsaRequest" />
 
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender methodType="POST" url="${corsa.url}"
