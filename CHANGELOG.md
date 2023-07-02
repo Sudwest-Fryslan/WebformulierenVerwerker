@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.3.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.4...v6.3.5) (2023-07-02)
+
+
+### 🐛 Bug Fixes
+
+* Improve error handling ([#49](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/49)) ([1fd3381](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1fd338180bab1290a715b972c4159aa1244e2d6b))
+* sync custom code with latest ff ([#50](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/50)) ([948a110](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/948a110bf47a84ff68a9479c7cd45042a195f9f4))
+
 ## [6.3.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.3...v6.3.4) (2023-06-30)
 
 
