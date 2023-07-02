@@ -2,11 +2,11 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
     <xsl:param name="corsaRequest" select="''" as="xs:string" />
     <xsl:param name="corsaResponse" select="''" as="xs:string" />
-    <xsl:param name="senderPipeName" select="''" as="xs:string" />
+    <xsl:param name="soapAction" select="''" as="xs:string" />
 
     <xsl:template match="/">
         <error>
-            <senderPipeName><xsl:value-of select="$senderPipeName" /></senderPipeName>
+            <soapAction><xsl:value-of select="$soapAction" /></soapAction>
             <corsaRequest><xsl:value-of select="$corsaRequest" /></corsaRequest>
             <corsaResponse><xsl:value-of select="$corsaResponse" /></corsaResponse>
         </error>

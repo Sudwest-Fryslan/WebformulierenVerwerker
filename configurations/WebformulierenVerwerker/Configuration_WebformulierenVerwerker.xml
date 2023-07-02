@@ -17,14 +17,19 @@
             <SenderPipe name="sendToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractInfo" />
-                <Forward name="exception" path="buildErrorMsg" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
 
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+                <Forward name="success" path="buildErrorMsg" />
+            </PutInSessionPipe>
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl">
+                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" />
-                <Param name="senderPipeName" value="InfoAction/sendToCorsa" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="soapAction" value="http://bct.nl/About" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
 
