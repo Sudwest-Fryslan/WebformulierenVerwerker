@@ -245,7 +245,7 @@
                 <Forward name="success" path="buildErrorMsg3" />
             </PutInSessionPipe>
             <XsltPipe name="buildErrorMsg3"
-                styleSheetName="xsl/ParseNegativeHttpResult.xsl"
+                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
