@@ -34,6 +34,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                  /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
                  Probably because we have SessionKey SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
                  which is working for WsdlXmlInputValidator above. -->
+            <!--
             <WsdlXmlOutputValidator name="OutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
                 soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse"
@@ -41,7 +42,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 schemaLocation="http://tempuri.org/ schema1"
                 throwException="true">
             </WsdlXmlOutputValidator>
-
+            -->
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
@@ -95,7 +96,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanInkNatuurlijkPersoon">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
             </SenderPipe>
 
             <!-- OperationChecker adds a few random variables on top of the message.
@@ -112,7 +113,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanBijlage">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
             </SenderPipe>
 
             <SenderPipe
@@ -122,9 +123,15 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="InfoAction">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="BackEndError" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
             </SenderPipe>
 
+            <SoapWrapperPipe
+                name="WrapFo03ResponseNew"
+                soapBodyStyleSheet="xsl/CreateFo03ResponseNew.xslt"
+            >
+                <Forward name="success" path="SUCCESS" />
+            </SoapWrapperPipe>
 
             <PutInSessionPipe name="BackEndError" unlessSessionKey="errorCode">
                 <Param name="errorCode" styleSheetName="xsl/BackEndError.xsl" />
