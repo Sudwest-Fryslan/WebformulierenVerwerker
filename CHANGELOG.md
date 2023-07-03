@@ -1,5 +1,24 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.4.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.5...v6.4.0) (2023-07-03)
+
+
+### 🍕 Features
+
+* add company registration to dispatcher ([d620003](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d620003fd6f48b73d642284afcfea6dbf0237246))
+* add first iteration opslaanInkNietNatuurlijkPersoon ([84b9861](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/84b98612436ce211f31bf1703816665d40daf1bf))
+
+
+### 🐛 Bug Fixes
+
+* incorrect xslt variable ([2a42f41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2a42f418daf24e4d973c1cae5d622681c2f1863c))
+* renaming issues ([66ae9db](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/66ae9dbafefebf2722ed0c9b34787ad082bae63a))
+
+
+### 🧑‍💻 Code Refactoring
+
+* rename pipe SetONum ([29a2b22](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/29a2b220c2d58478b6837e79dcd14a364bee04e7))
+
 ## [6.3.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.4...v6.3.5) (2023-07-02)
 
 
