@@ -578,8 +578,8 @@
     
     <Adapter name="opslaanInkNietNatuurlijkPersoon">
 
-		 <Receiver name="opslaanInkNatuurlijkPersoon">
-            <JavaListener name="opslaanInkNatuurlijkPersoon"/>
+		 <Receiver name="opslaanInkNietNatuurlijkPersoon">
+            <JavaListener name="opslaanInkNietNatuurlijkPersoon"/>
         </Receiver>
         <Pipeline>
 
