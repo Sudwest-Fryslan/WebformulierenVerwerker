@@ -679,7 +679,7 @@
             </XmlSwitchPipe>
 
             <XsltPipe name="GetONum" xpathExpression="//QueryExecResult/_x0024_id_x0024_"/>
-            <PutInSessionPipe name="GetONum" sessionKey="ONum">
+            <PutInSessionPipe name="SetONum" sessionKey="ONum">
                 <Forward name="success" path="ConvertToCreateDocument" />
             </PutInSessionPipe>
 
