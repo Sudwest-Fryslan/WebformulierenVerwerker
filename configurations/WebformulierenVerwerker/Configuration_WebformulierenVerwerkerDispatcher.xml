@@ -24,7 +24,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
 
             <WsdlXmlInputValidator name="InputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanBijlage,Info"
+                soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,Info"
                 addNamespaceToSchema="true"
                 schemaLocation="http://tempuri.org/ schema1"
                 throwException="true">
@@ -58,6 +58,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 xpathExpression="name(*)">
                 <Forward name="Version" path="VersionSoapActionSetter" />
                 <Forward name="opslaanInkNatuurlijkPersoon" path="PersoonSoapActionSetter" />
+                <Forward name="opslaanInkNietNatuurlijkPersoon" path="BedrijfSoapActionSetter" />
             	<Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
             	<Forward name="Info" path="InfoSoapActionSetter" />
              </XmlSwitchPipe>
@@ -72,6 +73,10 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
 
              <PutInSessionPipe name="PersoonSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNatuurlijkPersoonResponse">
                 <Forward name="success" path="CallopslaanInkNatuurlijkPersoon" />
+             </PutInSessionPipe>
+             
+             <PutInSessionPipe name="BedrijfSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNietNatuurlijkPersoonResponse">
+                <Forward name="success" path="CallopslaanInkNietNatuurlijkPersoon" />
              </PutInSessionPipe>
 
              <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction" value="opslaanBijlageResponse">
@@ -94,6 +99,16 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <IbisLocalSender
                     name="opslaanInkNatuurlijkPersoonLocalSender"
                     javaListener="opslaanInkNatuurlijkPersoon">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="WrapFo03ResponseNew" />
+            </SenderPipe>
+            
+            <SenderPipe
+                name="CallopslaanInkNietNatuurlijkPersoon">
+                <IbisLocalSender
+                    name="opslaanInkNietNatuurlijkPersoonLocalSender"
+                    javaListener="opslaanInkNietNatuurlijkPersoon">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="WrapFo03ResponseNew" />
