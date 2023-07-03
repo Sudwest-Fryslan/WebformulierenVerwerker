@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.4.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.4.0...v6.4.1) (2023-07-03)
+
+
+### 🐛 Bug Fixes
+
+* add missing parameter ([efa742e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/efa742e7f54e51a0473ff8c57ba237eed5de9ef2))
+
 ## [6.4.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.3.5...v6.4.0) (2023-07-03)
 
 
