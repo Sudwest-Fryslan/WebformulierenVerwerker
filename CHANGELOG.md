@@ -1,5 +1,23 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.5.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.4.1...v6.5.0) (2023-07-03)
+
+
+### 🍕 Features
+
+* version publiccode.yaml automatically ([6e4864d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6e4864d0d59ec6daefbcebdca0ed850de495a7b3))
+
+
+### 🐛 Bug Fixes
+
+* check in publiccode.yaml ([a4c08d9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a4c08d961895d7c36ea2bd8fd7c6c8d44832a9d9))
+* CI/CD should check in configurations/WebformulierenVerwerker/BuildInfo.properties ([18da36a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/18da36aebdeec700a121756b1e9142879b40e4de))
+
+
+### 📝 Documentation
+
+* update CONTRIBUTING.md ([11a3694](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/11a36948e0efeebdbed098699908f61abab6d6b4))
+
 ## [6.4.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.4.0...v6.4.1) (2023-07-03)
 
 
