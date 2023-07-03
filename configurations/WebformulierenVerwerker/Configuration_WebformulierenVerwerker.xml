@@ -675,11 +675,11 @@
                 name="QueryResultCheck"
                 xpathExpression="boolean(//QueryExecResult/_x0024_id_x0024_)">
                 <Forward name="true" path="GetONum" />
-                <Forward name="false" path="ConvertToCreatePerson" />
+                <Forward name="false" path="ConvertToCreateCompany" />
             </XmlSwitchPipe>
 
-            <XsltPipe name="GetSPNum" xpathExpression="//QueryExecResult/_x0024_id_x0024_"/>
-            <PutInSessionPipe name="StoreSPNum" sessionKey="SPNum">
+            <XsltPipe name="GetONum" xpathExpression="//QueryExecResult/_x0024_id_x0024_"/>
+            <PutInSessionPipe name="GetONum" sessionKey="ONum">
                 <Forward name="success" path="ConvertToCreateDocument" />
             </PutInSessionPipe>
 
@@ -713,7 +713,7 @@
 
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
                 storeResultInSessionKey="PersonData">
-                <Forward name="success" path="CreatePersonResultCheck" />
+                <Forward name="success" path="CreateCompanyResultCheck" />
                 <Forward name="exception" path="EXCEPTION" />
             </SoapWrapperPipe>
 
