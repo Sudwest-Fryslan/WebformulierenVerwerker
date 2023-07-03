@@ -1,9 +1,5 @@
 # WebformulierenVerwerker
 
-Documentation can be found in Jira > Gemeente Team > [GT-36](https://wearefrank-devops.atlassian.net/browse/GT-36).
+Communicate between Kodison and Corsa. This configuration transforms incoming Kodison messages and makes them into Corsa requests. The responses are then transformed into messages accepted by Kodison.
 
-Please build docker image as follows:
-
-```
-docker build -t sudwestfryslan.nl/webformulierenverwerker .
-```
+This application processes SOAP requests that satisfy a WSDL that has been copied from the predecessor of this bridge. The WSDL is included in this project.
