@@ -4,6 +4,7 @@
     <xsl:template match="/">
         <bct:CreateMetaOrganisation xmlns:bct="http://bct.nl">
             <bct:ObjectID />
+            <bct:ObjectKind>STUF</bct:ObjectKind>
             <bct:ReferenceValues>
                 <bct:NameValue>
                     <bct:Name>BRSkvk</bct:Name>
