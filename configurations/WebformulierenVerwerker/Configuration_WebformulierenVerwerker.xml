@@ -805,7 +805,7 @@
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
 
-            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
+            <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXMLCompany.xsl"/>
 
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"  storeResultInSessionKey="FileVersionDetails"/>
 
