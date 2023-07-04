@@ -1,5 +1,14 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.5.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.0...v6.5.1) (2023-07-04)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change object type for company registration ([6418228](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/64182285daac0e90f56ea3d237acb10b777564b8))
+* limit query to 1 result ([63fc149](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/63fc149a693181cb56e883acdb0e59ae35da4496))
+* skip pipes if no afzender ([6ac45c1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6ac45c148ee472288d4cc5b9cbf5e88294de47c9))
+
 ## [6.5.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.4.1...v6.5.0) (2023-07-03)
 
 
