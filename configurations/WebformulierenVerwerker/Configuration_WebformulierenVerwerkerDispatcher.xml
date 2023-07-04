@@ -56,7 +56,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 xpathExpression="name(*)">
                 <Forward name="Version" path="VersionSoapActionSetter" />
                 <Forward name="opslaanInkNatuurlijkPersoon" path="PersoonSoapActionSetter" />
-                <Forward name="opslaanInkNietNatuurlijkPersoon" path="BedrijfSoapActionSetter" />
+                <Forward name="opslaanInkNietNatuurlijkPersoon" path="OrganisatieSoapActionSetter" />
             	<Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
             	<Forward name="Info" path="InfoSoapActionSetter" />
              </XmlSwitchPipe>
