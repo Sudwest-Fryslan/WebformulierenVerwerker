@@ -428,6 +428,7 @@ public abstract class HttpSenderBase extends HttpSessionBase implements HasPhysi
 				}
 			}
 			if (httpClient == null) {
+				buildHttpClient(); // Prevent java.lang.IllegalStateException: Connection pool shut down
 				httpClient = getHttpClient();
 				session.put("httpClient", httpClient);
 			}
