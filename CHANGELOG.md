@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.5.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.6...v6.5.7) (2023-07-04)
+
+
+### 🐛 Bug Fixes
+
+* connection pool shut down ([9944019](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9944019960c893ce6d383d95010e5c5e983bc00e))
+
 ## [6.5.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.5...v6.5.6) (2023-07-04)
 
 
