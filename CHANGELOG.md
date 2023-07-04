@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.5.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.5...v6.5.6) (2023-07-04)
+
+
+### 🧑‍💻 Code Refactoring
+
+* pipe path fix ([42c6fae](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/42c6faee55f276ce9f584be05fa77fee7dcce6c1))
+
 ## [6.5.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.3...v6.5.4) (2023-07-04)
 
 
