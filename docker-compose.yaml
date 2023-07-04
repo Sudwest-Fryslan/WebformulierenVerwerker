@@ -3,16 +3,16 @@ version: '3.8'
 services:
   frank:
     build: .
-    image: wearefrank/webformulierenverwerker:latest
+    image: wearefrank/webformulierenverwerker:${VERSION:-latest}
     ports:
       - "${PORT:-8080}:8080"
     environment:
-      application.server.type.custom: NARAYANA
+      application.server.type.custom: ${TRANSACTION_MANAGER:-NARAYANA}
       credentialFactory.class: nl.nn.credentialprovider.PropertyFileCredentialFactory
       credentialFactory.map.properties: /opt/frank/secrets/credentials.properties
     env_file:
       - .env
     volumes:
-      - ./secrets:/opt/frank/secrets
+      - ${SECRETS_PATH:-./secrets}:/opt/frank/secrets
     restart: unless-stopped
 
