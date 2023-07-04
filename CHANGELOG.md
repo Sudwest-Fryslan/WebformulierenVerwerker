@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.5.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.1...v6.5.2) (2023-07-04)
+
+
+### 🐛 Bug Fixes
+
+* enable SOAP validation again ([#54](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/54)) ([17ab996](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/17ab99662af4cbaa487abd690f18bb7eabf949dc))
+
 ## [6.5.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.0...v6.5.1) (2023-07-04)
 
 
