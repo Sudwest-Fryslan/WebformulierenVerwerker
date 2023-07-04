@@ -740,10 +740,9 @@
             <PutInSessionPipe name="StoreNewONum" sessionKey="ONum"/>
             
             <!-- If person is created, create a document in Corsa. -->
-            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocumentCompany.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <!-- Called PersoonID so we can re-use the stylesheet. -->
-                <Param name="PersoonID" sessionKey="ONum"/>
+                <Param name="ONum" sessionKey="ONum"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateDocumentRequest" storeResultInSessionKey="corsaRequest" />
