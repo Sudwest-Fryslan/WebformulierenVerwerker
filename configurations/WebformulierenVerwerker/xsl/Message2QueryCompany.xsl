@@ -22,7 +22,7 @@
             <bct:SearchRelated>false</bct:SearchRelated>
             <bct:SearchRecursive>true</bct:SearchRecursive>
             <bct:ReturnIDsOnly>true</bct:ReturnIDsOnly>
-            <bct:MaxResult>0</bct:MaxResult>
+            <bct:MaxResult>1</bct:MaxResult>
         </bct:QueryExecute>
     </xsl:template>
 </xsl:stylesheet>

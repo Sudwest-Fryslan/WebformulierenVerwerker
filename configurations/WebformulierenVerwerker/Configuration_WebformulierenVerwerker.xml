@@ -122,9 +122,15 @@
             <XmlSwitchPipe
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
-                <Forward name="true" path="ConvertToQueryRequest" />
+                <Forward name="true" path="CheckForAfzender" />
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
+
+            <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderbsn) > 1">
+                <Param name="afzenderbsn" xpathExpression="//afzenderbsn" sessionKey="originalMessage"/>
+                <Forward name="then" path="ConvertToQueryRequest" />
+                <Forward name="else" path="ConvertToCreateDocument" />
+            </XmlIfPipe>
 
             <!-- Query to see if person exists -->
             <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/Message2QueryPerson.xsl">
@@ -630,6 +636,12 @@
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
+            <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
+                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                <Forward name="then" path="ConvertToQueryRequest" />
+                <Forward name="then" path="ConvertToQueryRequest" />
+                <Forward name="else" path="ConvertToCreateCompany" />
+            </XmlIfPipe>
+
             <!-- Query to see if person exists -->
             <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/Message2QueryCompany.xsl">
              	<Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>
@@ -728,10 +740,9 @@
             <PutInSessionPipe name="StoreNewONum" sessionKey="ONum"/>
             
             <!-- If person is created, create a document in Corsa. -->
-            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocumentCompany.xsl" getInputFromSessionKey="originalMessage">
             	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
-                <!-- Called PersoonID so we can re-use the stylesheet. -->
-                <Param name="PersoonID" sessionKey="ONum"/>
+                <Param name="ONum" sessionKey="ONum"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateDocumentRequest" storeResultInSessionKey="corsaRequest" />
