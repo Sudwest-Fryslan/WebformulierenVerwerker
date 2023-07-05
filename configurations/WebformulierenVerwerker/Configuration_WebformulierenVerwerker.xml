@@ -101,10 +101,19 @@
                 <Forward name="exception" path="storeErrorResponse1" />
             </SenderPipe>
 
+
             <PutInSessionPipe name="storeErrorResponse1">
                 <Param name="corsaResponse" />
                 <Forward name="success" path="buildErrorMsg1" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsConnectErrorXML">
+                <Forward name="then" path="buildErrorMsg1" />
+                <Forward name="else" path="ConnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ConnectError2XML"/>
+
             <XsltPipe name="buildErrorMsg1"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -144,6 +153,7 @@
 
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+
                 <Forward name="success" path="UnwrapQueryResponse" />
                 <Forward name="exception" path="storeQueryErrorResponse" />
             </SenderPipe>
@@ -151,6 +161,18 @@
                 <Param name="corsaResponse" />
                 <Forward name="success" path="buildQueryErrorMsg" />
             </PutInSessionPipe>
+          
+                <Forward name="success" path="IsQueryExecuteErrorXML" />
+                <Forward name="exception" path="IsQueryExecuteErrorXML" />
+            </SenderPipe>
+
+            <IsXmlIfPipe name="IsQueryExecuteErrorXML">
+                <Forward name="then" path="buildQueryErrorMsg" />
+                <Forward name="else" path="QueryExecuteError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="QueryExecuteError2XML"/>
+
             <XsltPipe name="buildQueryErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -202,8 +224,16 @@
             </SenderPipe>
             <PutInSessionPipe name="storeErrorResponse2">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg2" />
+                <Forward name="success" path="IsCreatePersonErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsCreatePersonErrorXML">
+                <Forward name="then" path="buildErrorMsg2" />
+                <Forward name="else" path="CreatePersonError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreatePersonError2XML"/>
+
             <XsltPipe name="buildErrorMsg2"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -248,8 +278,16 @@
 
             <PutInSessionPipe name="storeErrorResponse3">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg3" />
+                <Forward name="success" path="IsCreateMetaDocumentErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsCreateMetaDocumentErrorXML">
+                <Forward name="then" path="buildErrorMsg3" />
+                <Forward name="else" path="CreateMetaDocumentError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateMetaDocumentError2XML"/>
+            
             <XsltPipe name="buildErrorMsg3"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -285,8 +323,16 @@
 
             <PutInSessionPipe name="storeErrorResponse4">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg4" />
+                <Forward name="success" path="IsCreateFileVersionErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsCreateFileVersionErrorXML">
+                <Forward name="then" path="buildErrorMsg4" />
+                <Forward name="else" path="CreateFileVersionError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateFileVersionError2XML"/>
+
             <XsltPipe name="buildErrorMsg4"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -315,8 +361,16 @@
 
             <PutInSessionPipe name="storeDisconnectErrorResponse">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildDisconnectErrorMsg" />
+                <Forward name="success" path="IsDisconnectErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsDisconnectErrorXML">
+                <Forward name="then" path="buildDisconnectErrorMsg" />
+                <Forward name="else" path="DisconnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="DisconnectError2XML"/>
+
             <XsltPipe name="buildDisconnectErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -381,8 +435,16 @@
 
             <PutInSessionPipe name="storeErrorResponse1">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg1" />
+                <Forward name="success" path="IsConnectErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsConnectErrorXML">
+                <Forward name="then" path="buildErrorMsg1" />
+                <Forward name="else" path="ConnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ConnectError2XML"/>
+
             <XsltPipe name="buildErrorMsg1"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -448,8 +510,16 @@
 
             <PutInSessionPipe name="storeErrorResponse5">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg5" />
+                <Forward name="success" path="IsCreateMetaDocumentErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsCreateMetaDocumentErrorXML">
+                <Forward name="then" path="buildErrorMsg5" />
+                <Forward name="else" path="CreateMetaDocumentError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="CreateMetaDocumentError2XML"/>
+
             <XsltPipe name="buildErrorMsg5"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -489,8 +559,16 @@
 
             <PutInSessionPipe name="storeErrorResponse6">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg6" />
+                <Forward name="success" path="IsFileVersionErrorXML" />
             </PutInSessionPipe>
+           
+            <IsXmlIfPipe name="IsFileVersionErrorXML">
+                <Forward name="then" path="buildErrorMsg6" />
+                <Forward name="else" path="FileVersionError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="FileVersionError2XML"/>
+
             <XsltPipe name="buildErrorMsg6"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -524,8 +602,16 @@
 
             <PutInSessionPipe name="storeErrorResponse7">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg7" />
+                <Forward name="success" path="IsModObjectRelationErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsModObjectRelationErrorXML">
+                <Forward name="then" path="buildErrorMsg7" />
+                <Forward name="else" path="ModObjectRelationError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="ModObjectRelationError2XML"/>
+            
             <XsltPipe name="buildErrorMsg7"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -558,8 +644,16 @@
 
             <PutInSessionPipe name="storeDisconnectErrorResponse">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildDisconnectErrorMsg" />
+                <Forward name="success" path="IsDisconnectErrorXML" />
             </PutInSessionPipe>
+
+            <IsXmlIfPipe name="IsDisconnectErrorXML">
+                <Forward name="then" path="buildDisconnectErrorMsg" />
+                <Forward name="else" path="DisconnectError2XML" />
+            </IsXmlIfPipe>
+
+            <Text2XmlPipe xmlTag="errorMessage" name="DisconnectError2XML"/>
+
             <XsltPipe name="buildDisconnectErrorMsg"
                 styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -641,7 +735,7 @@
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
-                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                <Forward name="then" path="ConvertToQueryRequest" />
+                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                
                 <Forward name="then" path="ConvertToQueryRequest" />
                 <Forward name="else" path="ConvertToCreateCompany" />
             </XmlIfPipe>
