@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.3...v6.6.4) (2023-07-05)
+
+
+### 🐛 Bug Fixes
+
+* use older FF! base image ([1156dc5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1156dc58362136da20da26e1674943647d9a2b0b))
+
+
+### ⏩ Reverts
+
+* cherry pick old custom classes and remove new ones ([5525216](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/552521669952fc097670f830438726a0c2f81556))
+
 ## [6.6.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.2...v6.6.3) (2023-07-05)
 
 
