@@ -412,10 +412,13 @@
 
             <XmlIfPipe name="CheckForVertrouwelijkheid" xpathExpression="count(//rowset/row) > 0">
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
-                <Forward name="then" path="GetVertrouwelijkheid" />
+                <Forward name="then" path="GetRegistratienummer" />
                 <Forward name="else" path="EXCEPTION" />
             </XmlIfPipe>
-            
+
+            <XsltPipe name="GetRegistratienummer" xpathExpression="//rowset//field[@name='REGISTRATIENUMMER']" />
+            <PutInSessionPipe name="SetKeyRegistratienummer" sessionKey="Registratienummer"/>
+
             <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
             <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
@@ -430,6 +433,7 @@
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
                 <Param name="Afzender" sessionKey="Afzender"/>
                 <Param name="Onderwerp" sessionKey="Onderwerp"/>
+                <Param name="Registratienummer" sessionKey="Registratienummer"/>
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
