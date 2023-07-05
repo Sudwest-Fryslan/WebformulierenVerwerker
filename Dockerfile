@@ -1,4 +1,4 @@
-FROM nexus.frankframework.org/frank-framework:7.9-SNAPSHOT
+FROM wearefrank/zaakbrug-base:5357284526
 
 # Copy dependencies
 COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
