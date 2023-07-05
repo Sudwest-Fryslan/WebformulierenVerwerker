@@ -8,7 +8,7 @@
             <bct:QueryItems>
                 <bct:QueryItem>
                     <bct:RubricType>qrtReference</bct:RubricType>
-                    <bct:RubricID>BRSkvk</bct:RubricID>
+                    <bct:RubricID>StufKvk</bct:RubricID>
                     <bct:Condition>qcAnd</bct:Condition>
                     <bct:Operator>qoEqual</bct:Operator>
                     <bct:Value>
