@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.2...v6.6.3) (2023-07-05)
+
+
+### ⏩ Reverts
+
+* Revert "refactor: add relationID to CreateMetaDocument" ([3d9ad26](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3d9ad263140dd3c57c8515ede1a6cfe00cbe4a58))
+
 ## [6.6.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.1...v6.6.2) (2023-07-05)
 
 
