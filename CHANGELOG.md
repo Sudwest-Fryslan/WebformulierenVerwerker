@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.8...v6.6.0) (2023-07-05)
+
+
+### 🍕 Features
+
+* add additional information to error response ([2b9c2f6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2b9c2f6bcad7a189acc2ad22a690eddd05de9986))
+
+
+### 🐛 Bug Fixes
+
+* prevent errors from causing errors ([26eb6e4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/26eb6e489cf5c0ec62c74d2a8926ec44244b22bc))
+
 ## [6.5.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.7...v6.5.8) (2023-07-05)
 
 
