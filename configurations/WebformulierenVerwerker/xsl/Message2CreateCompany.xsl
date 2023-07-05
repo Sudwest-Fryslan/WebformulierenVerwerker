@@ -7,7 +7,7 @@
             <bct:ObjectKind>STUF</bct:ObjectKind>
             <bct:ReferenceValues>
                 <bct:NameValue>
-                    <bct:Name>BRSkvk</bct:Name>
+                    <bct:Name>StufKvk</bct:Name>
                     <bct:Value>
                         <xsl:value-of
                             select="//opslaanInkNietNatuurlijkPersoon/afzenderkvk" />
