@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.0...v6.6.1) (2023-07-05)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change name value in CreateMetaOrganisation ([8c95392](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8c953921df83c0f9016f887eedc2f837abdccf8a))
+
 ## [6.6.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.5.8...v6.6.0) (2023-07-05)
 
 
