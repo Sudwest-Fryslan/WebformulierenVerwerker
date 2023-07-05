@@ -27,15 +27,12 @@
                 </xsl:when>
                 <xsl:otherwise>
                     <code>ServerError</code>
-                    <reason>An unknown error occurred </reason>
+                    <reason>Some negative response </reason>
                 </xsl:otherwise>
             </xsl:choose>
             <details>
                 <xsl:value-of select="concat(/root/code, ' ', /root/title, ' ', /root/status, ' ', /root/detail)" />
             </details>
-            <response>
-                <xsl:value-of select="/"/>
-            </response>
         </error>
     </xsl:template>
 </xsl:stylesheet>
