@@ -6,8 +6,6 @@
 	<xsl:param name="Vertrouwelijkheid" />
 	<xsl:param name="Afzender" />
 	<xsl:param name="Onderwerp" />
-	<xsl:param name="Registratienummer" />
-
 	<xsl:template match="/">
 		<bct:CreateMetaDocument xmlns:bct="http://bct.nl">
 			<!--Optional:-->
@@ -76,13 +74,6 @@
 						<xsl:value-of select="$Vertrouwelijkheid" />
 					</bct:Value>
 				</bct:NameValue>
-				<bct:NameValue>
-					<bct:Name>poststuk.relatie_id</bct:Name>
-					<bct:Value>
-						<xsl:value-of select="$Registratienummer" />
-					</bct:Value>
-				</bct:NameValue>
-
 			</bct:FieldValues>
 			<!--Optional:-->
 			<bct:ReferenceValues>
