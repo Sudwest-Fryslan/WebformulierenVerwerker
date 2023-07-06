@@ -84,6 +84,8 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
+            <Locker objectId="opslaanInkNatuurlijkPersoon" />
+
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
              	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
@@ -365,6 +367,8 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
+            <Locker objectId="opslaanBijlage" />
+
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
              	<Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
@@ -593,6 +597,8 @@
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
+
+            <Locker objectId="opslaanInkNatuurlijkPersoon" />
 
             <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
