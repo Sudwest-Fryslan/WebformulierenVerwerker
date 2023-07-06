@@ -310,7 +310,8 @@
         
             <!-- contains tsjinstbus -->
        <!-- <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/corsakoppeling/GeneriekeFormulierAfhandeling.svc"/> -->
-            <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
+            <!-- <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/> -->
+            <soap:address location="https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
         >
         </wsdl:port>
   </wsdl:service>	
