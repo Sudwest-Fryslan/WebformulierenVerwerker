@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.5...v6.6.6) (2023-07-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* change WSDL address ([cf7ec07](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cf7ec07bbd42787f8b02eb6abcf05d81f9efc9c4))
+
 ## [6.6.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.3...v6.6.4) (2023-07-05)
 
 
