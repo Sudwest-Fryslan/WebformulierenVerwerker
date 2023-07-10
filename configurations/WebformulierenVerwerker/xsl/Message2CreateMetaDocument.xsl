@@ -46,9 +46,7 @@
 				</bct:NameValue>
 				<bct:NameValue>
 					<bct:Name>poststuk.v_plaats_id</bct:Name>
-					<bct:Value>
-						<xsl:value-of select="$Afzender" />
-					</bct:Value>
+					<bct:Value/>
 				</bct:NameValue>
 				<bct:NameValue>
 					<bct:Name>poststuk.reg_datum</bct:Name>
