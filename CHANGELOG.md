@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.8...v6.6.9) (2023-07-10)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove afzender from bijlage ([cfc1b00](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cfc1b003bc6f0a9bc4ae4f337a08f4aaf2b28ef2))
+
 ## [6.6.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.7...v6.6.8) (2023-07-06)
 
 
