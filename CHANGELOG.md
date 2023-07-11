@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.9...v6.6.10) (2023-07-11)
+
+
+### 🧑‍💻 Code Refactoring
+
+* adjust timeouts ([18826bc](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/18826bc45bbc11def08fb4fc3e07e9f626ddf9eb))
+
 ## [6.6.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.8...v6.6.9) (2023-07-10)
 
 
