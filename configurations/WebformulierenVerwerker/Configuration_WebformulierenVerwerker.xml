@@ -98,7 +98,7 @@
                 soapBody="Connect" throwException="true"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse1" />
             </SenderPipe>
@@ -378,7 +378,7 @@
             <SoapWrapperPipe name="WrapConnectRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope" storeResultInSessionKey="corsaRequest"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse1" />
             </SenderPipe>
@@ -612,7 +612,7 @@
                 soapBody="Connect" throwException="true"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" />
+                <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse1" />
             </SenderPipe>
