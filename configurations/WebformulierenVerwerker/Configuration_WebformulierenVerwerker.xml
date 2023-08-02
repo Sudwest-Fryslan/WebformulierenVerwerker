@@ -125,7 +125,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="CheckForAfzender" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderbsn) > 1">
@@ -205,7 +205,7 @@
                 name="CreatePersonResultCheck"
                 xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
                 <Forward name="true" path="GetNewSPNum" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XsltPipe name="GetNewSPNum" xpathExpression="//NewObjectID"/>
@@ -236,7 +236,7 @@
                 name="DocumentDetailsCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersion" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
             
             <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
@@ -284,7 +284,7 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl" storeResultInSessionKey="StoreDate">
@@ -369,7 +369,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="RequestInfo" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage" storeResultInSessionKey="QueryResponse">
@@ -421,7 +421,7 @@
                 name="DocumentForBijlageCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersionForBijlage" />
-                <Forward name="false" path="SUCCESS" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
                         
             <XsltPipe name="ConvertToCreateFileVersionForBijlage" styleSheetName="xsl/Message2CreateFileVersionBijlage.xsl" getInputFromSessionKey="originalMessage"
@@ -490,7 +490,7 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="ReturnResult" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults">
@@ -568,7 +568,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="ConvertToQueryRequest" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
@@ -648,7 +648,7 @@
                 name="CreateCompanyResultCheck"
                 xpathExpression="CreateMetaOrganisationResponse/CreateMetaOrganisationResult = 'true'">
                 <Forward name="true" path="GetNewONum" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XsltPipe name="GetNewONum" xpathExpression="//NewObjectID"/>
@@ -679,7 +679,7 @@
                 name="DocumentDetailsCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersion" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
             
             <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
@@ -727,7 +727,7 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
-                <Forward name="false" path="EXCEPTION" />
+                <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
 
             <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl" storeResultInSessionKey="StoreDate">
