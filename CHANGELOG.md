@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.6.11](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.10...v6.6.11) (2023-08-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove comment ([e5ea0f3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e5ea0f38e5b4cb34dd4ceef66519a78bd858a526))
+
 ## [6.6.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.9...v6.6.10) (2023-07-11)
 
 
