@@ -8,14 +8,15 @@
     <xsl:param name="corsaErrorMessage" as="xs:string" />
 
     <xsl:template match="/">
-        <Fault>
+        <SOAP-ENV:Fault>
             <faultcode>SOAP-ENV:Server</faultcode>
             <faultstring>
                 <xsl:value-of select="$corsaErrorMessage" />
             </faultstring>
             <detail>
-                <xsl:value-of
-                    select="
+                <Message>
+                    <xsl:value-of
+                        select="
                     concat(
                         concat(
                             concat(
@@ -27,7 +28,8 @@
                             concat(
                                 concat(codepoints-to-string(10),'Response: '),
                             $corsaResponse))" />
+                </Message>
             </detail>
-        </Fault>
+        </SOAP-ENV:Fault>
     </xsl:template>
 </xsl:stylesheet>
