@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.7.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.2...v6.7.3) (2023-08-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* correct error XSLT ([1c95f7a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1c95f7a6d7d01d2d02562dadee071420c5376ad1))
+
 ## [6.7.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.1...v6.7.2) (2023-08-02)
 
 
