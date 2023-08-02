@@ -24,10 +24,11 @@
                 <Forward name="success" path="buildErrorMsg" />
             </PutInSessionPipe>
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
+                styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse"/>
                 <Param name="soapAction" value="http://bct.nl/About" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
@@ -107,24 +108,13 @@
             <WsdlXmlValidatorPipe name="ValidateConnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Connect" throwException="true"/>
 
+            <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
+
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse1" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse1">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg1" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg1"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Connect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="ConnectionSuccessCheck" />
@@ -154,23 +144,13 @@
             <WsdlXmlValidatorPipe name="ValidateQueryRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="QueryExecute" throwException="true"/>
 
+            <PutInSessionPipe name="storeQueryExecuteAction" sessionKey="RequestSoapAction" value="http://bct.nl/QueryExecute"/>
+
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
-                <Forward name="exception" path="storeQueryErrorResponse" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-            <PutInSessionPipe name="storeQueryErrorResponse">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildQueryErrorMsg" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildQueryErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/QueryExecute" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="RemoveResultTags" />
@@ -205,25 +185,15 @@
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreatePersonRequest" storeResultInSessionKey="corsaRequest" />
+            
+            <PutInSessionPipe name="storeCreateMetaPersonAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaPerson"/>
 
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender methodType="POST" url="${corsa.url}"
                     soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
-                <Forward name="exception" path="storeErrorResponse2" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-            <PutInSessionPipe name="storeErrorResponse2">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg2" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg2"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaPerson" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
                 storeResultInSessionKey="PersonData">
@@ -252,24 +222,13 @@
             <WsdlXmlValidatorPipe name="ValidateCreateMetaDocumentRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateMetaDocument" throwException="true"/>
 
+            <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
+            
             <SenderPipe name="sendToCorsa3">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
-                <Forward name="exception" path="storeErrorResponse3" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse3">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg3" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg3"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaDocument" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapAndStoreDocumentDetails" direction="UNWRAP" removeOutputNamespaces="true" storeResultInSessionKey="DocumentDetails"/>
             
@@ -289,24 +248,13 @@
             <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateFileVersion" throwException="true"/>
 
+            <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
+
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="RemoveXMLDeclaration" />
-                <Forward name="exception" path="storeErrorResponse4" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse4">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg4" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg4"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateFileVersion" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
 
@@ -319,24 +267,13 @@
             <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Disconnect" throwException="true"/>
 
+            <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
+
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeDisconnectErrorResponse" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeDisconnectErrorResponse">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildDisconnectErrorMsg" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildDisconnectErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Disconnect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="DisconnectSuccessCheck" />
@@ -363,7 +300,24 @@
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
             </SenderPipe>
 
-            <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
+                <Forward name="success" path="SUCCESS" />
+            </EchoPipe>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+                <Forward name="success" path="buildErrorMsg" />
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/CreateErrorResponse.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
         </Pipeline>
     </Adapter>
 
@@ -398,24 +352,13 @@
 
             <SoapWrapperPipe name="WrapConnectRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope" storeResultInSessionKey="corsaRequest"/>
 
+            <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
+
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse1" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse1">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg1" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg1"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Connect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP"  removeOutputNamespaces="true">
                 <Forward name="success" path="ConnectionSuccessCheck" />
@@ -461,24 +404,13 @@
 
             <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest" storeResultInSessionKey="corsaRequest"/>
 
+            <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
+
             <SenderPipe name="sendToCorsa5">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
-                <Forward name="exception" path="storeErrorResponse5" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse5">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg5" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg5"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaDocument" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true" storeResultInSessionKey="DocumentForBijlage">
                 <Forward name="success" path="DocumentForBijlageCheck" />
@@ -497,29 +429,13 @@
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentForBijlage"/>
             </XsltPipe>
 
-            <!-- <SoapWrapperPipe name="WrapCreateFileVersionRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"/> -->
-
-            <!-- <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="CreateFileVersion" throwException="true"/> -->
+            <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
 
             <SenderPipe name="sendToCorsa6">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper6" />
-                <Forward name="exception" path="storeErrorResponse6" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse6">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg6" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg6"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateFileVersion" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
                 <Forward name="success" path="ConvertToModObjectRelation" />
@@ -534,27 +450,13 @@
             <SoapWrapperPipe name="WrapModObjectRelationRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope"
                 storeResultInSessionKey="corsaRequest"/>
 
-            <!-- <WsdlXmlValidatorPipe name="ValidateModObjectRelationRequest" wsdl="Corsa72WS4j.xml"
-                soapBody="ModObjectRelation" throwException="true"/> -->
+            <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction" value="http://bct.nl/ModObjectRelation"/>
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="ConvertToBijlageResponse" />
-                <Forward name="exception" path="storeErrorResponse7" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse7">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg7" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg7"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/ModObjectRelation" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapModObjectRelationRequest" direction="UNWRAP"/>
 
@@ -571,24 +473,13 @@
             <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Disconnect" throwException="true"/>
 
+            <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
+
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeDisconnectErrorResponse" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeDisconnectErrorResponse">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildDisconnectErrorMsg" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildDisconnectErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Disconnect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="DisconnectSuccessCheck" />
@@ -602,7 +493,24 @@
                 <Forward name="false" path="EXCEPTION" />
             </XmlSwitchPipe>
 
-            <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults"/>
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults">
+                <Forward name="success" path="SUCCESS" />
+            </EchoPipe>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+                <Forward name="success" path="buildErrorMsg" />
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/CreateErrorResponse.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
         </Pipeline>
     </Adapter>
 
@@ -643,24 +551,13 @@
             <WsdlXmlValidatorPipe name="ValidateConnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Connect" throwException="true"/>
 
+            <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
+
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse1" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse1">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg1" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg1"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Connect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="ConnectionSuccessCheck" />
@@ -690,23 +587,13 @@
             <WsdlXmlValidatorPipe name="ValidateQueryRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="QueryExecute" throwException="true"/>
 
+            <PutInSessionPipe name="storeQueryExecuteAction" sessionKey="RequestSoapAction" value="http://bct.nl/QueryExecute"/>
+
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
-                <Forward name="exception" path="storeQueryErrorResponse" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-            <PutInSessionPipe name="storeQueryErrorResponse">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildQueryErrorMsg" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildQueryErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/QueryExecute" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="RemoveResultTags" />
@@ -742,24 +629,14 @@
 
             <SoapWrapperPipe name="WrapCreateCompanyRequest" storeResultInSessionKey="corsaRequest" />
 
+            <PutInSessionPipe name="storeCreateMetaOrganisationAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaOrganisation"/>
+
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender methodType="POST" url="${corsa.url}"
                     soapAction="http://bct.nl/CreateMetaOrganisation" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
-                <Forward name="exception" path="storeErrorResponse2" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-            <PutInSessionPipe name="storeErrorResponse2">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg2" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg2"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaOrganisation" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
                 storeResultInSessionKey="PersonData">
@@ -788,23 +665,13 @@
             <WsdlXmlValidatorPipe name="ValidateCreateMetaDocumentRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateMetaDocument" throwException="true"/>
 
+            <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
+
             <SenderPipe name="sendToCorsa3">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
-                <Forward name="exception" path="storeErrorResponse3" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-            <PutInSessionPipe name="storeErrorResponse3">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg3" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg3"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateMetaDocument" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapAndStoreDocumentDetails" direction="UNWRAP" removeOutputNamespaces="true" storeResultInSessionKey="DocumentDetails"/>
             
@@ -824,24 +691,13 @@
             <WsdlXmlValidatorPipe name="ValidateCreateFileVersionRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="CreateFileVersion" throwException="true"/>
 
+            <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
+
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="RemoveXMLDeclaration" />
-                <Forward name="exception" path="storeErrorResponse4" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeErrorResponse4">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg4" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildErrorMsg4"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/CreateFileVersion" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXMLCompany.xsl"/>
 
@@ -854,24 +710,13 @@
             <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
                 soapBody="Disconnect" throwException="true"/>
 
+            <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
+
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeDisconnectErrorResponse" />
+                <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
-
-            <PutInSessionPipe name="storeDisconnectErrorResponse">
-                <Param name="corsaResponse" />
-                <Forward name="success" path="buildDisconnectErrorMsg" />
-            </PutInSessionPipe>
-            <XsltPipe name="buildDisconnectErrorMsg"
-                styleSheetName="xsl/ParseNegativeHttpResultNew.xsl"
-                getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="soapAction" value="http://bct.nl/Disconnect" />
-                <Forward name="success" path="EXCEPTION" />
-            </XsltPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="DisconnectSuccessCheck" />
@@ -898,7 +743,24 @@
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
             </SenderPipe>
 
-            <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails"/>
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
+                <Forward name="success" path="SUCCESS" />
+            </EchoPipe>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+                <Forward name="success" path="buildErrorMsg" />
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/CreateErrorResponse.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
         </Pipeline>
     </Adapter>
 
