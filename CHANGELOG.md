@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.7.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.0...v6.7.1) (2023-08-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* correct forwards on checks ([c28d3ab](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c28d3abf2425aa7c2106417889475d6eeb4d39a0))
+
 ## [6.7.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.6.11...v6.7.0) (2023-08-02)
 
 
