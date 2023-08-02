@@ -86,11 +86,22 @@
 
             <Locker objectId="opslaanInkNatuurlijkPersoon" />
 
-            <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
+            <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
+                <Forward name="then" path="ConvertToConnectRequest_Password" />
+                <Forward name="else" path="ConvertToConnectRequest_NoPassword" />
+            </XmlIfPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
-             	<!-- <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" defaultValue=""/> -->
                 <Param name="ConnectionID" value="${ConnectionID}"/>
+                <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_Password" styleSheetName="xsl/Message2Connect.xsl">
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+               <Param name="ConnectionID" value="${ConnectionID}"/>
+           </XsltPipe>
 
             <SoapWrapperPipe name="WrapConnectRequest" storeResultInSessionKey="corsaRequest" />
 
@@ -369,11 +380,22 @@
 
             <Locker objectId="opslaanBijlage" />
 
-            <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
+            <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
+                <Forward name="then" path="ConvertToConnectRequest_Password" />
+                <Forward name="else" path="ConvertToConnectRequest_NoPassword" />
+            </XmlIfPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
-             	<!-- <Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/> -->
                 <Param name="ConnectionID" value="${ConnectionID}"/>
+                <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_Password" styleSheetName="xsl/Message2Connect.xsl">
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+               <Param name="ConnectionID" value="${ConnectionID}"/>
+           </XsltPipe>
 
             <SoapWrapperPipe name="WrapConnectRequest" soapNamespace="http://www.w3.org/2003/05/soap-envelope" storeResultInSessionKey="corsaRequest"/>
 
@@ -600,11 +622,22 @@
 
             <Locker objectId="opslaanInkNietNatuurlijkPersoon" />
 
-            <XsltPipe name="ConvertToConnectRequest" styleSheetName="xsl/Message2Connect.xsl">
+            <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
+                <Forward name="then" path="ConvertToConnectRequest_Password" />
+                <Forward name="else" path="ConvertToConnectRequest_NoPassword" />
+            </XmlIfPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
              	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
-             	<!-- <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" defaultValue=" "/> -->
                 <Param name="ConnectionID" value="${ConnectionID}"/>
+                <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_Password" styleSheetName="xsl/Message2Connect.xsl">
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}"/>
+               <Param name="ConnectionID" value="${ConnectionID}"/>
+           </XsltPipe>
 
             <SoapWrapperPipe name="WrapConnectRequest" storeResultInSessionKey="corsaRequest" />
 
