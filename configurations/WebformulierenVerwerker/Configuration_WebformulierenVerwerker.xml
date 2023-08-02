@@ -252,9 +252,16 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
-                <Forward name="success" path="RemoveXMLDeclaration" />
+                <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
+
+            <XmlSwitchPipe
+                name="CreateFileVersionCheck"
+                xpathExpression="//CreateFileVersionResult = 'true'">
+                <Forward name="true" path="RemoveXMLDeclaration" />
+                <Forward name="false" path="storeErrorResponse" />
+            </XmlSwitchPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXML.xsl"/>
 
@@ -695,9 +702,16 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
-                <Forward name="success" path="RemoveXMLDeclaration" />
+                <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
+
+            <XmlSwitchPipe
+                name="CreateFileVersionCheck"
+                xpathExpression="//CreateFileVersionResult = 'true'">
+                <Forward name="true" path="RemoveXMLDeclaration" />
+                <Forward name="false" path="storeErrorResponse" />
+            </XmlSwitchPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true" handleLexicalEvents="true" styleSheetName="xsl/Response2NoXMLCompany.xsl"/>
 
