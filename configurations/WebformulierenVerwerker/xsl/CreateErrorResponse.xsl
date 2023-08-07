@@ -1,6 +1,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:tns="http://tempuri.org/">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="yes" />
     <xsl:param name="corsaRequest" select="''" as="xs:string" />
     <xsl:param name="corsaResponse" select="''" as="xs:string" />
@@ -8,13 +9,13 @@
     <xsl:param name="corsaErrorMessage" as="xs:string" />
 
     <xsl:template match="/">
-        <SOAP-ENV:Fault>
-            <faultcode>SOAP-ENV:Server</faultcode>
-            <faultstring>
+        <tns:Fault>
+            <tns:faultcode>SOAP-ENV:Server</tns:faultcode>
+            <tns:faultstring>
                 <xsl:value-of select="$corsaErrorMessage" />
-            </faultstring>
-            <detail>
-                <Message>
+            </tns:faultstring>
+            <tns:detail>
+                <tns:Message>
                     <xsl:value-of
                         select="
                     concat(
@@ -28,8 +29,8 @@
                             concat(
                                 concat(codepoints-to-string(10),'Response: '),
                             $corsaResponse))" />
-                </Message>
-            </detail>
-        </SOAP-ENV:Fault>
+                </tns:Message>
+            </tns:detail>
+        </tns:Fault>
     </xsl:template>
 </xsl:stylesheet>
