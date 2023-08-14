@@ -307,8 +307,8 @@
 		<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
         
 		<!-- IMPORTANT: Uncomment correct address. First address is for T, second is for P. -->
-            <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
-            <!-- <soap:address location="https://tsjinstbus.sudwestfryslan.nl/hip/services/WebformulierenVerwerker"/> -->
+            <!-- <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/> -->
+            <soap:address location="https://tsjinstbus.sudwestfryslan.nl/hip/services/WebformulierenVerwerker"/>
         >
         </wsdl:port>
   </wsdl:service>	
