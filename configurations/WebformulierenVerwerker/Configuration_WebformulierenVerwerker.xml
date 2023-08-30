@@ -84,7 +84,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <Locker objectId="opslaanInkNatuurlijkPersoon" />
+            <Locker objectId="opslaanInkNatuurlijkPersoon" numRetries="3" retryDelay="5000"/>
 
             <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
                 <Forward name="then" path="ConvertToConnectRequest_Password" />
