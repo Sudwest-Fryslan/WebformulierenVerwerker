@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.7.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.5...v6.7.6) (2023-08-31)
+
+
+### 🐛 Bug Fixes
+
+* prevent error when two concurrent calls are made ([c2cdde1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c2cdde15dbe7a82f20b3ef096e95ece16649b081))
+
+
+### 🤖 Build System
+
+* Update ci-build.yml ([777b8c8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/777b8c86fc114e45ff7629d5f9a9c652a477b819))
+
 ## [6.7.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.4...v6.7.5) (2023-08-14)
 
 
