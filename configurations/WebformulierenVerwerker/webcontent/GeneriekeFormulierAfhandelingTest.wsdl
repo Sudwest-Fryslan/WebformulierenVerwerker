@@ -306,7 +306,7 @@
 	<wsdl:service name="GeneriekeFormulierAfhandeling">
 		<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
         
-            <soap:address location="https://tsjinstbus.sudwestfryslan.nl/hip/services/WebformulierenVerwerker"/>
+            <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
         >
         </wsdl:port>
   </wsdl:service>	
