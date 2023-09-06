@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.6...v6.8.0) (2023-09-06)
+
+
+### 🍕 Features
+
+* add T WSDL ([b0c7482](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b0c748230ecaf5c167f788da17e6a6118ee40cb6))
+
 ## [6.7.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.5...v6.7.6) (2023-08-31)
 
 
