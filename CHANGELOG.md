@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.1...v6.8.2) (2023-09-07)
+
+
+### 🤖 Build System
+
+* remove custom code and upgrade framework ([a696bb1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a696bb1e32199682098f6816a97345834a34e0f4))
+
 ## [6.8.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.0...v6.8.1) (2023-09-07)
 
 ## [6.8.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.7.6...v6.8.0) (2023-09-06)
