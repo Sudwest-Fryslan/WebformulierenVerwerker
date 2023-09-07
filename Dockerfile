@@ -1,16 +1,16 @@
-FROM wearefrank/frank-framework:7.9-20230905.223421
+FROM wearefrank/zaakbrug-base:5357284526
 
 # Copy dependencies
 COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 # COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Compile custom class, this should be changed to a buildstep in the future (lombok.jar added to lib/server for now to be able to compile custom code with Lombo annotations)
-# COPY --chown=tomcat java /tmp/java
-# RUN javac \
-#       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
-#       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
-#       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
-# RUN rm -rf /tmp/java
+COPY --chown=tomcat java /tmp/java
+RUN javac \
+      /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
+      -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
+      -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+RUN rm -rf /tmp/java
 
 # Copy database connection settings
 COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
