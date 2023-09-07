@@ -1,4 +1,4 @@
-FROM wearefrank/frank-framework:7.9-20230905.223421
+FROM wearefrank/zaakbrug-base:5357284526
 
 # Copy dependencies
 COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
