@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.3...v6.8.4) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* compile error (add HttpSessionBase.java to Dockerfile) ([ab356d7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ab356d76700729877b8496e4c202d744bc69bbde))
+* connection pool doesn't recover from closed connection ([1250f3b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1250f3b7acbe10bd301c390df0cc8eba7e144e93))
+
 ## [6.8.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.2...v6.8.3) (2023-09-07)
 
 
