@@ -10,6 +10,7 @@ COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 COPY --chown=tomcat java /tmp/java
 RUN javac \
       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
+      /tmp/java/nl/nn/adapterframework/http/HttpSessionBase.java \
       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 RUN rm -rf /tmp/java
