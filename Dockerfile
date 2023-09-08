@@ -1,19 +1,20 @@
 # Keep in sync with version in frank-runner.properties
-# Check whether java-orig files have changed in F!F and update custom code (java and java-orig files) accordingly
+# Check whether java-orig files present and have changed in F!F and update custom code (java and java-orig files) accordingly
 FROM wearefrank/frank-framework:7.9-20230905.223421
 
 # Copy dependencies
-COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
+# COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 # COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
-# Compile custom class, this should be changed to a buildstep in the future (lombok.jar added to lib/server for now to be able to compile custom code with Lombo annotations)
-#COPY --chown=tomcat java /tmp/java
-#RUN javac \
-#      /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
-#      /tmp/java/nl/nn/adapterframework/http/HttpSessionBase.java \
-#      -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
-#      -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
-#RUN rm -rf /tmp/java
+# Compile custom class, this should be changed to a buildstep in the future
+# Add lombok.jar to lib/server to be able to compile custom code with Lombok annotations
+# COPY --chown=tomcat java /tmp/java
+# RUN javac \
+#       /tmp/java/nl/nn/adapterframework/.../File1.java \
+#       /tmp/java/nl/nn/adapterframework/.../File2.java \
+#       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
+#       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+# RUN rm -rf /tmp/java
 
 # Copy database connection settings
 COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
