@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.6...v6.8.7) (2023-09-08)
+
+
+### 🎨 Styles
+
+* replace tabs with spaces in config files ([4c73632](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4c7363297544a324007b7f86af519f7feaf03599))
+
 ## [6.8.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.5...v6.8.6) (2023-09-08)
 
 
