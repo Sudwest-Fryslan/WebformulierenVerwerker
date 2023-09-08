@@ -57,8 +57,8 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="Version" path="VersionSoapActionSetter" />
                 <Forward name="opslaanInkNatuurlijkPersoon" path="PersoonSoapActionSetter" />
                 <Forward name="opslaanInkNietNatuurlijkPersoon" path="OrganisatieSoapActionSetter" />
-            	<Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
-            	<Forward name="Info" path="InfoSoapActionSetter" />
+                <Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
+                <Forward name="Info" path="InfoSoapActionSetter" />
              </XmlSwitchPipe>
 
              <PutInSessionPipe name="VersionSoapActionSetter" sessionKey="SOAPAction" value="VersionResponse">

@@ -4,11 +4,11 @@
 ]>
 <Configuration>
     <SharedResources>
-		<HttpSession
-			name="SharedHttpSession"
+        <HttpSession
+            name="SharedHttpSession"
             methodType="POST"
-		/>
-	</SharedResources>
+        />
+    </SharedResources>
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

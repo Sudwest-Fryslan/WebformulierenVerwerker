@@ -74,7 +74,7 @@
 
     <Adapter name="opslaanInkNatuurlijkPersoon">
 
-		 <Receiver name="opslaanInkNatuurlijkPersoon">
+        <Receiver name="opslaanInkNatuurlijkPersoon">
             <JavaListener name="opslaanInkNatuurlijkPersoon"/>
         </Receiver>
         <Pipeline>
@@ -92,7 +92,7 @@
             </XmlIfPipe>
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
                 <Param name="ConnectionID" value="${ConnectionID}"/>
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
@@ -136,7 +136,7 @@
 
             <!-- Query to see if person exists -->
             <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/Message2QueryPerson.xsl">
-             	<Param name="afzenderbsn" xpathExpression="//afzenderbsn" sessionKey="originalMessage"/>
+                <Param name="afzenderbsn" xpathExpression="//afzenderbsn" sessionKey="originalMessage"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapQueryRequest" storeResultInSessionKey="corsaRequest" />
@@ -160,9 +160,9 @@
             <XsltPipe name="RemoveResultTags" xpathExpression="//QueryExecuteResult" />
 
             <Base64Pipe name="DecodeQueryResult"
-				direction="DECODE"
+                direction="DECODE"
                 charset="UTF-8">
-			</Base64Pipe>
+            </Base64Pipe>
 
             <!-- If person does not exist, create a person in Corsa. -->
             <XmlSwitchPipe
@@ -212,7 +212,7 @@
             
             <!-- If person is created, create a document in Corsa. -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl" getInputFromSessionKey="originalMessage">
-            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="PersoonID" sessionKey="SPNum"/>
             </XsltPipe>
 
@@ -239,7 +239,7 @@
             </XmlSwitchPipe>
             
             <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
-            	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
+                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateFileVersionRequest" storeResultInSessionKey="corsaRequest" />
@@ -345,7 +345,7 @@
             </XmlIfPipe>
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
                 <Param name="ConnectionID" value="${ConnectionID}"/>
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
@@ -523,7 +523,7 @@
     
     <Adapter name="opslaanInkNietNatuurlijkPersoon">
 
-		 <Receiver name="opslaanInkNietNatuurlijkPersoon">
+        <Receiver name="opslaanInkNietNatuurlijkPersoon">
             <JavaListener name="opslaanInkNietNatuurlijkPersoon"/>
         </Receiver>
         <Pipeline>
@@ -541,7 +541,7 @@
             </XmlIfPipe>
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword" styleSheetName="xsl/Message2Connect.xsl">
-             	<Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}"/>
                 <Param name="ConnectionID" value="${ConnectionID}"/>
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
@@ -585,7 +585,7 @@
 
             <!-- Query to see if person exists -->
             <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/Message2QueryCompany.xsl">
-             	<Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>
+                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapQueryRequest" storeResultInSessionKey="corsaRequest" />
@@ -609,9 +609,9 @@
             <XsltPipe name="RemoveResultTags" xpathExpression="//QueryExecuteResult" />
 
             <Base64Pipe name="DecodeQueryResult"
-				direction="DECODE"
+                direction="DECODE"
                 charset="UTF-8">
-			</Base64Pipe>
+            </Base64Pipe>
 
             <!-- If company does not exist, create a company in Corsa. -->
             <XmlSwitchPipe
@@ -661,7 +661,7 @@
             
             <!-- If person is created, create a document in Corsa. -->
             <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocumentCompany.xsl" getInputFromSessionKey="originalMessage">
-            	<Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}"/>
                 <Param name="ONum" sessionKey="ONum"/>
             </XsltPipe>
 
@@ -688,7 +688,7 @@
             </XmlSwitchPipe>
             
             <XsltPipe name="ConvertToCreateFileVersion" styleSheetName="xsl/Message2CreateFileVersion.xsl" getInputFromSessionKey="originalMessage">
-            	<Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
+                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID" sessionKey="DocumentDetails"/>
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateFileVersionRequest" storeResultInSessionKey="corsaRequest" />
