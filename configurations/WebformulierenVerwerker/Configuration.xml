@@ -3,6 +3,13 @@
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
+    <SharedResources>
+		<HttpSession
+			name="SharedHttpSession"
+			url="${corsa.url}"
+            methodType="POST"
+		/>
+	</SharedResources>
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>
