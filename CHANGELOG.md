@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.5...v6.8.6) (2023-09-08)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove unused files from custom code ([c05a06f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c05a06fe2fe6c0f11a52ed6a6e2ea6c594ce5ad1))
+
 ## [6.8.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.4...v6.8.5) (2023-09-08)
 
 
