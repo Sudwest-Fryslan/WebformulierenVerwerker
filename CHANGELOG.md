@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.4...v6.8.5) (2023-09-08)
+
+
+### 🐛 Bug Fixes
+
+* replace custom code with new f!f function ([3a4404b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3a4404b1b7e6060710856222a6216aeb0bace7fe))
+* shared resource doesn't allow url ([f89287c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f89287cabf25bf8f09ad3bd0a66691422671c0a5))
+
 ## [6.8.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.3...v6.8.4) (2023-09-07)
 
 
