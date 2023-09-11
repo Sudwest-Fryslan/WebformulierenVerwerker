@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.7...v6.8.8) (2023-09-11)
+
+
+### 🐛 Bug Fixes
+
+* Remove methodType from HttpSession ([5e54bd2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5e54bd2fd70912c722db0c8ee0c958f407a9e95a))
+
 ## [6.8.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.6...v6.8.7) (2023-09-08)
 
 
