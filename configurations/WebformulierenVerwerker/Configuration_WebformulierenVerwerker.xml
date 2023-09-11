@@ -14,7 +14,7 @@
             <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Message2About.xsl" storeResultInSessionKey="corsaRequest"/>
 
             <SenderPipe name="sendToCorsa">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractInfo" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -111,7 +111,7 @@
             <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -147,7 +147,7 @@
             <PutInSessionPipe name="storeQueryExecuteAction" sessionKey="RequestSoapAction" value="http://bct.nl/QueryExecute"/>
 
             <SenderPipe name="sendQueryToCorsa">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -189,7 +189,7 @@
             <PutInSessionPipe name="storeCreateMetaPersonAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaPerson"/>
 
             <SenderPipe name="sendToCorsa2">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -224,7 +224,7 @@
             <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
             
             <SenderPipe name="sendToCorsa3">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -250,7 +250,7 @@
             <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
 
             <SenderPipe name="sendToCorsa4">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -276,7 +276,7 @@
             <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -361,7 +361,7 @@
             <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -413,7 +413,7 @@
             <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
 
             <SenderPipe name="sendToCorsa5">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -438,7 +438,7 @@
             <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
 
             <SenderPipe name="sendToCorsa6">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper6" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -459,7 +459,7 @@
             <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction" value="http://bct.nl/ModObjectRelation"/>
 
             <SenderPipe name="sendToCorsa7">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="ConvertToBijlageResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -482,7 +482,7 @@
             <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -560,7 +560,7 @@
             <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Connect"/>
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false" timeout="20000"/>
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -596,7 +596,7 @@
             <PutInSessionPipe name="storeQueryExecuteAction" sessionKey="RequestSoapAction" value="http://bct.nl/QueryExecute"/>
 
             <SenderPipe name="sendQueryToCorsa">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -638,7 +638,7 @@
             <PutInSessionPipe name="storeCreateMetaOrganisationAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaOrganisation"/>
 
             <SenderPipe name="sendToCorsa2">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaOrganisation" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaOrganisation" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -673,7 +673,7 @@
             <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateMetaDocument"/>
 
             <SenderPipe name="sendToCorsa3">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -699,7 +699,7 @@
             <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction" value="http://bct.nl/CreateFileVersion"/>
 
             <SenderPipe name="sendToCorsa4">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
@@ -725,7 +725,7 @@
             <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction" value="http://bct.nl/Disconnect"/>
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
