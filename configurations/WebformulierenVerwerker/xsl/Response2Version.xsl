@@ -6,7 +6,7 @@
     <xsl:template match="/">
         <VersionResponse xmlns="http://tempuri.org/">
             <VersionResult>
-                Frank! Version <xsl:value-of select="$version" /> - <xsl:value-of select="$versionDate_ddmmyyyy" />
+                WebformulierenVerwerker - Version <xsl:value-of select="$version" /> - <xsl:value-of select="$versionDate_ddmmyyyy" />
             </VersionResult>
         </VersionResponse>
     </xsl:template>
