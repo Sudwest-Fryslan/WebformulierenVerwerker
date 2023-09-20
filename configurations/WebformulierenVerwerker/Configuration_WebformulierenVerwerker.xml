@@ -40,6 +40,11 @@
                 <Param name="serverType" value="${application.server.type}" />
                 <Param name="osName" value="${os.name}" />
                 <Param name="directory" value="${configurations.directory}" />
+                <Param name="hipVersion" value="${instance.version}" />
+                <Param name="wfvVersion" value="${configuration.version}" />
+                <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
+                <Param name="frameworkVersion" value="${application.version}" />
+                <Param name="corsaUrl" value="${corsa.url}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
             </XsltPipe>
@@ -61,7 +66,7 @@
             </Exits>
 
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Response2Version.xsl">
-                <Param name="version" value="${instance.version}" />
+                <Param name="version" value="${configuration.version}" />
                 <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
                 <Forward name="success" path="Wrapper" />
                 <Forward name="exception" path="EXCEPTION" />
