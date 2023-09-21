@@ -26,9 +26,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" value="http://bct.nl/About" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
@@ -323,9 +323,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
@@ -516,9 +516,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
@@ -583,7 +583,7 @@
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
-                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                <Forward name="then" path="ConvertToQueryRequest" />
+                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>
                 <Forward name="then" path="ConvertToQueryRequest" />
                 <Forward name="else" path="ConvertToCreateCompany" />
             </XmlIfPipe>
@@ -772,9 +772,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError" sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
