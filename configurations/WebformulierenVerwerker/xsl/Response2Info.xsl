@@ -22,7 +22,15 @@
                 <xsl:value-of select="$hipVersion" />
                 <xsl:text>&#xA; Framework: Frank!Framework - Version </xsl:text>
                 <xsl:value-of select="$frameworkVersion" />
-                <xsl:text>&#xA; Server: openzksbrugp001</xsl:text>
+                <xsl:if test="$stage = 'LOC'">
+                    <xsl:text>&#xA; Server: localhost</xsl:text>
+                </xsl:if>
+                <xsl:if test="$stage = 'TST'">
+                    <xsl:text>&#xA; Server: openzksbrugt001</xsl:text>
+                </xsl:if>
+                <xsl:if test="$stage = 'PRD'">
+                    <xsl:text>&#xA; Server: openzksbrugp001</xsl:text>
+                </xsl:if>
                 <xsl:text>&#xA; Endpoint: /webformulierenverwerker/services/WebformulierenVerwerker</xsl:text>
                 <xsl:text>&#xA; Server Type: </xsl:text>
                 <xsl:value-of select="$serverType" />
