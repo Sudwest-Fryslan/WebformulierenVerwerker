@@ -17,7 +17,7 @@
 
             <SenderPipe name="sendToCorsa">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" timeout="12500"/>
                 <Forward name="success" path="ExtractInfo" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -134,7 +134,7 @@
             <SenderPipe name="sendToCorsa1">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
-                    timeout="20000" />
+                    timeout="12500" />
                 <Forward name="success" path="Unwrapper1" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -174,7 +174,7 @@
 
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapQueryResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -219,7 +219,7 @@
 
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" timeout="12500"/>
                 <Forward name="success" path="Unwrapper2" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -257,7 +257,7 @@
 
             <SenderPipe name="sendToCorsa3">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -290,7 +290,7 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" timeout="12500"/>
                 <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -320,7 +320,7 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -488,7 +488,7 @@
 
             <SenderPipe name="sendToCorsa5">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" timeout="12500"/>
                 <Forward name="success" path="Wrapper5" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -519,7 +519,7 @@
 
             <SenderPipe name="sendToCorsa6">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" timeout="12500"/>
                 <Forward name="success" path="Wrapper6" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -546,7 +546,7 @@
 
             <SenderPipe name="sendToCorsa7">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" timeout="12500"/>
                 <Forward name="success" path="ConvertToBijlageResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -574,7 +574,7 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -709,7 +709,7 @@
 
             <SenderPipe name="sendQueryToCorsa">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapQueryResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -755,7 +755,7 @@
             <SenderPipe name="sendToCorsa2">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaOrganisation"
-                    soap="false" />
+                    soap="false" timeout="12500"/>
                 <Forward name="success" path="Unwrapper2" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -794,7 +794,7 @@
 
             <SenderPipe name="sendToCorsa3">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -827,7 +827,7 @@
 
             <SenderPipe name="sendToCorsa4">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" timeout="12500"/>
                 <Forward name="success" path="CreateFileVersionCheck" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
@@ -857,7 +857,7 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
                 <Forward name="success" path="UnwrapDisconnectResponse" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
