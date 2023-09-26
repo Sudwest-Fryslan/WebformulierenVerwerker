@@ -57,6 +57,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="Version" path="VersionSoapActionSetter" />
                 <Forward name="opslaanInkNatuurlijkPersoon" path="PersoonSoapActionSetter" />
                 <Forward name="opslaanInkNietNatuurlijkPersoon" path="OrganisatieSoapActionSetter" />
+                <Forward name="opslaanInk" path="InkSoapActionSetter" />
                 <Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
                 <Forward name="Info" path="InfoSoapActionSetter" />
              </XmlSwitchPipe>
@@ -75,6 +76,10 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
              
              <PutInSessionPipe name="OrganisatieSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNietNatuurlijkPersoonResponse">
                 <Forward name="success" path="CallopslaanInkNietNatuurlijkPersoon" />
+             </PutInSessionPipe>
+            
+             <PutInSessionPipe name="InkSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkResponse">
+                <Forward name="success" path="CallopslaanInk" />
              </PutInSessionPipe>
 
              <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction" value="opslaanBijlageResponse">
@@ -107,6 +112,16 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <IbisLocalSender
                     name="opslaanInkNietNatuurlijkPersoonLocalSender"
                     javaListener="opslaanInkNietNatuurlijkPersoon">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="SoapWrapper" />
+            </SenderPipe>
+            
+            <SenderPipe
+                name="CallopslaanInk">
+                <IbisLocalSender
+                    name="opslaanInk"
+                    javaListener="opslaanInk">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="SoapWrapper" />
