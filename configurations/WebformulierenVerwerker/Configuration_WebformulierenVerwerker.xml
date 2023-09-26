@@ -19,13 +19,21 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" />
                 <Forward name="success" path="ExtractInfo" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="corsaResponse" />
-                <Forward name="success" path="buildErrorMsg" />
             </PutInSessionPipe>
+
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
@@ -36,6 +44,7 @@
                 <Param name="soapAction" value="http://bct.nl/About" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
+
 
             <XsltPipe name="ExtractInfo" styleSheetName="xsl/Response2Info.xsl">
                 <Param name="stage" value="${dtap.stage}" />
@@ -50,7 +59,7 @@
                 <Param name="frameworkVersion" value="${application.version}" />
                 <Param name="corsaUrl" value="${corsa.url}" />
                 <Forward name="success" path="Wrapper" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </XsltPipe>
 
             <SoapWrapperPipe name="Wrapper" />
@@ -127,7 +136,7 @@
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
                     timeout="20000" />
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
@@ -139,7 +148,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="CheckForAfzender" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderbsn) > 1">
@@ -167,7 +176,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP"
@@ -212,7 +221,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaPerson" soap="false" />
                 <Forward name="success" path="Unwrapper2" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
@@ -225,7 +234,7 @@
                 name="CreatePersonResultCheck"
                 xpathExpression="CreateMetaPersonResponse/CreateMetaPersonResult = 'true'">
                 <Forward name="true" path="GetNewSPNum" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="GetNewSPNum" xpathExpression="//NewObjectID" />
@@ -250,7 +259,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapAndStoreDocumentDetails" direction="UNWRAP"
@@ -260,7 +269,7 @@
                 name="DocumentDetailsCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersion" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateFileVersion"
@@ -283,14 +292,14 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="CreateFileVersionCheck" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <XmlSwitchPipe
                 name="CreateFileVersionCheck"
                 xpathExpression="//CreateFileVersionResult = 'true'">
                 <Forward name="true" path="RemoveXMLDeclaration" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true"
@@ -313,7 +322,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
@@ -326,7 +335,7 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl"
@@ -348,6 +357,16 @@
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
             </EchoPipe>
+
+
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="corsaResponse" />
@@ -410,7 +429,7 @@
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
                     timeout="20000" />
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
@@ -422,7 +441,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="RequestInfo" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage"
@@ -471,7 +490,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="Wrapper5" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true"
@@ -484,7 +503,7 @@
                 name="DocumentForBijlageCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersionForBijlage" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateFileVersionForBijlage"
@@ -502,7 +521,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="Wrapper6" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
@@ -529,7 +548,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <Forward name="success" path="ConvertToBijlageResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapModObjectRelationRequest" direction="UNWRAP" />
@@ -557,7 +576,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
@@ -570,12 +589,22 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="ReturnResult" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults">
                 <Forward name="success" path="SUCCESS" />
             </EchoPipe>
+
+
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="corsaResponse" />
@@ -642,7 +671,7 @@
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
                     timeout="20000" />
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
@@ -654,7 +683,7 @@
                 name="ConnectionSuccessCheck"
                 xpathExpression="ConnectResponse/ConnectResult = 'true'">
                 <Forward name="true" path="ConvertToQueryRequest" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
@@ -682,7 +711,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/QueryExecute" soap="false" />
                 <Forward name="success" path="UnwrapQueryResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapQueryResponse" direction="UNWRAP"
@@ -728,7 +757,7 @@
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaOrganisation"
                     soap="false" />
                 <Forward name="success" path="Unwrapper2" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
@@ -741,7 +770,7 @@
                 name="CreateCompanyResultCheck"
                 xpathExpression="CreateMetaOrganisationResponse/CreateMetaOrganisationResult = 'true'">
                 <Forward name="true" path="GetNewONum" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="GetNewONum" xpathExpression="//NewObjectID" />
@@ -767,7 +796,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false" />
                 <Forward name="success" path="UnwrapAndStoreDocumentDetails" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapAndStoreDocumentDetails" direction="UNWRAP"
@@ -777,7 +806,7 @@
                 name="DocumentDetailsCheck"
                 xpathExpression="//CreateMetaDocumentResult = 'true'">
                 <Forward name="true" path="ConvertToCreateFileVersion" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateFileVersion"
@@ -800,14 +829,14 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false" />
                 <Forward name="success" path="CreateFileVersionCheck" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <XmlSwitchPipe
                 name="CreateFileVersionCheck"
                 xpathExpression="//CreateFileVersionResult = 'true'">
                 <Forward name="true" path="RemoveXMLDeclaration" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true"
@@ -830,7 +859,7 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
                     url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
                 <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="storeErrorResponse" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
@@ -843,7 +872,7 @@
                 name="DisconnectSuccessCheck"
                 xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
-                <Forward name="false" path="storeErrorResponse" />
+                <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
             <XsltPipe name="DateTime2Date" styleSheetName="xsl/DateTime2Date.xsl"
@@ -865,6 +894,16 @@
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
                 <Forward name="success" path="SUCCESS" />
             </EchoPipe>
+
+
+            
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="corsaResponse" />

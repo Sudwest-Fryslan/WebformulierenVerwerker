@@ -21,13 +21,13 @@
                     concat(
                         concat(
                             concat(
-                                concat(codepoints-to-string(10),'Soap Action: '), 
+                                concat(codepoints-to-string(10),' Soap Action: '), 
                             $soapAction),
                             concat(
-                                concat(codepoints-to-string(10),'Request: '),
+                                concat(codepoints-to-string(10),' Request: '),
                             $corsaRequest)),
                             concat(
-                                concat(codepoints-to-string(10),'Response: '),
+                                concat(codepoints-to-string(10),' Response: '),
                             $corsaResponse))" />
                 </tns:Message>
             </tns:detail>
