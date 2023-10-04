@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.9.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.9...v6.9.0) (2023-10-04)
+
+
+### 🍕 Features
+
+* add prevent NPE on locker ([414d5a9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/414d5a90ae89fd7794c7df6371f0c0a6efd9dd81))
+
 ## [6.8.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.8...v6.8.9) (2023-10-04)
 
 
