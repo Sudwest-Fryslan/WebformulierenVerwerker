@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.8.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.8...v6.8.9) (2023-10-04)
+
+
+### 🐛 Bug Fixes
+
+* version correction ([0753a5b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0753a5bf9ccde721710650bef4dc047902d7ea4b))
+
+
+### 🤖 Build System
+
+* update F!F version ([b6c8e45](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b6c8e450fa8f6393b403db7bbd6ba490e0b15e31))
+
 ## [6.8.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.7...v6.8.8) (2023-09-11)
 
 
