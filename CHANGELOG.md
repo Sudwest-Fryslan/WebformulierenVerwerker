@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.10.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.9.0...v6.10.0) (2023-10-05)
+
+
+### 🍕 Features
+
+* upgrade f!f version ([cd0d8aa](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cd0d8aa5b1188597dce0597b8653baff0ca57b52))
+
+
+### 🐛 Bug Fixes
+
+* numRetries not working ([c207550](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c2075505f177eb802c91b02f5fe300bdf6b8997e))
+
+
+### 🤖 Build System
+
+* disable custom class loading ([dcde777](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dcde7772ab72b3fae0388a93e9fa687982bb3e0d))
+
 ## [6.9.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.9...v6.9.0) (2023-10-04)
 
 
