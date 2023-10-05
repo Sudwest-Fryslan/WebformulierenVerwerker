@@ -11,6 +11,7 @@ FROM wearefrank/frank-framework:7.9-20230907.223421
 COPY --chown=tomcat java /tmp/java
 RUN javac \
       /tmp/java/nl/nn/adapterframework/processors/LockerPipeLineProcessor.java \
+      /tmp/java/nl/nn/adapterframework/util/Locker.java \
       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 RUN rm -rf /tmp/java
