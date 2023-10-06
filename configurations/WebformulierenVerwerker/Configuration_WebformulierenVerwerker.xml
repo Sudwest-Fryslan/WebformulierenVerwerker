@@ -277,18 +277,13 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
-                <Forward name="success" path="UnwrapDisconnectResponse" />
+                <Forward name="success" path="DisconnectSuccessCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
-                <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
-
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
@@ -483,18 +478,13 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
-                <Forward name="success" path="UnwrapDisconnectResponse" />
+                <Forward name="success" path="DisconnectSuccessCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
-                <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
-
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="ReturnResult" />
                 <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
@@ -726,18 +716,13 @@
 
             <SenderPipe name="SendDisconnectRequest">
                 <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST" url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" />
-                <Forward name="success" path="UnwrapDisconnectResponse" />
+                <Forward name="success" path="DisconnectSuccessCheck" />
                 <Forward name="exception" path="storeErrorResponse" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP" removeOutputNamespaces="true">
-                <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
-
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="storeErrorResponse" />
             </XmlSwitchPipe>
