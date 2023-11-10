@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.10.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.1...v6.10.2) (2023-11-10)
+
+
+### 🤖 Build System
+
+* add libs necessary for HIP support ([ca0802b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ca0802b537ab60a9b0c073c93064147b6a055575))
+* change ff version ([0d1f433](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0d1f43366f68b05c96c4039ae20f328684af90ef))
+
 ## [6.10.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.0...v6.10.1) (2023-10-06)
 
 
