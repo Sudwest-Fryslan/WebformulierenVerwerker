@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.11.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.2...v6.11.0) (2023-11-30)
+
+
+### ⏩ Reverts
+
+* Revert "build: change ff version" ([1dc753d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1dc753d48962bd03ddb5c9b39e75cb0eb6a7129d))
+
+
+### 📝 Documentation
+
+* update README.md ([df81034](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/df8103443259ba3ebca97859c36c07c063910cbe))
+
 ## [6.10.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.1...v6.10.2) (2023-11-10)
 
 
