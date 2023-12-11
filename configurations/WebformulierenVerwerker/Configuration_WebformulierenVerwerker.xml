@@ -568,7 +568,7 @@
             </XmlSwitchPipe>
 
             <XmlIfPipe name="CheckForAfzender" xpathExpression="string-length($afzenderkvk) > 1">
-                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                <Forward name="then" path="ConvertToQueryRequest" />
+                <Param name="afzenderkvk" xpathExpression="//afzenderkvk" sessionKey="originalMessage"/>                
                 <Forward name="then" path="ConvertToQueryRequest" />
                 <Forward name="else" path="ConvertToCreateCompany" />
             </XmlIfPipe>
