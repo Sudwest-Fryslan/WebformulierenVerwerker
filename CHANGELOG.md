@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.11.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.0...v6.11.1) (2023-12-11)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove excess forward ([1b8cb8c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1b8cb8c9eccece74ece1dcf76384a089006dba13))
+
+
+### 🤖 Build System
+
+* update versions ([c6e2342](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c6e2342f418c3ce180f729ca5b29733cb75e77af))
+
 ## [6.11.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.2...v6.11.0) (2023-11-30)
 
 
