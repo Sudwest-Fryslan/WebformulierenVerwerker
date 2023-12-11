@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.11.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.1...v6.11.2) (2023-12-11)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove sharedResourceRef attribute ([482ab3e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/482ab3ee43989fa98f6ae0525c674873a52c64d6))
+* remove SharedResources ([3e2754d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3e2754dee66b801be5148bee0c38907e775b640c))
+
 ## [6.11.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.0...v6.11.1) (2023-12-11)
 
 

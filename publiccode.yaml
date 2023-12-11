@@ -2,7 +2,7 @@ publiccodeYmlVersion: "0.2"
 # Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publiccode.md
 name: WebformulierenVerwerker
 url: "https://github.com/Sudwest-Fryslan/WebformulierenVerwerker.git"
-softwareVersion: "6.11.1"    # Optional
+softwareVersion: "6.11.2"    # Optional
 releaseDate: 2023-12-11
 applicationSuite: het-integratie-platform
 platforms:
