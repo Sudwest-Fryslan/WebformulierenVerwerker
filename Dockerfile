@@ -1,6 +1,7 @@
 # Keep in sync with version in frank-runner.properties
 # Check whether java-orig files present and have changed in F!F and update custom code (java and java-orig files) accordingly
-FROM frankframework/frankframework:7.9-20231002.120318
+FROM frankframework/frankframework:7.9-20231028.143509
+
 
 # Copy dependencies
 # COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
