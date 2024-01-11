@@ -293,7 +293,16 @@
             </XsltPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <FixedQuerySender query="
+                MERGE INTO INFO_CACHE AS target
+                USING (
+                    VALUES
+                        (?, ?, ?, ?, ?)
+                ) AS source (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                ON target.REGISTRATIENUMMER = source.REGISTRATIENUMMER
+                WHEN NOT MATCHED THEN
+                    INSERT (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                    VALUES (source.REGISTRATIENUMMER, source.VERTROUWELIJKHEID, source.AFZENDER, source.ONDERWERP, source.STOREDATE);" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
                 <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
@@ -732,7 +741,16 @@
             </XsltPipe>
 
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <FixedQuerySender query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <FixedQuerySender query="
+                MERGE INTO INFO_CACHE AS target
+                USING (
+                    VALUES
+                        (?, ?, ?, ?, ?)
+                ) AS source (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                ON target.REGISTRATIENUMMER = source.REGISTRATIENUMMER
+                WHEN NOT MATCHED THEN
+                    INSERT (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                    VALUES (source.REGISTRATIENUMMER, source.VERTROUWELIJKHEID, source.AFZENDER, source.ONDERWERP, source.STOREDATE);" />
                 <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
                 <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
                 <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
