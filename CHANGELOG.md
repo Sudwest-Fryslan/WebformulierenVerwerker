@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.11.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.3...v6.11.4) (2024-01-11)
+
+
+### 🐛 Bug Fixes
+
+* make queries compatible with h2 ([affe07f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/affe07fefd088a41a2116a6b40b6600187e6ae5a))
+
 ## [6.11.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.2...v6.11.3) (2023-12-11)
 
 
