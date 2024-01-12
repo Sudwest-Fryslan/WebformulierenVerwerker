@@ -5,7 +5,9 @@ Communicate between Kodison and Corsa. This configuration transforms incoming Ko
 This application processes SOAP requests that satisfy a WSDL that has been copied from the predecessor of this bridge. The WSDL is included in this project.
 
 ## Testing
-Do note that this project is not configured to use the regular Larva tests. Instead, it uses the SoapUI project included in the docs folder.
+This project can be tested using the SoapUI project in the Tests folder. For local testing you must run the Mockservice contained within the SoapUI project and then run the General Tests testcase. For testing on a configured test environment you will not need the mockservice. However, you will have to change the project's custom property "WebformulierenVerwerkerEndpoint" to the Corsa endpoint. 
+
+The mockservice runs on port 8081. Communication with the Frank! is presumed to be on port 8080.
 
 ## Advanced Information
 
