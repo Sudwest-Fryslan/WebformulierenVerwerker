@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter name="WebformulierenVerwerker">
         <Receiver>
-            <WebServiceListener name="WebformulierenVerwerker" address="WebformulierenVerwerker" soap="false" />
+            <WebServiceListener name="WebformulierenVerwerker" address="WebformulierenVerwerker"
+                soap="false" />
         </Receiver>
-<!--
-Meerdere receivers geeft wel meerdere operaties in de WSDL maar die krijgen allemaal soap:body parts="Part_Info" (eerste element uit soapBody input validator)
+        <!--
+Meerdere receivers geeft wel meerdere operaties in de WSDL maar die krijgen allemaal soap:body
+        parts="Part_Info" (eerste element uit soapBody input validator)
 Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
         <Receiver>
             <WebServiceListener name="Version" address="Version" soap="false" />
         </Receiver>
         <Receiver>
-            <WebServiceListener name="opslaanInkNatuurlijkPersoon" address="opslaanInkNatuurlijkPersoon" soap="false" />
+            <WebServiceListener name="opslaanInkNatuurlijkPersoon" address="opslaanInkNatuurlijkPersoon"
+        soap="false" />
         </Receiver>
         <Receiver>
             <WebServiceListener name="opslaanBijlage" address="opslaanBijlage" soap="false" />
@@ -30,9 +34,11 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 throwException="true">
             </WsdlXmlInputValidator>
 
-            <!-- Somehow doesn't respect the InfoResponse in the comma seperated value of soapBody, it gives:
+            <!-- Somehow doesn't respect the InfoResponse in the comma seperated value of soapBody,
+            it gives:
                  /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
-                 Probably because we have SessionKey SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
+                 Probably because we have SessionKey
+            SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
                  which is working for WsdlXmlInputValidator above. -->
             <WsdlXmlOutputValidator name="OutputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
@@ -45,13 +51,13 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
-            
+
             <SoapWrapperPipe name="Unwrapper" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="CheckOperation" />
                 <Forward name="exception" path="SoapWrapper" />
             </SoapWrapperPipe>
-            
-             <XmlSwitchPipe
+
+            <XmlSwitchPipe
                 name="CheckOperation"
                 xpathExpression="name(*)">
                 <Forward name="Version" path="VersionSoapActionSetter" />
@@ -59,29 +65,34 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="opslaanInkNietNatuurlijkPersoon" path="OrganisatieSoapActionSetter" />
                 <Forward name="opslaanBijlage" path="BijlageSoapActionSetter" />
                 <Forward name="Info" path="InfoSoapActionSetter" />
-             </XmlSwitchPipe>
+            </XmlSwitchPipe>
 
-             <PutInSessionPipe name="VersionSoapActionSetter" sessionKey="SOAPAction" value="VersionResponse">
+            <PutInSessionPipe name="VersionSoapActionSetter" sessionKey="SOAPAction"
+                value="VersionResponse">
                 <Forward name="success" path="CallVersion" />
-             </PutInSessionPipe>
+            </PutInSessionPipe>
 
-             <PutInSessionPipe name="InfoSoapActionSetter" sessionKey="SOAPAction" value="InfoResponse">
+            <PutInSessionPipe name="InfoSoapActionSetter" sessionKey="SOAPAction"
+                value="InfoResponse">
                 <Forward name="success" path="CallInfo" />
-             </PutInSessionPipe>
+            </PutInSessionPipe>
 
-             <PutInSessionPipe name="PersoonSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNatuurlijkPersoonResponse">
+            <PutInSessionPipe name="PersoonSoapActionSetter" sessionKey="SOAPAction"
+                value="opslaanInkNatuurlijkPersoonResponse">
                 <Forward name="success" path="CallopslaanInkNatuurlijkPersoon" />
-             </PutInSessionPipe>
-             
-             <PutInSessionPipe name="OrganisatieSoapActionSetter" sessionKey="SOAPAction" value="opslaanInkNietNatuurlijkPersoonResponse">
+            </PutInSessionPipe>
+
+            <PutInSessionPipe name="OrganisatieSoapActionSetter" sessionKey="SOAPAction"
+                value="opslaanInkNietNatuurlijkPersoonResponse">
                 <Forward name="success" path="CallopslaanInkNietNatuurlijkPersoon" />
-             </PutInSessionPipe>
+            </PutInSessionPipe>
 
-             <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction" value="opslaanBijlageResponse">
+            <PutInSessionPipe name="BijlageSoapActionSetter" sessionKey="SOAPAction"
+                value="opslaanBijlageResponse">
                 <Forward name="success" path="UnwrapBijlageRequest" />
-             </PutInSessionPipe>
+            </PutInSessionPipe>
 
-            
+
             <SenderPipe
                 name="CallVersion">
                 <IbisLocalSender
@@ -101,7 +112,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="SoapWrapper" />
             </SenderPipe>
-            
+
             <SenderPipe
                 name="CallopslaanInkNietNatuurlijkPersoon">
                 <IbisLocalSender
@@ -114,7 +125,8 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
 
             <!-- OperationChecker adds a few random variables on top of the message.
             To mitigate this, we get the originalMessage and unwrap it. -->
-            <SoapWrapperPipe name="UnwrapBijlageRequest" direction="UNWRAP" removeOutputNamespaces="true" getInputFromSessionKey="originalMessage">
+            <SoapWrapperPipe name="UnwrapBijlageRequest" direction="UNWRAP"
+                removeOutputNamespaces="true" getInputFromSessionKey="originalMessage">
                 <Forward name="success" path="CallopslaanBijlage" />
                 <Forward name="exception" path="SoapWrapper" />
             </SoapWrapperPipe>
