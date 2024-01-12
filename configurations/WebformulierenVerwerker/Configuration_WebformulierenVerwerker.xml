@@ -292,7 +292,12 @@
                 <Param name="datetime" xpathExpression="current-dateTime()"/>
             </XsltPipe>
 
-            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+            <XmlIfPipe name="CheckStage" getInputFromFixedValue="&lt;staticValue/>" xpathExpression="'${dtap.stage}' = 'LOC'">
+                <Forward name="then" path="StoreVertrouwelijkheidLocal" />
+                <Forward name="else" path="StoreVertrouwelijkheid" />
+            </XmlIfPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheidLocal" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender query="
                 MERGE INTO INFO_CACHE AS target
                 USING (
@@ -308,6 +313,17 @@
                 <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
                 <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
+                <Forward name="success" path="ReturnResult" />
+            </SenderPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
+                <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
+                <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
+                <Param name= "STOREDATE" sessionKey="StoreDate"/>
+                <Forward name="success" path="ReturnResult" />
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
@@ -740,7 +756,12 @@
                 <Param name="datetime" xpathExpression="current-dateTime()"/>
             </XsltPipe>
 
-            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+            <XmlIfPipe name="CheckStage" getInputFromFixedValue="&lt;staticValue/>" xpathExpression="'${dtap.stage}' = 'LOC'">
+                <Forward name="then" path="StoreVertrouwelijkheidLocal" />
+                <Forward name="else" path="StoreVertrouwelijkheid" />
+            </XmlIfPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheidLocal" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender query="
                 MERGE INTO INFO_CACHE AS target
                 USING (
@@ -756,6 +777,17 @@
                 <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
                 <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
                 <Param name= "STOREDATE" sessionKey="StoreDate"/>
+                <Forward name="success" path="ReturnResult" />
+            </SenderPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
+                <Param name= "REGISTRATIENUMMER" sessionKey="DocumentDetails" xpathExpression="//NewObjectID"/>
+                <Param name= "VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid"/>
+                <Param name= "AFZENDER" xpathExpression="//behandelaarnaam"/>
+                <Param name= "ONDERWERP" xpathExpression="//onderwerp"/>
+                <Param name= "STOREDATE" sessionKey="StoreDate"/>
+                <Forward name="success" path="ReturnResult" />
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
