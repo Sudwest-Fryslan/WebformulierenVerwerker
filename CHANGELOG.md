@@ -1,5 +1,29 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.12.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.4...v6.12.0) (2024-01-12)
+
+
+### 🐛 Bug Fixes
+
+* return Postgres compatibility ([d0a2bf0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0a2bf030a98f62aa900b282cbeb1856dc33e13c))
+
+
+### 📝 Documentation
+
+* remove outdated files ([f38aa99](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f38aa9990d7abeed9995951844a4c95c0d9f6b8e))
+* update README ([7d7c626](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7d7c626e9939b89aec4688374835d0f69ecf021a))
+
+
+### 🧑‍💻 Code Refactoring
+
+* formatting ([890d4d8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/890d4d85db45ae83e048d8ff173556b2fafbe10e))
+
+
+### ✅ Tests
+
+* add reworked soapui testsuite ([01b0c17](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/01b0c177787cd6a6ceacff4e2a90e3aa242f06f7))
+* remove obsolete Larva tests ([d0c836c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0c836c498cd59aab318a8823869176462b350f6))
+
 ## [6.11.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.3...v6.11.4) (2024-01-11)
 
 

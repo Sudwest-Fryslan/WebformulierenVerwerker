@@ -2,8 +2,8 @@ publiccodeYmlVersion: "0.2"
 # Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publiccode.md
 name: WebformulierenVerwerker
 url: "https://github.com/Sudwest-Fryslan/WebformulierenVerwerker.git"
-softwareVersion: "6.11.4"    # Optional
-releaseDate: 2024-01-11
+softwareVersion: "6.12.0"    # Optional
+releaseDate: 2024-01-12
 applicationSuite: het-integratie-platform
 platforms:
   - frankframework
