@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.12.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.0...v6.12.1) (2024-01-17)
+
+
+### ✅ Tests
+
+* repair SoapUI project ([8fdf668](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8fdf6689bb192f5628c9a80831c48a40b5175f50))
+
+
+### 🔁 Continuous Integration
+
+* update node ([064b375](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/064b3758b4948f46b76dfdff2d1358f4492355e9))
+
 ## [6.12.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.4...v6.12.0) (2024-01-12)
 
 
