@@ -88,7 +88,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <Locker objectId="opslaanInkNatuurlijkPersoon" numRetries="15" retryDelay="100" />
+            <Locker objectId="opslaanInkNatuurlijkPersoon" numRetries="3" retryDelay="5000" />
 
             <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
                 <Forward name="then" path="ConvertToConnectRequest_Password" />
@@ -394,7 +394,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <Locker objectId="opslaanBijlage" numRetries="15" retryDelay="100" />
+            <Locker objectId="opslaanBijlage" numRetries="3" retryDelay="5000" />
 
             <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
                 <Forward name="then" path="ConvertToConnectRequest_Password" />
@@ -619,7 +619,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <Locker objectId="opslaanInkNietNatuurlijkPersoon" numRetries="15" retryDelay="100"/>
+            <Locker objectId="opslaanInkNietNatuurlijkPersoon" numRetries="3" retryDelay="5000"/>
 
             <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
                 <Forward name="then" path="ConvertToConnectRequest_Password" />
