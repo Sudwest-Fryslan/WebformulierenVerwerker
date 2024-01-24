@@ -8,7 +8,6 @@ COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 # COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Compile custom class, this should be changed to a buildstep in the future 
-
 COPY --chown=tomcat java /tmp/java
 RUN javac \
       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
