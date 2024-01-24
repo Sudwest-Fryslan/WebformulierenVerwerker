@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.0...v6.13.1) (2024-01-24)
+
+
+### ⏩ Reverts
+
+* Revert "connection pool research" ([ab9fea4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ab9fea4c78200fa36526ffb3e2158c88b809e953))
+* Revert "locker changes" ([d0deaf1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0deaf1100c4c97a6db4ad3b00753447da52b151))
+* Revert "dockerfile changes" ([8aac3e8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8aac3e835722e146c67ce05e2042a1dd69d42a29))
+* Revert "feat: trigger publish" ([1e6308b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1e6308b8702cfa1372bd013608e13cac26d2670f))
+
 ## [6.13.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.2...v6.13.0) (2024-01-24)
 
 
