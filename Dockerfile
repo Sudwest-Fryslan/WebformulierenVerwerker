@@ -9,13 +9,13 @@ COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 
 # Compile custom class, this should be changed to a buildstep in the future
 # Add lombok.jar to lib/server to be able to compile custom code with Lombok annotations
-COPY --chown=tomcat java /tmp/java
-RUN javac \
-      /tmp/java/nl/nn/adapterframework/processors/LockerPipeLineProcessor.java \
-      /tmp/java/nl/nn/adapterframework/util/Locker.java \
-      -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
-      -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
-RUN rm -rf /tmp/java
+# COPY --chown=tomcat java /tmp/java
+# RUN javac \
+#       /tmp/java/nl/nn/adapterframework/processors/LockerPipeLineProcessor.java \
+#       /tmp/java/nl/nn/adapterframework/util/Locker.java \
+#       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
+#       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+# RUN rm -rf /tmp/java
 
 # Copy database connection settings
 COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
