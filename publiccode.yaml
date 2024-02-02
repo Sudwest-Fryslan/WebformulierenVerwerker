@@ -2,8 +2,8 @@ publiccodeYmlVersion: "0.2"
 # Instructies: https://github.com/OpenCatalogi/OpenCatalogiBundle/blob/main/docs/Publiccode.md
 name: WebformulierenVerwerker
 url: "https://github.com/Sudwest-Fryslan/WebformulierenVerwerker.git"
-softwareVersion: "6.13.2"    # Optional
-releaseDate: 2024-02-02
+softwareVersion: "6.13.1"    # Optional
+releaseDate: 2024-01-24
 applicationSuite: het-integratie-platform
 platforms:
   - frankframework
@@ -29,27 +29,6 @@ description:
         By acting as an intermediary between Kodision and Corsa, CorsaKoppeling facilitates loose coupling between the two systems. Instead of direct communication, Kodision communicates with Corsa via the CorsaKoppeling web service. This decoupling provides several advantages, such as enhanced flexibility, scalability, and maintainability. It allows each system to evolve independently without tightly coupling their functionalities. Furthermore, it simplifies error tracking and debugging processes. When errors occur during data exchange or saving, it is easier to identify and trace the specific component or interaction responsible, enabling efficient issue resolution.
         CorsaKoppeling exhibits functionalities similar to an Enterprise Service Bus (ESB). It serves as an integration layer, orchestrating the communication and data flow between Kodision and Corsa. This ESB-like functionality streamlines the overall integration process and ensures reliable and seamless data exchange. It acts as a mediator, abstracting the complexities of direct integration between the two systems and providing a standardized interface that simplifies the development and maintenance efforts.
         Overall, the CorsaKoppeling component plays a vital role in enabling effective and secure communication between web forms in Kodision and the Corsa system. Through its stateless and atomic design, it guarantees reliable data saving, while its loose coupling and error tracking capabilities enhance the robustness and detectability of potential issues. By functioning as an intermediary with ESB-like functionalities, CorsaKoppeling streamlines the integration process, promoting flexibility, scalability, and maintainability in the Kodision-Corsa ecosystem.
-
-    features:
-       - Statelessness
-       - Atomicity
-       - Loose Coupling
-       - Error Tracking
-       - Standardized Interface
-
- nl:
-    shortDescription: >
-          De CorsaKoppeling-component is een SOAP-gebaseerde webservice ontworpen om de interactie tussen webformulieren in Kodision en het Corsa-systeem te vergemakkelijken. 
-          De primaire focus ligt op het waarborgen van statelessness en betrouwbare gegevensopslag door het uitgeven van Corsa-registratienummers. 
-          Door loose coupling te onderhouden en error tracking mogelijkheden te bieden, fungeert CorsaKoppeling als een tussenpersoon, 
-          en biedt het een ESB-achtige functionaliteit die de robuustheid en detecteerbaarheid van potentiële problemen verbetert.
-
-    longDescription: >
-        De CorsaKoppeling-component is een SOAP-gebaseerde webservice die dient als een cruciale tussenpersoon voor het faciliteren van naadloze interactie tussen webformulieren op het Kodision-platform en het Corsa-systeem. Het primaire doel is om soepele gegevensuitwisseling en betrouwbare gegevensopslagprocessen te waarborgen, terwijl het de principes van statelessness en atomicity naleeft.
-        Een van de kernkenmerken van CorsaKoppeling is de stateless aard. Dit betekent dat de component geen sessiespecifieke informatie of context behoudt tussen opeenvolgende verzoeken. Elke interactie met de webservice wordt onafhankelijk behandeld, waardoor gegevensoperaties onafhankelijk en zelfstandig blijven. Deze statelessness garandeert de integriteit en consistentie van het gegevensopslagproces. Na succesvolle voltooiing van een operatie, retourneert CorsaKoppeling een uniek Corsa-registratienummer, als bevestiging dat de gegevens veilig zijn opgeslagen.
-        Door te fungeren als een tussenpersoon tussen Kodision en Corsa, faciliteert CorsaKoppeling loose coupling tussen de twee systemen. In plaats van directe communicatie, communiceert Kodision met Corsa via de CorsaKoppeling webservice. Deze ontkoppeling biedt verschillende voordelen, zoals verbeterde flexibiliteit, schaalbaarheid en onderhoudbaarheid. Het stelt elk systeem in staat om onafhankelijk te evolueren zonder hun functionaliteiten strak te koppelen. Bovendien vereenvoudigt het error tracking en debuggingprocessen. Wanneer er fouten optreden tijdens gegevensuitwisseling of -opslag, is het gemakkelijker om het specifieke component of de interactie die verantwoordelijk is te identificeren en traceren, wat een efficiënte probleemoplossing mogelijk maakt.
-        CorsaKoppeling vertoont functionaliteiten vergelijkbaar met een Enterprise Service Bus (ESB). Het fungeert als een integratielaag, die de communicatie en gegevensstroom tussen Kodision en Corsa orkestreert. Deze ESB-achtige functionaliteit stroomlijnt het algehele integratieproces en zorgt voor een betrouwbare en naadloze gegevensuitwisseling. Het fungeert als een bemiddelaar, abstraheert de complexiteit van directe integratie tussen de twee systemen en biedt een gestandaardiseerde interface die de ontwikkeling en onderhoudsinspanningen vereenvoudigt.
-        Over het algemeen speelt de CorsaKoppeling-component een essentiële rol in het mogelijk maken van effectieve en veilige communicatie tussen webformulieren in Kodision en het Corsa-systeem. Door zijn stateless en atomic ontwerp garandeert het betrouwbare gegevensopslag, terwijl zijn loose coupling en error tracking mogelijkheden de robuustheid en detecteerbaarheid van potentiële problemen verhogen. Door te functioneren als een tussenpersoon met ESB-achtige functionaliteiten, stroomlijnt CorsaKoppeling het integratieproces, en bevordert het flexibiliteit, schaalbaarheid en onderhoudbaarheid in het Kodision-Corsa ecosysteem.
 
     features:
        - Statelessness
