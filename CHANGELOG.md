@@ -1,12 +1,5 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
-## [6.13.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.3...v6.13.4) (2024-02-02)
-
-
-### 🧑‍💻 Code Refactoring
-
-* add sharedResources ([9f2b2c3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9f2b2c3cba595d84c8f1d94367b10a700889ef44))
-
 ## [6.13.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.2...v6.13.3) (2024-02-02)
 
 
