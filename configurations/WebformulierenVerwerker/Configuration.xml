@@ -3,11 +3,11 @@
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
-    <SharedResources>
+    <!-- <SharedResources>
         <HttpSession
             name="SharedHttpSession"
         />
-    </SharedResources>
+    </SharedResources> -->
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>
