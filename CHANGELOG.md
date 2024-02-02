@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.2...v6.13.3) (2024-02-02)
+
+
+### 🐛 Bug Fixes
+
+* incorrect dockerfile ([599d1eb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/599d1eb0191060176475d8aee482554e05ae425e))
+
+
+### ⏩ Reverts
+
+* Revert "Revert "connection pool research"" ([d0dcde4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0dcde43b894d2aed8a85e04032e9a6a1f3969cd))
+
 ## [6.13.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.1...v6.13.2) (2024-02-02)
 
 
