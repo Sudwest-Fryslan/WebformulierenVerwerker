@@ -7,12 +7,11 @@ FROM frankframework/frankframework:7.9-20231028.143509
 # COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
 # COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
-# Compile custom class, this should be changed to a buildstep in the future
-# Add lombok.jar to lib/server to be able to compile custom code with Lombok annotations
+# Compile custom class, this should be changed to a buildstep in the future 
 COPY --chown=tomcat java /tmp/java
 RUN javac \
-      /tmp/java/nl/nn/adapterframework/processors/LockerPipeLineProcessor.java \
-      /tmp/java/nl/nn/adapterframework/util/Locker.java \
+      /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
+      /tmp/java/nl/nn/adapterframework/http/HttpSessionBase.java \
       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 RUN rm -rf /tmp/java
@@ -27,4 +26,4 @@ COPY --chown=tomcat classes/ /opt/frank/resources/
 
 # Martijn May 2 2023: Copied from ZaakBrug and edited in a trivial way.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
-  CMD curl --fail --silent http://localhost:8080/iaf/api/server/health || (curl --silent http://localhost:8080/iaf/api/server/health && exit 1)
+      CMD curl --fail --silent http://localhost:8080/iaf/api/server/health || (curl --silent http://localhost:8080/iaf/api/server/health && exit 1)
