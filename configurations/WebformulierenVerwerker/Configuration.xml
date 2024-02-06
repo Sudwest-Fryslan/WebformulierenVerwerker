@@ -6,6 +6,7 @@
     <SharedResources>
         <HttpSession
             name="SharedHttpSession"
+            maxConnections="1"
         />
     </SharedResources>
     &WebformulierenVerwerker;
