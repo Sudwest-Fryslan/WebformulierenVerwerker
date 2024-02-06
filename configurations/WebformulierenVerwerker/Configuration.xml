@@ -6,7 +6,6 @@
     <SharedResources>
         <HttpSession
             name="SharedHttpSession"
-            maxConnections="1"
             connectionTimeToLive="100000" 
         />
     </SharedResources>
