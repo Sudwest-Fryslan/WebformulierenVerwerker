@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.7...v6.13.8) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* re-add maxConnections ([0f54501](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0f54501b160efada69d9bd6eb7a30c189c1e8b0f))
+
 ## [6.13.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.6...v6.13.7) (2024-02-06)
 
 
