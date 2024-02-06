@@ -8,13 +8,13 @@ FROM frankframework/frankframework:7.9-20231028.143509
 # COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Compile custom class, this should be changed to a buildstep in the future 
-COPY --chown=tomcat java /tmp/java
-RUN javac \
-      /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
-      /tmp/java/nl/nn/adapterframework/http/HttpSessionBase.java \
-      -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
-      -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
-RUN rm -rf /tmp/java
+# COPY --chown=tomcat java /tmp/java
+# RUN javac \
+#       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
+#       /tmp/java/nl/nn/adapterframework/http/HttpSessionBase.java \
+#       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
+#       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+# RUN rm -rf /tmp/java
 
 # Copy database connection settings
 COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
