@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.5...v6.13.6) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* add connectionTimeToLive ([3c1e998](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3c1e9983e33ebb54612b04fab0ca636e4d01dceb))
+
 ## [6.13.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.4...v6.13.5) (2024-02-06)
 
 
