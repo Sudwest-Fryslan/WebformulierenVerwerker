@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.6...v6.13.7) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* no maxconnection but timetolive ([2bfbe8f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2bfbe8f1ebcbf36e2ba2a1a2b89a537974a44b9c))
+
 ## [6.13.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.5...v6.13.6) (2024-02-06)
 
 
