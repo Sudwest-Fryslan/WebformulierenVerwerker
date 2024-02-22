@@ -1,5 +1,62 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.13.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.7...v6.13.8) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* re-add maxConnections ([0f54501](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0f54501b160efada69d9bd6eb7a30c189c1e8b0f))
+
+## [6.13.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.6...v6.13.7) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* no maxconnection but timetolive ([2bfbe8f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2bfbe8f1ebcbf36e2ba2a1a2b89a537974a44b9c))
+
+## [6.13.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.5...v6.13.6) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* add connectionTimeToLive ([3c1e998](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3c1e9983e33ebb54612b04fab0ca636e4d01dceb))
+
+## [6.13.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.4...v6.13.5) (2024-02-06)
+
+
+### ⏩ Reverts
+
+* Revert "Revert "dockerfile changes"" ([a64f056](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a64f056ad463b9d6890985045c686e825fbec112))
+* Revert "refactor: remove custom code in dockerfile" ([902d5b6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/902d5b642d50bc566956a08b49bdeb097b6ce3f5))
+* Revert "chore(patch): release 6.13.2 [skip ci]" ([6ed59f0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6ed59f05d47ed1bd27b291e7abe43fe705aee2f6))
+* Revert "Revert "Revert "connection pool research""" ([701d085](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/701d0853fa205377d1d4684490ae4d343607871c))
+* Revert "fix: incorrect dockerfile" ([8597390](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8597390ef3097ec9f6468a23e39d7e34f4cbd37c))
+* Revert "refactor: add sharedResources" ([59c0d3b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/59c0d3bf0d039843ddfbcd597e2e630fcd50ffef))
+* Revert "chore(patch): release 6.13.4 [skip ci]" ([ca1d65f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ca1d65fb29d2e72fa00a43ee130b5154a6fe1e98))
+
+
+### 🧑‍💻 Code Refactoring
+
+* dockerfile fix ([84fece9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/84fece99fbe26de246572e1a64a05bd82029c4e1))
+* set maxconnections ([beee814](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/beee814d346476fd2fdc79100ad3008ff4c277d4))
+
+## [6.13.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.0...v6.13.1) (2024-01-24)
+
+
+### ⏩ Reverts
+
+* Revert "connection pool research" ([ab9fea4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ab9fea4c78200fa36526ffb3e2158c88b809e953))
+* Revert "locker changes" ([d0deaf1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0deaf1100c4c97a6db4ad3b00753447da52b151))
+* Revert "dockerfile changes" ([8aac3e8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8aac3e835722e146c67ce05e2042a1dd69d42a29))
+* Revert "feat: trigger publish" ([1e6308b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1e6308b8702cfa1372bd013608e13cac26d2670f))
+
+## [6.13.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.2...v6.13.0) (2024-01-24)
+
+
+### 🍕 Features
+
+* trigger publish ([5d66ead](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5d66eada7ec367430bbc669c9ff01425e9772900))
+
 ## [6.12.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.1...v6.12.2) (2024-01-17)
 
 

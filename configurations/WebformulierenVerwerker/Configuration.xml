@@ -3,11 +3,13 @@
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
-    <!-- <SharedResources>
+    <SharedResources>
         <HttpSession
             name="SharedHttpSession"
+            maxConnections="1"
+            connectionTimeToLive="100000" 
         />
-    </SharedResources> -->
+    </SharedResources>
     &WebformulierenVerwerker;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>
