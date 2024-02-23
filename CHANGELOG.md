@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.14.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.8...v6.14.0) (2024-02-23)
+
+
+### 🍕 Features
+
+* add new session test files ([251973f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/251973f86163b1fed3423be6afe22ef84e7432cc))
+
 ## [6.13.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.7...v6.13.8) (2024-02-06)
 
 
