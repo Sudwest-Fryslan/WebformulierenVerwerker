@@ -1,6 +1,6 @@
 # Keep in sync with version in frank-runner.properties
 # Check whether java-orig files present and have changed in F!F and update custom code (java and java-orig files) accordingly
-FROM frankframework/frankframework:7.9-20231028.143509
+FROM frankframework/frankframework:8.1.0-20240328.042324
 
 
 # Copy dependencies
