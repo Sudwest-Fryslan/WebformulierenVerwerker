@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.15.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.14.0...v6.15.0) (2024-03-28)
+
+
+### 🍕 Features
+
+* update to 8.1 ([bf414d1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bf414d128daea5f94d0a1c5da3cc7e239294e77b))
+
 ## [6.14.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.8...v6.14.0) (2024-02-23)
 
 
