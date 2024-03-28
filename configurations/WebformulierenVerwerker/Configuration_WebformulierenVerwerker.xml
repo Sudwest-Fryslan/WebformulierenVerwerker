@@ -346,7 +346,7 @@
                 <Param name="VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid" />
                 <Param name="AFZENDER" xpathExpression="//behandelaarnaam" />
                 <Param name="ONDERWERP" xpathExpression="//onderwerp" />
-                <Param name="STOREDATE" sessionKey="StoreDate" />
+                <Param name="STOREDATE" type="DATE" sessionKey="StoreDate" />
                 <Forward name="success" path="ReturnResult" />
             </SenderPipe>
 
