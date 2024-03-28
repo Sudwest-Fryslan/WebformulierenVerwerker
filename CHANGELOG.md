@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.15.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.0...v6.15.1) (2024-03-28)
+
+
+### 🐛 Bug Fixes
+
+* prevent Ladybug database errors ([d84861b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d84861b9cf2ebdde2d9ff1626d12a5dbffd7574c))
+
 ## [6.15.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.14.0...v6.15.0) (2024-03-28)
 
 
