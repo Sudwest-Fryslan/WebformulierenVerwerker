@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.15.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.2...v6.15.3) (2024-03-29)
+
+
+### 🐛 Bug Fixes
+
+* apply date fix to all stores ([d49b1b5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d49b1b524a016ed64e3113dec83b66240ca48470))
+
 ## [6.15.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.1...v6.15.2) (2024-03-29)
 
 
