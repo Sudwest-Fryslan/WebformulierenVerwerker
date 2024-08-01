@@ -11,35 +11,36 @@ on:
 jobs:
   analyze-commits:
     runs-on: ubuntu-latest
-    outputs:
-      version-next: ${{ steps.next-version.outputs.release-version }}
-      version-next-tag: ${{ steps.next-version.outputs.release-tag }}
-      version-next-type: ${{ steps.next-version.outputs.release-type }}
     steps:
-      - uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
-        with:
-          disable-sudo: true
-          egress-policy: audit
-          allowed-endpoints: >
-            github.com:443
-  
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #4.1.1
-      
-      - name: Setup Node
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 #4.0.2
-        with:
-          node-version: 20
-      
-      - name: Install dependencies
-        run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer conventional-changelog-conventionalcommits
-      
-      - name: Get next version
-        id: next-version
-        run: semantic-release --dryRun
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    -
+      name: Echo DOCKER_IMAGE_REPOSITORY
+      run: "echo DOCKER_IMAGE_REPOSITORY: '${{ vars.DOCKER_IMAGE_REPOSITORY }}'"
+    - 
+      name: Checkout
+      uses: actions/checkout@v3
+      with: 
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - 
+      name: "🔧 setup node"
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: 20.x
+    -
+      name: "Install plugin for semantic-release"
+      run: npm install @google/semantic-release-replace-plugin -D
+    - 
+      name: Install dependencies
+      run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer@10.0.1 conventional-changelog-conventionalcommits@6.1.0
+    -
+      name: Get next version
+      id: next-version
+      run: semantic-release --dryRun
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      release-tag: ${{ steps.next-version.outputs.release-tag }}
+      release-version: ${{ steps.next-version.outputs.release-version }}
 
   docker:
     uses: ./.github/workflows/docker-build-and-push-workflow.yml
