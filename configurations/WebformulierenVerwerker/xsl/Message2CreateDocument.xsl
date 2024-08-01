@@ -2,6 +2,9 @@
     xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
     <xsl:output method="xml" indent="yes" />
 
+    <!-- Are you adding this file as an external XSLT / Docker mounted file?
+     Make sure to copy the code already in this document! -->
+
     <!-- Parameters get their values from transformations performed in
     Configuration_WebformulierenVerwerker.xml -->
     <xsl:param name="systemdate" />
