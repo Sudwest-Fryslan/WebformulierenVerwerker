@@ -1,5 +1,26 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.4...v6.16.0) (2024-08-01)
+
+### 🍕 Features
+
+* add dossier compatibility ([f4050ec](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f4050ecce63d10649852c2d74af9be7907c68e75))
+
+### 🐛 Bug Fixes
+
+* prevent incorrect data source ([d87c748](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d87c748aa88fa490ce26fe7735dd1c973b0ac318))
+
+### 🧑‍💻 Code Refactoring
+
+* add clarifying comment ([bb50b6c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bb50b6c83a21883dcd374119b2503b091e033185))
+* remove dossiercode from CreateMetaDocument ([f466b54](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f466b54f43881ce6b80cfbad643b5d7a2abed19c))
+
+### 🔁 Continuous Integration
+
+* add conventionalcommits override ([1ff4129](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1ff4129b2e5cb97794432adf3c7ccc85a90bfb45))
+* remove more version locks ([7e06050](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7e06050c44219b5e16937e1271a60ceeb0319e55))
+* remove version specification for dependencies ([e111e4f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e111e4fe18fc654967a96e79fa5630e28c0f94dd))
+
 ## [6.15.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.2...v6.15.3) (2024-03-29)
 
 
