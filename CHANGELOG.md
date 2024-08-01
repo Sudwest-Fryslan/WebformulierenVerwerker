@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.3...v6.16.4) (2024-08-01)
+
+### 🧑‍💻 Code Refactoring
+
+* add new fields to TEST wsdl ([74fdd23](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/74fdd23936ec797651432d9bcdb8585ae7088f7a))
+
 ## [6.16.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.2...v6.16.3) (2024-08-01)
 
 ### 🧑‍💻 Code Refactoring
