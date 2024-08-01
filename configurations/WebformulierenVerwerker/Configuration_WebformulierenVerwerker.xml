@@ -294,12 +294,14 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
+            <XsltPipe name="StoreDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode" storeResultInSessionKey="DossierId"/>
+
             <!-- Handle Dossier -->
-            <XsltPipe name="ConvertToModObjectRelationDossier"
+            <XsltPipe name="ConvertToModObjectRelationDossier" onlyIfSessionKey="DossierId"
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
-                <Param name="DossierID" sessionKey="//dossier" />
+                <Param name="DossierID" sessionKey="DossierId" />
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
@@ -851,12 +853,14 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
+            <XsltPipe name="StoreDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode" storeResultInSessionKey="DossierId"/>
+
              <!-- Handle Dossier -->
             <XsltPipe name="ConvertToModObjectRelationDossier"
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
-                getInputFromSessionKey="originalMessage">
+                getInputFromSessionKey="originalMessage" onlyIfSessionKey="DossierId">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
-                <Param name="DossierID" sessionKey="//dossier" />
+                <Param name="DossierID" sessionKey="DossierId" />
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
