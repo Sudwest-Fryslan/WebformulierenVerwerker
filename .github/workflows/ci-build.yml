@@ -30,7 +30,7 @@ jobs:
       run: npm install @google/semantic-release-replace-plugin -D
     - 
       name: Install dependencies
-      run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer@10.0.1 conventional-changelog-conventionalcommits@6.1.0
+      run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer conventional-changelog-conventionalcommits
     -
       name: Get next version
       id: next-version
