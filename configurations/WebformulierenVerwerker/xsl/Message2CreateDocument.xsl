@@ -77,22 +77,6 @@
                     </bct:Value>
                 </bct:NameValue>
                 <xsl:choose>
-                    <xsl:when test="//dossiercode">
-                        <bct:NameValue>
-                            <bct:Name>stuk_doss.dossier_id</bct:Name>
-                            <bct:Value>
-                                <xsl:value-of select="//dossiercode" />
-                            </bct:Value>
-                        </bct:NameValue>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <bct:NameValue>
-                            <bct:Name>stuk_doss.dossier_id</bct:Name>
-                            <bct:Value></bct:Value>
-                        </bct:NameValue>
-                    </xsl:otherwise>
-                </xsl:choose>
-                <xsl:choose>
                     <xsl:when test="//afgehandeld">
                         <bct:NameValue>
                             <bct:Name>poststuk.afgehandeld</bct:Name>
