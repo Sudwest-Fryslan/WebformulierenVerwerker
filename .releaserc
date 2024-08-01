@@ -76,7 +76,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "CHANGELOG.md",
           "classes/BuildInfo.properties",
           "configurations/WebformulierenVerwerker/BuildInfo.properties",
           "publiccode.yaml"
