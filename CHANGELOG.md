@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.1...v6.16.2) (2024-08-01)
+
+### 🐛 Bug Fixes
+
+* prevent access to pipes when dossierId is null ([45ac5cd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/45ac5cde0c96233eec3ee07667aedf14a33bbac4))
+
 ## [6.16.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.0...v6.16.1) (2024-08-01)
 
 ### 🐛 Bug Fixes
