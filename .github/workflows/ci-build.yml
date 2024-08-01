@@ -84,10 +84,10 @@ jobs:
       run: yarn global add semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/exec @semantic-release/release-notes-generator @semantic-release/commit-analyzer@10.0.1 conventional-changelog-conventionalcommits@6.1.0
     -
       name: Semantic Release
-      run: semantic-release
+      run: "semantic-release"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     -
       name: Pull commit that holds the newly created tag - if applicable
       run: git pull origin main
