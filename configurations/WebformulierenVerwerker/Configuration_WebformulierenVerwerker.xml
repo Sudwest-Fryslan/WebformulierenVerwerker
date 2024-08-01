@@ -294,10 +294,13 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
-            <XsltPipe name="StoreDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode" storeResultInSessionKey="DossierId"/>
+            <XmlIfPipe name="IfDossierId" xpathExpression="//dossiercode != ''">
+                <Forward name="then" path="ConvertToModObjectRelationDossier" />                
+                <Forward name="else" path="ConvertToDisconnectRequest" />                
+            </XmlIfPipe>
 
             <!-- Handle Dossier -->
-            <XsltPipe name="ConvertToModObjectRelationDossier" onlyIfSessionKey="DossierId"
+            <XsltPipe name="ConvertToModObjectRelationDossier" 
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
@@ -305,14 +308,14 @@
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" onlyIfSessionKey="DossierId"
+            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" 
                 soapNamespace="http://www.w3.org/2003/05/soap-envelope"
                 storeResultInSessionKey="corsaRequest" />
 
-            <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction" onlyIfSessionKey="DossierId"
+            <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction" 
                 value="http://bct.nl/ModObjectRelation" />
 
-            <SenderPipe name="Send_ModObjectRelationDossier_Request" onlyIfSessionKey="DossierId">
+            <SenderPipe name="Send_ModObjectRelationDossier_Request" >
                 <WebServiceSender sharedResourceRef="SharedHttpSession" 
                     url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <!-- Cannot check if Dossier exists and should not interrupt user, so ignore errors. -->
@@ -853,25 +856,28 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
-            <XsltPipe name="StoreDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode" storeResultInSessionKey="DossierId"/>
-
+            <XmlIfPipe name="IfDossierId" xpathExpression="//dossiercode != ''">
+                <Forward name="then" path="ConvertToModObjectRelationDossier" />                
+                <Forward name="else" path="ConvertToDisconnectRequest" />                
+            </XmlIfPipe>
+            
              <!-- Handle Dossier -->
             <XsltPipe name="ConvertToModObjectRelationDossier"
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
-                getInputFromSessionKey="originalMessage" onlyIfSessionKey="DossierId">
+                getInputFromSessionKey="originalMessage" >
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="DossierID" sessionKey="DossierId" />
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
-            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" onlyIfSessionKey="DossierId"
+            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" 
                 soapNamespace="http://www.w3.org/2003/05/soap-envelope"
                 storeResultInSessionKey="corsaRequest" />
 
-            <PutInSessionPipe name="storeModObjectRelationAction" onlyIfSessionKey="DossierId" sessionKey="RequestSoapAction"
+            <PutInSessionPipe name="storeModObjectRelationAction"  sessionKey="RequestSoapAction"
                 value="http://bct.nl/ModObjectRelation" />
 
-            <SenderPipe name="Send_ModObjectRelationDossier_Request" onlyIfSessionKey="DossierId">
+            <SenderPipe name="Send_ModObjectRelationDossier_Request" >
                 <WebServiceSender sharedResourceRef="SharedHttpSession" 
                     url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
                 <!-- Cannot check if Dossier exists and should not interrupt user, so ignore errors. -->
