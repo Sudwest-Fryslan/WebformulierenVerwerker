@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.2...v6.16.3) (2024-08-01)
+
+### 🧑‍💻 Code Refactoring
+
+* update WSDL to reflect new fields ([45bca18](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/45bca18f4f19bae4708bd94fd501788f2d52024a))
+
 ## [6.16.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.1...v6.16.2) (2024-08-01)
 
 ### 🐛 Bug Fixes
