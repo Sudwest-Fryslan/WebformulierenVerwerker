@@ -38,8 +38,8 @@ jobs:
         id: next-version
         run: semantic-release --dryRun
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   docker:
     uses: ./.github/workflows/docker-build-and-push-workflow.yml
