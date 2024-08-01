@@ -18,7 +18,7 @@
           {"type": "test", "release": "patch"},
           {"type": "build", "release": "patch"},
           {"type": "ci", "release": "patch"},
-          {"type": "chore", "release": patch}
+          {"type": "chore", "release": "patch"}
         ],
         "parserOpts": {
           "noteKeywords": [
@@ -62,7 +62,7 @@
     ],
     [
       "@semantic-release/exec", {
-        "verifyReleaseCmd": "echo \"release-tag=v${nextRelease.version}\" >> $GITHUB_OUTPUT; echo \"release-version=${nextRelease.version}\" >> $GITHUB_OUTPUT; echo \"release-type=${nextRelease.type}\" >> $GITHUB_OUTPUT"
+        "verifyReleaseCmd": "echo '::set-output name=release-tag::v${nextRelease.version}'; echo '::set-output name=release-version::${nextRelease.version}'"
       }
     ],
     [
@@ -76,7 +76,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "CHANGELOG.md",
           "classes/BuildInfo.properties",
           "configurations/WebformulierenVerwerker/BuildInfo.properties",
           "publiccode.yaml"
