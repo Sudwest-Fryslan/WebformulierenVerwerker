@@ -856,7 +856,7 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
-            <XmlIfPipe name="IfDossierId" xpathExpression="//dossiercode != ''">
+            <XmlIfPipe name="IfDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode != ''">
                 <Forward name="then" path="ConvertToModObjectRelationDossier" />                
                 <Forward name="else" path="ConvertToDisconnectRequest" />                
             </XmlIfPipe>
