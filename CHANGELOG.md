@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.6...v6.16.7) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* ifDossierId check receives incorrect input ([9888601](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/98886017b58f550ab51917882916486b59ae0882))
+
 ## [6.16.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.5...v6.16.6) (2024-08-06)
 
 ### 🧑‍💻 Code Refactoring
