@@ -304,7 +304,7 @@
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
-                <Param name="DossierID" sessionKey="DossierId" />
+                <Param name="DossierID" xpathExpression="//dossiercode" />
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
@@ -866,7 +866,7 @@
                 styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
                 getInputFromSessionKey="originalMessage" >
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
-                <Param name="DossierID" sessionKey="DossierId" />
+                <Param name="DossierID" xpathExpression="//dossiercode" />
                 <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
