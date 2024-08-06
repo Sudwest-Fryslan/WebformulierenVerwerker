@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.7...v6.16.8) (2024-08-06)
+
+### 🧑‍💻 Code Refactoring
+
+* apply getInputFromSessionKey to opslaanInkNatuurlijkPersoon ([e65f7da](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e65f7dae114afe829625dcd04bdf6feec1f7626a))
+
 ## [6.16.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.6...v6.16.7) (2024-08-06)
 
 ### 🐛 Bug Fixes
