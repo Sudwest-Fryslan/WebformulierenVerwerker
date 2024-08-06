@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.8...v6.16.9) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* xpathexpression accesses incorrect element ([e7b5754](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e7b57542df0d3d166b1734a9953966145a983210))
+
 ## [6.16.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.7...v6.16.8) (2024-08-06)
 
 ### 🧑‍💻 Code Refactoring
