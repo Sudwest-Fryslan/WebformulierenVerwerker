@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.4...v6.16.5) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* change WSDL element typing to prevent duplication ([6f4457b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6f4457b4a4cdfe33ff50486bacacb299d572a91a))
+
 ## [6.16.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.3...v6.16.4) (2024-08-01)
 
 ### 🧑‍💻 Code Refactoring
