@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.5...v6.16.6) (2024-08-06)
+
+### 🧑‍💻 Code Refactoring
+
+* apply string change to configuration level wsdl ([2ad1833](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2ad1833bbb4c750fd781e57dc75ac8dacdc8f00c))
+
 ## [6.16.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.4...v6.16.5) (2024-08-06)
 
 ### 🐛 Bug Fixes
