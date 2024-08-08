@@ -16,13 +16,13 @@
             <xsl:value-of select="$Registratienummer" />
          </bct:ObjectID_1>
          <!--Optional:-->
-         <bct:ObjectType_2>S</bct:ObjectType_2>
+         <bct:ObjectType_2>D</bct:ObjectType_2>
          <!--Optional:-->
          <bct:ObjectID_2>
             <xsl:value-of select="$DossierID" />
          </bct:ObjectID_2>
          <!--Optional:-->
-         <bct:RelationTypeID>D</bct:RelationTypeID>
+         <bct:RelationTypeID>BIJ</bct:RelationTypeID>
       </bct:ModObjectRelation>
    </xsl:template>
 </xsl:stylesheet>
