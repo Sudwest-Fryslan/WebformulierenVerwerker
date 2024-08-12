@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.11](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.10...v6.16.11) (2024-08-12)
+
+### 🐛 Bug Fixes
+
+* registrationID not accessed by ModObjectRelation ([b60fd3a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b60fd3abba1c195a6730771d44370c40234d1a10))
+
 ## [6.16.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.9...v6.16.10) (2024-08-08)
 
 ### 🐛 Bug Fixes
