@@ -867,7 +867,7 @@
                 getInputFromSessionKey="originalMessage" >
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="DossierID" xpathExpression="//dossiercode" />
-                <Param name="Registratienummer" xpathExpression="//ObjectID" sessionKey="FileVersionDetails" />
+                <Param name="Registratienummer" xpathExpression="//opslaanInkNietNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" 
