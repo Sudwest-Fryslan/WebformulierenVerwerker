@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.12...v6.16.13) (2024-10-09)
+
+### 🧑‍💻 Code Refactoring
+
+* add dossiercode and afgehandeld to P WSDL ([abda1c7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/abda1c733284f8fe984b3c1c86b088431a4dee8b))
+
+### 🔁 Continuous Integration
+
+* update download-artifact ([4071274](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4071274eeb12e57bbce48ec5ead5ed8e3fb2cf57))
+* update upload-artifact ([d4a51ac](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d4a51aceefbcd5005fe9ec73bdfd8ac997159596))
+
 ## [6.16.12](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.11...v6.16.12) (2024-08-12)
 
 ### 🐛 Bug Fixes
