@@ -121,7 +121,7 @@ jobs:
   #   steps:
   #   -  
   #     name: "Download Docker tar"
-  #     uses: actions/download-artifact@v2
+  #     uses: actions/download-artifcat@v4
   #     with:
   #       name: docker
   #       path: .
@@ -164,7 +164,7 @@ jobs:
     steps:
     -  
       name: "Download Docker tar"
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifcat@v4
       with:
         name: docker
         path: /tmp
