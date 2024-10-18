@@ -1,5 +1,0 @@
-<soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
-  <soap:Body>
-    <bct:Info xmlns:bct='http://tempuri.org/'/>
-  </soap:Body>
-</soap:Envelope>

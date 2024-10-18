@@ -2,39 +2,24 @@
     xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
     <xsl:output method="xml" indent="yes" />
 
+    <!-- Are you adding this file as an external XSLT / Docker mounted file?
+     Make sure to copy the code already in this document! -->
+
+    <!-- Parameters get their values from transformations performed in
+    Configuration_WebformulierenVerwerker.xml -->
     <xsl:param name="systemdate" />
     <xsl:param name="PersoonID" />
+
+    <!-- This template determines what the output will look like. -->
     <xsl:template match="/">
         <bct:CreateMetaDocument xmlns:bct="http://bct.nl">
-            <!--Optional:-->
             <bct:ObjectID></bct:ObjectID>
-            <!--Optional:-->
             <bct:ObjectKind>INK</bct:ObjectKind>
-            <!--Optional:-->
             <bct:FieldValues>
-                <!--Zero
-                        or more repetitions:-->
-                <!-- 
-          	var now = DateTime.Now.ToString("dd/MM/yyyy");
-		  	Add("poststuk.dat_afh_str", now);
-            	Add("poststuk.onderwerp", onderwerp);
-            	Add("poststuk.inhoud1", bericht);
-            	Add("poststuk.v_plaats_id", behandelaarnaam);
-            	Add("poststuk.reg_datum", now);         // DOET HET NIET!
-            	Add("poststuk.dat_poststuk", now);      // DOET HET NIET!
-            	Add("poststuk.kenmerk", onderwerp); // DOET HET NIET!
-            	Add("obj_vert.vertrouw_id", vertrouwelijkheid);
-      	Natuurlijk persoon:
-            	Add("poststuk.soort_ext", "P");
-            	Add("poststuk.relatie_id", aanmelderIdentificatie);
-		Bedrijf:
-			Add("poststuk.soort_ext", "I");
-            	Add("poststuk.relatie_id", aanmelderIdentificatie);
-			-->
+                <!-- New elements can be set by adding them in a similar manner as the elements
+                below. -->
                 <bct:NameValue>
                     <bct:Name>poststuk.dat_afh_str</bct:Name>
-                    <!-- <bct:Value>${=import java.text.SimpleDateFormat; new
-                                SimpleDateFormat("dd/MM/yyyy").format(new Date())}</bct:Value> -->
                     <bct:Value>
                         <xsl:value-of select="$systemdate" />
                     </bct:Value>
@@ -91,16 +76,24 @@
                         <xsl:value-of select="$PersoonID" />
                     </bct:Value>
                 </bct:NameValue>
+                <xsl:choose>
+                    <xsl:when test="//afgehandeld">
+                        <bct:NameValue>
+                            <bct:Name>poststuk.afgehandeld</bct:Name>
+                            <bct:Value>
+                                <xsl:value-of select="//afgehandeld" />
+                            </bct:Value>
+                        </bct:NameValue>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <bct:NameValue>
+                            <bct:Name>poststuk.afgehandeld</bct:Name>
+                            <bct:Value>0</bct:Value>
+                        </bct:NameValue>
+                    </xsl:otherwise>
+                </xsl:choose>
             </bct:FieldValues>
-            <!--Optional:-->
             <bct:ReferenceValues>
-                <!--Zero
-                        or more repetitions:-->
-                <!--
-            var now = DateTime.Now.ToString("dd-MM-yyyy");
-            Add("ontvdat", now);
-            Add("kanaal", "Internet");
-            -->
                 <bct:NameValue>
                     <bct:Name>ontvdat</bct:Name>
                     <bct:Value>
@@ -112,9 +105,7 @@
                     <bct:Value>Internet</bct:Value>
                 </bct:NameValue>
             </bct:ReferenceValues>
-            <!--Optional:-->
             <bct:DuplicateID></bct:DuplicateID>
-            <!--Optional:-->
             <bct:DSPTemplateID></bct:DSPTemplateID>
         </bct:CreateMetaDocument>
     </xsl:template>

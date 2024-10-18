@@ -75,7 +75,7 @@ jobs:
         cache-to: type=gha,mode=max
     - 
       name: "Upload Docker tar"
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: docker
         path: /tmp/docker.tar
@@ -104,7 +104,7 @@ jobs:
         output_file_path: reports/checkov-results.sarif
     - 
       name: "Upload Sarif report as artifact"
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: checkov-results
         path: reports/checkov-results.sarif
@@ -121,7 +121,7 @@ jobs:
   #   steps:
   #   -  
   #     name: "Download Docker tar"
-  #     uses: actions/download-artifact@v2
+  #     uses: actions/download-artifact@v4
   #     with:
   #       name: docker
   #       path: .
@@ -147,7 +147,7 @@ jobs:
   #       hide-progress: false
   #   - 
   #     name: "Upload Sarif report as artifact"
-  #     uses: actions/upload-artifact@v2
+  #     uses: actions/upload-artifact@v4
   #     with:
   #       name: trivy-results
   #       path: trivy-results.sarif
@@ -164,7 +164,7 @@ jobs:
     steps:
     -  
       name: "Download Docker tar"
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: docker
         path: /tmp

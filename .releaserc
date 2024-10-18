@@ -40,6 +40,9 @@
             "BREAKING"
           ]
         },
+        "overrides": {
+           "conventional-changelog-conventionalcommits": ">= 8.0.0"
+        },
         "writerOpts": {
           "commitsSort": ["subject", "scope"]
         },

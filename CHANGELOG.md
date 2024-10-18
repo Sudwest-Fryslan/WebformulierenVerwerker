@@ -1,5 +1,349 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.12...v6.16.13) (2024-10-09)
+
+### 🧑‍💻 Code Refactoring
+
+* add dossiercode and afgehandeld to P WSDL ([abda1c7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/abda1c733284f8fe984b3c1c86b088431a4dee8b))
+
+### 🔁 Continuous Integration
+
+* update download-artifact ([4071274](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4071274eeb12e57bbce48ec5ead5ed8e3fb2cf57))
+* update upload-artifact ([d4a51ac](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d4a51aceefbcd5005fe9ec73bdfd8ac997159596))
+
+## [6.16.12](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.11...v6.16.12) (2024-08-12)
+
+### 🐛 Bug Fixes
+
+* registratienummer obtained from incorrect element ([f9cb50e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f9cb50ebe5fc914902f2a1a6e11edab11641e65a))
+
+## [6.16.11](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.10...v6.16.11) (2024-08-12)
+
+### 🐛 Bug Fixes
+
+* registrationID not accessed by ModObjectRelation ([b60fd3a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b60fd3abba1c195a6730771d44370c40234d1a10))
+
+## [6.16.10](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.9...v6.16.10) (2024-08-08)
+
+### 🐛 Bug Fixes
+
+* incorrect objecttype and relationtype ([dc9b4ee](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dc9b4ee434935eb293d235e7b9d3bccf058fef0a))
+
+## [6.16.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.8...v6.16.9) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* xpathexpression accesses incorrect element ([e7b5754](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e7b57542df0d3d166b1734a9953966145a983210))
+
+## [6.16.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.7...v6.16.8) (2024-08-06)
+
+### 🧑‍💻 Code Refactoring
+
+* apply getInputFromSessionKey to opslaanInkNatuurlijkPersoon ([e65f7da](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e65f7dae114afe829625dcd04bdf6feec1f7626a))
+
+## [6.16.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.6...v6.16.7) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* ifDossierId check receives incorrect input ([9888601](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/98886017b58f550ab51917882916486b59ae0882))
+
+## [6.16.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.5...v6.16.6) (2024-08-06)
+
+### 🧑‍💻 Code Refactoring
+
+* apply string change to configuration level wsdl ([2ad1833](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2ad1833bbb4c750fd781e57dc75ac8dacdc8f00c))
+
+## [6.16.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.4...v6.16.5) (2024-08-06)
+
+### 🐛 Bug Fixes
+
+* change WSDL element typing to prevent duplication ([6f4457b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6f4457b4a4cdfe33ff50486bacacb299d572a91a))
+
+## [6.16.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.3...v6.16.4) (2024-08-01)
+
+### 🧑‍💻 Code Refactoring
+
+* add new fields to TEST wsdl ([74fdd23](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/74fdd23936ec797651432d9bcdb8585ae7088f7a))
+
+## [6.16.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.2...v6.16.3) (2024-08-01)
+
+### 🧑‍💻 Code Refactoring
+
+* update WSDL to reflect new fields ([45bca18](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/45bca18f4f19bae4708bd94fd501788f2d52024a))
+
+## [6.16.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.1...v6.16.2) (2024-08-01)
+
+### 🐛 Bug Fixes
+
+* prevent access to pipes when dossierId is null ([45ac5cd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/45ac5cde0c96233eec3ee07667aedf14a33bbac4))
+
+## [6.16.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.0...v6.16.1) (2024-08-01)
+
+### 🐛 Bug Fixes
+
+* prevent unnecessary execution ([96aed63](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/96aed638afa3fa0cbb4cd97272a6fd6f3a7bd37b))
+
+## [6.16.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.4...v6.16.0) (2024-08-01)
+
+### 🍕 Features
+
+* add dossier compatibility ([f4050ec](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f4050ecce63d10649852c2d74af9be7907c68e75))
+
+### 🐛 Bug Fixes
+
+* prevent incorrect data source ([d87c748](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d87c748aa88fa490ce26fe7735dd1c973b0ac318))
+
+### 🧑‍💻 Code Refactoring
+
+* add clarifying comment ([bb50b6c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bb50b6c83a21883dcd374119b2503b091e033185))
+* remove dossiercode from CreateMetaDocument ([f466b54](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f466b54f43881ce6b80cfbad643b5d7a2abed19c))
+
+### 🔁 Continuous Integration
+
+* add conventionalcommits override ([1ff4129](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1ff4129b2e5cb97794432adf3c7ccc85a90bfb45))
+* remove more version locks ([7e06050](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7e06050c44219b5e16937e1271a60ceeb0319e55))
+* remove version specification for dependencies ([e111e4f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e111e4fe18fc654967a96e79fa5630e28c0f94dd))
+
+## [6.15.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.2...v6.15.3) (2024-03-29)
+
+
+### 🐛 Bug Fixes
+
+* apply date fix to all stores ([d49b1b5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d49b1b524a016ed64e3113dec83b66240ca48470))
+
+## [6.15.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.1...v6.15.2) (2024-03-29)
+
+
+### 🐛 Bug Fixes
+
+* attempt to fix date error ([5d97e63](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5d97e6383ad4401dd2ecdf902f6c64277df63a9d))
+
+## [6.15.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.15.0...v6.15.1) (2024-03-28)
+
+
+### 🐛 Bug Fixes
+
+* prevent Ladybug database errors ([d84861b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d84861b9cf2ebdde2d9ff1626d12a5dbffd7574c))
+
+## [6.15.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.14.0...v6.15.0) (2024-03-28)
+
+
+### 🍕 Features
+
+* update to 8.1 ([bf414d1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bf414d128daea5f94d0a1c5da3cc7e239294e77b))
+
+## [6.14.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.8...v6.14.0) (2024-02-23)
+
+
+### 🍕 Features
+
+* add new session test files ([251973f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/251973f86163b1fed3423be6afe22ef84e7432cc))
+
+## [6.13.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.7...v6.13.8) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* re-add maxConnections ([0f54501](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0f54501b160efada69d9bd6eb7a30c189c1e8b0f))
+
+## [6.13.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.6...v6.13.7) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* no maxconnection but timetolive ([2bfbe8f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2bfbe8f1ebcbf36e2ba2a1a2b89a537974a44b9c))
+
+## [6.13.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.5...v6.13.6) (2024-02-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* add connectionTimeToLive ([3c1e998](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3c1e9983e33ebb54612b04fab0ca636e4d01dceb))
+
+## [6.13.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.4...v6.13.5) (2024-02-06)
+
+
+### ⏩ Reverts
+
+* Revert "Revert "dockerfile changes"" ([a64f056](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a64f056ad463b9d6890985045c686e825fbec112))
+* Revert "refactor: remove custom code in dockerfile" ([902d5b6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/902d5b642d50bc566956a08b49bdeb097b6ce3f5))
+* Revert "chore(patch): release 6.13.2 [skip ci]" ([6ed59f0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6ed59f05d47ed1bd27b291e7abe43fe705aee2f6))
+* Revert "Revert "Revert "connection pool research""" ([701d085](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/701d0853fa205377d1d4684490ae4d343607871c))
+* Revert "fix: incorrect dockerfile" ([8597390](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8597390ef3097ec9f6468a23e39d7e34f4cbd37c))
+* Revert "refactor: add sharedResources" ([59c0d3b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/59c0d3bf0d039843ddfbcd597e2e630fcd50ffef))
+* Revert "chore(patch): release 6.13.4 [skip ci]" ([ca1d65f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ca1d65fb29d2e72fa00a43ee130b5154a6fe1e98))
+
+
+### 🧑‍💻 Code Refactoring
+
+* dockerfile fix ([84fece9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/84fece99fbe26de246572e1a64a05bd82029c4e1))
+* set maxconnections ([beee814](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/beee814d346476fd2fdc79100ad3008ff4c277d4))
+
+## [6.13.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.13.0...v6.13.1) (2024-01-24)
+
+
+### ⏩ Reverts
+
+* Revert "connection pool research" ([ab9fea4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ab9fea4c78200fa36526ffb3e2158c88b809e953))
+* Revert "locker changes" ([d0deaf1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0deaf1100c4c97a6db4ad3b00753447da52b151))
+* Revert "dockerfile changes" ([8aac3e8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8aac3e835722e146c67ce05e2042a1dd69d42a29))
+* Revert "feat: trigger publish" ([1e6308b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1e6308b8702cfa1372bd013608e13cac26d2670f))
+
+## [6.13.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.2...v6.13.0) (2024-01-24)
+
+
+### 🍕 Features
+
+* trigger publish ([5d66ead](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5d66eada7ec367430bbc669c9ff01425e9772900))
+
+## [6.12.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.1...v6.12.2) (2024-01-17)
+
+
+### ✅ Tests
+
+* update test project ([e58df3d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e58df3d8ebd8b950f8031dc9541ae6f9a3e5140b))
+
+## [6.12.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.12.0...v6.12.1) (2024-01-17)
+
+
+### ✅ Tests
+
+* repair SoapUI project ([8fdf668](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8fdf6689bb192f5628c9a80831c48a40b5175f50))
+
+
+### 🔁 Continuous Integration
+
+* update node ([064b375](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/064b3758b4948f46b76dfdff2d1358f4492355e9))
+
+## [6.12.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.4...v6.12.0) (2024-01-12)
+
+
+### 🐛 Bug Fixes
+
+* return Postgres compatibility ([d0a2bf0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0a2bf030a98f62aa900b282cbeb1856dc33e13c))
+
+
+### 📝 Documentation
+
+* remove outdated files ([f38aa99](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f38aa9990d7abeed9995951844a4c95c0d9f6b8e))
+* update README ([7d7c626](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7d7c626e9939b89aec4688374835d0f69ecf021a))
+
+
+### 🧑‍💻 Code Refactoring
+
+* formatting ([890d4d8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/890d4d85db45ae83e048d8ff173556b2fafbe10e))
+
+
+### ✅ Tests
+
+* add reworked soapui testsuite ([01b0c17](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/01b0c177787cd6a6ceacff4e2a90e3aa242f06f7))
+* remove obsolete Larva tests ([d0c836c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d0c836c498cd59aab318a8823869176462b350f6))
+
+## [6.11.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.3...v6.11.4) (2024-01-11)
+
+
+### 🐛 Bug Fixes
+
+* make queries compatible with h2 ([affe07f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/affe07fefd088a41a2116a6b40b6600187e6ae5a))
+
+## [6.11.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.2...v6.11.3) (2023-12-11)
+
+
+### ⏩ Reverts
+
+* Revert "refactor: remove SharedResources" ([81299d7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/81299d7827d4dde2480c0d6c1e072d92f9eb5d1c))
+* Revert "refactor: remove sharedResourceRef attribute" ([99fd33f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/99fd33f7e4969844e8c6668f19b12697bd76a9ba))
+
+## [6.11.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.1...v6.11.2) (2023-12-11)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove sharedResourceRef attribute ([482ab3e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/482ab3ee43989fa98f6ae0525c674873a52c64d6))
+* remove SharedResources ([3e2754d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3e2754dee66b801be5148bee0c38907e775b640c))
+
+## [6.11.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.11.0...v6.11.1) (2023-12-11)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove excess forward ([1b8cb8c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1b8cb8c9eccece74ece1dcf76384a089006dba13))
+
+
+### 🤖 Build System
+
+* update versions ([c6e2342](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c6e2342f418c3ce180f729ca5b29733cb75e77af))
+
+## [6.11.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.2...v6.11.0) (2023-11-30)
+
+
+### ⏩ Reverts
+
+* Revert "build: change ff version" ([1dc753d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1dc753d48962bd03ddb5c9b39e75cb0eb6a7129d))
+
+
+### 📝 Documentation
+
+* update README.md ([df81034](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/df8103443259ba3ebca97859c36c07c063910cbe))
+
+## [6.10.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.1...v6.10.2) (2023-11-10)
+
+
+### 🤖 Build System
+
+* add libs necessary for HIP support ([ca0802b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ca0802b537ab60a9b0c073c93064147b6a055575))
+* change ff version ([0d1f433](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0d1f43366f68b05c96c4039ae20f328684af90ef))
+
+## [6.10.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.10.0...v6.10.1) (2023-10-06)
+
+
+### 🐛 Bug Fixes
+
+* prevent soap unwrap error on disconnect ([73be892](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/73be892989d63f392fc789504b5015b8302968f5))
+
+## [6.10.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.9.0...v6.10.0) (2023-10-05)
+
+
+### 🍕 Features
+
+* upgrade f!f version ([cd0d8aa](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cd0d8aa5b1188597dce0597b8653baff0ca57b52))
+
+
+### 🐛 Bug Fixes
+
+* numRetries not working ([c207550](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c2075505f177eb802c91b02f5fe300bdf6b8997e))
+
+
+### 🤖 Build System
+
+* disable custom class loading ([dcde777](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dcde7772ab72b3fae0388a93e9fa687982bb3e0d))
+
+## [6.9.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.9...v6.9.0) (2023-10-04)
+
+
+### 🍕 Features
+
+* add prevent NPE on locker ([414d5a9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/414d5a90ae89fd7794c7df6371f0c0a6efd9dd81))
+
+## [6.8.9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.8...v6.8.9) (2023-10-04)
+
+
+### 🐛 Bug Fixes
+
+* version correction ([0753a5b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0753a5bf9ccde721710650bef4dc047902d7ea4b))
+
+
+### 🤖 Build System
+
+* update F!F version ([b6c8e45](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b6c8e450fa8f6393b403db7bbd6ba490e0b15e31))
+
+## [6.8.8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.7...v6.8.8) (2023-09-11)
+
+
+### 🐛 Bug Fixes
+
+* Remove methodType from HttpSession ([5e54bd2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5e54bd2fd70912c722db0c8ee0c958f407a9e95a))
+
 ## [6.8.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.8.6...v6.8.7) (2023-09-08)
 
 

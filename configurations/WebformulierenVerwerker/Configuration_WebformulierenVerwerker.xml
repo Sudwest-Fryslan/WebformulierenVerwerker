@@ -37,9 +37,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError"
                     sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" value="http://bct.nl/About" />
                 <Forward name="success" path="EXCEPTION" />
@@ -241,7 +241,7 @@
             <PutInSessionPipe name="StoreNewSPNum" sessionKey="SPNum" />
 
             <!-- If person is created, create a document in Corsa. -->
-            <XsltPipe name="ConvertToCreateDocument" styleSheetName="xsl/Message2CreateDocument.xsl"
+            <XsltPipe name="ConvertToCreateDocument" styleSheetName="${WebformulierenVerwerker.CreateDocument-Stylesheet}"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="PersoonID" sessionKey="SPNum" />
@@ -308,7 +308,36 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
-            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Message2Disconnect.xsl" />
+            <XmlIfPipe name="IfDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode != ''">
+                <Forward name="then" path="ConvertToModObjectRelationDossier" />                
+                <Forward name="else" path="ConvertToDisconnectRequest" />                
+            </XmlIfPipe>
+
+            <!-- Handle Dossier -->
+            <XsltPipe name="ConvertToModObjectRelationDossier" 
+                styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
+                getInputFromSessionKey="originalMessage">
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
+                <Param name="DossierID" xpathExpression="//dossiercode" />
+                <Param name="Registratienummer" xpathExpression="//opslaanInkNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" 
+                soapNamespace="http://www.w3.org/2003/05/soap-envelope"
+                storeResultInSessionKey="corsaRequest" />
+
+            <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction" 
+                value="http://bct.nl/ModObjectRelation" />
+
+            <SenderPipe name="Send_ModObjectRelationDossier_Request" >
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
+                    url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
+                <!-- Cannot check if Dossier exists and should not interrupt user, so ignore errors. -->
+                <Forward name="success" path="ConvertToDisconnectRequest" />
+                <Forward name="exception" path="ConvertToDisconnectRequest" />
+            </SenderPipe>
+
+            <XsltPipe name="ConvertToDisconnectRequest" getInputFromFixedValue="&lt;Default/>" styleSheetName="xsl/Message2Disconnect.xsl" />
 
             <SoapWrapperPipe name="WrapDisconnectRequest" storeResultInSessionKey="corsaRequest" />
 
@@ -319,21 +348,15 @@
                 value="http://bct.nl/Disconnect" />
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
-                <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="isErrorXML" />
-            </SenderPipe>
-
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
-                removeOutputNamespaces="true">
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500" />
                 <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
+                <Forward name="exception" path="storeErrorResponse" />
+            </SenderPipe>
 
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
@@ -343,6 +366,33 @@
                 <Param name="datetime" xpathExpression="current-dateTime()" />
             </XsltPipe>
 
+            <XmlIfPipe name="CheckStage" getInputFromFixedValue="&lt;staticValue/>"
+                xpathExpression="'${dtap.stage}' = 'LOC'">
+                <Forward name="then" path="StoreVertrouwelijkheidLocal" />
+                <Forward name="else" path="StoreVertrouwelijkheid" />
+            </XmlIfPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheidLocal" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender
+                    query="
+                MERGE INTO INFO_CACHE AS target
+                USING (
+                    VALUES
+                        (?, ?, ?, ?, ?)
+                ) AS source (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                ON target.REGISTRATIENUMMER = source.REGISTRATIENUMMER
+                WHEN NOT MATCHED THEN
+                    INSERT (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                    VALUES (source.REGISTRATIENUMMER, source.VERTROUWELIJKHEID, source.AFZENDER, source.ONDERWERP, source.STOREDATE);" />
+                <Param name="REGISTRATIENUMMER" sessionKey="DocumentDetails"
+                    xpathExpression="//NewObjectID" />
+                <Param name="VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid" />
+                <Param name="AFZENDER" xpathExpression="//behandelaarnaam" />
+                <Param name="ONDERWERP" xpathExpression="//onderwerp" />
+                <Param name="STOREDATE" type="DATE" sessionKey="StoreDate" />
+                <Forward name="success" path="ReturnResult" />
+            </SenderPipe>
+
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender
                     query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
@@ -351,7 +401,8 @@
                 <Param name="VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid" />
                 <Param name="AFZENDER" xpathExpression="//behandelaarnaam" />
                 <Param name="ONDERWERP" xpathExpression="//onderwerp" />
-                <Param name="STOREDATE" sessionKey="StoreDate" />
+                <Param name="STOREDATE" type="DATE" sessionKey="StoreDate" />
+                <Forward name="success" path="ReturnResult" />
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
@@ -376,9 +427,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError"
                     sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction" />
                 <Forward name="success" path="EXCEPTION" />
@@ -425,7 +476,7 @@
                 value="http://bct.nl/Connect" />
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
                     timeout="20000" />
                 <Forward name="success" path="Unwrapper1" />
@@ -573,21 +624,15 @@
                 value="http://bct.nl/Disconnect" />
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
-                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
-                <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="isErrorXML" />
-            </SenderPipe>
-
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
-                removeOutputNamespaces="true">
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500" />
                 <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
+                <Forward name="exception" path="storeErrorResponse" />
+            </SenderPipe>
 
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="ReturnResult" />
                 <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
@@ -614,9 +659,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError"
                     sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction" />
                 <Forward name="success" path="EXCEPTION" />
@@ -667,7 +712,7 @@
                 value="http://bct.nl/Connect" />
 
             <SenderPipe name="sendToCorsa1">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
                     url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
                     timeout="20000" />
                 <Forward name="success" path="Unwrapper1" />
@@ -778,7 +823,7 @@
 
             <!-- If person is created, create a document in Corsa. -->
             <XsltPipe name="ConvertToCreateDocument"
-                styleSheetName="xsl/Message2CreateDocumentCompany.xsl"
+                styleSheetName="${WebformulierenVerwerker.CreateDocumentCompany-Stylesheet}"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="ONum" sessionKey="ONum" />
@@ -845,6 +890,35 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
 
+            <XmlIfPipe name="IfDossierId" getInputFromSessionKey="originalMessage" xpathExpression="//dossiercode != ''">
+                <Forward name="then" path="ConvertToModObjectRelationDossier" />                
+                <Forward name="else" path="ConvertToDisconnectRequest" />                
+            </XmlIfPipe>
+            
+             <!-- Handle Dossier -->
+            <XsltPipe name="ConvertToModObjectRelationDossier"
+                styleSheetName="xsl/Message2ModObjectRelationDossier.xsl"
+                getInputFromSessionKey="originalMessage" >
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
+                <Param name="DossierID" xpathExpression="//dossiercode" />
+                <Param name="Registratienummer" xpathExpression="//opslaanInkNietNatuurlijkPersoonResult" sessionKey="FileVersionDetails" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapModObjectRelationDossierRequest" 
+                soapNamespace="http://www.w3.org/2003/05/soap-envelope"
+                storeResultInSessionKey="corsaRequest" />
+
+            <PutInSessionPipe name="storeModObjectRelationAction"  sessionKey="RequestSoapAction"
+                value="http://bct.nl/ModObjectRelation" />
+
+            <SenderPipe name="Send_ModObjectRelationDossier_Request" >
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
+                    url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false" />
+                <!-- Cannot check if Dossier exists and should not interrupt user, so ignore errors. -->
+                <Forward name="success" path="ConvertToDisconnectRequest" />
+                <Forward name="exception" path="ConvertToDisconnectRequest" />
+            </SenderPipe>
+
             <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Message2Disconnect.xsl" />
 
             <SoapWrapperPipe name="WrapDisconnectRequest" storeResultInSessionKey="corsaRequest" />
@@ -856,21 +930,15 @@
                 value="http://bct.nl/Disconnect" />
 
             <SenderPipe name="SendDisconnectRequest">
-                <WebServiceSender sharedResourceRef="SharedHttpSession" methodType="POST"
+                <WebServiceSender sharedResourceRef="SharedHttpSession" 
                     url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false" timeout="12500"/>
-                <Forward name="success" path="UnwrapDisconnectResponse" />
-                <Forward name="exception" path="isErrorXML" />
-            </SenderPipe>
-
-            <SoapWrapperPipe name="UnwrapDisconnectResponse" direction="UNWRAP"
-                removeOutputNamespaces="true">
                 <Forward name="success" path="DisconnectSuccessCheck" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SoapWrapperPipe>
+                <Forward name="exception" path="storeErrorResponse" />
+            </SenderPipe>
 
             <XmlSwitchPipe
                 name="DisconnectSuccessCheck"
-                xpathExpression="DisconnectResponse/DisconnectResult = 'true'">
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
                 <Forward name="true" path="DateTime2Date" />
                 <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
@@ -880,6 +948,33 @@
                 <Param name="datetime" xpathExpression="current-dateTime()" />
             </XsltPipe>
 
+            <XmlIfPipe name="CheckStage" getInputFromFixedValue="&lt;staticValue/>"
+                xpathExpression="'${dtap.stage}' = 'LOC'">
+                <Forward name="then" path="StoreVertrouwelijkheidLocal" />
+                <Forward name="else" path="StoreVertrouwelijkheid" />
+            </XmlIfPipe>
+
+            <SenderPipe name="StoreVertrouwelijkheidLocal" getInputFromSessionKey="originalMessage">
+                <FixedQuerySender
+                    query="
+                MERGE INTO INFO_CACHE AS target
+                USING (
+                    VALUES
+                        (?, ?, ?, ?, ?)
+                ) AS source (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                ON target.REGISTRATIENUMMER = source.REGISTRATIENUMMER
+                WHEN NOT MATCHED THEN
+                    INSERT (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, STOREDATE)
+                    VALUES (source.REGISTRATIENUMMER, source.VERTROUWELIJKHEID, source.AFZENDER, source.ONDERWERP, source.STOREDATE);" />
+                <Param name="REGISTRATIENUMMER" sessionKey="DocumentDetails"
+                    xpathExpression="//NewObjectID" />
+                <Param name="VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid" />
+                <Param name="AFZENDER" xpathExpression="//behandelaarnaam" />
+                <Param name="ONDERWERP" xpathExpression="//onderwerp" />
+                <Param name="STOREDATE" type="DATE" sessionKey="StoreDate" />
+                <Forward name="success" path="ReturnResult" />
+            </SenderPipe>
+
             <SenderPipe name="StoreVertrouwelijkheid" getInputFromSessionKey="originalMessage">
                 <FixedQuerySender
                     query="INSERT INTO INFO_CACHE VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING;" />
@@ -888,7 +983,8 @@
                 <Param name="VERTROUWELIJKHEID" xpathExpression="//vertrouwelijkheid" />
                 <Param name="AFZENDER" xpathExpression="//behandelaarnaam" />
                 <Param name="ONDERWERP" xpathExpression="//onderwerp" />
-                <Param name="STOREDATE" sessionKey="StoreDate" />
+                <Param name="STOREDATE" type="DATE" sessionKey="StoreDate" />
+                <Forward name="success" path="ReturnResult" />
             </SenderPipe>
 
             <EchoPipe name="ReturnResult" getInputFromSessionKey="FileVersionDetails">
@@ -913,9 +1009,9 @@
             <XsltPipe name="buildErrorMsg"
                 styleSheetName="xsl/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
-                <Param name="corsaRequest" sessionKey="corsaRequest" />
-                <Param name="corsaResponse" sessionKey="corsaResponse" />
-                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                <Param name="corsaRequest" type="STRING" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" type="STRING" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" type="STRING" xpathExpression="//LastError"
                     sessionKey="corsaResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction" />
                 <Forward name="success" path="EXCEPTION" />

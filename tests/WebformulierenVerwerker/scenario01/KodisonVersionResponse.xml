@@ -1,4 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><VersionResponse xmlns="http://tempuri.org/" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-	<VersionResult>
-                WebformulierenVerwerker - Version 6.8.7 - 08/09/2023</VersionResult>
-</VersionResponse></soapenv:Body></soapenv:Envelope>

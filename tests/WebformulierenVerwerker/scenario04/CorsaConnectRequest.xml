@@ -1,7 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope"><soapenv:Body><bct:Connect xmlns:bct="http://bct.nl">
-	<bct:ApplicationID>KodsionformulierenNaarCorsa</bct:ApplicationID>
-	<bct:ConnectionID>Corsa</bct:ConnectionID>
-	<bct:UserName>Local username test</bct:UserName>
-	<bct:Password/>
-	<bct:EncodedPass>false</bct:EncodedPass>
-</bct:Connect></soapenv:Body></soapenv:Envelope>
