@@ -12,15 +12,14 @@
             <list>
                 <bean class="nl.nn.testtool.metadata.StatusMetadataFieldExtractor"/>
                 <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
-                    <property name="name" value="soapAction"/>
-                    <property name="label" value="SoapAction"/>
-                    <property name="xpath" value="*[local-name()='Envelope']/*[local-name()='Body']/element()/local-name()" />
-                </bean>
-                <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
                     <property name="name" value="corsaResponse"/>
                     <property name="label" value="corsaResponse"/>
                     <property name="extractFrom" value="last"/>
                     <property name="xpath" value="*[local-name()='Envelope']/*[local-name()='Body']" />
+                </bean>
+                <bean class="nl.nn.testtool.metadata.SessionKeyMetadataFieldExtractor">
+                    <property name="name" value="soapAction" />
+                    <property name="sessionKey" value="SOAPAction" />
                 </bean>
             </list>
         </property>
