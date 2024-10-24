@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.16.15](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.14...v6.16.15) (2024-10-24)
+
+### 🔁 Continuous Integration
+
+* update ci-build.yml ([a0845d2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a0845d29aa31219d74de6ec6c713e7e6793e3c16))
+
 ## [6.16.14](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.13...v6.16.14) (2024-10-24)
 
 ### 🧑‍💻 Code Refactoring
