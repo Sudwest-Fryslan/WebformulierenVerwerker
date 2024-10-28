@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.17.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.0...v6.17.1) (2024-10-28)
+
+### 🧑‍💻 Code Refactoring
+
+* disable console auth ([52c60bf](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/52c60bf64fbf20274730ec7407a5bfe4021430a1))
+
 ## [6.17.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.15...v6.17.0) (2024-10-28)
 
 ### 🍕 Features
