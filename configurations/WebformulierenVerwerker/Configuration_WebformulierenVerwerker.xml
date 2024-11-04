@@ -610,11 +610,18 @@
                 <WebServiceSender sharedResourceRef="SharedHttpSession"
                     url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false"
                     timeout="12500" />
-                <Forward name="success" path="ConvertToBijlageResponse" />
+                <Forward name="success" path="UnwrapModObjectRelationRequest" />
                 <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
 
             <SoapWrapperPipe name="UnwrapModObjectRelationRequest" direction="UNWRAP" />
+
+            <XmlSwitchPipe
+                name="ModObjectRelationCheck"
+                xpathExpression="//ModObjectRelationResult = 'true'">
+                <Forward name="true" path="ConvertToBijlageResponse" />
+                <Forward name="false" path="isErrorXML" />
+            </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToBijlageResponse" styleSheetName="xsl/Response2Bijlage.xsl"
                 omitXmlDeclaration="true">
