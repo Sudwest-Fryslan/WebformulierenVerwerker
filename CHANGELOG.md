@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.17.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.2...v6.17.3) (2024-11-04)
+
+### 🧑‍💻 Code Refactoring
+
+* update f!f minor ([2a1aa53](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2a1aa539647eb3687dd3e5442dbc29e898579d68))
+
 ## [6.17.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.1...v6.17.2) (2024-10-28)
 
 ### 🧑‍💻 Code Refactoring
