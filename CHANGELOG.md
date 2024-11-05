@@ -1,5 +1,45 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.17.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.2...v6.17.3) (2024-11-04)
+
+### 🧑‍💻 Code Refactoring
+
+* update f!f minor ([2a1aa53](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2a1aa539647eb3687dd3e5442dbc29e898579d68))
+
+## [6.17.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.1...v6.17.2) (2024-10-28)
+
+### 🧑‍💻 Code Refactoring
+
+* relocate auth properties ([5cfb270](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5cfb270e4984e3e437207461e382d87ced996d63))
+
+## [6.17.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.0...v6.17.1) (2024-10-28)
+
+### 🧑‍💻 Code Refactoring
+
+* disable console auth ([52c60bf](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/52c60bf64fbf20274730ec7407a5bfe4021430a1))
+
+## [6.17.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.15...v6.17.0) (2024-10-28)
+
+### 🍕 Features
+
+* update f!f to 8.3.0 ([7e69134](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7e691341ba727fb683c8b1a68d17d515a06a16dd))
+
+### 🧑‍💻 Code Refactoring
+
+* disable ladybug database usage ([02b4834](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/02b483483b459069adca8ca28d189e458be7dc5b))
+
+## [6.16.15](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.14...v6.16.15) (2024-10-24)
+
+### 🔁 Continuous Integration
+
+* update ci-build.yml ([a0845d2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a0845d29aa31219d74de6ec6c713e7e6793e3c16))
+
+## [6.16.14](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.13...v6.16.14) (2024-10-24)
+
+### 🧑‍💻 Code Refactoring
+
+* adjust WSDL location ([2c483a4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2c483a462dd38cbdbb2d86b5b6ff569ce5b11508))
+
 ## [6.16.13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.16.12...v6.16.13) (2024-10-09)
 
 ### 🧑‍💻 Code Refactoring
