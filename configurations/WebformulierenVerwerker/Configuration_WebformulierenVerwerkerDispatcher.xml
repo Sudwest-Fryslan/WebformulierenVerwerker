@@ -34,19 +34,6 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                 throwException="true">
             </WsdlXmlInputValidator>
 
-            <!-- Somehow doesn't respect the InfoResponse in the comma seperated value of soapBody,
-            it gives:
-                 /Envelope/Body: Illegal element 'InfoResponse'. Element(s) 'Info' expected.
-                 Probably because we have SessionKey
-            SOAPAction=http://tempuri.org/IGeneriekeFormulierAfhandeling/Info
-                 which is working for WsdlXmlInputValidator above. -->
-            <WsdlXmlOutputValidator name="OutputValidator"
-                wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="VersionResponse,opslaanInkNatuurlijkPersoonResponse,opslaanInkNietNatuurlijkPersoonResponse,opslaanBijlageResponse,InfoResponse,Fault"
-                addNamespaceToSchema="true"
-                schemaLocation="http://tempuri.org/ schema1"
-                throwException="true">
-            </WsdlXmlOutputValidator>
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
                 <Exit name="EXCEPTION" state="ERROR" />
@@ -54,7 +41,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
 
             <SoapWrapperPipe name="Unwrapper" direction="UNWRAP" removeOutputNamespaces="true">
                 <Forward name="success" path="CheckOperation" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SoapWrapperPipe>
 
             <XmlSwitchPipe
@@ -105,7 +92,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="VersionAction">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
             <SenderPipe
@@ -115,7 +102,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanInkNatuurlijkPersoon">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
             <SenderPipe
@@ -125,7 +112,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanInkNietNatuurlijkPersoon">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
             
             <SenderPipe
@@ -135,7 +122,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanInk">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
             <!-- OperationChecker adds a few random variables on top of the message.
@@ -143,7 +130,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
             <SoapWrapperPipe name="UnwrapBijlageRequest" direction="UNWRAP"
                 removeOutputNamespaces="true" getInputFromSessionKey="originalMessage">
                 <Forward name="success" path="CallopslaanBijlage" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SoapWrapperPipe>
 
             <SenderPipe
@@ -153,7 +140,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="opslaanBijlage">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
             <SenderPipe
@@ -163,12 +150,13 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
                     javaListener="InfoAction">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
-                <Forward name="exception" path="SoapWrapper" />
+                <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
-            <SoapWrapperPipe name="SoapWrapper">
-                <Forward name="success" path="EXCEPTION" />
+            <SoapWrapperPipe name="wrapOutput">
+                <Forward name="success" path="EXCEPTION" />    
             </SoapWrapperPipe>
         </Pipeline>
+
     </Adapter>
 </Module>

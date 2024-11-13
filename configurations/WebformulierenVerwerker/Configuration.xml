@@ -1,5 +1,10 @@
 <!DOCTYPE configuration [
-    <!ENTITY WebformulierenVerwerker SYSTEM "Configuration_WebformulierenVerwerker.xml">
+    <!ENTITY Info SYSTEM "Configuration_Info.xml">
+    <!ENTITY OpslaanBijlage SYSTEM "Configuration_OpslaanBijlage.xml">
+    <!ENTITY OpslaanInk SYSTEM "Configuration_OpslaanInk.xml">
+    <!ENTITY OpslaanInkNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNatuurlijkPersoon.xml">
+    <!ENTITY OpslaanInkNietNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNietNatuurlijkPersoon.xml">
+    <!ENTITY Version SYSTEM "Configuration_Version.xml">
     <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
@@ -10,6 +15,11 @@
             connectionTimeToLive="100000" 
         />
     </SharedResources>
-    &WebformulierenVerwerker;
+    &Info;
+    &OpslaanBijlage;
+    &OpslaanInk;
+    &OpslaanInkNatuurlijkPersoon;
+    &OpslaanInkNietNatuurlijkPersoon;
+    &Version;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

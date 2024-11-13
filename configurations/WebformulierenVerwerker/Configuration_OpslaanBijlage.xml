@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="opslaanBijlage">
+        <Receiver name="opslaanBijlage">
+            <JavaListener name="opslaanBijlage" />
+        </Receiver>
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <Locker objectId="opslaanBijlage" numRetries="3" retryDelay="5000" />
+
+            <XmlIfPipe name="StageCheck" xpathExpression="'${dtap.stage}' = 'TST'">
+                <Forward name="then" path="ConvertToConnectRequest_Password" />
+                <Forward name="else" path="ConvertToConnectRequest_NoPassword" />
+            </XmlIfPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_NoPassword"
+                styleSheetName="xsl/Common/message2Connect.xsl">
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
+                <Param name="ConnectionID" value="${ConnectionID}" />
+                <Forward name="success" path="WrapConnectRequest" />
+            </XsltPipe>
+
+            <XsltPipe name="ConvertToConnectRequest_Password"
+                styleSheetName="xsl/Common/message2Connect.xsl">
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" />
+                <Param name="ConnectionID" value="${ConnectionID}" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapConnectRequest"
+                soapNamespace="http://www.w3.org/2003/05/soap-envelope"
+                storeResultInSessionKey="corsaRequest" />
+
+            <PutInSessionPipe name="storeConnectAction" sessionKey="RequestSoapAction"
+                value="http://bct.nl/Connect" />
+
+            <SenderPipe name="sendToCorsa1">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/Connect" soap="false"
+                    timeout="20000" />
+                <Forward name="success" path="Unwrapper1" />
+                <Forward name="exception" path="isErrorXML" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true">
+                <Forward name="success" path="ConnectionSuccessCheck" />
+                <Forward name="exception" path="isErrorXML" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="ConnectionSuccessCheck"
+                xpathExpression="ConnectResponse/ConnectResult = 'true'">
+                <Forward name="true" path="RequestInfo" />
+                <Forward name="false" path="isErrorXML" />
+            </XmlSwitchPipe>
+
+            <SenderPipe name="RequestInfo" getInputFromSessionKey="originalMessage"
+                storeResultInSessionKey="QueryResponse">
+                <FixedQuerySender queryType="SELECT"
+                    query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?" />
+                <Param name="REGISTRATIENUMMER" xpathExpression="//registratienummer" />
+            </SenderPipe>
+
+            <XmlIfPipe name="CheckForVertrouwelijkheid" xpathExpression="count(//rowset/row) > 0">
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid" />
+                <Forward name="then" path="GetVertrouwelijkheid" />
+                <Forward name="else" path="EXCEPTION" />
+            </XmlIfPipe>
+
+            <XsltPipe name="GetVertrouwelijkheid"
+                xpathExpression="//rowset//field[@name='VERTROUWELIJKHEID']" />
+            <PutInSessionPipe name="SetKeyVertrouwelijkheid" sessionKey="Vertrouwelijkheid" />
+
+            <XsltPipe name="GetAfzender" xpathExpression="//rowset//field[@name='AFZENDER']"
+                getInputFromSessionKey="QueryResponse" />
+            <PutInSessionPipe name="SetKeyAfzender" sessionKey="Afzender" />
+
+            <XsltPipe name="GetOnderwerp" xpathExpression="//rowset//field[@name='ONDERWERP']"
+                getInputFromSessionKey="QueryResponse" />
+            <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp" />
+
+            <XsltPipe name="ConvertToCreateMetaDocumentForBijlage"
+                styleSheetName="xsl/OpslaanBijlage/Message2CreateMetaDocument.xsl"
+                getInputFromSessionKey="originalMessage">
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
+                <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid" />
+                <Param name="Afzender" sessionKey="Afzender" />
+                <Param name="Onderwerp" sessionKey="Onderwerp" />
+                <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest"
+                storeResultInSessionKey="corsaRequest" />
+
+            <PutInSessionPipe name="storeCreateMetaDocumentAction" sessionKey="RequestSoapAction"
+                value="http://bct.nl/CreateMetaDocument" />
+
+            <SenderPipe name="sendToCorsa5">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateMetaDocument" soap="false"
+                    timeout="12500" />
+                <Forward name="success" path="Wrapper5" />
+                <Forward name="exception" path="isErrorXML" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true"
+                storeResultInSessionKey="DocumentForBijlage">
+                <Forward name="success" path="DocumentForBijlageCheck" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="DocumentForBijlageCheck"
+                xpathExpression="//CreateMetaDocumentResult = 'true'">
+                <Forward name="true" path="ConvertToCreateFileVersionForBijlage" />
+                <Forward name="false" path="isErrorXML" />
+            </XmlSwitchPipe>
+
+            <XsltPipe name="ConvertToCreateFileVersionForBijlage"
+                styleSheetName="xsl/OpslaanBijlage/Message2CreateFileVersionBijlage.xsl"
+                getInputFromSessionKey="originalMessage"
+                storeResultInSessionKey="corsaRequest">
+                <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
+                    sessionKey="DocumentForBijlage" />
+            </XsltPipe>
+
+            <PutInSessionPipe name="storeCreateFileVersionAction" sessionKey="RequestSoapAction"
+                value="http://bct.nl/CreateFileVersion" />
+
+            <SenderPipe name="sendToCorsa6">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/CreateFileVersion" soap="false"
+                    timeout="12500" />
+                <Forward name="success" path="Wrapper6" />
+                <Forward name="exception" path="isErrorXML" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
+                <Forward name="success" path="ConvertToModObjectRelation" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SoapWrapperPipe>
+
+            <XsltPipe name="ConvertToModObjectRelation"
+                styleSheetName="xsl/OpslaanBijlage/Message2ModObjectRelation.xsl"
+                getInputFromSessionKey="originalMessage">
+                <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
+                    sessionKey="DocumentForBijlage" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapModObjectRelationRequest"
+                soapNamespace="http://www.w3.org/2003/05/soap-envelope"
+                storeResultInSessionKey="corsaRequest" />
+
+            <PutInSessionPipe name="storeModObjectRelationAction" sessionKey="RequestSoapAction"
+                value="http://bct.nl/ModObjectRelation" />
+
+            <SenderPipe name="sendToCorsa7">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/ModObjectRelation" soap="false"
+                    timeout="12500" />
+                <Forward name="success" path="UnwrapModObjectRelationRequest" />
+                <Forward name="exception" path="isErrorXML" />
+            </SenderPipe>
+
+            <SoapWrapperPipe name="UnwrapModObjectRelationRequest" direction="UNWRAP">
+                <Forward name="success" path="ModObjectRelationCheck" />
+                <Forward name="exception" path="isErrorXML" />
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe
+                name="ModObjectRelationCheck"
+                xpathExpression="//ModObjectRelationResult = 'true'">
+                <Forward name="true" path="ConvertToBijlageResponse" />
+                <Forward name="false" path="isErrorXML" />
+            </XmlSwitchPipe>
+
+            <XsltPipe name="ConvertToBijlageResponse" styleSheetName="xsl/OpslaanBijlage/Response2Bijlage.xsl"
+                omitXmlDeclaration="true">
+                <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
+                    sessionKey="DocumentForBijlage" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
+                storeResultInSessionKey="BijlageResults" />
+
+            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Common/Message2Disconnect.xsl" />
+
+            <SoapWrapperPipe name="WrapDisconnectRequest" storeResultInSessionKey="corsaRequest" />
+
+            <WsdlXmlValidatorPipe name="ValidateDisconnectRequest" wsdl="Corsa72WS4j.xml"
+                soapBody="Disconnect" throwException="true" />
+
+            <PutInSessionPipe name="storeDisconnectAction" sessionKey="RequestSoapAction"
+                value="http://bct.nl/Disconnect" />
+
+            <SenderPipe name="SendDisconnectRequest">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/Disconnect" soap="false"
+                    timeout="12500" />
+                <Forward name="success" path="DisconnectSuccessCheck" />
+                <Forward name="exception" path="storeErrorResponse" />
+            </SenderPipe>
+
+            <XmlSwitchPipe
+                name="DisconnectSuccessCheck"
+                xpathExpression="//DisconnectResponse/DisconnectResult = 'true'">
+                <Forward name="true" path="ReturnResult" />
+                <Forward name="false" path="isErrorXML" />
+            </XmlSwitchPipe>
+
+            <EchoPipe name="ReturnResult" getInputFromSessionKey="BijlageResults">
+                <Forward name="success" path="SUCCESS" />
+            </EchoPipe>
+
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+                <Forward name="success" path="buildErrorMsg" />
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="xsl/Common/CreateErrorResponse.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                    sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="soapAction" sessionKey="RequestSoapAction" />
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+        </Pipeline>
+    </Adapter>
+</Module>
