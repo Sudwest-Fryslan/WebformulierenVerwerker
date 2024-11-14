@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.18.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.18.0...v6.18.1) (2024-11-14)
+
+### 🧑‍💻 Code Refactoring
+
+* add cors properties ([dc64e92](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dc64e92eb83b2708f7cd6be0e52ee3226322eba1))
+
 ## [6.18.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.17.3...v6.18.0) (2024-11-11)
 
 ### 🍕 Features
