@@ -17,12 +17,12 @@ FROM frankframework/frankframework:9.0.0-20241108.115210
 # RUN rm -rf /tmp/java
 
 # Copy database connection settings
-COPY --chown=tomcat context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+COPY --chown=tomcat src/main/webapp/META-INF/context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
 # Copy Frank!
-COPY --chown=tomcat configurations/ /opt/frank/configurations/
-COPY --chown=tomcat tests/ /opt/frank/testtool/
-COPY --chown=tomcat classes/ /opt/frank/resources/
+COPY --chown=tomcat src/main/configurations /opt/frank/configurations/
+COPY --chown=tomcat src/test/testtool /opt/frank/testtool/
+COPY --chown=tomcat src/main/resources /opt/frank/resources/
 
 # Martijn May 2 2023: Copied from ZaakBrug and edited in a trivial way.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
