@@ -6,7 +6,7 @@
         URL="jdbc:h2:/opt/frank/h2/webformulierenverwerker"
     />
 
-    <Resource
+    <!-- <Resource
         name="jdbc/webformulierenverwerker-postgresql"
         auth="Container"
         factory="org.apache.naming.factory.BeanFactory"
@@ -14,5 +14,25 @@
         url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.adittionalUrlParameters}"
         user="${jdbc/username}"
         password="${jdbc/password}"
+    /> -->
+
+    <Resource name="jdbc/webformulierenverwerker-postgresql" auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://${jdbc.hostname:-localhost}:${jdbc.port:-5432}/${jdbc.database}"
+        username="${jdbc/username:-testiaf_user}"
+        password="${jdbc/password:-testiaf_user00}"
+        maxTotal="10"
+        maxWaitMillis="5000"
     />
+
+    <Resource name="jdbc/ibis4test-postgres" auth="Container"
+			  type="javax.sql.DataSource"
+			  driverClassName="org.postgresql.Driver"
+			  url="jdbc:postgresql://${jdbc.hostname:-localhost}:5432/testiaf"
+			  username="${testiaf_user/username:-testiaf_user}"
+			  password="${testiaf_user/password:-testiaf_user00}"
+			  maxTotal="10"
+			  maxWaitMillis="5000"
+	/>
 </Context>
