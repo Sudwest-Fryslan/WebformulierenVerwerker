@@ -22,15 +22,15 @@
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword"
                 styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
-                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" username="NO_USER"/>
                 <Param name="ConnectionID" value="${ConnectionID}" />
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
 
             <XsltPipe name="ConvertToConnectRequest_Password"
                 styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
-                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
-                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" />
+                <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" username="NO_USER"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" password="NO_PASS"/>
                 <Param name="ConnectionID" value="${ConnectionID}" />
             </XsltPipe>
 
