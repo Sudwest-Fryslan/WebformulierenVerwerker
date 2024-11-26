@@ -12,7 +12,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <XsltPipe name="ConvertToAboutRequest" styleSheetName="xsl/Info/message2about.xsl"
+            <XsltPipe name="ConvertToAboutRequest" styleSheetName="WebformulierenVerwerker/xsl/Info/Message2About.xsl"
                 storeResultInSessionKey="corsaRequest" />
 
             <SenderPipe name="sendToCorsa">
@@ -35,7 +35,7 @@
             </PutInSessionPipe>
 
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/Common/CreateErrorResponse.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" sessionKey="corsaResponse" />
@@ -46,7 +46,7 @@
             </XsltPipe>
 
 
-            <XsltPipe name="ExtractInfo" styleSheetName="xsl/Info/Response2Info.xsl">
+            <XsltPipe name="ExtractInfo" styleSheetName="WebformulierenVerwerker/xsl/Info/Response2Info.xsl">
                 <Param name="stage" value="${dtap.stage}" />
                 <Param name="userdomain" value="${USERDOMAIN}" />
                 <Param name="username" value="${USERNAME}" />

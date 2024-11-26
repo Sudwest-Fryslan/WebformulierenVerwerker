@@ -21,14 +21,14 @@
             </XmlIfPipe>
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword"
-                styleSheetName="xsl/Common/message2Connect.xsl">
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
                 <Param name="ConnectionID" value="${ConnectionID}" />
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
 
             <XsltPipe name="ConvertToConnectRequest_Password"
-                styleSheetName="xsl/Common/message2Connect.xsl">
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
                 <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" />
                 <Param name="ConnectionID" value="${ConnectionID}" />
@@ -70,7 +70,7 @@
             </XmlIfPipe>
 
             <!-- Query to see if person exists -->
-            <XsltPipe name="ConvertToQueryRequest" styleSheetName="xsl/OpslaanInkNatuurlijkPersoon/Message2QueryPerson.xsl">
+            <XsltPipe name="ConvertToQueryRequest" styleSheetName="WebformulierenVerwerker/xsl/OpslaanInkNatuurlijkPersoon/Message2QueryPerson.xsl">
                 <Param name="afzenderbsn" xpathExpression="//afzenderbsn"
                     sessionKey="originalMessage" />
             </XsltPipe>
@@ -124,7 +124,7 @@
                 <Forward name="success" path="ConvertToCreateDocument" />
             </PutInSessionPipe>
 
-            <XsltPipe name="ConvertToCreatePerson" styleSheetName="xsl/OpslaanInkNatuurlijkPersoon/Message2CreatePerson.xsl"
+            <XsltPipe name="ConvertToCreatePerson" styleSheetName="WebformulierenVerwerker/xsl/OpslaanInkNatuurlijkPersoon/Message2CreatePerson.xsl"
                 getInputFromSessionKey="originalMessage">
 
                 <Forward name="success" path="WrapCreatePersonRequest" />
@@ -198,7 +198,7 @@
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateFileVersion"
-                styleSheetName="xsl/Common/Message2CreateFileVersion.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2CreateFileVersion.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
                     sessionKey="DocumentDetails" />
@@ -229,7 +229,7 @@
             </XmlSwitchPipe>
 
             <XsltPipe name="RemoveXMLDeclaration" omitXmlDeclaration="true"
-                handleLexicalEvents="true" styleSheetName="xsl/Common/Response2NoXML.xsl" />
+                handleLexicalEvents="true" styleSheetName="WebformulierenVerwerker/xsl/Common/Response2NoXML.xsl" />
 
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="FileVersionDetails" />
@@ -242,7 +242,7 @@
 
             <!-- Handle Dossier -->
             <XsltPipe name="ConvertToModObjectRelationDossier"
-                styleSheetName="xsl/Common/Message2ModObjectRelationDossier.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2ModObjectRelationDossier.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="DossierID" xpathExpression="//dossiercode" />
@@ -267,7 +267,7 @@
             </SenderPipe>
 
             <XsltPipe name="ConvertToDisconnectRequest" getInputFromFixedValue="&lt;Default/>"
-                styleSheetName="xsl/Common/Message2Disconnect.xsl" />
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Disconnect.xsl" />
 
             <SoapWrapperPipe name="WrapDisconnectRequest" storeResultInSessionKey="corsaRequest" />
 
@@ -292,7 +292,7 @@
                 <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
-            <XsltPipe name="DateTime2Date" styleSheetName="xsl/Common/DateTime2Date.xsl"
+            <XsltPipe name="DateTime2Date" styleSheetName="WebformulierenVerwerker/xsl/Common/DateTime2Date.xsl"
                 storeResultInSessionKey="StoreDate">
                 <Param name="datetime" xpathExpression="current-dateTime()" />
             </XsltPipe>
@@ -355,7 +355,7 @@
             </PutInSessionPipe>
 
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/Common/CreateErrorResponse.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" sessionKey="corsaResponse" />

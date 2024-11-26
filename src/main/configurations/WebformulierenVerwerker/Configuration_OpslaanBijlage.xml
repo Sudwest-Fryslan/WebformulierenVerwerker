@@ -19,14 +19,14 @@
             </XmlIfPipe>
 
             <XsltPipe name="ConvertToConnectRequest_NoPassword"
-                styleSheetName="xsl/Common/message2Connect.xsl">
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
                 <Param name="ConnectionID" value="${ConnectionID}" />
                 <Forward name="success" path="WrapConnectRequest" />
             </XsltPipe>
 
             <XsltPipe name="ConvertToConnectRequest_Password"
-                styleSheetName="xsl/Common/message2Connect.xsl">
+                styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" />
                 <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" />
                 <Param name="ConnectionID" value="${ConnectionID}" />
@@ -85,7 +85,7 @@
             <PutInSessionPipe name="SetKeyOnderwerp" sessionKey="Onderwerp" />
 
             <XsltPipe name="ConvertToCreateMetaDocumentForBijlage"
-                styleSheetName="xsl/OpslaanBijlage/Message2CreateMetaDocument.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/OpslaanBijlage/Message2CreateMetaDocument.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid" />
@@ -123,7 +123,7 @@
             </XmlSwitchPipe>
 
             <XsltPipe name="ConvertToCreateFileVersionForBijlage"
-                styleSheetName="xsl/OpslaanBijlage/Message2CreateFileVersionBijlage.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/OpslaanBijlage/Message2CreateFileVersionBijlage.xsl"
                 getInputFromSessionKey="originalMessage"
                 storeResultInSessionKey="corsaRequest">
                 <Param name="DocumentID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
@@ -147,7 +147,7 @@
             </SoapWrapperPipe>
 
             <XsltPipe name="ConvertToModObjectRelation"
-                styleSheetName="xsl/OpslaanBijlage/Message2ModObjectRelation.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/OpslaanBijlage/Message2ModObjectRelation.xsl"
                 getInputFromSessionKey="originalMessage">
                 <Param name="systemdate" pattern="{now, date,dd/MM/yyyy}" />
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
@@ -181,7 +181,7 @@
                 <Forward name="false" path="isErrorXML" />
             </XmlSwitchPipe>
 
-            <XsltPipe name="ConvertToBijlageResponse" styleSheetName="xsl/OpslaanBijlage/Response2Bijlage.xsl"
+            <XsltPipe name="ConvertToBijlageResponse" styleSheetName="WebformulierenVerwerker/xsl/OpslaanBijlage/Response2Bijlage.xsl"
                 omitXmlDeclaration="true">
                 <Param name="BijlageID" xpathExpression="//CreateMetaDocumentResponse/NewObjectID"
                     sessionKey="DocumentForBijlage" />
@@ -190,7 +190,7 @@
             <SoapWrapperPipe name="WrapResult" removeOutputNamespaces="true"
                 storeResultInSessionKey="BijlageResults" />
 
-            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="xsl/Common/Message2Disconnect.xsl" />
+            <XsltPipe name="ConvertToDisconnectRequest" styleSheetName="WebformulierenVerwerker/xsl/Common/Message2Disconnect.xsl" />
 
             <SoapWrapperPipe name="WrapDisconnectRequest" storeResultInSessionKey="corsaRequest" />
 
@@ -234,7 +234,7 @@
             </PutInSessionPipe>
 
             <XsltPipe name="buildErrorMsg"
-                styleSheetName="xsl/Common/CreateErrorResponse.xsl"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/CreateErrorResponse.xsl"
                 getInputFromFixedValue="&lt;dummy/&gt;">
                 <Param name="corsaRequest" sessionKey="corsaRequest" />
                 <Param name="corsaResponse" sessionKey="corsaResponse" />

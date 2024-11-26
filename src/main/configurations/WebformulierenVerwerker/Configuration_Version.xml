@@ -13,7 +13,7 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <XsltPipe name="ExtractVersion" styleSheetName="xsl/Version/Response2Version.xsl">
+            <XsltPipe name="ExtractVersion" styleSheetName="WebformulierenVerwerker/xsl/Version/Response2Version.xsl">
                 <Param name="version" value="${configuration.version}" />
                 <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
                 <Forward name="success" path="Wrapper" />
