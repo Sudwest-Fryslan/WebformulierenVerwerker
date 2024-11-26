@@ -10,8 +10,8 @@
         type="javax.sql.DataSource"
         driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://192.168.178.70:5432/ladybug"
-        username="postgres"
-        password="admin"
+        user="${ladybug_database/username:-testiaf_user}"
+        password="${ladybug_database/password:-testiaf_user00}"
         maxTotal="10"
         maxWaitMillis="5000"
     />
