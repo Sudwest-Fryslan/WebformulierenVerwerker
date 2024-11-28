@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.2...v6.19.3) (2024-11-28)
+
+### 🧑‍💻 Code Refactoring
+
+* removed dummy ip ([ac04189](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ac04189459d44de871f7fdf7c62319f88b38b1db))
+
 ## [6.19.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.1...v6.19.2) (2024-11-28)
 
 ### 🐛 Bug Fixes
