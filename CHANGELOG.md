@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.5...v6.19.6) (2024-11-28)
+
+### ⏩ Reverts
+
+* Revert "refactor: replace old database driver with postgres" ([5ea1b1c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5ea1b1ca287ef6fcb7350787f852e31194ac7146))
+
 ## [6.19.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.4...v6.19.5) (2024-11-28)
 
 ### 🧑‍💻 Code Refactoring
