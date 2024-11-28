@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="InfoAction">
+        <Receiver name="InfoAction">
+            <JavaListener name="InfoAction" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe name="ConvertToAboutRequest" styleSheetName="WebformulierenVerwerker/xsl/Info/Message2About.xsl"
+                storeResultInSessionKey="corsaRequest" />
+
+            <SenderPipe name="sendToCorsa">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                    url="${corsa.url}" soapAction="http://bct.nl/About" soap="false" timeout="12500" />
+                <Forward name="success" path="ExtractInfo" />
+                <Forward name="exception" path="isErrorXML" />
+            </SenderPipe>
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse" />
+                <Forward name="else" path="errorToXML" />
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"></Text2XmlPipe>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="corsaResponse" />
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="WebformulierenVerwerker/xsl/Common/CreateErrorResponse.xsl"
+                getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="corsaRequest" sessionKey="corsaRequest" />
+                <Param name="corsaResponse" sessionKey="corsaResponse" />
+                <Param name="corsaErrorMessage" xpathExpression="//LastError"
+                    sessionKey="corsaResponse" defaultValue="No Error Message" />
+                <Param name="soapAction" value="http://bct.nl/About" />
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+
+            <XsltPipe name="ExtractInfo" styleSheetName="WebformulierenVerwerker/xsl/Info/Response2Info.xsl">
+                <Param name="stage" value="${dtap.stage}" />
+                <Param name="userdomain" value="${USERDOMAIN}" />
+                <Param name="username" value="${USERNAME}" />
+                <Param name="serverType" value="${application.server.type}" />
+                <Param name="osName" value="${os.name}" />
+                <Param name="directory" value="${configurations.directory}" />
+                <Param name="hipVersion" value="${instance.version}" />
+                <Param name="wfvVersion" value="${configuration.version}" />
+                <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
+                <Param name="frameworkVersion" value="${application.version}" />
+                <Param name="corsaUrl" value="${corsa.url}" />
+                <Forward name="success" path="Wrapper" />
+                <Forward name="exception" path="isErrorXML" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="Wrapper" />
+        </Pipeline>
+    </Adapter>
+</Module>

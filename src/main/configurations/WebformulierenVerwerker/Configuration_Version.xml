@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="VersionAction">
+
+        <Receiver name="VersionAction">
+            <JavaListener name="VersionAction" />
+        </Receiver>
+        <Pipeline>
+
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe name="ExtractVersion" styleSheetName="WebformulierenVerwerker/xsl/Version/Response2Version.xsl">
+                <Param name="version" value="${configuration.version}" />
+                <Param name="versionDate_ddmmyyyy" value="${versionDate_ddmmyyyy}" />
+                <Forward name="success" path="Wrapper" />
+                <Forward name="exception" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SoapWrapperPipe name="Wrapper" />
+        </Pipeline>
+    </Adapter>
+</Module>

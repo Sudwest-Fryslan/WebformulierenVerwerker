@@ -1,0 +1,25 @@
+<!DOCTYPE configuration [
+    <!ENTITY Info SYSTEM "Configuration_Info.xml">
+    <!ENTITY OpslaanBijlage SYSTEM "Configuration_OpslaanBijlage.xml">
+    <!ENTITY OpslaanInk SYSTEM "Configuration_OpslaanInk.xml">
+    <!ENTITY OpslaanInkNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNatuurlijkPersoon.xml">
+    <!ENTITY OpslaanInkNietNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNietNatuurlijkPersoon.xml">
+    <!ENTITY Version SYSTEM "Configuration_Version.xml">
+    <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
+]>
+<Configuration>
+    <SharedResources>
+        <HttpSession
+            name="SharedHttpSession"
+            maxConnections="1"
+            connectionTimeToLive="100000" 
+        />
+    </SharedResources>
+    &Info;
+    &OpslaanBijlage;
+    &OpslaanInk;
+    &OpslaanInkNatuurlijkPersoon;
+    &OpslaanInkNietNatuurlijkPersoon;
+    &Version;
+    &WebformulierenVerwerkerDispatcher;
+</Configuration>

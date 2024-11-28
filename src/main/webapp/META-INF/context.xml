@@ -1,0 +1,18 @@
+<Context>
+    <Resource
+        name="jdbc/webformulierenverwerker"
+        type="org.h2.jdbcx.JdbcDataSource"
+        factory="org.apache.naming.factory.BeanFactory"
+        URL="jdbc:h2:/opt/frank/h2/webformulierenverwerker"
+    />
+
+    <Resource name="jdbc/webformulierenverwerker-postgresql" auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://192.168.178.70:5432/ladybug"
+        user="${ladybug_database/username:-testiaf_user}"
+        password="${ladybug_database/password:-testiaf_user00}"
+        maxTotal="10"
+        maxWaitMillis="5000"
+    />
+</Context>
