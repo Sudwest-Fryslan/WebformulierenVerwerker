@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.4...v6.19.5) (2024-11-28)
+
+### 🧑‍💻 Code Refactoring
+
+* replace old database driver with postgres ([cfb7b7c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cfb7b7c8626f12ab3a7bd3fabf3a34e76768d54d))
+
 ## [6.19.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.3...v6.19.4) (2024-11-28)
 
 ### 🧑‍💻 Code Refactoring
