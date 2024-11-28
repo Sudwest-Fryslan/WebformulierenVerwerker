@@ -9,20 +9,10 @@
     <Resource
         name="jdbc/webformulierenverwerker-postgresql"
         auth="Container"
-        factory="org.apache.naming.factory.BeanFactory"
-        type="org.postgresql.xa.PGXADataSource"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.adittionalUrlParameters}"
         user="${jdbc/username}"
         password="${jdbc/password}"
-    />
-
-    <Resource name="jdbc/ladybug-postgresql" auth="Container"
-        type="javax.sql.DataSource"
-        driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.ladybug.database}"
-        user="${jdbc/username}"
-        password="${jdbc/password}"
-        maxTotal="10"
-        maxWaitMillis="5000"
     />
 </Context>
