@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.0...v6.19.1) (2024-11-28)
+
+### 🧑‍💻 Code Refactoring
+
+* add WSDL for soapui ([2566ca5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2566ca5d8503121ffa92b69f9539aed0b5fda3c5))
+
 ## [6.19.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.18.1...v6.19.0) (2024-11-28)
 
 ### 🍕 Features
