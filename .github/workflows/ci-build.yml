@@ -74,7 +74,7 @@ jobs:
       run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ needs.analyze-commits.outputs.release-version }}
     -
       name: Make JAR of configuration
-      run: jar cvf /tmp/WebformulierenVerwerker.jar -C configurations WebformulierenVerwerker
+      run: jar cvf /tmp/WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVerwerker
     -
       name: "🔧 setup node"
       uses: actions/setup-node@v2.1.5
