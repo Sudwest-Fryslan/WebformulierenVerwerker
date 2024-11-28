@@ -1,5 +1,52 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.18.1...v6.19.0) (2024-11-28)
+
+### 🍕 Features
+
+* add new function opslaanInk ([70a8850](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/70a8850a1e894a16907009295778b4fa843420f9))
+* improve error handling to support non-xml ([2bcd6fe](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2bcd6fe66e00a61fb76ea8bd0f3ec5ea01901b5e))
+* improved version response ([24e9ad3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/24e9ad318c78f76402195379900da964bd63358c))
+* rework info output ([f2ce2b8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f2ce2b82d4e1d90f21d5f8c898138648d9d9767c))
+* update project structure ([f7c61cb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f7c61cb364a6b4cb13c169a66727cf576556f2c9))
+* update project structure and error handling ([c0597e5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c0597e54f6a01871cff9880b196a5ce4dbc57cd0))
+
+### 🐛 Bug Fixes
+
+* add missing error handling pipe ([7fb9982](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7fb9982db5ec75fe44c9998f0bdda5ec3a5fb80a))
+* repair dockerfile ([1697fb4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1697fb4fa904f56384cf7929a0eeb404f3390f36))
+* resolve issues with no xsl found ([b0717fd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b0717fd65f5e94cb6abfe62700b5852043bedeb9))
+
+### 🎨 Styles
+
+* code formatting ([ff93240](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ff9324073ce64074ce3c4b0e01a674acc0bad302))
+
+### 🧑‍💻 Code Refactoring
+
+* add cors properties ([b4c6dc5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b4c6dc58357c40241ae549929dd79a2de8c264b5))
+* add default database auth values ([7b88527](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7b885279e8d1ab6aa5729fdf6b169f0d36c053d7))
+* add retries and retrydelay to ALL lockers ([bbafc30](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bbafc30ee78f154a1df77bc00f1efc42ce6eb5f1))
+* adjust example .env ([cd55cfd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cd55cfd51c8b9e37ccf51645a3a0fd1353e7e46b))
+* better server overview in info ([7fcb52d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7fcb52d8ae004385d36a54af2ce026ee8e5e1f85))
+* increase timeouts by 2500ms ([2641f61](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2641f615093f7437c53d5ee4eec7211894b9d3d4))
+* remove illegal or default arguments ([b889eee](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b889eee89ec728345f2e7617cb948ec438805415))
+* remove sources of warnings ([2094b3a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2094b3a11909aa39c96df20c2657e8ca33ad4565))
+* remove standard inclusion of database ([5528019](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/552801956fd9cf916da45a73a06ebfeaa1ca5c1d))
+* set database use per stage ([f5e4dd8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f5e4dd851b6650a51008f68895b0405afc86db40))
+* set up local testing with Docker ([23bc17d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/23bc17daddfdaca6d25ef75658ee0e65b4d8c417))
+* set up test dabatase ([5718188](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/571818804ee40902bc7e260f5d9bab75513b84ea))
+* suppress warning ([63d5ca9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/63d5ca9a8df47079383e438ea81630920f0a5312))
+
+### ✅ Tests
+
+* fix and update tests ([6f8f904](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6f8f9047edd0f282d2a015c91288111bacf4ecc5))
+* overhaul testsuite ([a07d225](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a07d225fc9854a3f606eecfb7845016c65c7c392))
+* remove duplicate tests ([a77c4c5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a77c4c550aaf0161cfd69042e20ab66fd3406785))
+
+### 🔁 Continuous Integration
+
+* update ci-build.yml ([ce27444](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ce27444e07287721626dda85b5c5e3524eee93ca))
+
 ## [6.18.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.18.0...v6.18.1) (2024-11-14)
 
 ### 🧑‍💻 Code Refactoring
