@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.19.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.1...v6.19.2) (2024-11-28)
+
+### 🐛 Bug Fixes
+
+* reinstate database connection ([730d11f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/730d11fc1b761e0630b2b99e9b18a53df358b733))
+
 ## [6.19.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.0...v6.19.1) (2024-11-28)
 
 ### 🧑‍💻 Code Refactoring
