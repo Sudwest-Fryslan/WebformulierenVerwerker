@@ -19,7 +19,7 @@
     <Resource name="jdbc/ladybug-postgresql" auth="Container"
         type="javax.sql.DataSource"
         driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://192.168.178.70:5432/ladybug"
+        url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/ladybug"
         user="${ladybug_database/username:-testiaf_user}"
         password="${ladybug_database/password:-testiaf_user00}"
         maxTotal="10"
