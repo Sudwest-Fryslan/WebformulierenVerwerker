@@ -1,7 +1,0 @@
-<!DOCTYPE Configuration [
-
-	]>
-
-<Configuration name="{{ cookiecutter.configuration_name }}">
-
-</Configuration>
