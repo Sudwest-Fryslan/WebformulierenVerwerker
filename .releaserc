@@ -1,6 +1,5 @@
 {
-  "branches": ["main"],
-  "debug": "true",
+  "branches": ["main", "1.0.x"],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -12,13 +11,13 @@
           {"type": "fix", "release": "patch"},
           {"type": "perf", "release": "patch"},
           {"type": "revert", "release": "patch"},
-          {"type": "docs", "release": "minor"},
+          {"type": "docs", "release": "patch"},
           {"type": "style", "release": "patch"},
           {"type": "refactor", "release": "patch"},
           {"type": "test", "release": "patch"},
           {"type": "build", "release": "patch"},
           {"type": "ci", "release": "patch"},
-          {"type": "chore", "release": "patch"}
+          {"type": "chore", "release": false}
         ],
         "parserOpts": {
           "noteKeywords": [
@@ -39,9 +38,6 @@
             "BREAKING CHANGES",
             "BREAKING"
           ]
-        },
-        "overrides": {
-           "conventional-changelog-conventionalcommits": ">= 8.0.0"
         },
         "writerOpts": {
           "commitsSort": ["subject", "scope"]
@@ -65,7 +61,7 @@
     ],
     [
       "@semantic-release/exec", {
-        "verifyReleaseCmd": "echo '::set-output name=release-tag::v${nextRelease.version}'; echo '::set-output name=release-version::${nextRelease.version}'"
+        "verifyReleaseCmd": "echo \"release-tag=v${nextRelease.version}\" >> $GITHUB_OUTPUT; echo \"release-version=${nextRelease.version}\" >> $GITHUB_OUTPUT; echo \"release-type=${nextRelease.type}\" >> $GITHUB_OUTPUT"
       }
     ],
     [
@@ -80,7 +76,7 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "classes/BuildInfo.properties",
+          "src/main/resources/BuildInfo.properties",
           "configurations/WebformulierenVerwerker/BuildInfo.properties",
           "publiccode.yaml"
         ],
