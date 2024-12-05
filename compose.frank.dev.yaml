@@ -1,4 +1,4 @@
-# This docker-compose file brings up an instance of {{ cookiecutter.instance_name }} for local development.
+# This docker-compose file brings up an instance of WebformulierenVerwerker for local development.
 #
 # For local development it is recommended to a 'sync+restart' watch action for each configuration's 'DeploymentSpecific' files.
 # This ensures that the container is automatically restarted when a change is made in it. Additionally,
@@ -20,18 +20,18 @@ services:
       pull: true # makes sure that the base image is forcefully pulled when using 'latest' tag.
       args:
         FF_VERSION: ${FF_VERSION:-latest}
-    image: wearefrank/{{ cookiecutter.instance_name_lc }}:${VERSION:-latest}
+    image: wearefrank/webformulierenVerwerker:${VERSION:-latest}
     environment:
       dtap.stage: DEV
-      configurations.{{ cookiecutter.configuration_name }}.classLoaderType: ScanningDirectoryClassLoader
+      configurations.WebformulierenVerwerker.classLoaderType: ScanningDirectoryClassLoader
     volumes:
       - h2-data:/opt/frank/h2:rw
       - logs:/usr/local/tomcat/logs:rw
     develop:
       watch:
         - action: sync+restart
-          path: ./src/main/configurations/{{ cookiecutter.configuration_name }}/DeploymentSpecifics.properties
-          target: /opt/frank/configurations/{{ cookiecutter.configuration_name }}/DeploymentSpecifics.properties
+          path: ./src/main/configurations/WebformulierenVerwerker/DeploymentSpecifics.properties
+          target: /opt/frank/configurations/WebformulierenVerwerker/DeploymentSpecifics.properties
         - action: sync
           path: ./src/main/configurations
           target: /opt/frank/configurations

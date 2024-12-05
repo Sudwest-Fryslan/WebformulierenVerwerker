@@ -1,4 +1,4 @@
-# This docker-compose file brings up an example instance of {{ cookiecutter.instance_name }}.
+# This docker-compose file brings up an example instance of WebformulierenVerwerker.
 # 
 # A H2 file-based database is used as example. This is not recommended for production environments.
 #
@@ -9,7 +9,7 @@
 #
 services:
   frank:
-    image: wearefrank/{{ cookiecutter.instance_name_lc }}:${VERSION:-latest}
+    image: wearefrank/WebformulierenVerwerker:${VERSION:-latest}
     environment:
       TZ: ${TIME_ZONE:-Europe/Amsterdam}
       dtap.stage: ${DTAP_STAGE:-LOC}
