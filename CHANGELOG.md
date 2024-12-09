@@ -1,5 +1,65 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.6...v6.20.0) (2024-12-09)
+
+### 🍕 Features
+
+* add skeleton project as upstream ([8b6f64a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8b6f64ac6a4847bbcb84626bc0cd4107495a7a97))
+* add timezone property in env ([76a66b5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/76a66b5d9eef96a9ce0a18cb13ccd2e6821a3148))
+* docusaurus documentation website ([85aabd8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/85aabd8c1aa1af8724da150ec8a502ca5ae5b7a3))
+
+### 🐛 Bug Fixes
+
+* add dummy pom.xml so that frank!runner recognizes the project structure ([e6453e5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e6453e5858703f9b2f4905e53420a7e909436a37))
+* cookiecutter raw tags in ci/cd workflow files are not replaced ([a421bfa](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a421bfacbb45685eecadc601294c6a0f4d007401))
+* credential.properties not found when using frank!runner ([1ceacb8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/1ceacb8f4d4ad43878e636aeb9be9eae5b7d44bd))
+* custom code builder stage for missing jdk in ff image ([98de7ca](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/98de7ca278db998cda71940cb6aebc012a2fff2f))
+* frank!runner not using credentialfactory and credential.properties path when outside resource folder ([64d94ee](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/64d94ee34f5a521f8106fad1ff39520290e1e5b1))
+* h2 database permission denied when mounting h2 folder with newer Docker versions ([fc83698](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/fc83698880f6b93972bf758b4c84ed255f869a5a))
+* remove .env from gitignore ([5511a9b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5511a9bff9a843e19fe13628bcfa73771c5dfba6))
+* remove .example suffix from .env file so that the .env work out-of-the-box ([7dacfc8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7dacfc8676f165a32c47b56b8532e103c5903f65))
+* remove copy paste artifact in configuration.xml ([2e55456](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2e55456a2cbbd4b851d4ea0542739036dac177a3))
+* remove release workflow conventional-commits preset version lock ([8e3e6ce](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8e3e6cef0176547da2d2b9cedbef43d1c10f3dfd))
+* run docusaurus-release only after release job succeeded ([8246300](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/82463009428d9f62ae3d60a17ed5a3971d25fd0e))
+
+### 📝 Documentation
+
+* **readme:** add instructions ([0953baa](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0953baa88f47e6d72e546c2b59bd8c3ba94f62dd))
+* instructions in CONTRIBUTING.md for local development with Docker Compose ([55b6b24](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/55b6b24e588a023f850ebae12d4423542958c2a7))
+* instructions in CONTRIBUTING.md for merging changes from skeleton repo into project repo ([9afd7b6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9afd7b6d39acc107fa2cdfe03858e30841db1b06))
+
+### 🎨 Styles
+
+* remove double comment on custom code javac section ([d8f7279](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d8f72797e34547310285e354270dc8b3b3718afd))
+
+### 🧑‍💻 Code Refactoring
+
+* 'docs' conventional release tag results in patch release instead of minor ([a1087b6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a1087b62401f0d00b55cced62198d54cebb13b71))
+* change name of GITHUB_PAT to WEAREFRANK_BOT_PAT due to new GitHub naming constraints ([0c36a22](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0c36a22c1bbea81e49ac8178b51738cd3bbbd161))
+* enable Docusaurus Mermaid support by default ([0866bc8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0866bc8f5a31ca86e933cc38c708868b87f8f480))
+* fix dockerfile linter warning 'as' to 'AS' in FROM statements ([238d92d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/238d92dfa99f15bc57b77dbb7a086ed51a6674e0))
+* remove .env from repo and replace with .env.example ([4878047](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/487804773312bf8b508a8ae478c61b30a1f4d58b))
+* spit docker-compose in an example and development docker-compose and move common environment vars to dockerfile ([ccae941](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ccae941fc323ac636f160bb817abc3e47649c8ae))
+
+### 🤖 Build System
+
+* **dependencies:** bump actions/download-artifact ([2ea5b78](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2ea5b78afec97e0beda8c9677f3fe1e284dca3bc))
+* **dependencies:** bump docusaurus version to 2.4.0 ([a19101d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a19101dbd256bd4290145ca606a29296095af055))
+* **dependencies:** bump the github-actions group with 2 updates ([#9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/9)) ([96212d7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/96212d7f9c6cd9a6022f8636170a19a72d5dc24d))
+* **dependencies:** bump the github-actions group with 3 updates ([6521a36](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6521a36a98a34d0f964caf207ab4cd78ef0ae806))
+* **dependencies:** bump typescript ([5c8e311](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5c8e311207d7da46b056e47543c5f798369a5d9a))
+* fix dockerfile custom code stage not being commented out by default ([bf7dd8c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bf7dd8c0b671952cd417c124a82a74abddbd6670))
+
+### 🔁 Continuous Integration
+
+* automatically bump the Frank!Framework version on a weekly basis ([0c11767](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0c11767380fe0c28aa4fde2406436426aca93eda))
+* configure dependabot to update github-actions on a weekly basis ([5bd77dd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5bd77dd20db375c9fff04b63de38a2a5073db395))
+* fix 'bump-ff-version' workflow schedule syntax ([66d4e2b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/66d4e2b084902a8df253ffd7e5554a4cc9259ab8))
+* lock ci-cd-template workflow versions to commit hash instead of main branch ([6d3595f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6d3595f2798e4e7df8dfdde0d4e531274fac8e79))
+* lock conventionalcommit preset to v7.0.2 due to conventional commit breaking change ([8c093b7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8c093b742bd39e3f3d73f783a2e03c8d23440887))
+* use pat in analyze-commits job during release ([47a1f72](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/47a1f7268a47dd1bccba8fa64f63424fdf221792))
+* use waf bot pat token for bump-ff-version workflow due to permission issue with ci checks in the created pr ([9f50042](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/9f50042a13d6135544af4ff1d36fa3fbd0ae360d))
+
 ## [6.19.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.5...v6.19.6) (2024-11-28)
 
 ### ⏩ Reverts
