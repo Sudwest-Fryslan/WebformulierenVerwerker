@@ -1,8 +1,8 @@
 {
     "mappings": {
-        "{{ cookiecutter.instance_name }}": "",
-        "{{ cookiecutter.instance_name_lc }}": "",
-        "{{ cookiecutter.configuration_name }}": ""
+        "{{ cookiecutter.instance_name }}": "WebformulierenVerwerker",
+        "{{ cookiecutter.instance_name_lc }}": "webformulierenverwerker",
+        "{{ cookiecutter.configuration_name }}": "webformulierenverwerker"
     },
     "ignoredFiles": [
         "skeletonrc.json",
