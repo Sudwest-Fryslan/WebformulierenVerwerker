@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.1...v6.20.2) (2024-12-10)
+
+### ⏩ Reverts
+
+* Revert "ci: remove old workflows" ([771a66c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/771a66cd8bf9015d7d1faa815879a631ca0dbd09))
+
+### 🔁 Continuous Integration
+
+* add build info writer ([f734dc3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f734dc301d3ad2c24c798ebb9c527c23bd3bcb5c))
+* replace with old work ([4d7c44c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4d7c44c0bf744228df7d2ac23209f9046dd01644))
+
 ## [6.20.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.0...v6.20.1) (2024-12-10)
 
 ### 🔁 Continuous Integration
