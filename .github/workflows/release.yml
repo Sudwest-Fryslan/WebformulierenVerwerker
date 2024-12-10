@@ -36,8 +36,8 @@ jobs:
         id: next-version
         run: semantic-release --dryRun
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WEAREFRANK_BOT_PAT }}
+          GH_TOKEN: ${{ secrets.WEAREFRANK_BOT_PAT }}
 
   ci:
     uses: wearefrank/ci-cd-templates/.github/workflows/ci-generic.yml@e073950d36ffdeb9f018b14b2ca0c13449825b2f #1.0.3
