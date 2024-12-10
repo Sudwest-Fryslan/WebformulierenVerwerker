@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.0...v6.20.1) (2024-12-10)
+
+### 🔁 Continuous Integration
+
+* fix token ref ([3bde542](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3bde542fd7bdc3adbdfb336ecea65452c40cc9c5))
+* remove old workflows ([59c47ed](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/59c47ed6bd5c6fc9724e304d1735d508a871fcff))
+
 ## [6.20.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.19.6...v6.20.0) (2024-12-09)
 
 ### 🍕 Features
