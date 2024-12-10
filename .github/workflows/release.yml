@@ -61,7 +61,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 #4.1.7
         with:
-          token: ${{ secrets.WEAREFRANK_BOT_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Pre-build Artifacts
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 #4.1.8
@@ -86,8 +86,8 @@ jobs:
       - name: Semantic Release
         run: semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.WEAREFRANK_BOT_PAT }}
-          GH_TOKEN: ${{ secrets.WEAREFRANK_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docker-release:
     uses: wearefrank/ci-cd-templates/.github/workflows/docker-release-generic.yml@e073950d36ffdeb9f018b14b2ca0c13449825b2f #1.0.3
@@ -96,8 +96,8 @@ jobs:
       - release
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
-      dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-      dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+      dockerhub-username: ${{ secrets.DOCKER_USERNAME }}
+      dockerhub-token: ${{ secrets.DOCKER_PASSWORD }}
     with:
       version: ${{ needs.analyze-commits.outputs.version-next }}
 
