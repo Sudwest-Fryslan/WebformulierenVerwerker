@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.2...v6.20.3) (2024-12-10)
+
+### 🤖 Build System
+
+* **dependencies:** bump the docusaurus group ([729b76e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/729b76e7ce7c367e19b58aa20579ab267c487f63))
+* **dependencies:** bump the github-actions group across 1 directory with 10 updates ([58a5804](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/58a5804e4bd636883a8c82654cbe766962953b09))
+
 ## [6.20.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.1...v6.20.2) (2024-12-10)
 
 ### ⏩ Reverts
