@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.3...v6.20.4) (2024-12-11)
+
+### ✅ Tests
+
+* update WSDL references to be dynamic ([8158a9c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8158a9c69054bd0e2b911ba83bbf6ab92112eee5))
+
 ## [6.20.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.2...v6.20.3) (2024-12-10)
 
 ### 🤖 Build System
