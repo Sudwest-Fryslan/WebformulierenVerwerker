@@ -96,6 +96,27 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="opslaanInk">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+						<xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="opslaanInkResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="opslaanInkResult" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="opslaanInkNietNatuurlijkPersoonResponse">
 				<xs:complexType>
 					<xs:sequence>
@@ -309,9 +330,11 @@
     -->
 	<wsdl:service name="GeneriekeFormulierAfhandeling">
 		<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
+        <!-- Request AbsoluteUri: http://testtsjinstbus.sudwestfryslan.nl:8081/corsakoppeling/GeneriekeFormulierAfhandeling.wsdl.aspx -->
+        <!-- Request Opgebouwd: http://testtsjinstbus.sudwestfryslan.nl:8081//corsakoppeling/GeneriekeFormulierAfhandeling.wsdl.aspx -->
         
-            <soap:address location="https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
-        >
+            <!-- contains tsjinstbus -->
+            <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/corsakoppeling/GeneriekeFormulierAfhandeling.svc"/>
         </wsdl:port>
   </wsdl:service>	
 </wsdl:definitions>
