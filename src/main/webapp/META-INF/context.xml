@@ -17,7 +17,7 @@
     />
 
     <Resource name="jdbc/ladybug-postgresql" auth="Container"
-        type="javax.sql.DataSource"
+        type="org.postgresql.ds.PGSimpleDataSource"
         driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.ladybug.database}"
         user="${jdbc/username}"
