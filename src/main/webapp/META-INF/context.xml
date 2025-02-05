@@ -12,7 +12,7 @@
         factory="org.apache.naming.factory.BeanFactory"
         type="org.postgresql.xa.PGXADataSource"
         url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.adittionalUrlParameters}"
-        username="${jdbc/username}"
+        user="${jdbc/username}"
         password="${jdbc/password}"
     />
 
@@ -22,7 +22,7 @@
         factory="org.apache.naming.factory.BeanFactory"
         type="org.postgresql.ds.PGSimpleDataSource"
         url="jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}"
-        username="${jdbc/username}"
+        user="${jdbc/username}"
         password="${jdbc/password}"
     />
 </Context>
