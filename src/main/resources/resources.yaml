@@ -9,7 +9,7 @@ jdbc:
     factory: "org.apache.naming.factory.BeanFactory"
     type: "org.postgresql.xa.PGXADataSource"
     url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.additional_url_parameters}"
-    user: "${jdbc/username}"
+    username: "${jdbc/username}"
     password: "${jdbc/password}"
 
   - name: "ladybug-postgresql" 
@@ -17,5 +17,5 @@ jdbc:
     factory: "org.apache.naming.factory.BeanFactory"
     type: "org.postgresql.ds.PGSimpleDataSource"
     url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}"
-    user: "${jdbc/username}"
+    username: "${jdbc/username}"
     password: "${jdbc/password}"
