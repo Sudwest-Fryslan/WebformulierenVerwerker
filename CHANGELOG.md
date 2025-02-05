@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.6...v6.20.7) (2025-02-05)
+
+### 🐛 Bug Fixes
+
+* add custom ladybug columns ([ae67592](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ae67592b3985ac03e813f99950dbc1ade5d277d4))
+
 ## [6.20.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.5...v6.20.6) (2025-02-05)
 
 ### 🐛 Bug Fixes
