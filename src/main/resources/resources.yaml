@@ -1,0 +1,23 @@
+jdbc:
+  - name: "webformulierenverwerker"
+    type: "org.h2.jdbcx.JdbcDataSource"
+    factory: "org.apache.naming.factory.BeanFactory"
+    url: "jdbc:h2:/opt/frank/h2/webformulierenverwerker"
+
+  - name: "webformulierenverwerker-postgresql"
+    auth: "Container"
+    factory: "org.apache.naming.factory.BeanFactory"
+    type: "org.postgresql.xa.PGXADataSource"
+    url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}?tcpKeepAlive=${jdbc.tcpKeepAlive:-true}${jdbc.additional_url_parameters}"
+    user: "${jdbc/username}"
+    password: "${jdbc/password}"
+
+  - name: "ladybug-postgresql"
+    auth: "Container"
+    type: "javax.sql.DataSource"
+    driver_class_name: "org.postgresql.Driver"
+    url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.ladybug.database}"
+    user: "${jdbc/username}"
+    password: "${jdbc/password}"
+    max_total: 10
+    max_wait_millis: 5000
