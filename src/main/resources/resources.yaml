@@ -12,12 +12,10 @@ jdbc:
     user: "${jdbc/username}"
     password: "${jdbc/password}"
 
-  - name: "ladybug-postgresql"
+  - name: "ladybug-postgresql" 
     auth: "Container"
-    type: "javax.sql.DataSource"
-    driver_class_name: "org.postgresql.Driver"
-    url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.ladybug.database}"
+    factory: "org.apache.naming.factory.BeanFactory"
+    type: "org.postgresql.ds.PGSimpleDataSource"
+    url: "jdbc:postgresql://${jdbc.hostname}:${jdbc.port:-5432}/${jdbc.database}"
     user: "${jdbc/username}"
     password: "${jdbc/password}"
-    max_total: 10
-    max_wait_millis: 5000
