@@ -1,0 +1,13 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.26.xsd"
+>
+    <changeSet id="LadybugCustom:1" author="Vincent de Gans">
+        <comment>Add column CORSARESPONSE and SOAPACTION</comment>
+        <addColumn tableName="LADYBUG">
+            <column name="CORSARESPONSE" type="java.sql.Types.VARCHAR(1024)"/>
+            <column name="SOAPACTION" type="java.sql.Types.VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
