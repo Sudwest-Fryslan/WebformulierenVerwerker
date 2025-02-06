@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.1...v6.21.2) (2025-02-06)
+
+### 🐛 Bug Fixes
+
+* set ff version to older version ([f2399f2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f2399f28570536f5d4f9a67ec05570f76f7292f9))
+
 ## [6.21.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.0...v6.21.1) (2025-02-06)
 
 ### 🐛 Bug Fixes
