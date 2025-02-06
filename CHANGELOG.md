@@ -1,5 +1,24 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.20.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.5...v6.20.6) (2025-02-05)
+
+### 🐛 Bug Fixes
+
+* revert property username to user ([0a30e75](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0a30e752aa59fcfd520aa1042ec91b3b4ad1947f))
+
+## [6.20.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.4...v6.20.5) (2025-02-05)
+
+### 🐛 Bug Fixes
+
+* bump ([3846720](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/38467202e1a0ddb3d17773f52b47f586fe98d3a3))
+* update user to username ([36c94a9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/36c94a987a993c00e0e0b619ee6124871f41a29e))
+
+## [6.20.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.4...v6.20.5) (2025-02-05)
+
+### 🐛 Bug Fixes
+
+* update user to username ([36c94a9](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/36c94a987a993c00e0e0b619ee6124871f41a29e))
+
 ## [6.20.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.3...v6.20.4) (2024-12-11)
 
 ### ✅ Tests
