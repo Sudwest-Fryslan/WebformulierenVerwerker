@@ -28,7 +28,7 @@ Attribuut name is nodig om een zinnige operation name=... te krijgen in de WSDL
 
             <WsdlXmlInputValidator name="InputValidator"
                 wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,Info"
+                soapBody="Version,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanInk,opslaanBijlage,Info"
                 addNamespaceToSchema="true"
                 schemaLocation="http://tempuri.org/ schema1"
                 throwException="true">
