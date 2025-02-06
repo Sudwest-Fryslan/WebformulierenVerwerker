@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.7...v6.21.0) (2025-02-06)
+
+### 🍕 Features
+
+* Merge pull request [#98](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/98) from Sudwest-Fryslan/enable-opslaanink ([a91b2cd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a91b2cda1e208aaa93baab05fd5af317b6967f1e))
+
 ## [6.20.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.20.6...v6.20.7) (2025-02-05)
 
 ### 🐛 Bug Fixes
