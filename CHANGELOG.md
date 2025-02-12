@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.2...v6.21.3) (2025-02-12)
+
+### 🐛 Bug Fixes
+
+* revert prod url ([e99f73c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e99f73c62107a109d1bdd59c9da72a95b4a0175b))
+
 ## [6.21.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.1...v6.21.2) (2025-02-06)
 
 ### 🐛 Bug Fixes
