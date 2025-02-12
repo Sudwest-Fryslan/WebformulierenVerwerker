@@ -330,11 +330,7 @@
     -->
 	<wsdl:service name="GeneriekeFormulierAfhandeling">
 		<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
-        <!-- Request AbsoluteUri: http://testtsjinstbus.sudwestfryslan.nl:8081/corsakoppeling/GeneriekeFormulierAfhandeling.wsdl.aspx -->
-        <!-- Request Opgebouwd: http://testtsjinstbus.sudwestfryslan.nl:8081//corsakoppeling/GeneriekeFormulierAfhandeling.wsdl.aspx -->
-        
-            <!-- contains tsjinstbus -->
-            <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/corsakoppeling/GeneriekeFormulierAfhandeling.svc"/>
+            <soap:address location="https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
         </wsdl:port>
   </wsdl:service>	
 </wsdl:definitions>
