@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.3...v6.21.4) (2025-03-24)
+
+### 🐛 Bug Fixes
+
+* add rolemapping to volumes ([f23bb35](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/f23bb358e5786ca1b8c9ce747d68d2c90d7e5fcb))
+
 ## [6.21.3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.2...v6.21.3) (2025-02-12)
 
 ### 🐛 Bug Fixes
