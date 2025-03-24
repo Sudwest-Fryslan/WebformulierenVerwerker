@@ -15,5 +15,6 @@ services:
       - .env
     volumes:
       - ${SECRETS_PATH:-./secrets}:/opt/frank/secrets
+      - ./src/main/resources/oauth-role-mapping.properties:/opt/frank/resources/oauth-role-mapping.properties
     restart: unless-stopped
 

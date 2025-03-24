@@ -22,7 +22,6 @@ services:
         FF_VERSION: ${FF_VERSION:-latest}
     image: wearefrank/webformulierenverwerker:${VERSION:-latest}
     environment:
-      dtap.stage: DEV
       configurations.WebformulierenVerwerker.classLoaderType: ScanningDirectoryClassLoader
     volumes:
       - h2-data:/opt/frank/h2:rw
