@@ -9,7 +9,7 @@
 #
 services:
   frank:
-    image: wearefrank/webformulierenverwerker:${VERSION:-latest}
+    image: wearefrank/webformulierenverwerker:${VERSION:-9.1.0}
     environment:
       TZ: ${TIME_ZONE:-Europe/Amsterdam}
       dtap.stage: ${DTAP_STAGE:-LOC}
