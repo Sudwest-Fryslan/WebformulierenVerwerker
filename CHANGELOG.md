@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.4...v6.21.5) (2025-06-19)
+
+### 🐛 Bug Fixes
+
+* Merge pull request [#101](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/101) from Sudwest-Fryslan/update-ff ([750556c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/750556c3a7f37b3fd7f085f83be5de35ec53ea15))
+
 ## [6.21.4](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.3...v6.21.4) (2025-03-24)
 
 ### 🐛 Bug Fixes
