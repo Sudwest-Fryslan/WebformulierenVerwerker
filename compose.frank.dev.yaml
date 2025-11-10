@@ -19,7 +19,7 @@ services:
       context: .
       pull: true # makes sure that the base image is forcefully pulled when using 'latest' tag.
       args:
-        FF_VERSION: ${FF_VERSION:-9.1.0}
+        FF_VERSION: ${FF_VERSION:-9.1.1-20251108.110041}
     image: wearefrank/webformulierenverwerker:${VERSION:-latest}
     environment:
       configurations.WebformulierenVerwerker.classLoaderType: ScanningDirectoryClassLoader
