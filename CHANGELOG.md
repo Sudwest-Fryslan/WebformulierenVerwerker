@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.5...v6.21.6) (2025-11-10)
+
+### 🐛 Bug Fixes
+
+* Update framework to 9.1.1 ([5684a44](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5684a4465d53dea77742ddbde4bf6defbb55d1ce))
+
 ## [6.21.5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.4...v6.21.5) (2025-06-19)
 
 ### 🐛 Bug Fixes
