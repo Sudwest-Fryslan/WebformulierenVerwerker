@@ -1,4 +1,4 @@
-ARG FF_VERSION=9.1.1-20251108.110041
+ARG FF_VERSION=10.0.0
 
 FROM frankframework/frankframework:${FF_VERSION} AS ff-base
 
@@ -29,11 +29,12 @@ COPY --chown=tomcat lib/webapp/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 ### section: custom-code(end)
 
 # Copy database connection settings
-COPY --chown=tomcat src/main/webapp/META-INF/context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+# COPY --chown=tomcat src/main/webapp/META-INF/context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
 # Copy Frank!
 COPY --chown=tomcat src/main/configurations/ /opt/frank/configurations/
 COPY --chown=tomcat src/main/resources/ /opt/frank/resources/
+COPY --chown=tomcat src/main/drivers/ /opt/frank/drivers/
 COPY --chown=tomcat src/main/secrets/ /opt/frank/secrets/
 COPY --chown=tomcat src/test/testtool/ /opt/frank/testtool/
 
@@ -51,7 +52,7 @@ RUN mkdir -p /opt/frank/h2/
 ### section: custom-code(end)
 
 ENV application.server.type.custom=${TRANSACTION_MANAGER:-NARAYANA} \
-	credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory \
+	credentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory \
 	credentialFactory.map.properties=/opt/frank/secrets/credentials.properties
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=60 \
