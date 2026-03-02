@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.21.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.6...v6.21.7) (2026-03-02)
+
+### 🐛 Bug Fixes
+
+* Update Frank!Framework to 10.0.0 ([017d5e0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/017d5e0886ae3c2317c9acf9457631280d6fb3e6))
+
 ## [6.21.6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.5...v6.21.6) (2025-11-10)
 
 ### 🐛 Bug Fixes
