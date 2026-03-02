@@ -77,7 +77,6 @@
         "assets": [
           "CHANGELOG.md",
           "src/main/resources/BuildInfo.properties",
-          "configurations/WebformulierenVerwerker/BuildInfo.properties",
           "publiccode.yaml"
         ],
         "message": "chore(<%= nextRelease.type %>): release <%= nextRelease.version %> <%= nextRelease.channel !== null ? `on ${nextRelease.channel} channel ` : '' %>[skip ci]\n\n<%= nextRelease.notes %>"
