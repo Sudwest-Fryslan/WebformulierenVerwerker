@@ -1,0 +1,43 @@
+services:
+  openzaakbrug:
+    image: docker.io/openzaakbrug/openzaakbrug:latest
+    ports:
+     - "8090:8080"
+    volumes:
+      - ./contrib/openzaakbrug/application.properties:/src/main/resources/application.properties:ro
+    environment:
+      SPRING_PROFILES_ACTIVE: travis-ci
+      openzaak.baseUrl: http://openzaak.localtest.me
+    depends_on:
+      - openzaakbrug-postgres
+    networks:
+      openzaakbrug:
+        aliases:
+          - openzaakbrug.localtest.me
+      frank:
+        aliases:
+          - openzaakbrug.localtest.me
+
+  openzaakbrug-postgres:
+    image: postgres:latest
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD=openzaakbrug
+      - POSTGRES_USER=openzaakbrug
+      - POSTGRES_DB=openzaakbrug
+    networks:
+      openzaakbrug:
+        aliases:
+          - openzaakbrug-postgres.localtest.me
+
+  frank:
+    environment:
+      application.stuf.rootUrl: http://openzaakbrug.localtest.me/
+      application.stuf.beantwoordVraag.endpoint: translate/generic/zds/BeantwoordVraag
+      application.stuf.ontvangAsynchroon.endpoint: translate/generic/zds/OntvangAsynchroon
+      application.stuf.vrijeBerichten.endpoint: translate/generic/zds/VrijBericht
+
+networks:
+  openzaakbrug:
+  frank:

@@ -25,6 +25,12 @@ A breaking change means that this version is not backwards compatible with the p
 * The commit type (e.g. chore) is still relevant for breaking changes. This information appears in the release notes in the same way as a non-breaking change.
 * For non-breaking changes, omit the line with BREAKING and make a commit message like the first line shown.
 
+# Development Environment
+Carel integration:
+```bash
+docker compose -f compose.frank.dev.yaml -f contrib/compose.openzaakbrug.yaml -f contrib/compose.openzaak.yaml up --build --force-recreate --watch
+```
+
 # Checklist for testing CI/CD
 
 Here is a checklist for testing the CI/CD.
