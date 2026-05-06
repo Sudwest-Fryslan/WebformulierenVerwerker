@@ -48,7 +48,7 @@
                                   url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerZaakIdentificatie_Di02" soap="false"
                                   timeout="12500" />
                 <Forward name="success" path="Unwrapper1" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </SenderPipe>
             
             <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true"
