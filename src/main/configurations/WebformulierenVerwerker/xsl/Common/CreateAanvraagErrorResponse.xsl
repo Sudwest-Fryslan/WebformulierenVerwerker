@@ -7,6 +7,7 @@
     <xsl:param name="aanvraagResponse" select="''" as="xs:string" />
     <xsl:param name="soapAction" select="''" as="xs:string" />
     <xsl:param name="aanvraagErrorMessage" as="xs:string" />
+    <xsl:param name="errorInfo" as="xs:string" />
 
     <xsl:template match="/">
         <tns:Fault>
@@ -16,6 +17,7 @@
             </tns:faultstring>
             <tns:detail>
                 Something wrent wrong. See faultstring for information or try again later.
+                <tns:Message><xsl:value-of select="$errorInfo" /></tns:Message>
                 <!-- Left out to prevent data exposure. -->
                 <!-- <tns:Message>
                     <xsl:value-of

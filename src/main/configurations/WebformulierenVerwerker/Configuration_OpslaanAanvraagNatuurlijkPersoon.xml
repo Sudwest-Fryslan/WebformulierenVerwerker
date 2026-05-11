@@ -78,10 +78,16 @@
                 xpathExpression="//aanvraagtype"
                 getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML" />
-                <Forward name="notFound" path="isErrorXML" />
-                <Forward name="empty" path="isErrorXML" />
+                <Forward name="notFound" path="StoreCheckAanvraagTypeError" />
+                <Forward name="empty" path="StoreCheckAanvraagTypeError" />
                 <Forward name="leerlingenvervoer" path="TransformLeerlingenVervoerEncodedXML" />
             </XmlSwitchPipe>
+
+            <PutInSessionPipe name="StoreCheckAanvraagTypeError" sessionKey="ErrorInfo"
+                              value="aanvraagtype not valid">
+                <Forward name="success" path="isErrorXML" />
+                <Forward name="exception" path="EXCEPTION" />
+            </PutInSessionPipe>
             
             <XsltPipe name="TransformLeerlingenVervoerEncodedXML" styleSheetName="xsl/OpslaanAanvraagLeerlingenVervoerNatuurlijkPersoon/creeerZaak_Lk01_mapping.xsl" getInputFromSessionKey="decodedxml">
                 <Param name="randomuuid" sessionKey="GeneratedRandomUUID2" />
@@ -327,6 +333,7 @@
                 <Param name="aanvraagResponse" sessionKey="aanvraagResponse" />
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction" />
+                <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
             

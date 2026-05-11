@@ -150,6 +150,7 @@
                 <Param name="aanvraagResponse" sessionKey="aanvraagResponse" />
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message" />
                 <Param name="soapAction" sessionKey="RequestSoapAction" />
+                <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info" />
                 <Forward name="success" path="EXCEPTION" />
             </XsltPipe>
             
