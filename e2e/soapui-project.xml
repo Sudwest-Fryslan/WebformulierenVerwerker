@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:soapui-project id="1d0f1760-ed7f-4d8c-9a48-36679e059cb8" activeEnvironment="Default" name="webformulierenverwerker" resourceRoot="${projectDir}" soapui-version="5.9.1" abortOnError="false" runType="SEQUENTIAL" defaultScriptLanguage="Groovy" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:interface xsi:type="con:WsdlInterface" id="aaaaa6d3-e786-4ca8-956d-c92d65b06ea5" wsaVersion="NONE" name="ZdsBeantwoordVraag" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPBeantwoordVraag" soapVersion="1_1" anonymous="optional" definition="./e2e/Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_beantwoordVraag_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="aaaaa6d3-e786-4ca8-956d-c92d65b06ea5" wsaVersion="NONE" name="ZdsBeantwoordVraag" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPBeantwoordVraag" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_beantwoordVraag_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints/>
     <con:operation id="c876e01e-8701-40db-ba15-af7a0ad28fb3" isOneWay="false" action="http://www.egem.nl/StUF/sector/zkn/0310/geefLijstZaakdocumenten_Lv01" name="geefLijstZaakdocumenten_Lv01" bindingOperationName="geefLijstZaakdocumenten_Lv01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -17,7 +17,7 @@
       <con:settings/>
     </con:operation>
   </con:interface>
-  <con:interface xsi:type="con:WsdlInterface" id="7d7603a1-a9ce-4bb6-ab23-ee84463191de" wsaVersion="NONE" name="ZdsOntvangAsynchroon" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPOntvangAsynchroon" soapVersion="1_1" anonymous="optional" definition="./e2e/Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_ontvangAsynchroon_mutatie_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="7d7603a1-a9ce-4bb6-ab23-ee84463191de" wsaVersion="NONE" name="ZdsOntvangAsynchroon" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPOntvangAsynchroon" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_ontvangAsynchroon_mutatie_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints>
       <con:endpoint>http://localhost:8088/mockZdsOntvangAsynchroon</con:endpoint>
@@ -47,7 +47,7 @@
       <con:settings/>
     </con:operation>
   </con:interface>
-  <con:interface xsi:type="con:WsdlInterface" id="cdcf3af6-4513-4908-af56-1a52ea8c43c3" wsaVersion="NONE" name="ZdsVrijeBerichten" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPVrijeBerichten" soapVersion="1_1" anonymous="optional" definition="./e2e/Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_vrijeBerichten_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="cdcf3af6-4513-4908-af56-1a52ea8c43c3" wsaVersion="NONE" name="ZdsVrijeBerichten" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPVrijeBerichten" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_vrijeBerichten_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints/>
     <con:operation id="7d13d2bd-76e1-4d3a-a79f-8a5c3329f690" isOneWay="false" action="http://www.egem.nl/StUF/sector/zkn/0310/cancelCheckout_Di02" name="cancelCheckout_Di02" bindingOperationName="cancelCheckout_Di02" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -66,7 +66,7 @@
       <con:settings/>
     </con:operation>
   </con:interface>
-  <con:interface xsi:type="con:WsdlInterface" id="d4da60f9-fd31-4ea7-a6fe-3c6ebba0d6e7" wsaVersion="NONE" name="StufZknBeantwoordVraag" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPBeantwoordVraag" soapVersion="1_1" anonymous="optional" definition="./e2e/Zaak_DocumentServices_1_1_02/zkn0310/vraagAntwoord/zkn0310_beantwoordVraag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="d4da60f9-fd31-4ea7-a6fe-3c6ebba0d6e7" wsaVersion="NONE" name="StufZknBeantwoordVraag" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPBeantwoordVraag" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/vraagAntwoord/zkn0310_beantwoordVraag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints/>
     <con:operation id="5dc54405-95ac-42cd-9455-8cfe6f08c247" isOneWay="false" action="http://www.egem.nl/StUF/sector/zkn/0310/bslLv01" name="bslLv01" bindingOperationName="bslLv01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
@@ -253,7 +253,7 @@
       <con:settings/>
     </con:operation>
   </con:interface>
-  <con:interface xsi:type="con:WsdlInterface" id="b3c36b32-234c-4422-b90d-410640b89e49" wsaVersion="NONE" name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGeneriekeFormulierAfhandeling" soapVersion="1_1" anonymous="optional" definition="src/main/configurations/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="b3c36b32-234c-4422-b90d-410640b89e49" wsaVersion="NONE" name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGeneriekeFormulierAfhandeling" soapVersion="1_1" anonymous="optional" definition="../src/main/configurations/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints/>
     <con:operation id="40c0c4cd-c1e0-4c92-ae7b-dabd182dd902" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" name="bewaarDocument" bindingOperationName="bewaarDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
