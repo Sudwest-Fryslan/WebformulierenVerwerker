@@ -6,7 +6,7 @@
         <opslaanAanvraagBijlageResponse xmlns="http://tempuri.org/">
             <!--Optional:-->
             <opslaanAanvraagBijlageResult>
-                <xsl:value-of select="$ZaakID" />
+                <xsl:value-of select="$ZaakID"/>
             </opslaanAanvraagBijlageResult>
         </opslaanAanvraagBijlageResponse>
     </xsl:template>

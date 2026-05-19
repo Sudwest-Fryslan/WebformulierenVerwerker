@@ -6,7 +6,7 @@
         <opslaanAanvraagNatuurlijkPersoonResponse xmlns="http://tempuri.org/">
             <!--Optional:-->
             <opslaanAanvraagNatuurlijkPersoonResult>
-                <xsl:value-of select="$ZaakID" />
+                <xsl:value-of select="$ZaakID"/>
             </opslaanAanvraagNatuurlijkPersoonResult>
         </opslaanAanvraagNatuurlijkPersoonResponse>
     </xsl:template>

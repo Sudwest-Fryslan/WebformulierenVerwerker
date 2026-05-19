@@ -2484,7 +2484,7 @@ return "Bv03Bericht"</con:dispatchPath>
                <StUF:applicatie>CAREL</StUF:applicatie>
                <StUF:gebruiker/>
             </StUF:ontvanger>
-            <StUF:referentienummer>11111111-1111-1111-1111-111111111111</StUF:referentienummer>
+            <StUF:referentienummer>22222222-2222-2222-2222-222222222222</StUF:referentienummer>
             <StUF:tijdstipBericht>20251027215511851</StUF:tijdstipBericht>
             <StUF:crossRefnummer>8771ef1a-2998-47c4-a14c-4a96796136db</StUF:crossRefnummer>
          </StUF:stuurgegevens>
@@ -2521,29 +2521,29 @@ return "genereerZaakIdentificatie_Du02"</con:dispatchPath>
       <con:response name="genereerZaakIdentificatie_Du02" id="4268d749-1f77-42f0-92c7-a0a179d83a46" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
         <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-	<soapenv:Body>
-		<ZKN:genereerZaakIdentificatie_Du02 xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
-		   <ZKN:stuurgegevens>
-		      <StUF:berichtcode>Du02</StUF:berichtcode>
-		      <StUF:zender>
-		         <StUF:organisatie>1900</StUF:organisatie>
-		         <StUF:applicatie>ZDS</StUF:applicatie>
-		      </StUF:zender>
-		      <StUF:ontvanger>
-		         <StUF:organisatie>1900</StUF:organisatie>
-		         <StUF:applicatie>GISVG</StUF:applicatie>
-		         <StUF:gebruiker/>
-		      </StUF:ontvanger>
-		      <StUF:referentienummer>11111111-1111-1111-1111-111111111111</StUF:referentienummer>
-		      <StUF:tijdstipBericht>20251025194739971</StUF:tijdstipBericht>
-		      <StUF:crossRefnummer>d76128ff-9572-4b26-86f2-7a0bda67cf41</StUF:crossRefnummer>
-		      <StUF:functie>genereerZaakidentificatie</StUF:functie>
-		   </ZKN:stuurgegevens>
-		   <ZKN:zaak StUF:entiteittype="ZAK" StUF:functie="entiteit">
-		      <ZKN:identificatie>ZK2025-99999</ZKN:identificatie>
-		   </ZKN:zaak>
-		</ZKN:genereerZaakIdentificatie_Du02>
-	</soapenv:Body>
+   <soapenv:Body>
+      <ZKN:genereerZaakIdentificatie_Du02 xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+         <ZKN:stuurgegevens>
+            <StUF:berichtcode>Du02</StUF:berichtcode>
+            <StUF:zender>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>ZDS</StUF:applicatie>
+            </StUF:zender>
+            <StUF:ontvanger>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>GISVG</StUF:applicatie>
+               <StUF:gebruiker/>
+            </StUF:ontvanger>
+            <StUF:referentienummer>33333333-3333-3333-3333-333333333333</StUF:referentienummer>
+            <StUF:tijdstipBericht>20251025194739971</StUF:tijdstipBericht>
+            <StUF:crossRefnummer>d76128ff-9572-4b26-86f2-7a0bda67cf41</StUF:crossRefnummer>
+            <StUF:functie>genereerZaakidentificatie</StUF:functie>
+         </ZKN:stuurgegevens>
+         <ZKN:zaak StUF:entiteittype="ZAK" StUF:functie="entiteit">
+            <ZKN:identificatie>ZK2025-99999</ZKN:identificatie>
+         </ZKN:zaak>
+      </ZKN:genereerZaakIdentificatie_Du02>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508"/>
       </con:response>
@@ -2568,29 +2568,29 @@ return "genereerDocumentIdentificatie_Du02"</con:dispatchPath>
       <con:response name="genereerDocumentIdentificatie_Du02" id="e2c23665-fa10-4afe-8889-991451de2192" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
         <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-   <soapenv:Body>
-      <ZKN:genereerDocumentIdentificatie_Du02 xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-         <ZKN:stuurgegevens>
-            <StUF:berichtcode>Du02</StUF:berichtcode>
-            <StUF:zender>
-               <StUF:organisatie>1900</StUF:organisatie>
-               <StUF:applicatie>CDR</StUF:applicatie>
-            </StUF:zender>
-            <StUF:ontvanger>
-               <StUF:organisatie>1900</StUF:organisatie>
-               <StUF:applicatie>GWS4all</StUF:applicatie>
-               <StUF:gebruiker>Gebruiker</StUF:gebruiker>
-            </StUF:ontvanger>
-            <StUF:referentienummer>22222222-2222-2222-2222-222222222222</StUF:referentienummer>
-            <StUF:tijdstipBericht>20251113222537602</StUF:tijdstipBericht>
-            <StUF:crossRefnummer>fe93d01a-544d-4610-ae18-1c634c7ce846</StUF:crossRefnummer>
-            <StUF:functie>genereerDocumentidentificatie</StUF:functie>
-         </ZKN:stuurgegevens>
-         <ZKN:document StUF:entiteittype="EDC" StUF:functie="entiteit">
-            <ZKN:identificatie>DC2025-99999</ZKN:identificatie>
-         </ZKN:document>
-      </ZKN:genereerDocumentIdentificatie_Du02>
-   </soapenv:Body>
+   <soapenv:Body>
+      <ZKN:genereerDocumentIdentificatie_Du02 xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <ZKN:stuurgegevens>
+            <StUF:berichtcode>Du02</StUF:berichtcode>
+            <StUF:zender>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>CDR</StUF:applicatie>
+            </StUF:zender>
+            <StUF:ontvanger>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>GWS4all</StUF:applicatie>
+               <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+            </StUF:ontvanger>
+            <StUF:referentienummer>44444444-4444-4444-4444-444444444444</StUF:referentienummer>
+            <StUF:tijdstipBericht>20251113222537602</StUF:tijdstipBericht>
+            <StUF:crossRefnummer>fe93d01a-544d-4610-ae18-1c634c7ce846</StUF:crossRefnummer>
+            <StUF:functie>genereerDocumentidentificatie</StUF:functie>
+         </ZKN:stuurgegevens>
+         <ZKN:document StUF:entiteittype="EDC" StUF:functie="entiteit">
+            <ZKN:identificatie>DC2025-99999</ZKN:identificatie>
+         </ZKN:document>
+      </ZKN:genereerDocumentIdentificatie_Du02>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508"/>
       </con:response>
@@ -2630,74 +2630,71 @@ return "zakLa01"</con:dispatchPath>
       <con:response name="zakLa01" id="24f9ebbb-1061-4452-ae70-9e177ffd4968" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
         <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-    <soapenv:Body>
-    <ZKN:zakLa01 xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"
-             xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
-             xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <ZKN:stuurgegevens>
-      <StUF:berichtcode>La01</StUF:berichtcode>
-      <StUF:zender>
-         <StUF:organisatie>1900</StUF:organisatie>
-         <StUF:applicatie>ZDS</StUF:applicatie>
-      </StUF:zender>
-      <StUF:ontvanger>
-         <StUF:organisatie>1900</StUF:organisatie>
-         <StUF:applicatie>GISVG</StUF:applicatie>
-         <StUF:gebruiker/>
-      </StUF:ontvanger>
-      <StUF:referentienummer>11111111-1111-1111-1111-111111111111</StUF:referentienummer>
-      <StUF:tijdstipBericht>20251025214828</StUF:tijdstipBericht>
-      <StUF:crossRefnummer>1f5d9ffc-b28b-43bb-96db-8b9be31b06f3</StUF:crossRefnummer>
-      <StUF:entiteittype>ZAK</StUF:entiteittype>
-   </ZKN:stuurgegevens>
-   <ZKN:parameters>
-      <StUF:indicatorVervolgvraag>false</StUF:indicatorVervolgvraag>
-   </ZKN:parameters>
-   <ZKN:antwoord>
-      <ZKN:object StUF:entiteittype="ZAK">
-         <ZKN:identificatie>ZK2025-99999</ZKN:identificatie>
-         <ZKN:omschrijving>Test Proxy BeantwoordVraag Mock Service</ZKN:omschrijving>
-         <ZKN:toelichting>Mock Service Return</ZKN:toelichting>
-         <ZKN:startdatum>20251025</ZKN:startdatum>
-         <ZKN:registratiedatum>20251025</ZKN:registratiedatum>
-         <ZKN:opschorting>
-            <ZKN:indicatie>N</ZKN:indicatie>
-            <ZKN:reden xsi:nil="true" StUF:noValue="geenWaarde"/>
-         </ZKN:opschorting>
-         <ZKN:archiefnominatie>N</ZKN:archiefnominatie>
-         <ZKN:isVan StUF:entiteittype="ZAKZKT">
-            <ZKN:gerelateerde StUF:entiteittype="ZKT">
-               <ZKN:omschrijving>Omgevingsvergunning</ZKN:omschrijving>
-               <ZKN:code>B1210</ZKN:code>
-            </ZKN:gerelateerde>
-         </ZKN:isVan>
-         <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI">
-            <ZKN:gerelateerde>
-               <ZKN:natuurlijkPersoon StUF:entiteittype="NPS">
-                  <BG:inp.bsn>111111110</BG:inp.bsn>
-                  <BG:authentiek StUF:metagegeven="true">N</BG:authentiek>
-                  <BG:geslachtsnaam>Precies</BG:geslachtsnaam>
-                  <BG:voorletters>P.J.</BG:voorletters>
-                  <BG:voornamen>Piet Je</BG:voornamen>
-                  <BG:geslachtsaanduiding>V</BG:geslachtsaanduiding>
-                  <BG:geboortedatum>19500101</BG:geboortedatum>
-                  <BG:verblijfsadres>
-                     <BG:aoa.identificatie>0091200000046730</BG:aoa.identificatie>
-                     <BG:authentiek StUF:metagegeven="true">N</BG:authentiek>
-                     <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
-                     <BG:gor.openbareRuimteNaam>Marktstraat</BG:gor.openbareRuimteNaam>
-                     <BG:gor.straatnaam>Marktstraat</BG:gor.straatnaam>
-                     <BG:aoa.postcode>8601CR</BG:aoa.postcode>
-                     <BG:aoa.huisnummer>15</BG:aoa.huisnummer>
-                  </BG:verblijfsadres>
-               </ZKN:natuurlijkPersoon>
-            </ZKN:gerelateerde>
-         </ZKN:heeftAlsInitiator>
-      </ZKN:object>
-   </ZKN:antwoord>
-</ZKN:zakLa01>
-</soapenv:Body>
+   <soapenv:Body>
+      <ZKN:zakLa01 xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <ZKN:stuurgegevens>
+            <StUF:berichtcode>La01</StUF:berichtcode>
+            <StUF:zender>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>ZDS</StUF:applicatie>
+            </StUF:zender>
+            <StUF:ontvanger>
+               <StUF:organisatie>1900</StUF:organisatie>
+               <StUF:applicatie>GISVG</StUF:applicatie>
+               <StUF:gebruiker/>
+            </StUF:ontvanger>
+            <StUF:referentienummer>55555555-5555-5555-5555-555555555555</StUF:referentienummer>
+            <StUF:tijdstipBericht>20251025214828</StUF:tijdstipBericht>
+            <StUF:crossRefnummer>1f5d9ffc-b28b-43bb-96db-8b9be31b06f3</StUF:crossRefnummer>
+            <StUF:entiteittype>ZAK</StUF:entiteittype>
+         </ZKN:stuurgegevens>
+         <ZKN:parameters>
+            <StUF:indicatorVervolgvraag>false</StUF:indicatorVervolgvraag>
+         </ZKN:parameters>
+         <ZKN:antwoord>
+            <ZKN:object StUF:entiteittype="ZAK">
+               <ZKN:identificatie>ZK2025-99999</ZKN:identificatie>
+               <ZKN:omschrijving>Test Proxy BeantwoordVraag Mock Service</ZKN:omschrijving>
+               <ZKN:toelichting>Mock Service Return</ZKN:toelichting>
+               <ZKN:startdatum>20251025</ZKN:startdatum>
+               <ZKN:registratiedatum>20251025</ZKN:registratiedatum>
+               <ZKN:opschorting>
+                  <ZKN:indicatie>N</ZKN:indicatie>
+                  <ZKN:reden xsi:nil="true" StUF:noValue="geenWaarde"/>
+               </ZKN:opschorting>
+               <ZKN:archiefnominatie>N</ZKN:archiefnominatie>
+               <ZKN:isVan StUF:entiteittype="ZAKZKT">
+                  <ZKN:gerelateerde StUF:entiteittype="ZKT">
+                     <ZKN:omschrijving>Omgevingsvergunning</ZKN:omschrijving>
+                     <ZKN:code>B1210</ZKN:code>
+                  </ZKN:gerelateerde>
+               </ZKN:isVan>
+               <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI">
+                  <ZKN:gerelateerde>
+                     <ZKN:natuurlijkPersoon StUF:entiteittype="NPS">
+                        <BG:inp.bsn>111111110</BG:inp.bsn>
+                        <BG:authentiek StUF:metagegeven="true">N</BG:authentiek>
+                        <BG:geslachtsnaam>Precies</BG:geslachtsnaam>
+                        <BG:voorletters>P.J.</BG:voorletters>
+                        <BG:voornamen>Piet Je</BG:voornamen>
+                        <BG:geslachtsaanduiding>V</BG:geslachtsaanduiding>
+                        <BG:geboortedatum>19500101</BG:geboortedatum>
+                        <BG:verblijfsadres>
+                           <BG:aoa.identificatie>0091200000046730</BG:aoa.identificatie>
+                           <BG:authentiek StUF:metagegeven="true">N</BG:authentiek>
+                           <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
+                           <BG:gor.openbareRuimteNaam>Marktstraat</BG:gor.openbareRuimteNaam>
+                           <BG:gor.straatnaam>Marktstraat</BG:gor.straatnaam>
+                           <BG:aoa.postcode>8601CR</BG:aoa.postcode>
+                           <BG:aoa.huisnummer>15</BG:aoa.huisnummer>
+                        </BG:verblijfsadres>
+                     </ZKN:natuurlijkPersoon>
+                  </ZKN:gerelateerde>
+               </ZKN:heeftAlsInitiator>
+            </ZKN:object>
+         </ZKN:antwoord>
+      </ZKN:zakLa01>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508"/>
       </con:response>
@@ -2736,7 +2733,7 @@ return "edcLa01"</con:dispatchPath>
                <StUF:applicatie>GWS4all</StUF:applicatie>
                <StUF:gebruiker>Gebruiker</StUF:gebruiker>
             </StUF:ontvanger>
-            <StUF:referentienummer>44444444-4444-4444-4444-444444444444</StUF:referentienummer>
+            <StUF:referentienummer>66666666-6666-6666-6666-666666666666</StUF:referentienummer>
             <StUF:tijdstipBericht>20251114212641</StUF:tijdstipBericht>
             <StUF:crossRefnummer>5ead8bf0-8c49-4122-b6fa-d9068a3cf1da</StUF:crossRefnummer>
             <StUF:entiteittype>EDC</StUF:entiteittype>

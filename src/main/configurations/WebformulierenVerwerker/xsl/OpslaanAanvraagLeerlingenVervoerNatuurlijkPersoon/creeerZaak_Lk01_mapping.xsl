@@ -11,6 +11,11 @@
     <xsl:output method="xml" indent="yes"/>
     <xsl:param name="randomuuid" as="xs:string"/>
     <xsl:param name="zaakid" as="xs:string"/>
+    <xsl:param name="stuf_zender_organisatie" as="xs:string"/>
+    <xsl:param name="stuf_zender_applicatie" as="xs:string"/>
+    <xsl:param name="stuf_zender_gebruiker" as="xs:string"/>
+    <xsl:param name="stuf_ontvanger_organisatie" as="xs:string"/>
+    <xsl:param name="stuf_ontvanger_applicatie" as="xs:string"/>
     
     <xsl:template match="/">
         <xsl:apply-templates select="/FORMULIER/ELEMENTEN/form/answers"/>
@@ -24,17 +29,15 @@
             <ZKN:stuurgegevens>
                 <StUF:berichtcode>Lk01</StUF:berichtcode>
                 <StUF:zender>
-                    <StUF:organisatie>1900</StUF:organisatie>
-                    <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
-                    <StUF:gebruiker>SYSTEM</StUF:gebruiker>
+                    <StUF:organisatie><xsl:value-of select="$stuf_zender_organisatie"/></StUF:organisatie>
+                    <StUF:applicatie><xsl:value-of select="$stuf_zender_applicatie"/></StUF:applicatie>
+                    <StUF:gebruiker><xsl:value-of select="$stuf_zender_gebruiker"/></StUF:gebruiker>
                 </StUF:zender>
                 <StUF:ontvanger>
-                    <StUF:organisatie>1900</StUF:organisatie>
-                    <StUF:applicatie>CAREL</StUF:applicatie>
+                    <StUF:organisatie><xsl:value-of select="$stuf_ontvanger_organisatie"/></StUF:organisatie>
+                    <StUF:applicatie><xsl:value-of select="$stuf_ontvanger_applicatie"/></StUF:applicatie>
                 </StUF:ontvanger>
                 <StUF:referentienummer><xsl:value-of select="$randomuuid"/></StUF:referentienummer><!-- {messageid} -->
-                <!-- <StUF:tijdstipBericht>2026012909350000</StUF:tijdstipBericht> {timestamp} -->
-                <!-- <StUF:tijdstipBericht><xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001][M01][D01][H01][m01][s01][f01]')"/></StUF:tijdstipBericht> -->
                 <StUF:tijdstipBericht><xsl:value-of select="let $dt := current-dateTime() return concat(format-dateTime($dt, '[Y0001][M01][D01][H01][m01][s01]'), substring(format-dateTime($dt, '[f]'), 1, 2))"/></StUF:tijdstipBericht>
                 <StUF:entiteittype>ZAK</StUF:entiteittype>
             </ZKN:stuurgegevens>
@@ -42,15 +45,18 @@
                 <StUF:mutatiesoort>T</StUF:mutatiesoort>
                 <StUF:indicatorOvername>V</StUF:indicatorOvername>
             </ZKN:parameters>
-            <!-- <ZKN:object StUF:sleutelVerzendend="1900-ZAAK-00000123" StUF:entiteittype="ZAK" StUF:verwerkingssoort="T"> -->
             <ZKN:object StUF:sleutelVerzendend="{$zaakid}" StUF:entiteittype="ZAK" StUF:verwerkingssoort="T">
                 <!-- Zaakidentificatie zoals door zaaksysteem uitgegeven -->
-                <ZKN:identificatie><xsl:value-of select="$zaakid" /></ZKN:identificatie><!-- {Zaakidentificatie} -->
+                <ZKN:identificatie><xsl:value-of select="$zaakid"/></ZKN:identificatie><!-- {Zaakidentificatie} -->
                 <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+                <ZKN:kenmerk>
+                    <ZKN:kenmerk><xsl:value-of select="globals/kenmerkaanvraag"/></ZKN:kenmerk>
+                    <ZKN:bron>Kodision</ZKN:bron>
+                </ZKN:kenmerk>
                 <ZKN:startdatum><xsl:value-of select="format-dateTime(/FORMULIER/DATUMVERZENDING, '[Y0001][M01][D01]')"/></ZKN:startdatum><!-- {atribuut startDateTime} -->
                 <ZKN:registratiedatum><xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001][M01][D01]')"/></ZKN:registratiedatum><!-- {atribuut startDateTime} -->
-                <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
-                    <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="T">
+                <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+                    <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
                         <ZKN:code>LV-001</ZKN:code>
                         <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
                         <ZKN:ingangsdatumObject xsi:nil="true" StUF:noValue="geenWaarde"/>
@@ -60,14 +66,15 @@
                 <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
-                            <BG:inp.bsn><xsl:value-of select="globals/bsn"/></BG:inp.bsn><!-- afzenderbsn} -->
+                            <BG:inp.bsn><xsl:value-of select="globals/bsn"/></BG:inp.bsn><!-- {afzenderbsn} -->
+                            <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftAlsInitiator>
                 <!-- Formulierantwoorden (alles wat niet netjes in vaste zaakvelden past) -->
                 <StUF:extraElementen>
                     <!-- Aanvraagcheck -->
-                    <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen"><xsl:value-of select="fleerlingenvervoeraanvraagcheck/leerlingverblijftswf"/></StUF:extraElement>					
+                    <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen"><xsl:value-of select="fleerlingenvervoeraanvraagcheck/leerlingverblijftswf"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school"><xsl:value-of select="fleerlingenvervoeraanvraagcheck/dichtstbijzijndetoegankelijkeschool"/></StUF:extraElement><!-- {zie bovenstaande structuur} -->
                     <StUF:extraElement naam="aanvraagcheck_welk_onderwijs"><xsl:value-of select="fleerlingenvervoeraanvraagcheck/welkonderwijsvolgtleerling"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km"><xsl:value-of select="fleerlingenvervoeraanvraagcheck/reisafstandmeerdan6km"/></StUF:extraElement>
@@ -127,18 +134,15 @@
     
     <!-- Special case: dagen vervoer -->
     <xsl:template match="fleerlingenvervoerv3vervoer">
-        <!-- <xsl:variable name="type" select="normalize-space(lower-case(typevergoedingvervoer))"/> -->
         <xsl:variable name="type" select="replace(normalize-space(lower-case(typevergoedingvervoer)), '\s+', '')"/>
         
-        <!-- <xsl:variable name="maandagvervoer" select="*[local-name() = concat('maandagvervoer', $type)]"/> -->
-        <xsl:variable name="maandagvervoer" select="*[local-name() = concat('maandagvervoer', $type)]"/>        
+        <xsl:variable name="maandagvervoer" select="*[local-name() = concat('maandagvervoer', $type)]"/>
         <xsl:variable name="dinsdagvervoer" select="*[local-name() = concat('dinsdagvervoer', $type)]"/>
         <xsl:variable name="woensdagvervoer" select="*[local-name() = concat('woensdagvervoer', $type)]"/>
         <xsl:variable name="donderdagvervoer" select="*[local-name() = concat('donderdagvervoer', $type)]"/>
         <xsl:variable name="vrijdagvervoer" select="*[local-name() = concat('vrijdagvervoer', $type)]"/>
         
-        <!-- <StUF:extraElement naam="vervoer_maandag"><xsl:value-of select="string-join($maandagvervoer, ', ')"/></StUF:extraElement> -->
-        <StUF:extraElement naam="vervoer_maandag"><xsl:value-of select="string-join($maandagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>        
+        <StUF:extraElement naam="vervoer_maandag"><xsl:value-of select="string-join($maandagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
         <StUF:extraElement naam="vervoer_dinsdag"><xsl:value-of select="string-join($dinsdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
         <StUF:extraElement naam="vervoer_woensdag"><xsl:value-of select="string-join($woensdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
         <StUF:extraElement naam="vervoer_donderdag"><xsl:value-of select="string-join($donderdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
