@@ -1,11 +1,13 @@
 <!DOCTYPE configuration [
-    <!ENTITY Info SYSTEM "Configuration_Info.xml">
-    <!ENTITY OpslaanBijlage SYSTEM "Configuration_OpslaanBijlage.xml">
-    <!ENTITY OpslaanInk SYSTEM "Configuration_OpslaanInk.xml">
-    <!ENTITY OpslaanInkNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNatuurlijkPersoon.xml">
-    <!ENTITY OpslaanInkNietNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNietNatuurlijkPersoon.xml">
-    <!ENTITY Version SYSTEM "Configuration_Version.xml">
-    <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
+<!ENTITY Version SYSTEM "Configuration_Version.xml">
+<!ENTITY Info SYSTEM "Configuration_Info.xml">
+<!ENTITY OpslaanInkNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNatuurlijkPersoon.xml">
+<!ENTITY OpslaanInkNietNatuurlijkPersoon SYSTEM "Configuration_OpslaanInkNietNatuurlijkPersoon.xml">
+<!ENTITY OpslaanBijlage SYSTEM "Configuration_OpslaanBijlage.xml">
+<!ENTITY OpslaanInk SYSTEM "Configuration_OpslaanInk.xml">
+<!ENTITY OpslaanAanvraagNatuurlijkPersoon SYSTEM "Configuration_OpslaanAanvraagNatuurlijkPersoon.xml">
+<!ENTITY OpslaanAanvraagBijlage SYSTEM "Configuration_OpslaanAanvraagBijlage.xml">
+<!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
     <SharedResources>
@@ -13,13 +15,15 @@
             name="SharedHttpSession"
             maxConnections="1"
             connectionTimeToLive="100000" 
-        />
+            />
     </SharedResources>
+    &Version;
     &Info;
-    &OpslaanBijlage;
-    &OpslaanInk;
     &OpslaanInkNatuurlijkPersoon;
     &OpslaanInkNietNatuurlijkPersoon;
-    &Version;
+    &OpslaanBijlage;
+    &OpslaanInk;
+    &OpslaanAanvraagNatuurlijkPersoon;
+    &OpslaanAanvraagBijlage;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

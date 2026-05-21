@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="opslaanAanvraagNatuurlijkPersoon">
+        <Receiver name="opslaanAanvraagNatuurlijkPersoon">
+            <JavaListener name="opslaanAanvraagNatuurlijkPersoon"/>
+        </Receiver>
+        
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+            
+            <Locker objectId="opslaanAanvraagNatuurlijkPersoon" numRetries="3" retryDelay="5000"/>
+            
+            <XsltPipe name="GetEncodedXML" xpathExpression="//aanvraagxmldata">
+                <Forward name="success" path="DecodeEncodedXML"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <Base64Pipe name="DecodeEncodedXML" direction="DECODE" storeResultInSessionKey="decodedxml">
+                <Forward name="success" path="GenerateRandomUUID1"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </Base64Pipe>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID1"
+                               storeResultInSessionKey="GeneratedRandomUUID1">
+                <Forward name="success" path="Transform_GenereerZaakIdentificatie_Di02"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="Transform_GenereerZaakIdentificatie_Di02" styleSheetName="xsl/OpslaanAanvraagNatuurlijkPersoon/genereerZaakIdentificatie_Di02_mapping.xsl" getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID1"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_GenereerZaakIdentificatie_Di02_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_GenereerZaakIdentificatie_Di02_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="StoreSoapAction1"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="StoreSoapAction1" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/genereerZaakIdentificatie_Di02"/>
+            
+            <SenderPipe name="Send_GenereerZaakIdentificatie_Di02_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerZaakIdentificatie_Di02" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper1"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper1" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="ZaakIdentificatieData">
+                <Forward name="success" path="GetZaakIdentificatie"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <XsltPipe name="GetZaakIdentificatie" xpathExpression="//identificatie">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreZaakIdentificatie" sessionKey="ZaakIdentificatie"/>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID2"
+                               storeResultInSessionKey="GeneratedRandomUUID2">
+                <Forward name="success" path="GetAfzenderBsn"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAfzenderBsn" sessionKey="AfzenderBsn"/>
+            
+            <!-- doe hier een switch a.h.v. aanvraagtype in het originele bericht: roep een stylesheet aan per aanvraagtype -->
+            <XmlSwitchPipe
+                name="CheckAanvraagType"
+                xpathExpression="//aanvraagtype"
+                getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+                <Forward name="notFound" path="StoreCheckAanvraagTypeError"/>
+                <Forward name="empty" path="StoreCheckAanvraagTypeError"/>
+                <Forward name="leerlingenvervoer" path="TransformLeerlingenVervoerEncodedXML"/>
+            </XmlSwitchPipe>
+            
+            <PutInSessionPipe name="StoreCheckAanvraagTypeError" sessionKey="ErrorInfo"
+                              value="aanvraagtype not valid">
+                <Forward name="success" path="isErrorXML"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </PutInSessionPipe>
+            
+            <XsltPipe name="TransformLeerlingenVervoerEncodedXML" styleSheetName="xsl/OpslaanAanvraagLeerlingenVervoerNatuurlijkPersoon/creeerZaak_Lk01_mapping.xsl" getInputFromSessionKey="decodedxml">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID2"/>
+                <Param name="zaakid" sessionKey="ZaakIdentificatie"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_CreeerZaak_Lk01_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_CreeerZaak_Lk01_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="StoreSoapAction2"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="StoreSoapAction2" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/>
+            
+            <SenderPipe name="Send_CreeerZaak_Lk01_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_ontvangasynchroon.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper2"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper2" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="ZaakData">
+                <Forward name="success" path="GenerateRandomUUID3"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID3"
+                               storeResultInSessionKey="GeneratedRandomUUID3">
+                <Forward name="success" path="Transform_GenereerPdfDocumentIdentificatie_Di02"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="Transform_GenereerPdfDocumentIdentificatie_Di02" styleSheetName="xsl/OpslaanAanvraagBijlage/genereerDocumentIdentificatie_Di02_mapping.xsl" getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID3"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_GenereerPdfDocumentIdentificatie_Di02_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_GenereerPdfDocumentIdentificatie_Di02_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="storeSoapAction3"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="storeSoapAction3" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02"/>
+            
+            <SenderPipe name="Send_GenereerPdfDocumentIdentificatie_Di02_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper3"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper3" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="PdfDocumentIdentificatieData">
+                <Forward name="success" path="GetDatumVerzending"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <XsltPipe name="GetDatumVerzending" xpathExpression="//DATUMVERZENDING" getInputFromSessionKey="decodedxml">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreDatumVerzending" sessionKey="DatumVerzending"/>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID4"
+                               storeResultInSessionKey="GeneratedRandomUUID4">
+                <Forward name="success" path="Transform_VoegPdfZaakDocumentToe_Lk01"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="Transform_VoegPdfZaakDocumentToe_Lk01" styleSheetName="xsl/OpslaanAanvraagNatuurlijkPersoon/voegZaakdocumentToe_Lk01_mapping.xsl" getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID4"/>
+                <Param name="zaakid" sessionKey="ZaakIdentificatie"/>
+                <Param name="documentid" sessionKey="originalMessage" xpathExpression="//identificatie"/>
+                <Param name="documentnaam" sessionKey="originalMessage" xpathExpression="//aanvraagpdfname"/>
+                <Param name="documentomschrijving" sessionKey="originalMessage" xpathExpression="//omschrijving"/>
+                <Param name="vertrouwelijkheid" sessionKey="originalMessage" xpathExpression="//vertrouwelijkheid"/>
+                <Param name="documentinhoud" sessionKey="originalMessage" xpathExpression="//aanvraagpdfdata"/>
+                <Param name="formaat" value="pdf"/>
+                <Param name="content-type" value="application/pdf"/>
+                <Param name="datumverzending" sessionKey="DatumVerzending"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_VoegPdfZaakDocumentToe_Lk01_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_VoegPdfZaakDocumentToe_Lk01_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="storeSoapAction4"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="storeSoapAction4" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/voegZaakdocumentToe_Lk01"/>
+            
+            <SenderPipe name="Send_VoegPdfZaakDocumentToe_Lk01_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_ontvangasynchroon.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/voegZaakdocumentToe_Lk01" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper4"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper4" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="VoegPdfZaakDocumentToeData">
+                <Forward name="success" path="GenerateRandomUUID5"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID5"
+                               storeResultInSessionKey="GeneratedRandomUUID5">
+                <Forward name="success" path="Transform_GenereerXmlDocumentIdentificatie_Di02"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="Transform_GenereerXmlDocumentIdentificatie_Di02" styleSheetName="xsl/OpslaanAanvraagBijlage/genereerDocumentIdentificatie_Di02_mapping.xsl" getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID5"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_GenereerXmlDocumentIdentificatie_Di02_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_GenereerXmlDocumentIdentificatie_Di02_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="storeSoapAction5"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="storeSoapAction5" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02"/>
+            
+            <SenderPipe name="Send_GenereerXmlDocumentIdentificatie_Di02_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper5"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper5" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="XmlDocumentIdentificatieData">
+                <Forward name="success" path="GenerateRandomUUID6"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <UUIDGeneratorPipe name="GenerateRandomUUID6"
+                               storeResultInSessionKey="GeneratedRandomUUID6">
+                <Forward name="success" path="Transform_VoegXmlZaakDocumentToe_Lk01"/>
+            </UUIDGeneratorPipe>
+            
+            <XsltPipe name="Transform_VoegXmlZaakDocumentToe_Lk01" styleSheetName="xsl/OpslaanAanvraagNatuurlijkPersoon/voegZaakdocumentToe_Lk01_mapping.xsl" getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="randomuuid" sessionKey="GeneratedRandomUUID6"/>
+                <Param name="zaakid" sessionKey="ZaakIdentificatie"/>
+                <Param name="documentid" sessionKey="originalMessage" xpathExpression="//identificatie" defaultValue=""/>
+                <Param name="documentnaam" value="aanvraagxml"/>
+                <Param name="documentomschrijving" sessionKey="originalMessage" xpathExpression="//omschrijving" defaultValue=""/>
+                <Param name="vertrouwelijkheid" sessionKey="originalMessage" xpathExpression="//vertrouwelijkheid" defaultValue=""/>
+                <Param name="documentinhoud" sessionKey="originalMessage" xpathExpression="//aanvraagxmldata" defaultValue=""/>
+                <Param name="formaat" value="xml"/>
+                <Param name="content-type" value="application/xml"/>
+                <Param name="datumverzending" sessionKey="DatumVerzending"/>
+                <Param name="stuf_zender_organisatie" value="${stuf_zender_organisatie}"/>
+                <Param name="stuf_zender_applicatie" value="${stuf_zender_applicatie}"/>
+                <Param name="stuf_zender_gebruiker" value="${stuf_zender_gebruiker}"/>
+                <Param name="stuf_ontvanger_organisatie" value="${stuf_ontvanger_organisatie}"/>
+                <Param name="stuf_ontvanger_applicatie" value="${stuf_ontvanger_applicatie}"/>
+                <Forward name="success" path="Wrap_VoegXmlZaakDocumentToe_Lk01_Request"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="Wrap_VoegXmlZaakDocumentToe_Lk01_Request" storeResultInSessionKey="aanvraagRequest">
+                <Forward name="success" path="storeSoapAction6"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <PutInSessionPipe name="storeSoapAction6" sessionKey="RequestSoapAction"
+                              value="http://www.egem.nl/StUF/sector/zkn/0310/voegZaakdocumentToe_Lk01"/>
+            
+            <SenderPipe name="Send_VoegXmlZaakDocumentToe_Lk01_Request">
+                <WebServiceSender sharedResourceRef="SharedHttpSession"
+                                  url="${carel_zds_ontvangasynchroon.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/voegZaakdocumentToe_Lk01" soap="false"
+                                  timeout="12500"/>
+                <Forward name="success" path="Unwrapper6"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            
+            <SoapWrapperPipe name="Unwrapper6" direction="UNWRAP" removeOutputNamespaces="true"
+                             storeResultInSessionKey="VoegXmlZaakDocumentToeData">
+                <Forward name="success" path="ConvertToAanvraagResponse"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <XsltPipe name="ConvertToAanvraagResponse"
+                      styleSheetName="xsl/OpslaanAanvraagNatuurlijkPersoon/Response2AanvraagNatuurlijkPersoon.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="ZaakID" sessionKey="ZaakIdentificatie"/>
+                <Forward name="success" path="WrapResponse"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            
+            <SoapWrapperPipe name="WrapResponse" storeResultInSessionKey="originalMessageResponse">
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+            
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse"/>
+                <Forward name="else" path="errorToXML"/>
+            </IsXmlPipe>
+            
+            <Text2XmlPipe xmlTag="error" name="errorToXML"/>
+            
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="aanvraagResponse"/>
+                <Forward name="success" path="buildErrorMsg"/>
+            </PutInSessionPipe>
+            
+            <XsltPipe name="buildErrorMsg"
+                      styleSheetName="xsl/Common/CreateAanvraagErrorResponse.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="aanvraagRequest" sessionKey="aanvraagRequest"/>
+                <Param name="aanvraagResponse" sessionKey="aanvraagResponse"/>
+                <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
+                <Forward name="success" path="EXCEPTION"/>
+            </XsltPipe>
+            
+        </Pipeline>
+    </Adapter>
+</Module>
