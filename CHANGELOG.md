@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.22.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.7...v6.22.0) (2026-05-21)
+
+### 🍕 Features
+
+* implementatie integratie Kodision-2-CAReL ([#105](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/105)) ([b68ec41](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/b68ec41f5395a080984db50b425e567bb2a6be30))
+
+### ✅ Tests
+
+* **compose:** add compose files for testing against openzaakbrug in combination with openzaak ([ec8628c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ec8628c02ff5066bee0f0f0357dea1eefc6051ee))
+
 ## [6.21.7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.21.6...v6.21.7) (2026-03-02)
 
 ### 🐛 Bug Fixes
