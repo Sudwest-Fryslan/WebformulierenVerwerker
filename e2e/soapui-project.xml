@@ -19,9 +19,7 @@
   </con:interface>
   <con:interface xsi:type="con:WsdlInterface" id="7d7603a1-a9ce-4bb6-ab23-ee84463191de" wsaVersion="NONE" name="ZdsOntvangAsynchroon" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPOntvangAsynchroon" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_ontvangAsynchroon_mutatie_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:endpoints>
-      <con:endpoint>http://localhost:8088/mockZdsOntvangAsynchroon</con:endpoint>
-    </con:endpoints>
+    <con:endpoints/>
     <con:operation id="d75804b6-2181-4a6c-91ca-61991a71de86" isOneWay="false" action="http://www.egem.nl/StUF/sector/zkn/0310/actualiseerZaakstatus_Lk01" name="actualiseerZaakstatus_Lk01" bindingOperationName="actualiseerZaakstatus_Lk01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
@@ -255,13 +253,15 @@
   </con:interface>
   <con:interface xsi:type="con:WsdlInterface" id="b3c36b32-234c-4422-b90d-410640b89e49" wsaVersion="NONE" name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGeneriekeFormulierAfhandeling" soapVersion="1_1" anonymous="optional" definition="../src/main/configurations/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:endpoints/>
+    <con:endpoints>
+      <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+    </con:endpoints>
     <con:operation id="40c0c4cd-c1e0-4c92-ae7b-dabd182dd902" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" name="bewaarDocument" bindingOperationName="bewaarDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="99632a61-0368-4e98-bc7f-24bc92fab2a2" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -275,8 +275,13 @@
       </tem:bewaarDocument>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="9fcfdc14-6e7b-48e0-ae21-8b555acd5b76" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" name="Info" bindingOperationName="Info" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -284,15 +289,20 @@
       <con:call id="d3fe8dfc-9115-4231-8a15-992e545c72ec" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tem:Info/>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="27040c7c-34f6-4ee3-af87-51df32ab94ac" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" name="maakInkomendDocumentregistratie" bindingOperationName="maakInkomendDocumentregistratie" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -300,7 +310,7 @@
       <con:call id="1dac590e-1e87-46d9-8600-b57f07508380" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -318,8 +328,13 @@
       </tem:maakInkomendDocumentregistratie>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="c602fd55-7ccf-4ab9-b7aa-172a73705288" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" name="opslaanAanvraagBijlage" bindingOperationName="opslaanAanvraagBijlage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -327,7 +342,7 @@
       <con:call id="069ed658-2201-45f5-a81e-73fa860b4e79" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -344,7 +359,9 @@
           <con:authType>No Authorization</con:authType>
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="fa3ac27c-1a2d-45e6-8019-395489b696c0" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon" name="opslaanAanvraagNatuurlijkPersoon" bindingOperationName="opslaanAanvraagNatuurlijkPersoon" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -352,7 +369,7 @@
       <con:call id="f58b45a4-6757-49ef-93e6-04c038847984" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -371,7 +388,9 @@
           <con:authType>No Authorization</con:authType>
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="72667bea-e504-46ae-b195-28aa1ef3e61a" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" name="opslaanBijlage" bindingOperationName="opslaanBijlage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -379,7 +398,7 @@
       <con:call id="f95fec69-2ba0-464c-9ac9-06a998a8cdd9" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -393,8 +412,13 @@
       </tem:opslaanBijlage>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="9a9ad966-202b-4755-abfe-37bec3b4e8a1" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" name="opslaanInkNatuurlijkPersoon" bindingOperationName="opslaanInkNatuurlijkPersoon" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -402,7 +426,7 @@
       <con:call id="ec5e5269-aeb7-46c4-9274-4951bcb40510" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -428,8 +452,13 @@
       </tem:opslaanInkNatuurlijkPersoon>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="cf09a32a-c954-4f88-9cd8-9eaa5db8146f" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" name="opslaanInkNietNatuurlijkPersoon" bindingOperationName="opslaanInkNietNatuurlijkPersoon" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -437,7 +466,7 @@
       <con:call id="ade30f7b-60ad-4b88-a5f1-1a4140850981" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -463,8 +492,13 @@
       </tem:opslaanInkNietNatuurlijkPersoon>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="ec0bcc61-3176-49f3-8578-b164f2df0cf1" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" name="Version" bindingOperationName="Version" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -472,7 +506,7 @@
       <con:call id="467d1b2b-f40a-4e61-9d1a-cb1ff8b874e4" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint xsi:nil="true"/>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -482,8 +516,13 @@
       </tem:Version>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
   </con:interface>
@@ -2772,7 +2811,7 @@ return "edcLa01"</con:dispatchPath>
     </con:mockOperation>
   </con:mockService>
   <con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <con:endpoint mode="OVERRIDE">https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+    <con:endpoint mode="OVERRIDE">https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
   </con:endpointStrategy>
   <con:properties>
     <con:property>

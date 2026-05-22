@@ -50,7 +50,7 @@
             
             <SenderPipe name="Send_GenereerZaakIdentificatie_Di02_Request">
                 <WebServiceSender sharedResourceRef="SharedHttpSession"
-                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerZaakIdentificatie_Di02" soap="false"
+                                  url="${openzaakbrug_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerZaakIdentificatie_Di02" soap="false"
                                   timeout="12500"/>
                 <Forward name="success" path="Unwrapper1"/>
                 <Forward name="exception" path="isErrorXML"/>
@@ -154,7 +154,7 @@
             
             <SenderPipe name="Send_GenereerPdfDocumentIdentificatie_Di02_Request">
                 <WebServiceSender sharedResourceRef="SharedHttpSession"
-                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
+                                  url="${openzaakbrug_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
                                   timeout="12500"/>
                 <Forward name="success" path="Unwrapper3"/>
                 <Forward name="exception" path="isErrorXML"/>
@@ -244,7 +244,7 @@
             
             <SenderPipe name="Send_GenereerXmlDocumentIdentificatie_Di02_Request">
                 <WebServiceSender sharedResourceRef="SharedHttpSession"
-                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
+                                  url="${openzaakbrug_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
                                   timeout="12500"/>
                 <Forward name="success" path="Unwrapper5"/>
                 <Forward name="exception" path="isErrorXML"/>
