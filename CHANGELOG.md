@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.22.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.22.1...v6.22.2) (2026-05-22)
+
+### 🐛 Bug Fixes
+
+* missing new CAReL resources in GeneriekeFormulierAfhandelingTest.wsdl ([#107](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/107)) ([5d46a13](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/5d46a13ad87526bf884cc87b6281fd675263903c))
+
 ## [6.22.1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.22.0...v6.22.1) (2026-05-22)
 
 ### 🐛 Bug Fixes
