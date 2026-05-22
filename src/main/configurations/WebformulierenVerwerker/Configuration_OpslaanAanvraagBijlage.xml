@@ -45,7 +45,7 @@
             
             <SenderPipe name="Send_GenereerDocumentIdentificatie_Di02_Request">
                 <WebServiceSender sharedResourceRef="SharedHttpSession"
-                                  url="${carel_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
+                                  url="${openzaakbrug_zds_vrijbericht.url}" soapAction="http://www.egem.nl/StUF/sector/zkn/0310/genereerDocumentIdentificatie_Di02" soap="false"
                                   timeout="12500"/>
                 <Forward name="success" path="Unwrapper1"/>
                 <Forward name="exception" path="isErrorXML"/>
