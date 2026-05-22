@@ -20,7 +20,7 @@
   <con:interface xsi:type="con:WsdlInterface" id="7d7603a1-a9ce-4bb6-ab23-ee84463191de" wsaVersion="NONE" name="ZdsOntvangAsynchroon" type="wsdl" bindingName="{http://www.egem.nl/StUF/sector/zkn/0310}SOAPOntvangAsynchroon" soapVersion="1_1" anonymous="optional" definition="Zaak_DocumentServices_1_1_02/zkn0310/zs-dms/zkn0310_ontvangAsynchroon_mutatie_zs-dms.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints>
-      <con:endpoint>http://localhost:8088/mockZdsOntvangAsynchroon</con:endpoint>
+      <con:endpoint xsi:nil="true"/>
     </con:endpoints>
     <con:operation id="d75804b6-2181-4a6c-91ca-61991a71de86" isOneWay="false" action="http://www.egem.nl/StUF/sector/zkn/0310/actualiseerZaakstatus_Lk01" name="actualiseerZaakstatus_Lk01" bindingOperationName="actualiseerZaakstatus_Lk01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
@@ -2772,7 +2772,7 @@ return "edcLa01"</con:dispatchPath>
     </con:mockOperation>
   </con:mockService>
   <con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <con:endpoint mode="OVERRIDE">https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+    <con:endpoint xsi:nil="true"/>
   </con:endpointStrategy>
   <con:properties>
     <con:property>
