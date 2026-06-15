@@ -3,11 +3,13 @@
 ## Hoge prioriteit
 
 ### SoapUI-projecten — 3 bestanden, 1 actief
-| Bestand | Status |
-|---------|--------|
-| `docs/WebformulierenVerwerker-soapui-project.xml` | **Verwijderen** — legacy, SoapUI 5.7.2, verouderd |
-| `e2e/soapui-project.xml` | **Verwijderen** — oudere CAReL-tests, vervangen door onderstaande |
-| `e2e/webformulierenverwerker-soapui-project.xml` | **Behouden** — huidig actief project (Eduard, juni 2026) |
+| Bestand | Inhoud | Status |
+|---------|--------|--------|
+| `docs/WebformulierenVerwerker-soapui-project.xml` | Alleen interface-definitie, **geen testcases** | **Verwijderen** — geen waarde |
+| `e2e/soapui-project.xml` | 1 testsuite "Carel": opslaanAanvraagNatuurlijkPersoon + opslaanAanvraagBijlage | **Verwijderen** — volledig opgenomen in nieuw project |
+| `e2e/webformulierenverwerker-soapui-project.xml` | 3 testcases: **Corsa** + **CAReL** + CAReL endpoint direct | **Behouden** — actief project (Eduard, juni 2026) |
+
+> De Corsa-tests zitten wél in het nieuwe project ("WebformulierenVerwerker Corsa TestCase"). Niets gaat verloren bij verwijderen van de twee oudere bestanden.
 
 ### WSDL's — 3 bestanden met URL-verschil, handmatig gesynchroniseerd
 | Bestand | URL | Bedoeling |
