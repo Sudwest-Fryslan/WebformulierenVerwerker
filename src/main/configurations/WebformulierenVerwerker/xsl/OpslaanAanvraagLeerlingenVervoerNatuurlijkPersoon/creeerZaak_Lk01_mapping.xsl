@@ -68,9 +68,27 @@
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
                             <BG:inp.bsn><xsl:value-of select="globals/bsn"/></BG:inp.bsn><!-- {afzenderbsn} -->
                             <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+                            <BG:geslachtsnaam><xsl:value-of select="globals/stuf/geslachtsnaam"/></BG:geslachtsnaam>
+                            <BG:voorletters><xsl:value-of select="globals/stuf/voorletters"/></BG:voorletters>
+                            <BG:voornamen><xsl:value-of select="globals/stuf/voornamen"/></BG:voornamen>
+                            <BG:geslachtsaanduiding><xsl:call-template name="map-gender"><xsl:with-param name="input" select="globals/stuf/geslachtsaanduiding"/></xsl:call-template></BG:geslachtsaanduiding>
+                            <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="globals/stuf/geboortedatum"/></xsl:call-template></BG:geboortedatum>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftAlsInitiator>
+                <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+                    <ZKN:gerelateerde>
+                        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
+                            <BG:inp.bsn><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/bsnleerling"/></BG:inp.bsn>
+                            <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+                            <BG:geslachtsnaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/achternaam"/></BG:geslachtsnaam>
+                            <BG:voorletters><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voorletters"/></BG:voorletters>
+                            <BG:voornamen><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voornamen"/></BG:voornamen>
+                            <BG:geslachtsaanduiding><xsl:call-template name="map-gender"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geslacht"/></xsl:call-template></BG:geslachtsaanduiding>
+                            <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geboortedatum"/></xsl:call-template></BG:geboortedatum>
+                        </ZKN:natuurlijkPersoon>
+                    </ZKN:gerelateerde>
+                </ZKN:heeftBetrekkingOp>
                 <!-- Formulierantwoorden (alles wat niet netjes in vaste zaakvelden past) -->
                 <StUF:extraElementen>
                     <!-- Aanvraagcheck -->
@@ -91,7 +109,10 @@
                     <StUF:extraElement naam="aanvrager_tussenvoegsel"/>
                     <StUF:extraElement naam="aanvrager_achternaam"><xsl:value-of select="globals/stuf/geslachtsnaam"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_geboortedatum"><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="globals/stuf/geboortedatum"/></xsl:call-template></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_adres"><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></StUF:extraElement>
+                    <StUF:extraElement naam="aanvrager_straat"><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></StUF:extraElement>
+                    <StUF:extraElement naam="aanvrager_huisnummer"><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></StUF:extraElement>
+                    <StUF:extraElement naam="aanvrager_huisletter"><xsl:value-of select="globals/stuf/verblijfsadres/huisletter"/></StUF:extraElement>
+                    <StUF:extraElement naam="aanvrager_huisnummertoevoeging"><xsl:value-of select="globals/stuf/verblijfsadres/huisnummertoevoeging"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_postcode"><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_plaats"><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_telefoonnummer"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/telefoonnummer"/></StUF:extraElement>
@@ -111,7 +132,10 @@
                     <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/leerlinganderadres"/></StUF:extraElement>
                     <!-- School -->
                     <StUF:extraElement naam="school_naam"><xsl:value-of select="fleerlingenvervoerv3regulier/naamschool"/></StUF:extraElement>
-                    <StUF:extraElement naam="school_adres"><xsl:value-of select="fleerlingenvervoerv3regulier/straat"/></StUF:extraElement>
+                    <StUF:extraElement naam="school_straat"><xsl:value-of select="fleerlingenvervoerv3regulier/straat"/></StUF:extraElement>
+                    <StUF:extraElement naam="school_huisnummer"><xsl:value-of select="fleerlingenvervoerv3regulier/nummer"/></StUF:extraElement>
+                    <StUF:extraElement naam="school_huisletter"><xsl:value-of select="fleerlingenvervoerv3regulier/huisletter"/></StUF:extraElement>
+                    <StUF:extraElement naam="school_huisnummertoevoeging"><xsl:value-of select="fleerlingenvervoerv3regulier/nummertoevoeging"/></StUF:extraElement>
                     <StUF:extraElement naam="school_postcode"><xsl:value-of select="fleerlingenvervoerv3regulier/postcode"/></StUF:extraElement>
                     <StUF:extraElement naam="school_plaats"><xsl:value-of select="fleerlingenvervoerv3regulier/woonplaats"/></StUF:extraElement>
                     <!-- Eigen bijdrage -->
@@ -186,6 +210,30 @@
             <xsl:otherwise>
                 <xsl:message terminate="yes">
                     Unrecognized date format: <xsl:value-of select="concat($elementname, '_',  $date)"/>
+                </xsl:message>
+            </xsl:otherwise>
+            
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="map-gender">
+        <xsl:param name="input" as="node()?"/>
+        
+        <xsl:variable name="gender" select="normalize-space(string($input))"/>
+        <xsl:variable name="elementname" select="if ($input) then local-name($input) else ''"/>
+        
+        <xsl:choose>
+            
+            <xsl:when test="$gender = ('M', 'Man', 'man', 'Jongen', 'jongen')">M</xsl:when>
+            
+            <xsl:when test="$gender = ('V', 'Vrouw', 'vrouw', 'Meisje', 'meisje')">V</xsl:when>
+            
+            <xsl:when test="$gender = ('X', 'Onbekend')">X</xsl:when>
+            
+            <!-- Fallback -->
+            <xsl:otherwise>
+                <xsl:message terminate="yes">
+                    Unrecognized gender format: <xsl:value-of select="concat($elementname, '_', $gender)"/>
                 </xsl:message>
             </xsl:otherwise>
             
