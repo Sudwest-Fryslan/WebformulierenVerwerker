@@ -67,7 +67,6 @@
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
                             <BG:inp.bsn><xsl:value-of select="globals/bsn"/></BG:inp.bsn><!-- {afzenderbsn} -->
-                            <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
                             <BG:geslachtsnaam><xsl:value-of select="globals/stuf/geslachtsnaam"/></BG:geslachtsnaam>
                             <BG:voorletters><xsl:value-of select="globals/stuf/voorletters"/></BG:voorletters>
                             <BG:voornamen><xsl:value-of select="globals/stuf/voornamen"/></BG:voornamen>
@@ -80,7 +79,6 @@
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
                             <BG:inp.bsn><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/bsnleerling"/></BG:inp.bsn>
-                            <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
                             <BG:geslachtsnaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/achternaam"/></BG:geslachtsnaam>
                             <BG:voorletters><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voorletters"/></BG:voorletters>
                             <BG:voornamen><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voornamen"/></BG:voornamen>
@@ -127,7 +125,7 @@
                     <StUF:extraElement naam="leerling_roepnaam"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voornamen"/></StUF:extraElement>
                     <StUF:extraElement naam="leerling_tussenvoegsel"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/tussenvoegsel"/></StUF:extraElement>
                     <StUF:extraElement naam="leerling_achternaam"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/achternaam"/></StUF:extraElement>
-                    <StUF:extraElement naam="leerling_geslacht"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/geslacht"/></StUF:extraElement>
+                    <StUF:extraElement naam="leerling_geslacht"><xsl:call-template name="map-gender"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geslacht"/></xsl:call-template></StUF:extraElement>
                     <StUF:extraElement naam="leerling_geboortedatum"><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geboortedatum"/></xsl:call-template></StUF:extraElement>
                     <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager"><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/leerlinganderadres"/></StUF:extraElement>
                     <!-- School -->
@@ -224,11 +222,11 @@
         
         <xsl:choose>
             
-            <xsl:when test="$gender = ('M', 'Man', 'man', 'Jongen', 'jongen')">M</xsl:when>
+            <xsl:when test="$gender = ('M', 'm', 'Man', 'man', 'MAN', 'Jongen', 'jongen', 'JONGEN')">M</xsl:when>
             
-            <xsl:when test="$gender = ('V', 'Vrouw', 'vrouw', 'Meisje', 'meisje')">V</xsl:when>
+            <xsl:when test="$gender = ('V', 'v', 'Vrouw', 'vrouw', 'VROUW', 'Meisje', 'meisje', 'MEISJE')">V</xsl:when>
             
-            <xsl:when test="$gender = ('X', 'Onbekend')">X</xsl:when>
+            <xsl:when test="$gender = ('O', 'o', 'Onbekend', 'onbekend', 'ONBEKEND')">O</xsl:when>
             
             <!-- Fallback -->
             <xsl:otherwise>
