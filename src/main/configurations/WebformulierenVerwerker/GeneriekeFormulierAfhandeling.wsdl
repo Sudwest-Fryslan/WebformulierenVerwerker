@@ -179,6 +179,66 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<!-- ZAC verzoek operaties -->
+			<xs:element name="aanmakenVerzoekNatuurlijkPersoon">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="omschrijving" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="aanvraagpdfname" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="aanvraagpdfdata" nillable="false" type="xs:base64Binary"/>
+						<xs:element minOccurs="1" name="aanvraagxmldata" nillable="false" type="xs:base64Binary"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="aanmakenVerzoekNatuurlijkPersoonResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="verzoekIdentificatie" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="pdfDocumentUrl" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="xmlDocumentUrl" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="toevoegenVerzoekBijlage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="documenttype" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="filename" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="filedata" nillable="false" type="xs:base64Binary"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="toevoegenVerzoekBijlageResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="toevoegenVerzoekBijlageResult" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="indienenVerzoek">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="1" name="pdfDocumentUrl" nillable="false" type="xs:string"/>
+						<xs:element minOccurs="0" name="xmlDocumentUrl" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="bijlageUrl" nillable="true" type="xs:string" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="indienenVerzoekResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="indienenVerzoekResult" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 		<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
 			<xs:element name="anyType" nillable="true" type="xs:anyType"/>
@@ -278,6 +338,25 @@
 	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage">
 		<wsdl:part name="parameters" element="tns:opslaanAanvraagBijlageResponse"/>
 	</wsdl:message>
+	<!-- ZAC verzoek operaties -->
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage">
+		<wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoon"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage">
+		<wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoonResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_InputMessage">
+		<wsdl:part name="parameters" element="tns:toevoegenVerzoekBijlage"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_OutputMessage">
+		<wsdl:part name="parameters" element="tns:toevoegenVerzoekBijlageResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage">
+		<wsdl:part name="parameters" element="tns:indienenVerzoek"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage">
+		<wsdl:part name="parameters" element="tns:indienenVerzoekResponse"/>
+	</wsdl:message>
 	<wsdl:portType name="IGeneriekeFormulierAfhandeling">
 		<wsdl:operation name="Version">
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" message="tns:IGeneriekeFormulierAfhandeling_Version_InputMessage"/>
@@ -316,6 +395,19 @@
 		<wsdl:operation name="opslaanAanvraagBijlage">
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_InputMessage"/>
 			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage"/>
+		</wsdl:operation>
+		<!-- ZAC verzoek operaties -->
+		<wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
+			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="toevoegenVerzoekBijlage">
+			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlage" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="indienenVerzoek">
+			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoekResponse" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="tns:IGeneriekeFormulierAfhandeling">
@@ -396,6 +488,34 @@
 		<!-- toevoeging leerlingvervoer bijlage-->
 		<wsdl:operation name="opslaanAanvraagBijlage">
 			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<!-- ZAC verzoek operaties -->
+		<wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
+			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="toevoegenVerzoekBijlage">
+			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlage" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="indienenVerzoek">
+			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>

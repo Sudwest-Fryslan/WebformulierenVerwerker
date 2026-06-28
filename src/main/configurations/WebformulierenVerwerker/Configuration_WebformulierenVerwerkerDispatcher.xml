@@ -28,7 +28,7 @@
             
             <WsdlXmlInputValidator name="InputValidator"
                                    wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                                   soapBody="Version,Info,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,opslaanInk,opslaanAanvraagNatuurlijkPersoon,opslaanAanvraagBijlage"
+                                   soapBody="Version,Info,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,opslaanInk,opslaanAanvraagNatuurlijkPersoon,opslaanAanvraagBijlage,aanmakenVerzoekNatuurlijkPersoon,toevoegenVerzoekBijlage,indienenVerzoek"
                                    addNamespaceToSchema="true"
                                    schemaLocation="http://tempuri.org/ schema1"
                                    throwException="true">
@@ -55,6 +55,9 @@
                 <Forward name="opslaanInk" path="InkSoapActionSetter" />
                 <Forward name="opslaanAanvraagNatuurlijkPersoon" path="AanvraagPersoonSoapActionSetter" />
                 <Forward name="opslaanAanvraagBijlage" path="AanvraagBijlageSoapActionSetter" />
+                <Forward name="aanmakenVerzoekNatuurlijkPersoon" path="AanmakenVerzoekNatuurlijkPersoonSoapActionSetter" />
+                <Forward name="toevoegenVerzoekBijlage" path="ToevoegenVerzoekBijlageSoapActionSetter" />
+                <Forward name="indienenVerzoek" path="IndienenVerzoekSoapActionSetter" />
             </XmlSwitchPipe>
             
             <PutInSessionPipe name="VersionSoapActionSetter" sessionKey="SOAPAction"
@@ -184,7 +187,49 @@
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
-            
+
+            <PutInSessionPipe name="AanmakenVerzoekNatuurlijkPersoonSoapActionSetter" sessionKey="SOAPAction"
+                              value="aanmakenVerzoekNatuurlijkPersoonResponse">
+                <Forward name="success" path="CallAanmakenVerzoekNatuurlijkPersoon" />
+            </PutInSessionPipe>
+
+            <SenderPipe name="CallAanmakenVerzoekNatuurlijkPersoon">
+                <IbisLocalSender
+                    name="aanmakenVerzoekNatuurlijkPersoonLocalSender"
+                    javaListener="aanmakenVerzoekNatuurlijkPersoon">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="wrapOutput" />
+            </SenderPipe>
+
+            <PutInSessionPipe name="ToevoegenVerzoekBijlageSoapActionSetter" sessionKey="SOAPAction"
+                              value="toevoegenVerzoekBijlageResponse">
+                <Forward name="success" path="CallToevoegenVerzoekBijlage" />
+            </PutInSessionPipe>
+
+            <SenderPipe name="CallToevoegenVerzoekBijlage">
+                <IbisLocalSender
+                    name="toevoegenVerzoekBijlageLocalSender"
+                    javaListener="toevoegenVerzoekBijlage">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="wrapOutput" />
+            </SenderPipe>
+
+            <PutInSessionPipe name="IndienenVerzoekSoapActionSetter" sessionKey="SOAPAction"
+                              value="indienenVerzoekResponse">
+                <Forward name="success" path="CallIndienenVerzoek" />
+            </PutInSessionPipe>
+
+            <SenderPipe name="CallIndienenVerzoek">
+                <IbisLocalSender
+                    name="indienenVerzoekLocalSender"
+                    javaListener="indienenVerzoek">
+                </IbisLocalSender>
+                <Forward name="success" path="SUCCESS" />
+                <Forward name="exception" path="wrapOutput" />
+            </SenderPipe>
+
             <SoapWrapperPipe name="wrapOutput">
                 <Forward name="success" path="EXCEPTION" />
             </SoapWrapperPipe>

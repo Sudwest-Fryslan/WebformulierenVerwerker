@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="aanmakenVerzoekNatuurlijkPersoon">
+        <Receiver name="aanmakenVerzoekNatuurlijkPersoon">
+            <JavaListener name="aanmakenVerzoekNatuurlijkPersoon"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <!-- Sla inputvelden op in sessie -->
+            <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAfzenderBsn" sessionKey="AfzenderBsn"/>
+
+            <XsltPipe name="GetAanvraagtype" xpathExpression="//aanvraagtype" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagtype" sessionKey="Aanvraagtype"/>
+
+            <XsltPipe name="GetOmschrijving" xpathExpression="//omschrijving" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
+
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//vertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+
+            <XsltPipe name="GetAanvraagpdfname" xpathExpression="//aanvraagpdfname" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagpdfname" sessionKey="Aanvraagpdfname"/>
+
+            <XsltPipe name="GetAanvraagpdfdata" xpathExpression="//aanvraagpdfdata" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagpdfdata" sessionKey="Aanvraagpdfdata"/>
+
+            <XsltPipe name="GetAanvraagxmldata" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagxmldata" sessionKey="Aanvraagxmldata"/>
+
+            <!-- Stap 1: Upload PDF naar Documenten API -->
+            <XsltPipe name="Transform_UploadPdf_Body"
+                      styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadPdf_request.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
+                <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
+                <Param name="bestandsnaam" sessionKey="Aanvraagpdfname"/>
+                <Param name="inhoud" sessionKey="Aanvraagpdfdata"/>
+                <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="success" path="Send_UploadPdf"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <SenderPipe name="Send_UploadPdf">
+                <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
+                            methodType="POST"
+                            contentType="application/json"
+                            timeout="12500"/>
+                <Forward name="success" path="GetPdfDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
+            <XsltPipe name="GetPdfDocumentUrl" xpathExpression="//url">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
+
+            <!-- Stap 2: Upload XML-formulierdata naar Documenten API -->
+            <XsltPipe name="Transform_UploadXml_Body"
+                      styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadXml_request.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
+                <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
+                <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
+                <Param name="inhoud" sessionKey="Aanvraagxmldata"/>
+                <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="success" path="Send_UploadXml"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <SenderPipe name="Send_UploadXml">
+                <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
+                            methodType="POST"
+                            contentType="application/json"
+                            timeout="12500"/>
+                <Forward name="success" path="GetXmlDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
+            <XsltPipe name="GetXmlDocumentUrl" xpathExpression="//url">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+
+            <!-- Verzoek wordt NIET aangemaakt in Verzoeken API — dat doet indienenVerzoek via Objecten API.
+                 Geef de DRC-URLs en een zelf gegenereerde UUID terug aan Kodison. -->
+            <UUIDGeneratorPipe name="GenerateVerzoekIdentificatie"
+                               storeResultInSessionKey="VerzoekIdentificatie"/>
+
+            <!-- Bouw SOAP response met verzoekIdentificatie + beide DRC-URLs -->
+            <XsltPipe name="ConvertToResponse"
+                      styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/response2AanmakenVerzoekNatuurlijkPersoon.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="verzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
+                <Param name="pdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
+                <Param name="xmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+                <Forward name="success" path="WrapResponse"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapResponse" storeResultInSessionKey="originalMessageResponse">
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse"/>
+                <Forward name="else" path="errorToXML"/>
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"/>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="aanvraagResponse"/>
+                <Forward name="success" path="buildErrorMsg"/>
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                      styleSheetName="xsl/Common/CreateAanvraagErrorResponse.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="aanvraagRequest" sessionKey="aanvraagRequest"/>
+                <Param name="aanvraagResponse" sessionKey="aanvraagResponse"/>
+                <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
+                <Forward name="success" path="EXCEPTION"/>
+            </XsltPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="toevoegenVerzoekBijlage">
+        <Receiver name="toevoegenVerzoekBijlage">
+            <JavaListener name="toevoegenVerzoekBijlage"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <!-- Sla inputvelden op in sessie -->
+            <XsltPipe name="GetVerzoekIdentificatie" xpathExpression="//verzoekIdentificatie">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreVerzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
+
+            <XsltPipe name="GetDocumenttype" xpathExpression="//documenttype" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreDocumenttype" sessionKey="Documenttype"/>
+
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//vertrouwelijkheid" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
+
+            <XsltPipe name="GetFilename" xpathExpression="//filename" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreFilename" sessionKey="Filename"/>
+
+            <XsltPipe name="GetFiledata" xpathExpression="//filedata" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreFiledata" sessionKey="Filedata"/>
+
+            <!-- Stap 1: Upload bijlage naar Documenten API -->
+            <XsltPipe name="Transform_UploadBijlage_Body"
+                      styleSheetName="xsl/ToevoegenVerzoekBijlage/uploadBijlage_request.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;">
+                <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
+                <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
+                <Param name="documenttype" sessionKey="Documenttype"/>
+                <Param name="bestandsnaam" sessionKey="Filename"/>
+                <Param name="inhoud" sessionKey="Filedata"/>
+                <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="success" path="Send_UploadBijlage"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <SenderPipe name="Send_UploadBijlage">
+                <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
+                            methodType="POST"
+                            contentType="application/json"
+                            timeout="12500"/>
+                <Forward name="success" path="GetBijlageDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
+            <XsltPipe name="GetBijlageDocumentUrl" xpathExpression="//url">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreBijlageDocumentUrl" sessionKey="BijlageDocumentUrl"/>
+
+            <!-- Bouw SOAP response — geef de DRC-URL terug zodat Kodison die kan meesturen bij indienenVerzoek -->
+            <XsltPipe name="ConvertToResponse"
+                      styleSheetName="xsl/ToevoegenVerzoekBijlage/response2ToevoegenVerzoekBijlage.xsl"
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="bijlageDocumentUrl" sessionKey="BijlageDocumentUrl"/>
+                <Forward name="success" path="WrapResponse"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <SoapWrapperPipe name="WrapResponse" storeResultInSessionKey="originalMessageResponse">
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SoapWrapperPipe>
+
+            <!-- Error Handling -->
+            <IsXmlPipe name="isErrorXML">
+                <Forward name="then" path="storeErrorResponse"/>
+                <Forward name="else" path="errorToXML"/>
+            </IsXmlPipe>
+
+            <Text2XmlPipe xmlTag="error" name="errorToXML"/>
+
+            <PutInSessionPipe name="storeErrorResponse">
+                <Param name="aanvraagResponse"/>
+                <Forward name="success" path="buildErrorMsg"/>
+            </PutInSessionPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                      styleSheetName="xsl/Common/CreateAanvraagErrorResponse.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;">
+                <Param name="aanvraagRequest" sessionKey="aanvraagRequest"/>
+                <Param name="aanvraagResponse" sessionKey="aanvraagResponse"/>
+                <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
+                <Param name="soapAction" sessionKey="RequestSoapAction"/>
+                <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
+                <Forward name="success" path="EXCEPTION"/>
+            </XsltPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>
