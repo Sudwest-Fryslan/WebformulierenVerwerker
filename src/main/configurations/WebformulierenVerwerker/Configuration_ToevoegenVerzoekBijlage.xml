@@ -43,7 +43,7 @@
                       styleSheetName="xsl/ToevoegenVerzoekBijlage/uploadBijlage_request.xsl"
                       getInputFromFixedValue="&lt;Default/&gt;">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
-                <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
+                <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype.bijlage}"/>
                 <Param name="documenttype" sessionKey="Documenttype"/>
                 <Param name="bestandsnaam" sessionKey="Filename"/>
                 <Param name="inhoud" sessionKey="Filedata"/>

@@ -17,6 +17,7 @@
         <xsl:text>"informatieobjecttype": "</xsl:text><xsl:value-of select="$informatieobjecttype"/><xsl:text>",</xsl:text>
         <xsl:text>"inhoud": "</xsl:text><xsl:value-of select="$inhoud"/><xsl:text>",</xsl:text>
         <xsl:text>"bestandsnaam": "</xsl:text><xsl:value-of select="$bestandsnaam"/><xsl:text>",</xsl:text>
+        <xsl:text>"formaat": "</xsl:text><xsl:value-of select="$documenttype"/><xsl:text>",</xsl:text>
         <xsl:text>"status": "definitief",</xsl:text>
         <xsl:text>"vertrouwelijkheidaanduiding": "</xsl:text><xsl:value-of select="$vertrouwelijkheidaanduiding"/><xsl:text>"</xsl:text>
         <xsl:text>}</xsl:text>
