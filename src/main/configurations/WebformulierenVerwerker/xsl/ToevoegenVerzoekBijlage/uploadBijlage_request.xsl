@@ -17,7 +17,15 @@
         <xsl:text>"informatieobjecttype": "</xsl:text><xsl:value-of select="$informatieobjecttype"/><xsl:text>",</xsl:text>
         <xsl:text>"inhoud": "</xsl:text><xsl:value-of select="$inhoud"/><xsl:text>",</xsl:text>
         <xsl:text>"bestandsnaam": "</xsl:text><xsl:value-of select="$bestandsnaam"/><xsl:text>",</xsl:text>
-        <xsl:text>"formaat": "</xsl:text><xsl:value-of select="$documenttype"/><xsl:text>",</xsl:text>
+        <xsl:text>"formaat": "</xsl:text>
+        <xsl:choose>
+            <xsl:when test="ends-with(lower-case($bestandsnaam), '.pdf')">application/pdf</xsl:when>
+            <xsl:when test="ends-with(lower-case($bestandsnaam), '.jpg') or ends-with(lower-case($bestandsnaam), '.jpeg')">image/jpeg</xsl:when>
+            <xsl:when test="ends-with(lower-case($bestandsnaam), '.png')">image/png</xsl:when>
+            <xsl:when test="ends-with(lower-case($bestandsnaam), '.docx')">application/vnd.openxmlformats-officedocument.wordprocessingml.document</xsl:when>
+            <xsl:otherwise>application/octet-stream</xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>",</xsl:text>
         <xsl:text>"status": "definitief",</xsl:text>
         <xsl:text>"vertrouwelijkheidaanduiding": "</xsl:text><xsl:value-of select="$vertrouwelijkheidaanduiding"/><xsl:text>"</xsl:text>
         <xsl:text>}</xsl:text>

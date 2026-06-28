@@ -75,6 +75,7 @@ jar cvf WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVer
 
 ### Supported Operations
 
+**Corsa flow (existing):**
 - `Version` / `Info` — metadata endpoints
 - `opslaanInkNatuurlijkPersoon` — store document for natural person
 - `opslaanInkNietNatuurlijkPersoon` — store document for organization
@@ -83,11 +84,23 @@ jar cvf WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVer
 - `opslaanAanvraagNatuurlijkPersoon` — store request for natural person
 - `opslaanAanvraagBijlage` — store request attachment
 
+**ZAC flow (new — feature/zac-koppeling):**
+- `aanmakenVerzoekNatuurlijkPersoon` — uploads PDF + XML to Documenten API, returns DRC URLs + a UUID (`verzoekIdentificatie`) to Kodison
+- `toevoegenVerzoekBijlage` — uploads a single attachment to Documenten API, returns its DRC URL
+- `indienenVerzoek` — receives the DRC URLs collected above, POSTs a `productaanvraag` JSON object to the Objecten API; a Notificaties API listener in ZAC picks this up and creates the zaak automatically
+
+The ZAC flow is **stateless from this application's perspective** — Kodison orchestrates the three calls and passes DRC URLs between them. No locker, no Corsa connection, no database writes.
+
 ### External Systems
 
 - **Corsa** (`http://swfkvt01/wsCorsa7/Corsa72WS4j.asmx`) — document management
 - **CAReL** — StUF/ZDS services (URLs in `DeploymentSpecifics.properties`)
 - **OpenZaakBrug** — zaak/document identification generation
+- **ZAC Documenten API** (`${zac.documenten.url}`, Open Zaak port 8001) — stores informatieobjecten (PDF/XML)
+- **ZAC Objecten API** (`${zac.objecten.url}`, port 8010) — receives productaanvraag; triggers dimpact-ZAC via Notificaties API
+- **ZAC Objecttypen API** (`${zac.objecten.objecttype}`, port 8011) — provides the Productaanvraag-Dimpact objecttype URL
+
+ZAC API calls require a Bearer token. Configure it in `src/main/secrets/credentials.properties` (gitignored).
 
 ### Database
 
