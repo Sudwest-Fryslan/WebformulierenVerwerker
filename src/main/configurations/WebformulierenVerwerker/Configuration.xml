@@ -7,6 +7,9 @@
 <!ENTITY OpslaanInk SYSTEM "Configuration_OpslaanInk.xml">
 <!ENTITY OpslaanAanvraagNatuurlijkPersoon SYSTEM "Configuration_OpslaanAanvraagNatuurlijkPersoon.xml">
 <!ENTITY OpslaanAanvraagBijlage SYSTEM "Configuration_OpslaanAanvraagBijlage.xml">
+<!ENTITY AanmakenVerzoekNatuurlijkPersoon SYSTEM "Configuration_AanmakenVerzoekNatuurlijkPersoon.xml">
+<!ENTITY ToevoegenVerzoekBijlage SYSTEM "Configuration_ToevoegenVerzoekBijlage.xml">
+<!ENTITY IndienenVerzoek SYSTEM "Configuration_IndienenVerzoek.xml">
 <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
@@ -14,7 +17,7 @@
         <HttpSession
             name="SharedHttpSession"
             maxConnections="1"
-            connectionTimeToLive="100000" 
+            connectionTimeToLive="100000"
             />
     </SharedResources>
     &Version;
@@ -25,5 +28,8 @@
     &OpslaanInk;
     &OpslaanAanvraagNatuurlijkPersoon;
     &OpslaanAanvraagBijlage;
+    &AanmakenVerzoekNatuurlijkPersoon;
+    &ToevoegenVerzoekBijlage;
+    &IndienenVerzoek;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

@@ -41,7 +41,8 @@
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->
             <XsltPipe name="Transform_Productaanvraag_Body"
                       styleSheetName="xsl/IndienenVerzoek/productaanvraag_request.xsl"
-                      getInputFromSessionKey="originalMessage">
+                      getInputFromSessionKey="originalMessage"
+                      omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="objecttype" value="${zac.objecten.objecttype}"/>
                 <Param name="bron.naam" value="${zac.bron.naam}"/>
@@ -59,7 +60,11 @@
                 <HttpSender url="${zac.objecten.url}/objects"
                             methodType="POST"
                             contentType="application/json"
-                            timeout="12500"/>
+                            headersParams="Authorization,Content-Crs"
+                            timeout="12500">
+                    <Param name="Authorization" value="Token ${zac.objecten.token}"/>
+                    <Param name="Content-Crs" value="EPSG:4326"/>
+                </HttpSender>
                 <Forward name="success" path="ConvertToResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>

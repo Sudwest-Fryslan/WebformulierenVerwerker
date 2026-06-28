@@ -41,7 +41,8 @@
             <!-- Stap 1: Upload bijlage naar Documenten API -->
             <XsltPipe name="Transform_UploadBijlage_Body"
                       styleSheetName="xsl/ToevoegenVerzoekBijlage/uploadBijlage_request.xsl"
-                      getInputFromFixedValue="&lt;Default/&gt;">
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype.bijlage}"/>
                 <Param name="documenttype" sessionKey="Documenttype"/>
@@ -56,12 +57,21 @@
                 <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
                             methodType="POST"
                             contentType="application/json"
-                            timeout="12500"/>
-                <Forward name="success" path="GetBijlageDocumentUrl"/>
+                            headersParams="Authorization"
+                            timeout="12500">
+                    <Param name="Authorization" value="Bearer ${zac.api.token}"/>
+                </HttpSender>
+                <Forward name="success" path="WrapBijlageResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
 
-            <XsltPipe name="GetBijlageDocumentUrl" xpathExpression="//url">
+            <Text2XmlPipe name="WrapBijlageResponse" xmlTag="response">
+                <Forward name="success" path="GetBijlageDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </Text2XmlPipe>
+
+            <XsltPipe name="GetBijlageDocumentUrl"
+                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreBijlageDocumentUrl" sessionKey="BijlageDocumentUrl"/>

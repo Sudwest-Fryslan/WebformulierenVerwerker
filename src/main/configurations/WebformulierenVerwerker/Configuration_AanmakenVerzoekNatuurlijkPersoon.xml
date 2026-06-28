@@ -51,7 +51,8 @@
             <!-- Stap 1: Upload PDF naar Documenten API -->
             <XsltPipe name="Transform_UploadPdf_Body"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadPdf_request.xsl"
-                      getInputFromFixedValue="&lt;Default/&gt;">
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
                 <Param name="bestandsnaam" sessionKey="Aanvraagpdfname"/>
@@ -65,12 +66,21 @@
                 <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
                             methodType="POST"
                             contentType="application/json"
-                            timeout="12500"/>
-                <Forward name="success" path="GetPdfDocumentUrl"/>
+                            headersParams="Authorization"
+                            timeout="12500">
+                    <Param name="Authorization" value="Bearer ${zac.api.token}"/>
+                </HttpSender>
+                <Forward name="success" path="WrapPdfResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
 
-            <XsltPipe name="GetPdfDocumentUrl" xpathExpression="//url">
+            <Text2XmlPipe name="WrapPdfResponse" xmlTag="response">
+                <Forward name="success" path="GetPdfDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </Text2XmlPipe>
+
+            <XsltPipe name="GetPdfDocumentUrl"
+                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
@@ -78,7 +88,8 @@
             <!-- Stap 2: Upload XML-formulierdata naar Documenten API -->
             <XsltPipe name="Transform_UploadXml_Body"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadXml_request.xsl"
-                      getInputFromFixedValue="&lt;Default/&gt;">
+                      getInputFromFixedValue="&lt;Default/&gt;"
+                      omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
                 <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
@@ -92,12 +103,21 @@
                 <HttpSender url="${zac.documenten.url}/enkelvoudiginformatieobjecten"
                             methodType="POST"
                             contentType="application/json"
-                            timeout="12500"/>
-                <Forward name="success" path="GetXmlDocumentUrl"/>
+                            headersParams="Authorization"
+                            timeout="12500">
+                    <Param name="Authorization" value="Bearer ${zac.api.token}"/>
+                </HttpSender>
+                <Forward name="success" path="WrapXmlResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
 
-            <XsltPipe name="GetXmlDocumentUrl" xpathExpression="//url">
+            <Text2XmlPipe name="WrapXmlResponse" xmlTag="response">
+                <Forward name="success" path="GetXmlDocumentUrl"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </Text2XmlPipe>
+
+            <XsltPipe name="GetXmlDocumentUrl"
+                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
