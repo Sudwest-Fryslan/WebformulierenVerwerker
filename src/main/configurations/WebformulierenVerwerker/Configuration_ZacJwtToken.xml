@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <!-- Gedeelde sub-adapter: genereert een vers ZGW JWT Bearer token op basis van client_id + secret.
+         Aanroepen via IbisLocalSender, resultaat is "Bearer <token>". -->
+    <Adapter name="ZacJwtToken">
+        <Receiver name="ZacJwtToken">
+            <JavaListener name="ZacJwtToken"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <!-- JWT header is altijd hetzelfde: {"typ":"JWT","alg":"HS256"} in base64url -->
+            <FixedResultPipe name="SetHeader" returnString="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9">
+                <Forward name="success" path="StoreHeader"/>
+            </FixedResultPipe>
+            <PutInSessionPipe name="StoreHeader" sessionKey="JwtHeader"/>
+
+            <!-- Bouw payload JSON met huidige Unix-timestamp -->
+            <XsltPipe name="BuildPayloadJson"
+                      styleSheetName="xsl/Common/jwtBuildPayload.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="clientId" value="${zac.api.client_id}"/>
+                <Forward name="success" path="EncodePayload"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </XsltPipe>
+
+            <!-- Base64-encode de payload JSON (lineLength=0 = geen newlines) -->
+            <Base64Pipe name="EncodePayload" direction="ENCODE" lineLength="0">
+                <Forward name="success" path="WrapPayloadB64"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </Base64Pipe>
+
+            <!-- Wrap plain-text Base64 in XML zodat XsltPipe er op kan werken -->
+            <Text2XmlPipe name="WrapPayloadB64" xmlTag="b64">
+                <Forward name="success" path="PayloadToBase64Url"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </Text2XmlPipe>
+
+            <!-- Converteer Base64 naar Base64URL (+/= → -_) -->
+            <XsltPipe name="PayloadToBase64Url"
+                      styleSheetName="xsl/Common/base64ToBase64Url.xsl"
+                      omitXmlDeclaration="true">
+                <Forward name="success" path="StorePayload"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StorePayload" sessionKey="JwtPayload"/>
+
+            <!-- Bouw signing input: header.payload -->
+            <XsltPipe name="BuildSigningInput"
+                      styleSheetName="xsl/Common/jwtConcatParts.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="part1" sessionKey="JwtHeader"/>
+                <Param name="part2" sessionKey="JwtPayload"/>
+                <Forward name="success" path="StoreSigningInput"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreSigningInput" sessionKey="JwtHeaderPayload"/>
+
+            <!-- Bereken HMAC-SHA256 van signing input (output: Base64) -->
+            <HashPipe name="ComputeHmac" algorithm="HmacSHA256" secret="${zac.api.secret}" hashEncoding="Base64"
+                      getInputFromSessionKey="JwtHeaderPayload">
+                <Forward name="success" path="WrapSignatureB64"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </HashPipe>
+
+            <!-- Wrap plain-text Base64 signature in XML voor XsltPipe -->
+            <Text2XmlPipe name="WrapSignatureB64" xmlTag="b64">
+                <Forward name="success" path="SignatureToBase64Url"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </Text2XmlPipe>
+
+            <!-- Converteer Base64 signature naar Base64URL -->
+            <XsltPipe name="SignatureToBase64Url"
+                      styleSheetName="xsl/Common/base64ToBase64Url.xsl"
+                      omitXmlDeclaration="true">
+                <Forward name="success" path="StoreSignature"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreSignature" sessionKey="JwtSignature"/>
+
+            <!-- Assembleer volledige JWT: "Bearer header.payload.signature" -->
+            <XsltPipe name="AssembleJwt"
+                      styleSheetName="xsl/Common/jwtFinalAssemble.xsl"
+                      getInputFromFixedValue="&lt;dummy/&gt;"
+                      omitXmlDeclaration="true">
+                <Param name="headerPayload" sessionKey="JwtHeaderPayload"/>
+                <Param name="signature" sessionKey="JwtSignature"/>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </XsltPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

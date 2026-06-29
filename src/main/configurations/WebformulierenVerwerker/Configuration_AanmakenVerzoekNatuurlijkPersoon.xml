@@ -48,6 +48,14 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagxmldata" sessionKey="Aanvraagxmldata"/>
 
+            <!-- Haal vers JWT op voor Documenten API calls -->
+            <SenderPipe name="GetZacJwtToken">
+                <IbisLocalSender javaListener="ZacJwtToken"/>
+                <Forward name="success" path="StoreZacJwtToken"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            <PutInSessionPipe name="StoreZacJwtToken" sessionKey="ZacJwtToken"/>
+
             <!-- Stap 1: Upload PDF naar Documenten API -->
             <XsltPipe name="Transform_UploadPdf_Body"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadPdf_request.xsl"
@@ -68,7 +76,7 @@
                             contentType="application/json"
                             headersParams="Authorization"
                             timeout="12500">
-                    <Param name="Authorization" value="Bearer ${zac.api.token}"/>
+                    <Param name="Authorization" sessionKey="ZacJwtToken"/>
                 </HttpSender>
                 <Forward name="success" path="WrapPdfResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
@@ -105,7 +113,7 @@
                             contentType="application/json"
                             headersParams="Authorization"
                             timeout="12500">
-                    <Param name="Authorization" value="Bearer ${zac.api.token}"/>
+                    <Param name="Authorization" sessionKey="ZacJwtToken"/>
                 </HttpSender>
                 <Forward name="success" path="WrapXmlResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
