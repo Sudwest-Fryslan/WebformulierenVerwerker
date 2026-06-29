@@ -190,20 +190,22 @@ Documenteer dat `opennotificaties` vereist is voor de productaanvraag/webformuli
 
 ---
 
-### ISSUE-9: ZAC JWT token verloopt snel, geen automatische verlenging
+### ✅ ISSUE-9: ZAC JWT token verloopt snel, geen automatische verlenging — OPGELOST
 
 **Project:** WebformulierenVerwerker-zac (Frank!Framework configuratie)
-**Type:** Verbetervoorstel
+**Type:** Verbetervoorstel → Opgelost
 
 **Beschrijving:**
-De Open Zaak JWT tokens (`iat`-based, HS256) verlopen snel. In de huidige implementatie
-staat het token als statische property in `DeploymentSpecifics.properties`. Hierdoor
-moeten tokens handmatig worden vernieuwd bij elke ontwikkelsessie.
+De Open Zaak JWT tokens (`iat`-based, HS256) verloopten snel. In de oorspronkelijke
+implementatie stond het token als statische property in `DeploymentSpecifics.properties`.
 
-**Voorstel:**
-Implementeer dynamische JWT-generatie in Frank!Framework:
-- Genereer een nieuw token bij elke request (of cache met korte TTL)
-- Gebruik `clientId` + `secret` als configuratie-properties i.p.v. het token zelf
+**Oplossing (29-06-2026):**
+Dynamische JWT-generatie geïmplementeerd in `Configuration_ZacJwtToken.xml` via native
+Frank!Framework pipes: `FixedResultPipe` (header) → `XsltPipe` met XSLT 2.0 (payload met
+Unix-timestamp via `current-dateTime()`) → `Base64Pipe` → `HashPipe` (HmacSHA256) → XSLT
+base64url-conversie. Elke aanvraag genereert een vers token.
+Configuratie: `zac.api.client_id` in `DeploymentSpecifics.properties`, `zac.api.secret` in
+`credentials.properties` (gitignored).
 
 ---
 
@@ -211,37 +213,34 @@ Implementeer dynamische JWT-generatie in Frank!Framework:
 
 ## Frank!Framework / WebformulierenVerwerker (XML/XSL bugs)
 
-### ISSUE-10: Frank!Framework 10.2.0 bug: XML-declaratie in `method="text"` output ondanks `omitXmlDeclaration="true"`
+### ✅ ISSUE-10: Frank!Framework 10.2.0: XML-declaratie in `method="text"` output — OPGELOST
 
 **Project:** WebformulierenVerwerker-zac / Frank!Framework
-**Type:** Bug in Frank!Framework 10.2.0
+**Type:** Bug in Frank!Framework 10.2.0 → Opgelost
 
 **Beschrijving:**
-Frank!Framework 10.2.0 voegt altijd `<?xml version="1.0" encoding="UTF-8"?>` toe als prefix
+Frank!Framework 10.2.0 voegde altijd `<?xml version="1.0" encoding="UTF-8"?>` toe als prefix
 wanneer een XSLT stylesheet `method="text"` gebruikt — ook als `omitXmlDeclaration="true"` is
-ingesteld op de XsltPipe. Dit maakt de output ongeldig als JSON.
+ingesteld op de XsltPipe. Dit maakte de output ongeldig als JSON.
 
-Open Zaak DRC geeft bij een dergelijke request:
+Open Zaak DRC gaf bij een dergelijke request:
 ```
 {"detail": "JSON parse error - Expecting value: line 1 column 1 (char 0)"}
 ```
 
-**Geverifieerd:** echo-server bevestigde dat de request body begon met
-`<?xml version="1.0" encoding="UTF-8"?>{"bronorganisatie": "..."}`.
-
-**Oorzaak:**
-Frank!Framework 10.2.0 serialiseert `method="text"` XSLT-output altijd als XML-document
-(inclusief declaratie), ongeacht het pipe-attribuut `omitXmlDeclaration`.
-
-**Fix:**
+**Tijdelijke fix (28-06-2026):**
 XSLT output method omgezet naar `method="xml" omit-xml-declaration="yes"` met de JSON gewrapped
-in een XML-element `<json>`. Daarna een extra `XsltPipe xpathExpression="string(json)"` toegevoegd
-om de pure JSON-string te extraheren.
+in `<json>`. Extra `XsltPipe xpathExpression="string(json)"` om de tekst te extraheren.
+
+**Definitieve fix (29-06-2026):**
+`omitXmlDeclaration="true"` op de `XsltPipe` in combinatie met `method="text"` in de stylesheet
+werkt correct als de XsltPipe het attribuut heeft. De `<json>`-wrapper en Extract-stappen zijn
+verwijderd. Alle upload-XSL-bestanden gebruiken nu `<xsl:output method="text"/>` direct.
 
 **Gewijzigde bestanden:**
 - `xsl/AanmakenVerzoekNatuurlijkPersoon/uploadPdf_request.xsl`
 - `xsl/AanmakenVerzoekNatuurlijkPersoon/uploadXml_request.xsl`
-- `Configuration_AanmakenVerzoekNatuurlijkPersoon.xml` (Extract_UploadPdf_Json en Extract_UploadXml_Json pipes toegevoegd)
+- `Configuration_AanmakenVerzoekNatuurlijkPersoon.xml`
 
 ---
 
