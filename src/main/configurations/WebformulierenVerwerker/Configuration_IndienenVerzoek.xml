@@ -28,15 +28,15 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagtype" sessionKey="Aanvraagtype"/>
 
-            <XsltPipe name="GetPdfDocumentUrl" xpathExpression="//pdfDocumentUrl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="GetPdfDocumentUrl" xpathExpression="//pdfDocumentUuid" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
+            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUuid"/>
 
-            <XsltPipe name="GetXmlDocumentUrl" xpathExpression="//xmlDocumentUrl" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="GetXmlDocumentUrl" xpathExpression="//xmlDocumentUuid" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
 
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->
             <XsltPipe name="Transform_Productaanvraag_Body"
@@ -46,11 +46,12 @@
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="objecttype" value="${zac.objecten.objecttype}"/>
                 <Param name="bron.naam" value="${zac.bron.naam}"/>
+                <Param name="documentenUrl" value="${zac.documenten.url}"/>
                 <Param name="verzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
                 <Param name="afzenderbsn" sessionKey="AfzenderBsn"/>
                 <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
-                <Param name="pdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
-                <Param name="xmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+                <Param name="pdfDocumentUuid" sessionKey="PdfDocumentUuid"/>
+                <Param name="xmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
                 <Forward name="success" path="Send_ProductaanvraagNaarObjectenApi"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

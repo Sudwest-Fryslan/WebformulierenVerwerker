@@ -7,11 +7,12 @@
     <xsl:param name="verzoekIdentificatie"/>
     <xsl:param name="afzenderbsn"/>
     <xsl:param name="aanvraagtype"/>
-    <xsl:param name="pdfDocumentUrl"/>
-    <xsl:param name="xmlDocumentUrl"/>
+    <xsl:param name="documentenUrl"/>
+    <xsl:param name="pdfDocumentUuid"/>
+    <xsl:param name="xmlDocumentUuid"/>
 
     <xsl:template match="/">
-        <xsl:variable name="bijlageUrls" select="//bijlageUrl"/>
+        <xsl:variable name="bijlageUuids" select="//bijlageUuid"/>
         <xsl:text>{</xsl:text>
         <xsl:text>"type": "</xsl:text><xsl:value-of select="$objecttype"/><xsl:text>",</xsl:text>
         <xsl:text>"record": {</xsl:text>
@@ -30,12 +31,12 @@
                         <xsl:text>"rolOmschrijvingGeneriek": "initiator"</xsl:text>
                     <xsl:text>}</xsl:text>
                 <xsl:text>],</xsl:text>
-                <xsl:text>"pdf": "</xsl:text><xsl:value-of select="$pdfDocumentUrl"/><xsl:text>",</xsl:text>
-                <xsl:text>"csv": "</xsl:text><xsl:value-of select="$xmlDocumentUrl"/><xsl:text>",</xsl:text>
+                <xsl:text>"pdf": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', $pdfDocumentUuid)"/><xsl:text>",</xsl:text>
+                <xsl:text>"csv": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', $xmlDocumentUuid)"/><xsl:text>",</xsl:text>
                 <xsl:text>"bijlagen": [</xsl:text>
-                    <xsl:for-each select="$bijlageUrls">
+                    <xsl:for-each select="$bijlageUuids">
                         <xsl:if test="position() > 1"><xsl:text>,</xsl:text></xsl:if>
-                        <xsl:text>"</xsl:text><xsl:value-of select="."/><xsl:text>"</xsl:text>
+                        <xsl:text>"</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', .)"/><xsl:text>"</xsl:text>
                     </xsl:for-each>
                 <xsl:text>]</xsl:text>
             <xsl:text>}</xsl:text>

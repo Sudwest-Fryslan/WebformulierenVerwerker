@@ -79,17 +79,17 @@
             </Text2XmlPipe>
 
             <XsltPipe name="GetBijlageDocumentUrl"
-                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
+                      styleSheetName="xsl/Common/extractDrcUuid.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StoreBijlageDocumentUrl" sessionKey="BijlageDocumentUrl"/>
+            <PutInSessionPipe name="StoreBijlageDocumentUrl" sessionKey="BijlageUuid"/>
 
             <!-- Bouw SOAP response — geef de DRC-URL terug zodat Kodison die kan meesturen bij indienenVerzoek -->
             <XsltPipe name="ConvertToResponse"
                       styleSheetName="xsl/ToevoegenVerzoekBijlage/response2ToevoegenVerzoekBijlage.xsl"
                       getInputFromFixedValue="&lt;Default/&gt;"
                       omitXmlDeclaration="true">
-                <Param name="bijlageDocumentUrl" sessionKey="BijlageDocumentUrl"/>
+                <Param name="bijlageUuid" sessionKey="BijlageUuid"/>
                 <Forward name="success" path="WrapResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

@@ -88,10 +88,10 @@
             </Text2XmlPipe>
 
             <XsltPipe name="GetPdfDocumentUrl"
-                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
+                      styleSheetName="xsl/Common/extractDrcUuid.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
+            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUuid"/>
 
             <!-- Stap 2: Upload XML-formulierdata naar Documenten API -->
             <XsltPipe name="Transform_UploadXml_Body"
@@ -125,10 +125,10 @@
             </Text2XmlPipe>
 
             <XsltPipe name="GetXmlDocumentUrl"
-                      styleSheetName="xsl/Common/extractDrcUrl.xsl">
+                      styleSheetName="xsl/Common/extractDrcUuid.xsl">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
 
             <!-- Verzoek wordt NIET aangemaakt in Verzoeken API — dat doet indienenVerzoek via Objecten API.
                  Geef de DRC-URLs en een zelf gegenereerde UUID terug aan Kodison. -->
@@ -141,8 +141,8 @@
                       getInputFromFixedValue="&lt;Default/&gt;"
                       omitXmlDeclaration="true">
                 <Param name="verzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
-                <Param name="pdfDocumentUrl" sessionKey="PdfDocumentUrl"/>
-                <Param name="xmlDocumentUrl" sessionKey="XmlDocumentUrl"/>
+                <Param name="pdfDocumentUuid" sessionKey="PdfDocumentUuid"/>
+                <Param name="xmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
                 <Forward name="success" path="WrapResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

@@ -5,11 +5,11 @@
     <xsl:param name="afzenderbsn"/>
     <xsl:param name="aanvraagtype"/>
     <xsl:param name="omschrijving"/>
-    <xsl:param name="pdfDocumentUrl"/>
-    <xsl:param name="xmlDocumentUrl"/>
+    <xsl:param name="pdfDocumentUuid"/>
+    <xsl:param name="xmlDocumentUuid"/>
 
     <!-- TODO: implementeer JSON body voor POST /verzoeken (Verzoeken API) -->
-    <!-- Inclusief betrokkene met inpBsn en pdfUrl/xmlUrl als informatieobjecten -->
+    <!-- Inclusief betrokkene met inpBsn en pdfUuid/xmlUuid als informatieobjecten -->
     <xsl:template match="/">
         <xsl:text>TODO</xsl:text>
     </xsl:template>
