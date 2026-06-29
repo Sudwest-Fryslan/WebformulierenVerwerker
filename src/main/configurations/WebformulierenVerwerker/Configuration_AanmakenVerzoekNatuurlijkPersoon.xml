@@ -59,13 +59,17 @@
             <!-- Stap 1: Upload PDF naar Documenten API -->
             <XsltPipe name="Transform_UploadPdf_Body"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadPdf_request.xsl"
-                      getInputFromFixedValue="&lt;Default/&gt;"
-                      omitXmlDeclaration="true">
+                      getInputFromFixedValue="&lt;Default/&gt;">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
                 <Param name="bestandsnaam" sessionKey="Aanvraagpdfname"/>
                 <Param name="inhoud" sessionKey="Aanvraagpdfdata"/>
                 <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="success" path="Extract_UploadPdf_Json"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <XsltPipe name="Extract_UploadPdf_Json" xpathExpression="string(json)">
                 <Forward name="success" path="Send_UploadPdf"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
@@ -96,13 +100,17 @@
             <!-- Stap 2: Upload XML-formulierdata naar Documenten API -->
             <XsltPipe name="Transform_UploadXml_Body"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/uploadXml_request.xsl"
-                      getInputFromFixedValue="&lt;Default/&gt;"
-                      omitXmlDeclaration="true">
+                      getInputFromFixedValue="&lt;Default/&gt;">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
                 <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
                 <Param name="inhoud" sessionKey="Aanvraagxmldata"/>
                 <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
+                <Forward name="success" path="Extract_UploadXml_Json"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+
+            <XsltPipe name="Extract_UploadXml_Json" xpathExpression="string(json)">
                 <Forward name="success" path="Send_UploadXml"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

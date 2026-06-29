@@ -64,7 +64,7 @@
             <PutInSessionPipe name="StoreSigningInput" sessionKey="JwtHeaderPayload"/>
 
             <!-- Bereken HMAC-SHA256 van signing input (output: Base64) -->
-            <HashPipe name="ComputeHmac" algorithm="HmacSHA256" secret="${zac.api.secret}" hashEncoding="Base64"
+            <HashPipe name="ComputeHmac" algorithm="HmacSHA256" authAlias="zac.api.secret" hashEncoding="Base64"
                       getInputFromSessionKey="JwtHeaderPayload">
                 <Forward name="success" path="WrapSignatureB64"/>
                 <Forward name="exception" path="EXCEPTION"/>

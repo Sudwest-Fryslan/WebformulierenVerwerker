@@ -13,9 +13,14 @@ services:
     environment:
       TZ: ${TIME_ZONE:-Europe/Amsterdam}
       dtap.stage: ${DTAP_STAGE:-LOC}
+      credentialFactory.class: org.frankframework.credentialprovider.PropertyFileCredentialFactory
+      credentialFactory.map.properties: /opt/frank/secrets/credentials.properties
+    env_file:
+      - .env
     volumes:
       - h2-data:/opt/frank/h2:rw
       - logs:/usr/local/tomcat/logs:rw
+      - ${SECRETS_PATH:-./src/main/secrets}:/opt/frank/secrets
     ports:
       - "${PORT:-8080}:8080"
     restart: unless-stopped
