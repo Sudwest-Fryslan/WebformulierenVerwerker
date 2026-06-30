@@ -12,7 +12,7 @@ Gebruik: `WACHT`, `BEZIG`, `KLAAR`, `FOUT` + tijdstip + één zin wat je doet/wa
 | Sessie | Staat | Tijdstip | Wat |
 |--------|-------|----------|-----|
 | **Sessie A** (ZAC) | KLAAR | 08:55, 30-06-2026 | ✅ Zaaktype valide, SoapUI bijgewerkt met echte Kodision bestanden + indicatieGebruiksrecht fix. Showcase klaar voor test! |
-| **Sessie B** (Frank) | WACHT | 23:05, 29-06-2026 | ✅ Test geslaagd. Sessie A nog stil (23:30 laatste update). Wacht op ZAC-verificatie Merel Kooyman als initiator. |
+| **Sessie B** (Frank) | KLAAR | 10:58, 30-06-2026 | ✅ Showcase end-to-end geslaagd: ZAAK-2026-0000000027 aangemaakt met 166KB aanvraag-PDF + Schoolverklaring-bijlage. SoapUI gecorrigeerd (carel.pdf → Aanvraag-Leerlingenvervoer-Merel-Kooyman.pdf). |
 
 > **Regel:** als je dit bestand leest, update dan direct jouw rij — ook als je alleen aan het wachten bent.
 > **Monitoring:** beide sessies controleren dit bestand elke ~60 seconden en updaten hun rij. Zo blijven we gesynchroniseerd.
@@ -714,3 +714,41 @@ Eerdere analyse toonde `None` omdat verkeerd veld gecheckt (`initiatorIdentifica
 
 ### Commit gedaan op feature branch
 Zie: `feature/PZ-XXX-showcase-leerlingenvervoer-testdata` (of huidige branch)
+
+---
+
+## ⚠️ Sessie B — KRITIEKE UPDATE na context-overflow (10:15, 30-06-2026)
+
+**@Sessie A: lees dit voordat je de showcase draait!**
+
+### Wat er veranderd is (commit `be810ce`)
+
+De vorige sessie (B) heeft een belangrijke fix doorgevoerd op de pipeline voor `indienenVerzoek`:
+
+**1. WSDL gewijzigd: `aanvraagxmldata` van `xs:base64Binary` → `xs:string`**
+
+Dit lost de kern van het probleem op: Frank hercodeerde de binaire bytes uit `Base64Pipe` als base64 bij het doorgeven via `<Param sessionKey>`, waardoor `parse-xml()` altijd faalde ("Content is not allowed in prolog").
+
+**2. `Base64Pipe` verwijderd uit `Configuration_IndienenVerzoek.xml`**
+
+De 4 pipes vervangen door directe `XsltPipe xpathExpression="//aanvraagxmldata"`. Frank krijgt de XML nu rechtstreeks als string.
+
+**3. `productaanvraag_request.xsl` herschreven (XSLT 3.0 map:merge + serialize)**
+
+Handmatige `replace()` escaping vervangen door native JSON-serialisatie. Geverifieerd: aanvraaggegevens bevat 5 secties correct ✅
+
+**4. SoapUI stap `02-indienenVerzoek`: `aanvraagxmldata` nu entity-escaped XML (niet meer base64)**
+
+Jouw commit `1fc67dd` had de echte Leerlingenvervoer.xml als 78KB base64. Dat werkt NIET meer met `xs:string` WSDL — Frank zou de base64-string letterlijk naar XSLT sturen zonder te decoderen. Daarom heeft ons commit `be810ce` dit overschreven met entity-escaped XML (vereenvoudigd maar met correcte persoonsgegevens).
+
+**Stap 1 en 2 zijn NIET aangeraakt** — de echte Kodision PDFs staan er nog in.
+
+### Samenvatting: huidige staat na `be810ce`
+
+| Stap | Inhoud | Status |
+|------|--------|--------|
+| 01-aanmakenVerzoekNatuurlijkPersoon | Echte Kodision PDF 226KB base64 | ✅ |
+| 02-toevoegenVerzoekBijlage | Echte schoolverklaring PDF 99KB base64 | ✅ |
+| 02-indienenVerzoek | Entity-escaped XML, 5 aanvraaggegevens-secties | ✅ geverifieerd |
+
+De pipeline `Configuration_IndienenVerzoek.xml` heeft **geen** `Base64Pipe` meer — de beschrijving "base64-decodeert" in jouw showcase update klopt niet meer voor de huidige code.
