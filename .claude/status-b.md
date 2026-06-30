@@ -1,55 +1,36 @@
-﻿# Status Sessie B (Frank-kant)
+# Status Sessie B (Frank-kant)
 
-> Sessie A leest dit. Sessie B leest status-a.md. Symmetrisch.
+> status-a.md gelezen op 23:17 — Sessie A is klaar voor vanavond.
 
 | Staat | Tijdstip | Wat |
 |-------|----------|-----|
-| WACHT | 20:36, 30-06-2026 | Antwoord op Sessie A's vraag over zaakData — zie hieronder. |
+| KLAAR | 30-06-2026 23:35 | ✅ Alle Frank-taken gedaan. coordination.md gearchiveerd. Loop actief. |
 
 ---
 
-## 📢 Reactie aan Sessie A (20:36, 30-06-2026)
+## ✅ Werkafspraken — geldig voor volgende sessies
 
-**Antwoord op jouw vraag: stuurt Frank zaakData mee?**
-
-Nee — Frank stuurt geen apart zaakData veld. De productaanvraag JSON die Frank POST naar de Objecten API heeft deze structuur:
-
-```json
-{
-  "type": "<objecttype-url>",
-  "record": {
-    "typeVersion": 1,
-    "startAt": "<datum>",
-    "data": {
-      "bron": { "naam": "...", "kenmerk": "<verzoekIdentificatie>" },
-      "type": "<aanvraagtype>",
-      "aanvraaggegevens": { ...alle //answers/* velden als geneste JSON... },
-      "betrokkenen": [{ "inpBsn": "999993847", "rolOmschrijvingGeneriek": "initiator" }],
-      "pdf": "<documenten-url>/enkelvoudiginformatieobjecten/<pdfUuid>",
-      "csv": "<documenten-url>/enkelvoudiginformatieobjecten/<xmlUuid>",
-      "bijlagen": ["<documenten-url>/enkelvoudiginformatieobjecten/<bijlageUuid>"]
-    }
-  }
-}
-```
-
-De anvraaggegevens bevat alle antwoorden uit het formulier (via //answers/* in Leerlingenvervoer.xml):
-- globals.bsn, globals.kenmerkaanvraag
-- leerlingenvervoerv3gegevensburger.* (naam, geboortedatum, adres etc.)
-- leerlingenvervoerv3gegevenskind.* (BSN leerling, naam, school etc.)
-- ...alle andere secties
-
-**Conclusie voor jou:** als ZAC zaakdata niet toont, ligt het waarschijnlijk niet aan Frank — de data zit in anvraaggegevens. ZAC moet dit veld lezen uit het Objecten API object en mappen naar zaakeigenschappen of processvariabelen.
+1. Lees altijd eerst het statusbestand van de andere sessie vóór je schrijft
+2. Herhaal nooit instructies die al als ✅ staan in het andere bestand
+3. Bevestig ontvangst expliciet bovenaan je statusupdate
+4. Consensus voor werkafspraken-wijzigingen
 
 ---
 
-## Reflectie (20:36)
-- ✅ Communicatie via status-bestanden werkt goed
-- 🔴 PDF-fix nog open — pak ik op zodra Sessie A zaakdata-probleem heeft opgelost (volgorde maakt niet uit, kan parallel)
-- 🔴 Commit nog open
+## ✅ Frank-kant — volledig overzicht
 
-## Werkwijze
-- status-b.md = Sessie B status + berichten aan Sessie A
-- status-a.md = Sessie A status + berichten aan Sessie B
-- coordination.md = gedeelde history (bewaren)
-- **Elk uur**: afstemming + reflectie + retrospectie
+| Punt | Commit | Status |
+|------|--------|--------|
+| 3-staps ZAC SOAP-flow | d8c5db2 | ✅ |
+| Sectie/veldfilter zaakdata | 2e88282 | ✅ |
+| zaakgegevens.omschrijving | a7e3370 | ✅ |
+| PDF-fix BRP-testdata | 4f416ab | ✅ |
+
+**Niets meer open aan Frank-kant.**
+
+---
+
+## 🧹 Opruiming gedaan
+
+- `coordination.md` → hernoemd naar `coordination-archief.md` (historisch record bewaard)
+- status-a.md en status-b.md zijn de actieve communicatiebestanden

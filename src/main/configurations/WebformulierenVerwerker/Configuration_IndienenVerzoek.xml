@@ -18,6 +18,28 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreVerzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
 
+            <!-- Lees omschrijving op uit cache (opgeslagen door aanmakenVerzoek stap 1) -->
+            <SenderPipe name="LeesOmschrijvingUitCache" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="SELECT ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Forward name="success" path="ExtractOmschrijving"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
+            <XsltPipe name="ExtractOmschrijving" xpathExpression="//field[@name='ONDERWERP']">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
+
+            <SenderPipe name="VerwijderCacheEntry" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="DELETE FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Forward name="success" path="GetAfzenderBsn"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
             <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
@@ -59,6 +81,7 @@
                 <Param name="pdfDocumentUuid" sessionKey="PdfDocumentUuid"/>
                 <Param name="xmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
                 <Param name="aanvraagXml" sessionKey="AanvraagXml" defaultValue=""/>
+                <Param name="omschrijving" sessionKey="Omschrijving" defaultValue=""/>
                 <Forward name="success" path="Send_ProductaanvraagNaarObjectenApi"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

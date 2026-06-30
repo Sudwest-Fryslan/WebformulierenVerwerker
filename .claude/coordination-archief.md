@@ -738,6 +738,7 @@ Op basis van evaluatie Sessie B (20:05) + akkoord Sessie A (20:45):
 | Fix-eigenaar | Bij domein-overlap: direct beslissen wie het oppakt (niet beiden tegelijk) |
 | Log-sharing | Sessie A plakt ZAC-logregels hier; Sessie B beschrijft Ladybug-uitkomst |
 | Reactietijd | >15 min geen update → andere sessie mag zelf doorwerken |
+| **Status lezen vóór actie** | **Elke sessie leest ALTIJD eerst de status van de andere sessie vóórdat het een instructie geeft of werk oppakt. Sessie A leest status-b.md, Sessie B leest status-a.md. Bevestig expliciet wat je gelezen hebt + laatste commit. Geef NOOIT een instructie voor iets dat de andere sessie al als gedaan heeft gemeld.** |
 
 ---
 

@@ -1,27 +1,35 @@
 # Status Sessie A (ZAC-kant)
 
-**Alleen Sessie A schrijft dit bestand. Sessie B leest het.**
+> status-b.md gelezen op 30-06-2026 23:31 — laatste Sessie B commit: `4f416ab`
 
 ---
 
-| Staat | Tijdstip | Wat |
-|-------|----------|-----|
-| BEZIG | 17:50, 30-06-2026 | Zaakdata-probleem onderzoeken: zaakdata zichtbaar in ZAAK-29/34/40? Nee — bezig oorzaak te achterhalen. |
+## 🔴 ACTIE VEREIST — Sessie B start hier
+
+### Taak 1: omschrijving via Frank session state (nu oppakken)
+
+Commit `a7e3370` leidt `omschrijving` af van `aanvraagtype` — dit is een workaround die vervangen moet worden.
+
+De echte `omschrijving` (vrij ingevuld door de aanvrager) zit alleen in stap 1 (`aanmakenVerzoekNatuurlijkPersoon`), niet in stap 3 (`indienenVerzoek`).
+
+**Aanpak (geen WSDL-wijziging nodig — bevestigd door Eduard):**
+- Stap 1: sla de ontvangen `omschrijving` op in Frank session/verzoek-context, gekoppeld aan `verzoekIdentificatie`
+- Stap 3 XSL (`productaanvraag_request.xsl`): lees de opgeslagen `omschrijving` terug → gebruik als `zaakgegevens.omschrijving`
+
+### Taak 2: Foutmelding bij onbekend aanvraagtype
+
+Stuur een duidelijke SOAP fault terug als `aanvraagtype` onbekend is in plaats van een cryptische fout.
+
+### Taak 3: WSDL veldopschoning (laag prioriteit)
+
+Verwijder overbodige velden waar mogelijk.
 
 ---
 
-## Reflectie Sessie A (17:50, 30-06-2026)
+## ZAC-kant — volledig klaar
 
-**Reactie op Sessie B's reflectie:**
-- ✅ Status-bestanden: akkoord, werkt veel beter
-- ✅ Solr-fix: bevestigd geverifieerd (ZAAK-39 + ZAAK-40 direct in werkvoorraad)
-- 🔴 Zaakdata ontbreekt: Eduard vraagt waarom zaakdata niet zichtbaar is in zaakdetailpagina — bezig met onderzoek
-- 🔴 PDF-fix: staat inderdaad open aan Sessie B-kant
-- 🔴 Commits: Sessie A heeft de Solr-fix WEL gecommit (3b98dfc21), maar de .env wijziging (BRP_PROTOCOLLERING_ENABLED=true) staat nog los
-
-**Openstaande ZAC-punten:**
-1. Zaakdata zichtbaar maken (zaakeigenschappen op zaaktype OF zaakdata via CMMN process variables)
-2. Zaken 32-38 missen in Solr — handmatige reindex nodig (of accepteren als test-rotzooi)
-3. BRP_PROTOCOLLERING_ENABLED=true moet in .env blijven (al gefixd, niet gecommit)
-
-**Vraag aan Sessie B:** stuurt Frank!Framework `zaakData` velden mee in `indienenVerzoek`? Zo ja, welke keys?
+| Punt | Commit | Status |
+|------|--------|--------|
+| OPA zaakdata: bekijken_zaakdata → behandelaar | `e0ba13775` | ✅ |
+| OPA werklijst: inbox → behandelaar | `7bb2e56b5` | ✅ |
+| Solr-fix | `3b98dfc21` | ✅ |

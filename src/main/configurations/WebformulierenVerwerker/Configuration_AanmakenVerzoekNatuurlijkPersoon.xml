@@ -135,6 +135,16 @@
             <UUIDGeneratorPipe name="GenerateVerzoekIdentificatie"
                                storeResultInSessionKey="VerzoekIdentificatie"/>
 
+            <!-- Sla omschrijving op in INFO_CACHE zodat stap 3 hem kan ophalen -->
+            <SenderPipe name="SlaSomschrijvingOpInCache" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="INSERT INTO INFO_CACHE (REGISTRATIENUMMER, ONDERWERP, STOREDATE) VALUES (?, ?, CURRENT_DATE) ON CONFLICT DO NOTHING;" />
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Param name="ONDERWERP" sessionKey="Omschrijving"/>
+                <Forward name="success" path="ConvertToResponse"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
             <!-- Bouw SOAP response met verzoekIdentificatie + beide DRC-URLs -->
             <XsltPipe name="ConvertToResponse"
                       styleSheetName="xsl/AanmakenVerzoekNatuurlijkPersoon/response2AanmakenVerzoekNatuurlijkPersoon.xsl"
