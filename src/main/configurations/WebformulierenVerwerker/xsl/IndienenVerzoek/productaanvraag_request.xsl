@@ -19,9 +19,11 @@
     <xsl:param name="xmlDocumentUuid"/>
     <xsl:param name="aanvraagXml" as="xs:string" select="''"/>
     <xsl:param name="omschrijving" as="xs:string" select="''"/>
+    <xsl:param name="bijlageUuidsXml" as="xs:string" select="''"/>
 
     <xsl:template match="/">
-        <xsl:variable name="bijlageUuids" select="//bijlageUuid"/>
+        <xsl:variable name="bijlagen-doc" select="if ($bijlageUuidsXml != '') then parse-xml($bijlageUuidsXml) else parse-xml('&lt;rowset/&gt;')"/>
+        <xsl:variable name="bijlageUuids" select="$bijlagen-doc//field[@name='BIJLAGE_UUID']"/>
         <xsl:text>{</xsl:text>
         <xsl:text>"type": "</xsl:text><xsl:value-of select="$objecttype"/><xsl:text>",</xsl:text>
         <xsl:text>"record": {</xsl:text>
@@ -40,7 +42,7 @@
                 <xsl:text>,</xsl:text>
                 <xsl:text>"betrokkenen": [</xsl:text>
                     <xsl:text>{</xsl:text>
-                        <xsl:text>"inpBsn": "</xsl:text><xsl:value-of select="$afzenderbsn"/><xsl:text>",</xsl:text>
+                        <xsl:text>"inpBsn": "</xsl:text><xsl:value-of select="normalize-space($afzenderbsn)"/><xsl:text>",</xsl:text>
                         <xsl:text>"rolOmschrijvingGeneriek": "initiator"</xsl:text>
                     <xsl:text>}</xsl:text>
                 <xsl:text>],</xsl:text>

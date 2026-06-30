@@ -28,7 +28,7 @@
             
             <WsdlXmlInputValidator name="InputValidator"
                                    wsdl="GeneriekeFormulierAfhandeling.wsdl"
-                                   soapBody="Version,Info,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,opslaanInk,opslaanAanvraagNatuurlijkPersoon,opslaanAanvraagBijlage,aanmakenVerzoekNatuurlijkPersoon,toevoegenVerzoekBijlage,indienenVerzoek"
+                                   soapBody="Version,Info,opslaanInkNatuurlijkPersoon,opslaanInkNietNatuurlijkPersoon,opslaanBijlage,opslaanInk,opslaanAanvraagNatuurlijkPersoon,opslaanAanvraagBijlage,aanmakenVerzoekNatuurlijkPersoon,toevoegenVerzoekDocument,indienenVerzoek"
                                    addNamespaceToSchema="true"
                                    schemaLocation="http://tempuri.org/ schema1"
                                    throwException="true">
@@ -56,7 +56,7 @@
                 <Forward name="opslaanAanvraagNatuurlijkPersoon" path="AanvraagPersoonSoapActionSetter" />
                 <Forward name="opslaanAanvraagBijlage" path="AanvraagBijlageSoapActionSetter" />
                 <Forward name="aanmakenVerzoekNatuurlijkPersoon" path="AanmakenVerzoekNatuurlijkPersoonSoapActionSetter" />
-                <Forward name="toevoegenVerzoekBijlage" path="ToevoegenVerzoekBijlageSoapActionSetter" />
+                <Forward name="toevoegenVerzoekDocument" path="ToevoegenVerzoekBijlageSoapActionSetter" />
                 <Forward name="indienenVerzoek" path="IndienenVerzoekSoapActionSetter" />
             </XmlSwitchPipe>
             
@@ -203,14 +203,14 @@
             </SenderPipe>
 
             <PutInSessionPipe name="ToevoegenVerzoekBijlageSoapActionSetter" sessionKey="SOAPAction"
-                              value="toevoegenVerzoekBijlageResponse">
+                              value="toevoegenVerzoekDocumentResponse">
                 <Forward name="success" path="CallToevoegenVerzoekBijlage" />
             </PutInSessionPipe>
 
             <SenderPipe name="CallToevoegenVerzoekBijlage">
                 <IbisLocalSender
-                    name="toevoegenVerzoekBijlageLocalSender"
-                    javaListener="toevoegenVerzoekBijlage">
+                    name="toevoegenVerzoekDocumentLocalSender"
+                    javaListener="toevoegenVerzoekDocument">
                 </IbisLocalSender>
                 <Forward name="success" path="SUCCESS" />
                 <Forward name="exception" path="wrapOutput" />

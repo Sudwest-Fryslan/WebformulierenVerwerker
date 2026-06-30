@@ -4,6 +4,13 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd"
 >
 
+	<changeSet id="dropTableVerzoekBijlagen" author="WebformulierenVerwerker" runAlways="true">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="VERZOEK_BIJLAGEN" />
+		</preConditions>
+		<dropTable tableName="VERZOEK_BIJLAGEN" />
+	</changeSet>
+
 	<changeSet id="dropTableInfoCache" author="Delano Brouwer" runAlways="true">
 		<preConditions onFail="MARK_RAN">
 			<tableExists tableName="INFO_CACHE" />
@@ -20,7 +27,23 @@
 			<column name="VERTROUWELIJKHEID" type="java.sql.Types.VARCHAR(256)" />
 			<column name="AFZENDER" type="java.sql.Types.VARCHAR(256)" />
 			<column name="ONDERWERP" type="java.sql.Types.VARCHAR(256)" />
+			<column name="AANVRAAGTYPE" type="java.sql.Types.VARCHAR(256)" />
+			<column name="PDF_UUID" type="java.sql.Types.VARCHAR(256)" />
+			<column name="XML_UUID" type="java.sql.Types.VARCHAR(256)" />
+			<column name="AANVRAAG_XML" type="java.sql.Types.CLOB" />
 			<column name="STOREDATE" type="DATE" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="VERZOEK_BIJLAGEN1" author="WebformulierenVerwerker" runAlways="true">
+		<comment>Bijlage-UUIDs per verzoek (0..n per verzoekIdentificatie)</comment>
+		<createTable tableName="VERZOEK_BIJLAGEN">
+			<column name="REGISTRATIENUMMER" type="java.sql.Types.VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
+			<column name="BIJLAGE_UUID" type="java.sql.Types.VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
 		</createTable>
 	</changeSet>
 

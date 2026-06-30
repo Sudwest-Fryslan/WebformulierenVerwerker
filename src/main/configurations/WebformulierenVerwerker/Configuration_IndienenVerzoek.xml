@@ -12,59 +12,78 @@
                 <Exit name="EXCEPTION" state="ERROR"/>
             </Exits>
 
-            <!-- Sla inputvelden op in sessie -->
+            <!-- Enige SOAP-input: verzoekIdentificatie -->
             <XsltPipe name="GetVerzoekIdentificatie" xpathExpression="//verzoekIdentificatie">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreVerzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
 
-            <!-- Lees omschrijving op uit cache (opgeslagen door aanmakenVerzoek stap 1) -->
-            <SenderPipe name="LeesOmschrijvingUitCache" getInputFromFixedValue="&lt;dummy/&gt;">
-                <FixedQuerySender
-                    query="SELECT ONDERWERP FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
+            <!-- Lees alle metadata uit INFO_CACHE (opgeslagen door stap 1) -->
+            <SenderPipe name="LeesAllesUitCache" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender queryType="select"
+                    query="SELECT VERTROUWELIJKHEID, AFZENDER, ONDERWERP, AANVRAAGTYPE, PDF_UUID, XML_UUID, AANVRAAG_XML FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
                 <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
-                <Forward name="success" path="ExtractOmschrijving"/>
+                <Forward name="success" path="StoreInfoCacheResult"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
+            <PutInSessionPipe name="StoreInfoCacheResult" sessionKey="InfoCacheResult"/>
 
-            <XsltPipe name="ExtractOmschrijving" xpathExpression="//field[@name='ONDERWERP']">
-                <Forward name="exception" path="isErrorXML"/>
-            </XsltPipe>
-            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
-
-            <SenderPipe name="VerwijderCacheEntry" getInputFromFixedValue="&lt;dummy/&gt;">
-                <FixedQuerySender
-                    query="DELETE FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
-                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
-                <Forward name="success" path="GetAfzenderBsn"/>
-                <Forward name="exception" path="isErrorXML"/>
-            </SenderPipe>
-
-            <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ExtractAfzenderBsn" xpathExpression="//field[@name='AFZENDER']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreAfzenderBsn" sessionKey="AfzenderBsn"/>
 
-            <XsltPipe name="GetAanvraagtype" xpathExpression="//aanvraagtype" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ExtractOmschrijving" xpathExpression="//field[@name='ONDERWERP']" getInputFromSessionKey="InfoCacheResult">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
+
+            <XsltPipe name="ExtractAanvraagtype" xpathExpression="//field[@name='AANVRAAGTYPE']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagtype" sessionKey="Aanvraagtype"/>
 
-            <XsltPipe name="GetPdfDocumentUrl" xpathExpression="//pdfDocumentUuid" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ExtractPdfUuid" xpathExpression="//field[@name='PDF_UUID']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUuid"/>
+            <PutInSessionPipe name="StorePdfDocumentUuid" sessionKey="PdfDocumentUuid"/>
 
-            <XsltPipe name="GetXmlDocumentUrl" xpathExpression="//xmlDocumentUuid" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ExtractXmlUuid" xpathExpression="//field[@name='XML_UUID']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
+            <PutInSessionPipe name="StoreXmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
 
-            <!-- Lees aanvraagxmldata (optioneel — leeg als niet meegestuurd) -->
-            <XsltPipe name="GetAanvraagXml" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
+            <XsltPipe name="ExtractAanvraagXml" xpathExpression="//field[@name='AANVRAAG_XML']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagXml" sessionKey="AanvraagXml"/>
+
+            <!-- Lees bijlage-UUIDs uit VERZOEK_BIJLAGEN (0..n bijlagen opgeslagen door stap 2) -->
+            <SenderPipe name="LeesVerzoekBijlagen" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender queryType="select"
+                    query="SELECT BIJLAGE_UUID FROM VERZOEK_BIJLAGEN WHERE REGISTRATIENUMMER = ?"/>
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Forward name="success" path="StoreBijlageUuidsXml"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+            <PutInSessionPipe name="StoreBijlageUuidsXml" sessionKey="BijlageUuidsXml"/>
+
+            <!-- Verwijder cache-entries na uitlezen -->
+            <SenderPipe name="VerwijderInfoCacheEntry" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="DELETE FROM INFO_CACHE WHERE REGISTRATIENUMMER = ?"/>
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Forward name="success" path="VerwijderVerzoekBijlagen"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
+
+            <SenderPipe name="VerwijderVerzoekBijlagen" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="DELETE FROM VERZOEK_BIJLAGEN WHERE REGISTRATIENUMMER = ?"/>
+                <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Forward name="success" path="Transform_Productaanvraag_Body"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </SenderPipe>
 
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->
             <XsltPipe name="Transform_Productaanvraag_Body"
@@ -82,6 +101,7 @@
                 <Param name="xmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
                 <Param name="aanvraagXml" sessionKey="AanvraagXml" defaultValue=""/>
                 <Param name="omschrijving" sessionKey="Omschrijving" defaultValue=""/>
+                <Param name="bijlageUuidsXml" sessionKey="BijlageUuidsXml" defaultValue=""/>
                 <Forward name="success" path="Send_ProductaanvraagNaarObjectenApi"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

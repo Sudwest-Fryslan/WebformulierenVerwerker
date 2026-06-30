@@ -9,7 +9,7 @@
 <!ENTITY OpslaanAanvraagBijlage SYSTEM "Configuration_OpslaanAanvraagBijlage.xml">
 <!ENTITY ZacJwtToken SYSTEM "Configuration_ZacJwtToken.xml">
 <!ENTITY AanmakenVerzoekNatuurlijkPersoon SYSTEM "Configuration_AanmakenVerzoekNatuurlijkPersoon.xml">
-<!ENTITY ToevoegenVerzoekBijlage SYSTEM "Configuration_ToevoegenVerzoekBijlage.xml">
+<!ENTITY ToevoegenVerzoekDocument SYSTEM "Configuration_ToevoegenVerzoekDocument.xml">
 <!ENTITY IndienenVerzoek SYSTEM "Configuration_IndienenVerzoek.xml">
 <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
@@ -31,7 +31,7 @@
     &OpslaanAanvraagBijlage;
     &ZacJwtToken;
     &AanmakenVerzoekNatuurlijkPersoon;
-    &ToevoegenVerzoekBijlage;
+    &ToevoegenVerzoekDocument;
     &IndienenVerzoek;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

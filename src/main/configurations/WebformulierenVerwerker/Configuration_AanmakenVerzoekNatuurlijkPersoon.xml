@@ -12,26 +12,11 @@
                 <Exit name="EXCEPTION" state="ERROR"/>
             </Exits>
 
-            <!-- Sla inputvelden op in sessie -->
+            <!-- Sla ruwe SOAP-velden op -->
             <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreAfzenderBsn" sessionKey="AfzenderBsn"/>
-
-            <XsltPipe name="GetAanvraagtype" xpathExpression="//aanvraagtype" getInputFromSessionKey="originalMessage">
-                <Forward name="exception" path="isErrorXML"/>
-            </XsltPipe>
-            <PutInSessionPipe name="StoreAanvraagtype" sessionKey="Aanvraagtype"/>
-
-            <XsltPipe name="GetOmschrijving" xpathExpression="//omschrijving" getInputFromSessionKey="originalMessage">
-                <Forward name="exception" path="isErrorXML"/>
-            </XsltPipe>
-            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
-
-            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//vertrouwelijkheid" getInputFromSessionKey="originalMessage">
-                <Forward name="exception" path="isErrorXML"/>
-            </XsltPipe>
-            <PutInSessionPipe name="StoreVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
             <XsltPipe name="GetAanvraagpdfname" xpathExpression="//aanvraagpdfname" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
@@ -43,10 +28,37 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagpdfdata" sessionKey="Aanvraagpdfdata"/>
 
+            <XsltPipe name="GetAanvraagxmlname" xpathExpression="//aanvraagxmlname" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagxmlname" sessionKey="Aanvraagxmlname"/>
+
             <XsltPipe name="GetAanvraagxmldata" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagxmldata" sessionKey="Aanvraagxmldata"/>
+
+            <!-- Decodeer base64 XML → lees aanvraagtype, omschrijving, vertrouwelijkheid uit het XML-formulier -->
+            <Base64Pipe name="DecodeAanvraagXml" direction="DECODE" getInputFromSessionKey="Aanvraagxmldata">
+                <Forward name="success" path="StoreAanvraagXmlDecoded"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </Base64Pipe>
+            <PutInSessionPipe name="StoreAanvraagXmlDecoded" sessionKey="AanvraagXmlDecoded"/>
+
+            <XsltPipe name="GetAanvraagtype" xpathExpression="//aanvraagtype" getInputFromSessionKey="AanvraagXmlDecoded">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagtype" sessionKey="Aanvraagtype"/>
+
+            <XsltPipe name="GetOmschrijving" xpathExpression="//omschrijving" getInputFromSessionKey="AanvraagXmlDecoded">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreOmschrijving" sessionKey="Omschrijving"/>
+
+            <XsltPipe name="GetVertrouwelijkheid" xpathExpression="//vertrouwelijkheid" getInputFromSessionKey="AanvraagXmlDecoded">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
             <!-- Haal vers JWT op voor Documenten API calls -->
             <SenderPipe name="GetZacJwtToken">
@@ -100,7 +112,7 @@
                       omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>
                 <Param name="informatieobjecttype" value="${zac.documenten.informatieobjecttype}"/>
-                <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
+                <Param name="bestandsnaam" sessionKey="Aanvraagxmlname"/>
                 <Param name="inhoud" sessionKey="Aanvraagxmldata"/>
                 <Param name="vertrouwelijkheidaanduiding" sessionKey="Vertrouwelijkheid"/>
                 <Forward name="success" path="Send_UploadXml"/>
@@ -130,17 +142,21 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
 
-            <!-- Verzoek wordt NIET aangemaakt in Verzoeken API — dat doet indienenVerzoek via Objecten API.
-                 Geef de DRC-URLs en een zelf gegenereerde UUID terug aan Kodison. -->
+            <!-- Genereer verzoekIdentificatie en sla alle metadata op in INFO_CACHE voor gebruik in stap 3 -->
             <UUIDGeneratorPipe name="GenerateVerzoekIdentificatie"
                                storeResultInSessionKey="VerzoekIdentificatie"/>
 
-            <!-- Sla omschrijving op in INFO_CACHE zodat stap 3 hem kan ophalen -->
-            <SenderPipe name="SlaSomschrijvingOpInCache" getInputFromFixedValue="&lt;dummy/&gt;">
+            <SenderPipe name="SlaAllesOpInCache" getInputFromFixedValue="&lt;dummy/&gt;">
                 <FixedQuerySender
-                    query="INSERT INTO INFO_CACHE (REGISTRATIENUMMER, ONDERWERP, STOREDATE) VALUES (?, ?, CURRENT_DATE) ON CONFLICT DO NOTHING;" />
+                    query="INSERT INTO INFO_CACHE (REGISTRATIENUMMER, VERTROUWELIJKHEID, AFZENDER, ONDERWERP, AANVRAAGTYPE, PDF_UUID, XML_UUID, AANVRAAG_XML, STOREDATE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_DATE);" />
                 <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
+                <Param name="VERTROUWELIJKHEID" sessionKey="Vertrouwelijkheid"/>
+                <Param name="AFZENDER" sessionKey="AfzenderBsn"/>
                 <Param name="ONDERWERP" sessionKey="Omschrijving"/>
+                <Param name="AANVRAAGTYPE" sessionKey="Aanvraagtype"/>
+                <Param name="PDF_UUID" sessionKey="PdfDocumentUuid"/>
+                <Param name="XML_UUID" sessionKey="XmlDocumentUuid"/>
+                <Param name="AANVRAAG_XML" sessionKey="AanvraagXmlDecoded"/>
                 <Forward name="success" path="ConvertToResponse"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>

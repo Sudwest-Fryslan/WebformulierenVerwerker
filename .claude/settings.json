@@ -5,7 +5,8 @@
       "mcp__claude-in-chrome__tabs_context_mcp",
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__find",
-      "mcp__claude-in-chrome__read_console_messages"
+      "mcp__claude-in-chrome__read_console_messages",
+      "Bash(until curl -s http://localhost:8090/iaf/api/server/health *)"
     ]
   }
 }
