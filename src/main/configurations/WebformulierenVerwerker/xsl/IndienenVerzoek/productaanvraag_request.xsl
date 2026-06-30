@@ -32,6 +32,7 @@
                     <xsl:text>"kenmerk": "</xsl:text><xsl:value-of select="$verzoekIdentificatie"/><xsl:text>"</xsl:text>
                 <xsl:text>},</xsl:text>
                 <xsl:text>"type": "</xsl:text><xsl:value-of select="$aanvraagtype"/><xsl:text>",</xsl:text>
+                <xsl:text>"zaakgegevens": {"omschrijving": "Aanvraag </xsl:text><xsl:value-of select="$aanvraagtype"/><xsl:text>"},</xsl:text>
                 <xsl:text>"aanvraaggegevens": </xsl:text>
                 <xsl:call-template name="aanvraaggegevens"/>
                 <xsl:text>,</xsl:text>
