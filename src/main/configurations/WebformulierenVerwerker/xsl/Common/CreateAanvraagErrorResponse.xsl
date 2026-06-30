@@ -13,27 +13,11 @@
         <tns:Fault>
             <tns:faultcode>SOAP-ENV:Server</tns:faultcode>
             <tns:faultstring>
-                <xsl:value-of select="$aanvraagErrorMessage" />
+                <xsl:value-of select="if ($soapAction != '') then concat('[', $soapAction, '] ', $aanvraagErrorMessage) else $aanvraagErrorMessage" />
             </tns:faultstring>
             <tns:detail>
-                Something wrent wrong. See faultstring for information or try again later.
-                <tns:Message><xsl:value-of select="$errorInfo" /></tns:Message>
-                <!-- Left out to prevent data exposure. -->
-                <!-- <tns:Message>
-                    <xsl:value-of
-                        select="
-                    concat(
-                        concat(
-                            concat(
-                                concat(codepoints-to-string(10),' Soap Action: '), 
-                            $soapAction),
-                            concat(
-                                concat(codepoints-to-string(10),' Request: '),
-                            $aanvraagRequest)),
-                            concat(
-                                concat(codepoints-to-string(10),' Response: '),
-                            $aanvraagResponse))" />
-                </tns:Message> -->
+                <tns:ErrorInfo><xsl:value-of select="$errorInfo" /></tns:ErrorInfo>
+                <tns:BackendResponse><xsl:value-of select="$aanvraagResponse" /></tns:BackendResponse>
             </tns:detail>
         </tns:Fault>
     </xsl:template>
