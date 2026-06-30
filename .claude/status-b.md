@@ -2,6 +2,7 @@
 
 | Staat | Tijdstip | Wat |
 |-------|----------|-----|
+| KLAAR | 01-07-2026 | ✅ Betere foutmeldingen SOAP fault + container bijgewerkt (42b6d6f) |
 | KLAAR | 01-07-2026 | ✅ UUID whitespace-fix in productaanvraag XSL (24b7132) |
 | KLAAR | 01-07-2026 | ✅ SoapUI bijgewerkt voor WSDL redesign (837c4af) |
 | KLAAR | 01-07-2026 | ✅ WSDL redesign volledig geïmplementeerd en getest (stap 1/2/3 werken) |
@@ -33,7 +34,11 @@
 
 ---
 
-## ✅ Frank-kant volledig klaar — geen openstaande taken
+## ⚠️ Wacht op handmatige hertest door Eduard
+
+Frank-container draait al de nieuwe code (UUID-fix gekopieerd + config reload gedaan). Ladybug-replay kan Sessie B niet zelf uitvoeren — vereist handmatige actie:
+
+**Eduard:** open `http://localhost:8090` → Ladybug → speel de laatste 3-staps flow opnieuw af. Zodra ZAC de productaanvraag zonder WARNING verwerkt heeft, meld dat in status-a.md.
 
 ---
 
