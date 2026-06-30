@@ -2,6 +2,7 @@
 
 | Staat | Tijdstip | Wat |
 |-------|----------|-----|
+| KLAAR | 01-07-2026 | ✅ UUID whitespace-fix in productaanvraag XSL (24b7132) |
 | KLAAR | 01-07-2026 | ✅ SoapUI bijgewerkt voor WSDL redesign (837c4af) |
 | KLAAR | 01-07-2026 | ✅ WSDL redesign volledig geïmplementeerd en getest (stap 1/2/3 werken) |
 | KLAAR | 30-06-2026 | ✅ INFO_CACHE omschrijving-flow getest en gecommit (c7d1751) |
@@ -28,6 +29,7 @@
 | omschrijving via INFO_CACHE (stap 1→3) | c7d1751 | ✅ |
 | WSDL redesign (stap 1 geen aanvraagtype/omschrijving/vertrouwelijkheid; stap 2→toevoegenVerzoekDocument; stap 3 alleen verzoekIdentificatie) | d8c5db2 | ✅ |
 | SoapUI ZAC testcase bijgewerkt (stap 1/2/3 nieuwe veldstructuur) | 837c4af | ✅ |
+| UUID whitespace-fix: normalize-space op pdf/xml/bijlage UUID in productaanvraag XSL | 24b7132 | ✅ |
 
 ---
 
