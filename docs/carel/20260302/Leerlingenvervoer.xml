@@ -330,11 +330,11 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
       <fleerlingenvervoerv3gegevensburgerefautogen2 key=""></fleerlingenvervoerv3gegevensburgerefautogen2>
     </fleerlingenvervoerv3gegevensburger>
     <fleerlingenvervoerv3gegevensleerling>
-      <bsnleerling key="">153817628</bsnleerling>
-      <voornamen key="">Jan Staart</voornamen>
-      <tussenvoegsel key="">testtussenvoegs</tussenvoegsel>
-      <achternaam key="">TestAchternaam</achternaam>
-      <geslacht key="m">Meisje</geslacht>
+      <bsnleerling key="">999992077</bsnleerling>
+      <voornamen key="">Jan</voornamen>
+      <tussenvoegsel key=""></tussenvoegsel>
+      <achternaam key="">Staart</achternaam>
+      <geslacht key="j">Jongen</geslacht>
       <geboortedatum key="">01-01-2015</geboortedatum>
       <leerlinganderadres key="j">Ja</leerlinganderadres>
       <gevondenplaats key=""></gevondenplaats>
@@ -666,14 +666,14 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <id_c7c4f9c6-960d-40d9-a4c5-4159c95b5ab9 type="Text">
         <columns>
           <column>Geboortedatum</column>
-          <column>21-2-1977</column>
+          <column>10-4-1982</column>
           <column></column>
         </columns>
       </id_c7c4f9c6-960d-40d9-a4c5-4159c95b5ab9>
       <id_b7f447f6-5210-4624-9dcf-058ffe86b698 type="Text">
         <columns>
           <column>Adres</column>
-          <column>Gravinneweg 30  
+          <column>Gravinneweg 14
 8602HJ Sneek</column>
           <column></column>
         </columns>
@@ -739,33 +739,33 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <bsnleerling type="Text">
         <columns>
           <column>BSN-leerling</column>
-          <column>153817628</column>
+          <column>999992077</column>
           <column></column>
         </columns>
       </bsnleerling>
       <voornamen type="Text">
         <columns>
           <column>Roepnaam</column>
-          <column>Jan Staart</column>
+          <column>Jan</column>
           <column></column>
         </columns>
       </voornamen>
       <tussenvoegsel type="Text">
         <columns>
           <column>Tussenvoegsel</column>
-          <column>testtussenvoegs</column>
+          <column></column>
         </columns>
       </tussenvoegsel>
       <achternaam type="Text">
         <columns>
           <column>Achternaam</column>
-          <column>TestAchternaam</column>
+          <column>Staart</column>
         </columns>
       </achternaam>
       <geslacht type="Text">
         <columns>
           <column>Geslacht:</column>
-          <column>Meisje</column>
+          <column>Jongen</column>
           <column></column>
         </columns>
       </geslacht>

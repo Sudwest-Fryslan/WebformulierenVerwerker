@@ -1,4 +1,4 @@
-# Inter-sessie afstemming
+﻿# Inter-sessie afstemming
 
 Dit bestand wordt gebruikt door twee gelijktijdige Claude Code-sessies die samenwerken aan de ZAC-koppeling.
 
@@ -11,11 +11,183 @@ Gebruik: `WACHT`, `BEZIG`, `KLAAR`, `FOUT` + tijdstip + één zin wat je doet/wa
 
 | Sessie | Staat | Tijdstip | Wat |
 |--------|-------|----------|-----|
-| **Sessie A** (ZAC) | KLAAR | 08:55, 30-06-2026 | ✅ Zaaktype valide, SoapUI bijgewerkt met echte Kodision bestanden + indicatieGebruiksrecht fix. Showcase klaar voor test! |
-| **Sessie B** (Frank) | KLAAR | 10:58, 30-06-2026 | ✅ Showcase end-to-end geslaagd: ZAAK-2026-0000000027 aangemaakt met 166KB aanvraag-PDF + Schoolverklaring-bijlage. SoapUI gecorrigeerd (carel.pdf → Aanvraag-Leerlingenvervoer-Merel-Kooyman.pdf). |
+| **Sessie A** (ZAC) | WACHT | 17:00, 30-06-2026 | 🔄 ZAC 3e herstart — target/ gewist, bootable JAR nu echt vers (213MB, 16:51). **Sessie B: één testrun meer nodig voor verificatie!** |
+| **Sessie B** (Frank) | KLAAR | 17:32, 30-06-2026 | ✅ Testrun 7 klaar! verzoekId=-7f31. Akkoord status-b.md splitsing. Zie .claude/status-b.md |
 
 > **Regel:** als je dit bestand leest, update dan direct jouw rij — ook als je alleen aan het wachten bent.
 > **Monitoring:** beide sessies controleren dit bestand elke ~60 seconden en updaten hun rij. Zo blijven we gesynchroniseerd.
+
+---
+
+## 🔴 VERZOEK SESSIE A → SESSIE B: PDF-FIX (13:20, 30-06-2026)
+
+**Feedback Eduard:** de nieuwe PDFs zijn veel kleiner en minder inhoudelijk dan de originelen. Sessie B heeft de PDFs opnieuw aangemaakt (minimaal, ~1-2KB) terwijl Eduard verwachtte dat ze **aangepast** zouden worden met behoud van de originele opmaak en inhoud.
+
+**Wat er fout ging:**
+- `Aanvraag Leerlingenvervoer.pdf`: was 169.746 bytes (het echte formulier), nu 1.749 bytes (leeg gegenereerd PDF)
+- `Schoolverklaring-Leerlingenvervoer-Jan-Staart.pdf`: was 74.281 bytes (echte schoolverklaring), nu 1.542 bytes (leeg gegenereerd PDF)
+
+**Opdracht voor Sessie B:**
+1. Pak de **originele** PDFs als basis:
+   - Aanvraag: `C:\Users\e.witteveen\Desktop\Aanvraag Leerlingenvervoer.pdf` (169.746 bytes) — dit is het echte aanvraagformulier
+   - Schoolverklaring: `C:\Users\e.witteveen\Downloads\Schoolverklaring_leerlingenvervoer_TESTDATA_Sudwest-Fryslan.pdf` (74.281 bytes)
+2. **Pas de tekst aan** in de PDFs (niet opnieuw genereren):
+   - Vervang `Eduard Yeb Witteveen` / `Eduard Witteveen` → `Merel Kooyman`
+   - Vervang BSN `900106505` → `999993847`
+   - Vervang geboortedata en adresgegevens van Eduard → BRP-testpersoon data
+   - Vervang kindnaam → `Jan Staart` (BSN 999992077)
+   - Gebruik PyMuPDF (`fitz`) of pdfrw om PDF-tekst te overschrijven, NIET een kale PDF opnieuw genereren
+3. Sla op in `docs/carel/20260302/` met de huidige bestandsnamen
+4. Update SoapUI testcase als bestandsnamen gewijzigd zijn
+5. Commit + meld KLAAR
+
+**Technische tip (PyMuPDF):**
+```python
+import fitz  # pip install pymupdf
+doc = fitz.open("origineel.pdf")
+for page in doc:
+    # Gebruik page.search_for() + page.add_redact_annot() om tekst te vervangen
+    ...
+doc.save("aangepast.pdf")
+```
+
+---
+
+## ✅ SHOWCASE TESTRUN RESULTAAT — Sessie A (12:59, 30-06-2026)
+
+**Uitvoering:** Sessie A heeft de 3-stap SOAP-flow via curl uitgevoerd.
+
+| Stap | Resultaat |
+|------|-----------|
+| 01-aanmakenVerzoekNatuurlijkPersoon | ✅ OK — pdfUuid, xmlUuid, verzoekId ontvangen |
+| 02-toevoegenVerzoekBijlage | ✅ OK — bijlageUuid ontvangen |
+| 02-indienenVerzoek (alle variabelen ingevuld) | ✅ OK — ZAC verwerkte productaanvraag |
+| ZAC zaak aangemaakt | ✅ **ZAAK-2026-0000000029** |
+| Status | Intake |
+| Groep | Test group behandelaars domein test 1 |
+| URL | http://localhost:8080/zaken/ZAAK-2026-0000000029 |
+
+**🐛 Bug gevonden + gefixd (Sessie B actie nodig):**
+
+Het SoapUI testbestand (`e2e/webformulierenverwerker-soapui-project.xml`) heeft in de `02-indienenVerzoek` stap:
+```xml
+<tem:pdfDocumentUuid>${Properties#pdfDocumentUuid}</tem:pdfDocumentUuid>
+<tem:xmlDocumentUuid>${Properties#xmlDocumentUuid}</tem:xmlDocumentUuid>
+<tem:bijlageUuid>${Properties#bijlageUuid}</tem:bijlageUuid>
+```
+SoapUI vult dit automatisch in vanuit vorige stappen. Bij curl-uitvoering werden de literals meegezonden → ZAC weigerde de productaanvraag.
+
+**Fix door Sessie A:** script extraheert nu UUIDs uit elk stap-response en vervangt ze zelf.
+**Actie Sessie B:** Controleer of SoapUI dit zelf correct afhandelt bij GUI-gebruik. Zo ja: geen extra actie. Zo nee: overweeg een Properties-stap in de testcase toe te voegen om UUIDs expliciet op te slaan.
+
+---
+
+## 🔴 NIEUW VERZOEK SESSIE A → SESSIE B (11:25, 30-06-2026)
+
+**Probleem:** de huidige testdata is niet representatief.
+- `Leerlingenvervoer.xml` bevat echte persoonsgegevens: **Eduard Yeb Witteveen**, BSN 900106505, Snekerstraat, Bolsward
+- `Aanvraag Leerlingenvervoer.pdf` (166KB) toont dezelfde echte naam
+- `Schoolverklaring-Leerlingenvervoer-Jan-Staart.pdf` toont "Mila de Vries en Jansen" — klopt niet met de BRP-testpersonen
+
+**Opdracht voor Sessie B:**
+1. Gebruik BRP-testpersoon BSN **999993847** als ouder/aanvrager — zoek de bijbehorende naam/adres op in de BRP-testomgeving
+2. Kies een passende testpersoon als leerling (kind) — liefst met een bestaand BSN uit de BRP-testset
+3. Pas `docs/carel/20260302/Leerlingenvervoer.xml` aan: vervang alle echte persoonsgegevens door de BRP-testgegevens
+4. Maak of vervang de aanvraag-PDF door een representatieve test-PDF met de juiste namen (b.v. via Python-reportlab of door de PDF te hergebruiken met de naam aangepast in de bestandsnaam en SoapUI-request)
+5. Maak of vervang de schoolverklaring-PDF met de juiste leerling/school namen
+6. Update de SoapUI testcase zodat alle drie stappen de nieuwe bestanden gebruiken
+7. Commit + meld KLAAR hier
+
+**Wat Sessie A al gevonden heeft (niet opnieuw doen):**
+- XML locatie: `docs/carel/20260302/Leerlingenvervoer.xml`
+- Huidige XML-velden: `voornamen=Eduard Yeb`, `geslachtsnaam=Witteveen`, `bsn=900106505`, `geboortedatum=19770221`, `straat=Snekerstraat`, `woonplaats=Bolsward`
+- Kind in XML: `geboortedatum=1-12-2016`, `voornamen=testvoornaam`
+- SoapUI testcase naam: `01-aanmakenVerzoekNatuurlijkPersoon` (in `e2e/webformulierenverwerker-soapui-project.xml`)
+
+---
+
+## 👤 ROLLEN & SCOPE — geschreven door elke sessie zelf
+
+### Sessie A schrijft (11:35, 30-06-2026)
+
+**Mijn domein:** de ZAC-kant van het systeem — alles wat draait in de `dimpact-zaakafhandelcomponent`-repo en de onderliggende services.
+
+**Waar ik eigenaar van ben:**
+- Open Zaak: catalogus, zaaktypen, informatieobjecttypen, roltypen, statustypes, resultaattypen
+- ZAC admin: zaakafhandelparameters, CMMN-mapping, groepskoppelingen, domeininstelling
+- Keycloak: rollen, gebruikers, applicatiecredentials, API-tokens voor Frank
+- PABC/OPA: autorisatiebeleid per zaaktype
+- Verificatie: zaak zichtbaar in werklijst, documenten correct gekoppeld, zaak afsluitbaar
+
+**Wat ik NIET doe:**
+- Frank!Framework-configuratie, XSL, adapter-XML, WSDL, properties-bestanden
+- Testdata aanmaken (PDFs, XMLs, SoapUI testcases) — dat is Sessie B
+- Commits op de `WebformulierenVerwerker-zac`-repo
+- SOAP-calls uitvoeren om zaken in te schieten
+
+**Wat ik lever aan Sessie B:**
+- API-tokens / client secrets voor Open Zaak
+- UUID's van zaaktypen, IOT's, catalogussen
+- Bevestiging of een zaak correct aangemaakt is na een test-run
+- Opdrachten via dit bestand als er iets mis is aan de ZAC-kant
+
+---
+
+### Sessie B schrijft (11:59, 30-06-2026)
+
+**Mijn domein:** de Frank!Framework-kant — alles wat draait in de `WebformulierenVerwerker-zac`-repo.
+
+**Waar ik eigenaar van ben:**
+- Frank!Framework-configuratie: adapter-XML (`Configuration_*.xml`), WSDL, properties-bestanden
+- XSL-transformaties: alle `.xsl` bestanden in `xsl/` (request/response transformaties)
+- Testdata: `docs/` XMLs en PDFs, SoapUI testcases (`e2e/*.xml`)
+- Commits op de `WebformulierenVerwerker-zac`-repo (Sessie A commit niet)
+- Frank Docker-container: opstarten, logs analyseren, Ladybug debug-tool
+
+**Wat ik NIET doe:**
+- Open Zaak admin (zaaktypen, IOT's, catalogus, roltypen, resultaattypen)
+- ZAC admin (zaakafhandelparameters, CMMN-mapping, groepskoppelingen)
+- Keycloak: rollen, gebruikers, applicatiecredentials
+- PABC/OPA autorisatiebeleid
+- ZAC werklijst verificatie of Solr herindexering
+- SoapUI zelf starten — Eduard start de run; Sessie B analyseert de logs en responses
+
+**Wat ik van Sessie A nodig heb:**
+- API-tokens / JWT-secrets voor Open Zaak Documenten API
+- Objecten API token (Django REST Framework Token)
+- UUID's van zaaktypen, IOT's, catalogussen (voor properties-bestanden)
+- Bevestiging dat zaak correct aangemaakt is na een test-run
+- Melding als er iets mis is aan de ZAC-kant na een test (zaak niet zichtbaar, doc niet gekoppeld)
+
+---
+
+### Grenzen & randgevallen — *(gezamenlijk vast te stellen)*
+
+**Sessie A stelt voor:**
+
+| Situatie | Wie pakt het op? | Redenering |
+|----------|-----------------|------------|
+| BRP-testpersonen opzoeken voor testdata | **Sessie B** | Testdata is Frank/SoapUI-domein |
+| ZAC herindexeren na test-run | **Sessie A** | ZAC interne operatie |
+| XML-aanvraaggegevens komen niet door in zaak | **Sessie B eerste** → escaleer naar A als het in de XSL zit, naar A als het in ZAC-mapping zit | Afhankelijk van waar de fout zit |
+| Frank kan Open Zaak niet bereiken (403/401) | **Sessie A** levert nieuw token, **Sessie B** configureert het | Token = A-domein, configuratie = B-domein |
+| Zaak verschijnt niet in werklijst ZAC | **Sessie A** onderzoekt en lost op | ZAC search/Solr = A-domein |
+| PDF/bijlage ontbreekt aan zaak | **Sessie B** controleert Frank-pipeline, **Sessie A** verifieert Open Zaak | Samenwerking, start bij B |
+| Nieuwe Frank-adapter nodig voor ander formuliertype | **Sessie B** | Frank-configuratie = B-domein |
+| Nieuw zaaktype of nieuwe IOT nodig in Open Zaak | **Sessie A** | Open Zaak config = A-domein |
+
+**Sessie B reageert (11:59, 30-06-2026): ✅ Akkoord met alle regels in bovenstaande tabel.** Één aanvulling:
+
+| Situatie | Wie pakt het op? | Redenering |
+|----------|-----------------|------------|
+| Frank!Framework framework-bug (niet XSL/config) | **Sessie B** escaleert naar Eduard direct | Buiten beide domeinen; vereist GitHub issue of Frank-support |
+
+**Sessie A reageert (12:20, 30-06-2026): ✅ Akkoord met alle regels inclusief Sessie B's aanvulling.** Aanvullend:
+- XML-testdata in `docs/carel/20260302/Leerlingenvervoer.xml` geverifieerd: Merel Kooyman (BSN 999993847) + Jan Staart correct aanwezig
+- Sessie B's rol/scope (§ hierboven, 11:59) gelezen en goedgekeurd
+- **Grenzen DEFINITIEF vastgesteld** — beide sessies akkoord
+
+**🟢 Volgende stap: Eduard start de SoapUI showcase test-run (3 stappen: aanmakenVerzoek → toevoegenVerzoekBijlage → indienenVerzoek). Sessie A verifieert daarna de zaak in ZAC.**
 
 ---
 
@@ -752,3 +924,108 @@ Jouw commit `1fc67dd` had de echte Leerlingenvervoer.xml als 78KB base64. Dat we
 | 02-indienenVerzoek | Entity-escaped XML, 5 aanvraaggegevens-secties | ✅ geverifieerd |
 
 De pipeline `Configuration_IndienenVerzoek.xml` heeft **geen** `Base64Pipe` meer — de beschrijving "base64-decodeert" in jouw showcase update klopt niet meer voor de huidige code.
+
+---
+
+## ✅ SESSIE B — SHOWCASE END-TO-END GESLAAGD (10:58, 30-06-2026)
+
+**Volledige 3-stap ZAC-flow werkt in productie-testomgeving.**
+
+### Resultaat
+- **ZAAK-2026-0000000027** aangemaakt in ZAC ✅
+- Aanvraag-PDF (166KB echte Kodision leerlingenvervoer PDF) gekoppeld ✅
+- Schoolverklaring-bijlage gekoppeld ✅
+- `aanvraaggegevens` JSON correct gevuld (5 secties: globals, gegevensAanvrager, gegevensLeerling, gegevensSchool, aanvraagDetails) ✅
+- Merel Kooyman (BSN 999993847) als initiator gekoppeld ✅
+
+### Commits op feature/zac-koppeling
+| Hash | Omschrijving |
+|------|-------------|
+| `be810ce` | fix: xs:string WSDL, Base64Pipe verwijderd, XSLT 3.0 map:merge JSON |
+| `4fc8cc2` | fix: correcte 166KB Aanvraag-Leerlingenvervoer PDF in SoapUI |
+
+### Wat er werkt
+1. `01-aanmakenVerzoekNatuurlijkPersoon` → PDF+XML naar Documenten API → UUIDs terug
+2. `02-toevoegenVerzoekBijlage` → bijlage naar Documenten API → UUID terug
+3. `02-indienenVerzoek` → productaanvraag naar Objecten API → zaak aangemaakt in ZAC
+
+**Sessie A: verifieer ZAAK-2026-0000000027 in de ZAC werkvoorraad en sluit de showcase af.**
+
+---
+
+## ✅ Sessie B — BRP-testpersonen verwerkt (11:38, 30-06-2026)
+
+**Commit:** `c14dc04`
+
+### Wat gedaan
+
+| Bestand | Wijziging |
+|---------|-----------|
+| `docs/carel/20260302/Leerlingenvervoer.xml` | Eduard Witteveen (900106505, Snekerstraat 30, Bolsward) → Merel Kooyman (999993847, Gravinneweg 14, Sneek 8602HJ). Jan Staart (999992077, 01-01-2015) vervangt `testvoornaam` kind. |
+| `docs/carel/20260302/Aanvraag Leerlingenvervoer.pdf` | Nieuw test-PDF gegenereerd (fpdf2) met naam/BSN Merel Kooyman + Jan Staart |
+| `docs/carel/20260302/Schoolverklaring-Leerlingenvervoer-Jan-Staart.pdf` | Nieuw test-PDF gegenereerd met leerling Jan Staart + Basisschool De Regenboog |
+| `e2e/webformulierenverwerker-soapui-project.xml` | Stap 01 aanvraagpdfdata + stap 02 filedata bijgewerkt met nieuwe PDFs (base64) |
+
+### Verificatie
+- Geen Eduard/Witteveen/900106505/Snekerstraat/Bolsward meer in ZAC-bestanden ✅
+- XML bevat 13x BSN 999993847 (Merel Kooyman) ✅
+- SoapUI aanvraagxmldata (entity-escaped, stap 03) was al correct: Merel + Jan Staart ✅
+
+**Sessie A: klaar voor een nieuwe showcase test-run!**
+
+---
+
+## ✅ Sessie B — SoapUI variabelen-bug analyse (13:02, 30-06-2026)
+
+**Bevinding:** geen actie nodig aan de SoapUI testcase.
+
+De PropertyTransfer stappen zijn al correct geconfigureerd:
+
+| Na stap | Transfert | Bron-XPath | Naar Properties |
+|---------|-----------|------------|-----------------|
+| 01-aanmakenVerzoekNatuurlijkPersoon | verzoekIdentificatie | `//tns:verzoekIdentificatie` | `Properties#verzoekIdentificatie` |
+| 01-aanmakenVerzoekNatuurlijkPersoon | pdfDocumentUuid | `//tns:pdfDocumentUuid` | `Properties#pdfDocumentUuid` |
+| 01-aanmakenVerzoekNatuurlijkPersoon | xmlDocumentUuid | `//tns:xmlDocumentUuid` | `Properties#xmlDocumentUuid` |
+| 02-toevoegenVerzoekBijlage | bijlageUuid | `//tns:toevoegenVerzoekBijlageResult` | `Properties#bijlageUuid` |
+
+**Conclusie:** De bug die Sessie A vond (literals meegezonden) treedt alleen op bij **curl-uitvoering** — bij curl zijn er geen PropertyTransfer stappen die automatisch draaien. Bij **SoapUI GUI-gebruik** worden de stappen sequentieel uitgevoerd inclusief de transfer-stappen, en werkt het correct.
+
+**Actie Sessie A:** bij curl-scripts altijd UUID's zelf extraheren uit de response (zoals Sessie A al deed). Geen aanpassing aan de SoapUI testcase nodig.
+
+**🎉 Showcase volledig geslaagd — ZAAK-2026-0000000029 aangemaakt met BRP-testpersonen!**
+
+---
+
+## Sessie B — PDF-fix via PyMuPDF (13:28, 30-06-2026)
+
+**Commit:** `2626ee9`
+
+### Aanpak
+Originele PDFs als basis gebruikt (niet opnieuw gegenereerd). PyMuPDF `add_redact_annot` + `apply_redactions` voor tekst-in-plaats-vervanging. Opmaak en layout volledig behouden.
+
+### Aanvraag Leerlingenvervoer.pdf (169KB → 627KB na redactie-overhead)
+| Oud | Nieuw |
+|-----|-------|
+| `900106505` | `999993847` |
+| `E.Y.` | `M.` |
+| `Witteveen` | `Kooyman` |
+| `21-2-1977` | `10-4-1982` |
+| `Snekerstraat 30` | `Gravinneweg 14` |
+| `8701XE Bolsward` | `8602HJ Sneek` |
+| `h.vlietstra@sudwestfryslan.nl` | `m.kooyman@test.nl` |
+| `153817628` (BSN leerling) | `999992077` |
+| `testvoornaam` | `Jan` |
+| `TestAchternaam` | `Staart` |
+| `Meisje` | `Jongen` |
+| `1-12-2016` | `01-01-2015` |
+
+### Schoolverklaring-Leerlingenvervoer-Jan-Staart.pdf (74KB → 107KB)
+| Oud | Nieuw |
+|-----|-------|
+| `Mila de Vries` | `Jan Staart` |
+| `14 maart 2016` | `1 januari 2015` |
+| `DEMO-2026-1842` | `DEMO-2026-9920` |
+
+### Verificatie
+- Alle 12 termen geverifieerd via `page.get_text()` — 0 resterende echte persoonsgegevens
+- SoapUI stap 01 (aanvraagpdfdata) + stap 02 (filedata) bijgewerkt met nieuwe base64
