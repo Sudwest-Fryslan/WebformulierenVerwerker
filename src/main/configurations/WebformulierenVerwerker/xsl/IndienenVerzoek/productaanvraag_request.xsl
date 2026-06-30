@@ -46,12 +46,12 @@
                         <xsl:text>"rolOmschrijvingGeneriek": "initiator"</xsl:text>
                     <xsl:text>}</xsl:text>
                 <xsl:text>],</xsl:text>
-                <xsl:text>"pdf": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', $pdfDocumentUuid)"/><xsl:text>",</xsl:text>
-                <xsl:text>"csv": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', $xmlDocumentUuid)"/><xsl:text>",</xsl:text>
+                <xsl:text>"pdf": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space($pdfDocumentUuid))"/><xsl:text>",</xsl:text>
+                <xsl:text>"csv": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space($xmlDocumentUuid))"/><xsl:text>",</xsl:text>
                 <xsl:text>"bijlagen": [</xsl:text>
                     <xsl:for-each select="$bijlageUuids">
                         <xsl:if test="position() > 1"><xsl:text>,</xsl:text></xsl:if>
-                        <xsl:text>"</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', .)"/><xsl:text>"</xsl:text>
+                        <xsl:text>"</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space(.))"/><xsl:text>"</xsl:text>
                     </xsl:for-each>
                 <xsl:text>]</xsl:text>
             <xsl:text>}</xsl:text>
