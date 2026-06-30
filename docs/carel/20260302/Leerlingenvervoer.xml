@@ -86,35 +86,35 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
       <digid>
         <ingelogd key="true">true</ingelogd>
       </digid>
-      <bsn key="900106505">900106505</bsn>
+      <bsn key="999993847">999993847</bsn>
       <gegevensset key="">Max</gegevensset>
       <input>
-        <bsn key="">900106505</bsn>
+        <bsn key="">999993847</bsn>
         <kvkofvest key=""></kvkofvest>
       </input>
       <stuf>
         <inp>
-          <bsn key="">900106505</bsn>
+          <bsn key="">999993847</bsn>
           <geboorteplaats key="">0091</geboorteplaats>
           <geboorteland key="">6030</geboorteland>
         </inp>
-        <geslachtsnaam key="">Witteveen</geslachtsnaam>
+        <geslachtsnaam key="">Kooyman</geslachtsnaam>
         <voorvoegselgeslachtsnaam key=""></voorvoegselgeslachtsnaam>
-        <voorletters key="">E.Y.</voorletters>
-        <voornamen key="">Eduard Yeb</voornamen>
+        <voorletters key="">M.</voorletters>
+        <voornamen key="">Merel</voornamen>
         <aanduidingnaamgebruik key="">E</aanduidingnaamgebruik>
-        <geslachtsnaampartner key="">Terluin</geslachtsnaampartner>
+        <geslachtsnaampartner key=""></geslachtsnaampartner>
         <voorvoegselgeslachtsnaampartner key=""></voorvoegselgeslachtsnaampartner>
-        <geslachtsaanduiding key="">M</geslachtsaanduiding>
-        <geboortedatum key="">19770221</geboortedatum>
-        <aanhefaanschrijving key="">Mijnheer</aanhefaanschrijving>
-        <voornamenaanschrijving key="">Eduard Yeb</voornamenaanschrijving>
-        <geslachtsnaamaanschrijving key="">Witteveen</geslachtsnaamaanschrijving>
+        <geslachtsaanduiding key="">V</geslachtsaanduiding>
+        <geboortedatum key="">19820410</geboortedatum>
+        <aanhefaanschrijving key="">Mevrouw</aanhefaanschrijving>
+        <voornamenaanschrijving key="">Merel</voornamenaanschrijving>
+        <geslachtsnaamaanschrijving key="">Kooyman</geslachtsnaamaanschrijving>
         <adellijketitelpredikaat key=""></adellijketitelpredikaat>
         <sub>
           <telefoonnummer key=""></telefoonnummer>
           <faxnummer key=""></faxnummer>
-          <emailadres key="">eduard@witteveen.frl</emailadres>
+          <emailadres key="">m.kooyman@test.nl</emailadres>
         </sub>
         <overlijdensdatum key=""></overlijdensdatum>
         <organisatie key="">1900</organisatie>
@@ -128,11 +128,11 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
           <code key=""></code>
         </acdcode>
         <verblijfsadres iteration="1">
-          <woonplaats key="">Bolsward</woonplaats>
-          <openbareruimtenaam key="">Snekerstraat</openbareruimtenaam>
-          <straat key="">Snekerstraat</straat>
-          <postcode key="">8701XE</postcode>
-          <huisnummer key="">30</huisnummer>
+          <woonplaats key="">Sneek</woonplaats>
+          <openbareruimtenaam key="">Gravinneweg</openbareruimtenaam>
+          <straat key="">Gravinneweg</straat>
+          <postcode key="">8602HJ</postcode>
+          <huisnummer key="">14</huisnummer>
           <huisletter key=""></huisletter>
           <huisnummertoevoeging key=""></huisnummertoevoeging>
           <locatiebeschrijving key=""></locatiebeschrijving>
@@ -217,7 +217,7 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
     <digid>
       <digiddummy>
         <inloggen key="true">Ja</inloggen>
-        <bsn key="">900106505</bsn>
+        <bsn key="">999993847</bsn>
         <digiddummyefautogen1 key=""></digiddummyefautogen1>
       </digiddummy>
     </digid>
@@ -227,10 +227,10 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
           <xsp_maakstufbericht />
           <sss_stuurstufbericht>
             <success key="True">True</success>
-            <response key="&lt;npsLa01-prs-NatuurlijkPersoon xmlns=&quot;http://www.egem.nl/StUF/sector/bg/0310&quot; xmlns:StUF=&quot;http://www.egem.nl/StUF/StUF0301&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype=&quot;NPS&quot;&gt;&lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil=&quot;true&quot; StUF:noValue=&quot;nietOndersteund&quot;&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil=&quot;true&quot;&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype=&quot;NPSNAT&quot;&gt;&lt;gerelateerde StUF:entiteittype=&quot;NAT&quot;&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;npsLa01-prs-NatuurlijkPersoon xmlns="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype="NPS"&gt;&lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil="true" StUF:noValue="nietOndersteund"&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil="true"&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype="NPSNAT"&gt;&lt;gerelateerde StUF:entiteittype="NAT"&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;</response>
+            <response key="&lt;npsLa01-prs-NatuurlijkPersoon xmlns=&quot;http://www.egem.nl/StUF/sector/bg/0310&quot; xmlns:StUF=&quot;http://www.egem.nl/StUF/StUF0301&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype=&quot;NPS&quot;&gt;&lt;inp.bsn&gt;999993847&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Kooyman&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;M.&lt;/voorletters&gt;&lt;voornamen&gt;Merel&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mevrouw&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Merel&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Kooyman&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19820410&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Sneek&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Gravinneweg&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Gravinneweg&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8602HJ&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;14&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil=&quot;true&quot; StUF:noValue=&quot;nietOndersteund&quot;&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil=&quot;true&quot;&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;m.kooyman@test.nl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype=&quot;NPSNAT&quot;&gt;&lt;gerelateerde StUF:entiteittype=&quot;NAT&quot;&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;npsLa01-prs-NatuurlijkPersoon xmlns="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype="NPS"&gt;&lt;inp.bsn&gt;999993847&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Kooyman&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;M.&lt;/voorletters&gt;&lt;voornamen&gt;Merel&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mevrouw&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Merel&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Kooyman&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19820410&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Sneek&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Gravinneweg&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Gravinneweg&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8602HJ&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;14&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil="true" StUF:noValue="nietOndersteund"&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil="true"&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;m.kooyman@test.nl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype="NPSNAT"&gt;&lt;gerelateerde StUF:entiteittype="NAT"&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;</response>
           </sss_stuurstufbericht>
           <xslt_removenamespace>
-            <result key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;npsLa01-prs-NatuurlijkPersoon&gt;&#xD;&#xA;  &lt;stuurgegevens&gt;&#xD;&#xA;    &lt;berichtcode&gt;La01&lt;/berichtcode&gt;&#xD;&#xA;    &lt;zender&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/applicatie&gt;&#xD;&#xA;    &lt;/zender&gt;&#xD;&#xA;    &lt;ontvanger&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;PFS&lt;/applicatie&gt;&#xD;&#xA;    &lt;/ontvanger&gt;&#xD;&#xA;    &lt;referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/referentienummer&gt;&#xD;&#xA;    &lt;tijdstipBericht&gt;20260129093425502&lt;/tijdstipBericht&gt;&#xD;&#xA;    &lt;entiteittype&gt;NPS&lt;/entiteittype&gt;&#xD;&#xA;  &lt;/stuurgegevens&gt;&#xD;&#xA;  &lt;parameters&gt;&#xD;&#xA;    &lt;indicatorVervolgvraag&gt;false&lt;/indicatorVervolgvraag&gt;&#xD;&#xA;  &lt;/parameters&gt;&#xD;&#xA;  &lt;antwoord&gt;&#xD;&#xA;    &lt;object entiteittype=&quot;NPS&quot;&gt;&#xD;&#xA;      &lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&#xD;&#xA;      &lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&#xD;&#xA;      &lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&#xD;&#xA;      &lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&#xD;&#xA;      &lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaamPartner nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&#xD;&#xA;      &lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&#xD;&#xA;      &lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&#xD;&#xA;      &lt;adellijkeTitelPredikaat nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&#xD;&#xA;      &lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&#xD;&#xA;      &lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&#xD;&#xA;      &lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&#xD;&#xA;      &lt;overlijdensdatum nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;verblijfsadres&gt;&#xD;&#xA;        &lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&#xD;&#xA;        &lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&#xD;&#xA;        &lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&#xD;&#xA;        &lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&#xD;&#xA;        &lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;inp.locatiebeschrijving nil=&quot;true&quot; noValue=&quot;nietOndersteund&quot; /&gt;&#xD;&#xA;      &lt;/verblijfsadres&gt;&#xD;&#xA;      &lt;sub.correspondentieAdres&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam /&gt;&#xD;&#xA;        &lt;postcode nil=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;aoa.identificatie nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;/sub.correspondentieAdres&gt;&#xD;&#xA;      &lt;sub.telefoonnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.faxnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;inp.heeftAlsNationaliteit entiteittype=&quot;NPSNAT&quot;&gt;&#xD;&#xA;        &lt;gerelateerde entiteittype=&quot;NAT&quot;&gt;&#xD;&#xA;          &lt;code&gt;1&lt;/code&gt;&#xD;&#xA;          &lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&#xD;&#xA;        &lt;/gerelateerde&gt;&#xD;&#xA;      &lt;/inp.heeftAlsNationaliteit&gt;&#xD;&#xA;    &lt;/object&gt;&#xD;&#xA;  &lt;/antwoord&gt;&#xD;&#xA;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+            <result key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;npsLa01-prs-NatuurlijkPersoon&gt;&#xD;&#xA;  &lt;stuurgegevens&gt;&#xD;&#xA;    &lt;berichtcode&gt;La01&lt;/berichtcode&gt;&#xD;&#xA;    &lt;zender&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/applicatie&gt;&#xD;&#xA;    &lt;/zender&gt;&#xD;&#xA;    &lt;ontvanger&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;PFS&lt;/applicatie&gt;&#xD;&#xA;    &lt;/ontvanger&gt;&#xD;&#xA;    &lt;referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/referentienummer&gt;&#xD;&#xA;    &lt;tijdstipBericht&gt;20260129093425502&lt;/tijdstipBericht&gt;&#xD;&#xA;    &lt;entiteittype&gt;NPS&lt;/entiteittype&gt;&#xD;&#xA;  &lt;/stuurgegevens&gt;&#xD;&#xA;  &lt;parameters&gt;&#xD;&#xA;    &lt;indicatorVervolgvraag&gt;false&lt;/indicatorVervolgvraag&gt;&#xD;&#xA;  &lt;/parameters&gt;&#xD;&#xA;  &lt;antwoord&gt;&#xD;&#xA;    &lt;object entiteittype=&quot;NPS&quot;&gt;&#xD;&#xA;      &lt;inp.bsn&gt;999993847&lt;/inp.bsn&gt;&#xD;&#xA;      &lt;geslachtsnaam&gt;Kooyman&lt;/geslachtsnaam&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;voorletters&gt;M.&lt;/voorletters&gt;&#xD;&#xA;      &lt;voornamen&gt;Merel&lt;/voornamen&gt;&#xD;&#xA;      &lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&#xD;&#xA;      &lt;geslachtsnaamPartner&gt;&lt;/geslachtsnaamPartner&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaamPartner nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;aanhefAanschrijving&gt;Mevrouw&lt;/aanhefAanschrijving&gt;&#xD;&#xA;      &lt;voornamenAanschrijving&gt;Merel&lt;/voornamenAanschrijving&gt;&#xD;&#xA;      &lt;geslachtsnaamAanschrijving&gt;Kooyman&lt;/geslachtsnaamAanschrijving&gt;&#xD;&#xA;      &lt;adellijkeTitelPredikaat nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&#xD;&#xA;      &lt;geboortedatum&gt;19820410&lt;/geboortedatum&gt;&#xD;&#xA;      &lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&#xD;&#xA;      &lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&#xD;&#xA;      &lt;overlijdensdatum nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;verblijfsadres&gt;&#xD;&#xA;        &lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&#xD;&#xA;        &lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam&gt;Sneek&lt;/wpl.woonplaatsNaam&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam&gt;Gravinneweg&lt;/gor.openbareRuimteNaam&gt;&#xD;&#xA;        &lt;gor.straatnaam&gt;Gravinneweg&lt;/gor.straatnaam&gt;&#xD;&#xA;        &lt;aoa.postcode&gt;8602HJ&lt;/aoa.postcode&gt;&#xD;&#xA;        &lt;aoa.huisnummer&gt;14&lt;/aoa.huisnummer&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;inp.locatiebeschrijving nil=&quot;true&quot; noValue=&quot;nietOndersteund&quot; /&gt;&#xD;&#xA;      &lt;/verblijfsadres&gt;&#xD;&#xA;      &lt;sub.correspondentieAdres&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam /&gt;&#xD;&#xA;        &lt;postcode nil=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;aoa.identificatie nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;/sub.correspondentieAdres&gt;&#xD;&#xA;      &lt;sub.telefoonnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.faxnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.emailadres&gt;m.kooyman@test.nl&lt;/sub.emailadres&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;inp.heeftAlsNationaliteit entiteittype=&quot;NPSNAT&quot;&gt;&#xD;&#xA;        &lt;gerelateerde entiteittype=&quot;NAT&quot;&gt;&#xD;&#xA;          &lt;code&gt;1&lt;/code&gt;&#xD;&#xA;          &lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&#xD;&#xA;        &lt;/gerelateerde&gt;&#xD;&#xA;      &lt;/inp.heeftAlsNationaliteit&gt;&#xD;&#xA;    &lt;/object&gt;&#xD;&#xA;  &lt;/antwoord&gt;&#xD;&#xA;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;npsLa01-prs-NatuurlijkPersoon&gt;
   &lt;stuurgegevens&gt;
     &lt;berichtcode&gt;La01&lt;/berichtcode&gt;
@@ -251,31 +251,31 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
   &lt;/parameters&gt;
   &lt;antwoord&gt;
     &lt;object entiteittype="NPS"&gt;
-      &lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;
-      &lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;
+      &lt;inp.bsn&gt;999993847&lt;/inp.bsn&gt;
+      &lt;geslachtsnaam&gt;Kooyman&lt;/geslachtsnaam&gt;
       &lt;voorvoegselGeslachtsnaam nil="true" noValue="geenWaarde" /&gt;
-      &lt;voorletters&gt;E.Y.&lt;/voorletters&gt;
-      &lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;
+      &lt;voorletters&gt;M.&lt;/voorletters&gt;
+      &lt;voornamen&gt;Merel&lt;/voornamen&gt;
       &lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;
-      &lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;
+      &lt;geslachtsnaamPartner&gt;&lt;/geslachtsnaamPartner&gt;
       &lt;voorvoegselGeslachtsnaamPartner nil="true" noValue="geenWaarde" /&gt;
-      &lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;
-      &lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;
-      &lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;
+      &lt;aanhefAanschrijving&gt;Mevrouw&lt;/aanhefAanschrijving&gt;
+      &lt;voornamenAanschrijving&gt;Merel&lt;/voornamenAanschrijving&gt;
+      &lt;geslachtsnaamAanschrijving&gt;Kooyman&lt;/geslachtsnaamAanschrijving&gt;
       &lt;adellijkeTitelPredikaat nil="true" noValue="geenWaarde" /&gt;
       &lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;
-      &lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;
+      &lt;geboortedatum&gt;19820410&lt;/geboortedatum&gt;
       &lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;
       &lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;
       &lt;overlijdensdatum nil="true" noValue="geenWaarde" /&gt;
       &lt;verblijfsadres&gt;
         &lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;
         &lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;
-        &lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;
-        &lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;
-        &lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;
-        &lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;
-        &lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;
+        &lt;wpl.woonplaatsNaam&gt;Sneek&lt;/wpl.woonplaatsNaam&gt;
+        &lt;gor.openbareRuimteNaam&gt;Gravinneweg&lt;/gor.openbareRuimteNaam&gt;
+        &lt;gor.straatnaam&gt;Gravinneweg&lt;/gor.straatnaam&gt;
+        &lt;aoa.postcode&gt;8602HJ&lt;/aoa.postcode&gt;
+        &lt;aoa.huisnummer&gt;14&lt;/aoa.huisnummer&gt;
         &lt;aoa.huisletter nil="true" noValue="geenWaarde" /&gt;
         &lt;aoa.huisnummertoevoeging nil="true" noValue="geenWaarde" /&gt;
         &lt;inp.locatiebeschrijving nil="true" noValue="nietOndersteund" /&gt;
@@ -291,7 +291,7 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
       &lt;/sub.correspondentieAdres&gt;
       &lt;sub.telefoonnummer nil="true" noValue="geenWaarde" /&gt;
       &lt;sub.faxnummer nil="true" noValue="geenWaarde" /&gt;
-      &lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;
+      &lt;sub.emailadres&gt;m.kooyman@test.nl&lt;/sub.emailadres&gt;
       &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
       &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
       &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
@@ -305,16 +305,16 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
   &lt;/antwoord&gt;
 &lt;/npsLa01-prs-NatuurlijkPersoon&gt;</result>
           </xslt_removenamespace>
-          <bsn key="">900106505</bsn>
+          <bsn key="">999993847</bsn>
           <bestand key="">npsLv01-prs-NatuurlijkPersoon-max.xml</bestand>
           <soapaction key="">npsLv01-prs-NatuurlijkPersoon</soapaction>
           <kvkofvest key=""></kvkofvest>
         </procstufprefillcommon>
-        <bsn key="">900106505</bsn>
+        <bsn key="">999993847</bsn>
         <gegevensset key="">Max</gegevensset>
         <specifiekbestand key=""></specifiekbestand>
       </npslv01_prs_natuurlijkpersoon>
-      <bsn key="">900106505</bsn>
+      <bsn key="">999993847</bsn>
       <kvkofvest key=""></kvkofvest>
       <welkeprefill key="">NPSMax</welkeprefill>
       <specifiekbestand key=""></specifiekbestand>
@@ -331,14 +331,14 @@ Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg 
     </fleerlingenvervoerv3gegevensburger>
     <fleerlingenvervoerv3gegevensleerling>
       <bsnleerling key="">153817628</bsnleerling>
-      <voornamen key="">testvoornaam</voornamen>
+      <voornamen key="">Jan Staart</voornamen>
       <tussenvoegsel key="">testtussenvoegs</tussenvoegsel>
       <achternaam key="">TestAchternaam</achternaam>
       <geslacht key="m">Meisje</geslacht>
-      <geboortedatum key="">1-12-2016</geboortedatum>
+      <geboortedatum key="">01-01-2015</geboortedatum>
       <leerlinganderadres key="j">Ja</leerlinganderadres>
       <gevondenplaats key=""></gevondenplaats>
-      <postcodeaanvrager key="[8701XE">8701XE</postcodeaanvrager>
+      <postcodeaanvrager key="[8602HJ">8602HJ</postcodeaanvrager>
       <fleerlingenvervoerv3gegevensleerlingefautogen7 key=""></fleerlingenvervoerv3gegevensleerlingefautogen7>
     </fleerlingenvervoerv3gegevensleerling>
     <fleerlingenvervoerv3regulier>
@@ -638,14 +638,14 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <id_85839e1e-560f-4502-b9bf-0ba3fe024b31 type="Text">
         <columns>
           <column>Burgerservicenummer:</column>
-          <column>900106505</column>
+          <column>999993847</column>
           <column></column>
         </columns>
       </id_85839e1e-560f-4502-b9bf-0ba3fe024b31>
       <id_e5cfd958-2d6e-4aa1-8db0-f5838cf16b4a type="Text">
         <columns>
           <column>Voornamen</column>
-          <column>E.Y.</column>
+          <column>M.</column>
           <column></column>
         </columns>
       </id_e5cfd958-2d6e-4aa1-8db0-f5838cf16b4a>
@@ -659,7 +659,7 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <id_1ca1bd54-4c26-4e08-8763-2da2fef0c10d type="Text">
         <columns>
           <column>Achternaam</column>
-          <column>Witteveen</column>
+          <column>Kooyman</column>
           <column></column>
         </columns>
       </id_1ca1bd54-4c26-4e08-8763-2da2fef0c10d>
@@ -673,8 +673,8 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <id_b7f447f6-5210-4624-9dcf-058ffe86b698 type="Text">
         <columns>
           <column>Adres</column>
-          <column>Snekerstraat 30  
-8701XE Bolsward</column>
+          <column>Gravinneweg 30  
+8602HJ Sneek</column>
           <column></column>
         </columns>
       </id_b7f447f6-5210-4624-9dcf-058ffe86b698>
@@ -746,7 +746,7 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <voornamen type="Text">
         <columns>
           <column>Roepnaam</column>
-          <column>testvoornaam</column>
+          <column>Jan Staart</column>
           <column></column>
         </columns>
       </voornamen>
@@ -772,7 +772,7 @@ Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden e
       <geboortedatum type="Text">
         <columns>
           <column>Geboortedatum:</column>
-          <column>1-12-2016</column>
+          <column>01-01-2015</column>
           <column></column>
         </columns>
       </geboortedatum>
