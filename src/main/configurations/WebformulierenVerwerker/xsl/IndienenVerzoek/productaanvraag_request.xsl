@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xsl:stylesheet version="3.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:local="urn:local">
+
     <xsl:output method="text"/>
+
     <xsl:param name="bronorganisatie"/>
     <xsl:param name="objecttype"/>
     <xsl:param name="bron.naam"/>
@@ -49,55 +56,46 @@
 
     <!-- Genereer aanvraaggegevens JSON vanuit de aanvraag-XML.
          Structuur: elke child van <answers> is een sectie (kopje),
-         de children van die sectie zijn key-value pairs.
-         Geneste sub-elementen worden recursief als object weergegeven. -->
+         de children van die sectie zijn key-value pairs (recursief). -->
     <xsl:template name="aanvraaggegevens">
         <xsl:choose>
             <xsl:when test="$aanvraagXml != ''">
-                <xsl:variable name="xmlLengte" select="string-length($aanvraagXml)"/>
-                <xsl:variable name="formulier" select="parse-xml($aanvraagXml)"/>
-                <xsl:variable name="secties" select="$formulier//answers/*"/>
-                <xsl:choose>
-                    <xsl:when test="exists($secties)">
-                        <xsl:text>{</xsl:text>
-                        <xsl:for-each select="$secties">
-                            <xsl:if test="position() > 1"><xsl:text>,</xsl:text></xsl:if>
-                            <xsl:text>"</xsl:text><xsl:value-of select="local-name()"/><xsl:text>": {</xsl:text>
-                            <xsl:call-template name="xml-naar-json-object">
-                                <xsl:with-param name="elementen" select="*"/>
-                            </xsl:call-template>
-                            <xsl:text>}</xsl:text>
-                        </xsl:for-each>
-                        <xsl:text>}</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise><xsl:text>{"__debug": "geen answers gevonden, xml-lengte: </xsl:text><xsl:value-of select="$xmlLengte"/><xsl:text>"}</xsl:text></xsl:otherwise>
-                </xsl:choose>
+                <xsl:try>
+                    <xsl:variable name="formulier" select="parse-xml($aanvraagXml)"/>
+                    <xsl:variable name="secties" select="$formulier//answers/*"/>
+                    <xsl:choose>
+                        <xsl:when test="exists($secties)">
+                            <xsl:variable name="ag" select="map:merge(
+                                for $s in $secties
+                                return map{local-name($s): local:element-naar-waarde($s)}
+                            )"/>
+                            <xsl:value-of select="serialize($ag, map{'method': 'json'})"/>
+                        </xsl:when>
+                        <xsl:otherwise><xsl:text>{}</xsl:text></xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:catch>
+                        <xsl:text>{}</xsl:text>
+                    </xsl:catch>
+                </xsl:try>
             </xsl:when>
-            <xsl:otherwise><xsl:text>{"__debug": "aanvraagXml is leeg"}</xsl:text></xsl:otherwise>
+            <xsl:otherwise><xsl:text>{}</xsl:text></xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
-    <!-- Recursief: zet XML-elementen om naar JSON key-value of key-object pairs -->
-    <xsl:template name="xml-naar-json-object">
-        <xsl:param name="elementen" as="element()*"/>
-        <xsl:for-each select="$elementen">
-            <xsl:if test="position() > 1"><xsl:text>,</xsl:text></xsl:if>
-            <xsl:text>"</xsl:text><xsl:value-of select="local-name()"/><xsl:text>": </xsl:text>
-            <xsl:choose>
-                <xsl:when test="*">
-                    <xsl:text>{</xsl:text>
-                    <xsl:call-template name="xml-naar-json-object">
-                        <xsl:with-param name="elementen" select="*"/>
-                    </xsl:call-template>
-                    <xsl:text>}</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>"</xsl:text>
-                    <xsl:value-of select="replace(replace(replace(string(.), '\\', '\\\\'), '&quot;', '\\&quot;'), '&#10;', '\n')"/>
-                    <xsl:text>"</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:for-each>
-    </xsl:template>
+    <!-- Recursief: zet een XML element om naar een JSON-waarde (string of genest object) -->
+    <xsl:function name="local:element-naar-waarde" as="item()">
+        <xsl:param name="elem" as="element()"/>
+        <xsl:choose>
+            <xsl:when test="$elem/*">
+                <xsl:sequence select="map:merge(
+                    for $child in $elem/*
+                    return map{local-name($child): local:element-naar-waarde($child)}
+                )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="string($elem)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
 
 </xsl:stylesheet>

@@ -38,16 +38,10 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
 
-            <!-- Decodeer aanvraagxmldata (optioneel — leeg als niet meegestuurd) -->
-            <XsltPipe name="GetAanvraagXmlDataBase64" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
+            <!-- Lees aanvraagxmldata (optioneel — leeg als niet meegestuurd) -->
+            <XsltPipe name="GetAanvraagXml" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
-            <PutInSessionPipe name="StoreAanvraagXmlDataBase64" sessionKey="AanvraagXmlDataBase64"/>
-
-            <Base64Pipe name="DecodeAanvraagXml" action="decode" charset="UTF-8" getInputFromSessionKey="AanvraagXmlDataBase64">
-                <Forward name="success" path="StoreAanvraagXml"/>
-                <Forward name="exception" path="StoreAanvraagXml"/>
-            </Base64Pipe>
             <PutInSessionPipe name="StoreAanvraagXml" sessionKey="AanvraagXml"/>
 
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->

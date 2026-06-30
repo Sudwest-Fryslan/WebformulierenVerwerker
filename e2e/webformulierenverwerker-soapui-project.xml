@@ -2521,7 +2521,35 @@ IDE0IDAgUgovUm9vdCAxIDAgUgovU2l6ZSAxNQo+PgpzdGFydHhyZWYKNDc5NTIKJSVFT0YK</tem:fi
             <tem:pdfDocumentUuid>${Properties#pdfDocumentUuid}</tem:pdfDocumentUuid>
             <tem:xmlDocumentUuid>${Properties#xmlDocumentUuid}</tem:xmlDocumentUuid>
             <tem:bijlageUuid>${Properties#bijlageUuid}</tem:bijlageUuid>
-            <tem:aanvraagxmldata>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPEZPUk1VTElFUj4KICA8RUxFTUVOVEVOPgogICAgPGZvcm0+CiAgICAgIDxhbnN3ZXJzPgogICAgICAgIDxnbG9iYWxzPgogICAgICAgICAgPGJzbj45OTk5OTM4NDc8L2Jzbj4KICAgICAgICAgIDxrZW5tZXJrYWFudnJhYWc+bGVlcmxpbmdlbnZlcnZvZXI8L2tlbm1lcmthYW52cmFhZz4KICAgICAgICA8L2dsb2JhbHM+CiAgICAgICAgPGdlZ2V2ZW5zQWFudnJhZ2VyPgogICAgICAgICAgPGFhbnZyYWdlckJzbj45OTk5OTM4NDc8L2FhbnZyYWdlckJzbj4KICAgICAgICAgIDxhYW52cmFnZXJOYWFtPk1lcmVsIEtvb3ltYW48L2FhbnZyYWdlck5hYW0+CiAgICAgICAgPC9nZWdldmVuc0FhbnZyYWdlcj4KICAgICAgICA8Z2VnZXZlbnNMZWVybGluZz4KICAgICAgICAgIDxsZWVybGluZ0Jzbj45OTk5OTIwNzc8L2xlZXJsaW5nQnNuPgogICAgICAgICAgPGxlZXJsaW5nTmFhbT5KYW4gU3RhYXJ0PC9sZWVybGluZ05hYW0+CiAgICAgICAgICA8bGVlcmxpbmdHZWJvb3J0ZWRhdHVtPjIwMTUtMDEtMDE8L2xlZXJsaW5nR2Vib29ydGVkYXR1bT4KICAgICAgICA8L2dlZ2V2ZW5zTGVlcmxpbmc+CiAgICAgICAgPGdlZ2V2ZW5zU2Nob29sPgogICAgICAgICAgPHNjaG9vbD5CYXNpc3NjaG9vbCBEZSBSZWdlbmJvb2c8L3NjaG9vbD4KICAgICAgICAgIDxzY2hvb2xBZHJlcz5TY2hvb2xzdHJhYXQgMSwgMTIzNCBBQiBUZXN0ZG9ycDwvc2Nob29sQWRyZXM+CiAgICAgICAgPC9nZWdldmVuc1NjaG9vbD4KICAgICAgICA8YWFudnJhYWdEZXRhaWxzPgogICAgICAgICAgPHRodWlzQWRyZXM+V29vbnN0cmFhdCA1LCAxMjM0IENEIFRlc3Rkb3JwPC90aHVpc0FkcmVzPgogICAgICAgICAgPGFhbnZyYWFnUmVkZW4+RnlzaWVrZSBiZXBlcmtpbmcgLSBpbmRpY2F0aWUgcGFzc2VuZCBvbmRlcndpanM8L2FhbnZyYWFnUmVkZW4+CiAgICAgICAgPC9hYW52cmFhZ0RldGFpbHM+CiAgICAgIDwvYW5zd2Vycz4KICAgIDwvZm9ybT4KICA8L0VMRU1FTlRFTj4KPC9GT1JNVUxJRVI+</tem:aanvraagxmldata>
+            <tem:aanvraagxmldata>&lt;FORMULIER&gt;
+  &lt;ELEMENTEN&gt;
+    &lt;form&gt;
+      &lt;answers&gt;
+        &lt;globals&gt;
+          &lt;bsn&gt;999993847&lt;/bsn&gt;
+          &lt;kenmerkaanvraag&gt;leerlingenvervoer&lt;/kenmerkaanvraag&gt;
+        &lt;/globals&gt;
+        &lt;gegevensAanvrager&gt;
+          &lt;aanvragerBsn&gt;999993847&lt;/aanvragerBsn&gt;
+          &lt;aanvragerNaam&gt;Merel Kooyman&lt;/aanvragerNaam&gt;
+        &lt;/gegevensAanvrager&gt;
+        &lt;gegevensLeerling&gt;
+          &lt;leerlingBsn&gt;999992077&lt;/leerlingBsn&gt;
+          &lt;leerlingNaam&gt;Jan Staart&lt;/leerlingNaam&gt;
+          &lt;leerlingGeboortedatum&gt;2015-01-01&lt;/leerlingGeboortedatum&gt;
+        &lt;/gegevensLeerling&gt;
+        &lt;gegevensSchool&gt;
+          &lt;school&gt;Basisschool De Regenboog&lt;/school&gt;
+          &lt;schoolAdres&gt;Schoolstraat 1, 1234 AB Testdorp&lt;/schoolAdres&gt;
+        &lt;/gegevensSchool&gt;
+        &lt;aanvraagDetails&gt;
+          &lt;thuisAdres&gt;Woonstraat 5, 1234 CD Testdorp&lt;/thuisAdres&gt;
+          &lt;aanvraagReden&gt;Fysieke beperking - indicatie passend onderwijs&lt;/aanvraagReden&gt;
+        &lt;/aanvraagDetails&gt;
+      &lt;/answers&gt;
+    &lt;/form&gt;
+  &lt;/ELEMENTEN&gt;
+&lt;/FORMULIER&gt;</tem:aanvraagxmldata>
         </tem:indienenVerzoek>
     </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7b6c2a89-52f1-4673-8318-d20965a2fcc9" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep>
