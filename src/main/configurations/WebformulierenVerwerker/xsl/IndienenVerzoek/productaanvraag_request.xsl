@@ -63,7 +63,12 @@
             <xsl:when test="$aanvraagXml != ''">
                 <xsl:try>
                     <xsl:variable name="formulier" select="parse-xml($aanvraagXml)"/>
-                    <xsl:variable name="secties" select="$formulier//answers/*"/>
+                    <xsl:variable name="secties" select="$formulier//answers/*[
+                        not(matches(local-name(), '^sc')) and
+                        not(matches(local-name(), '^digid')) and
+                        local-name() != 'globals' and
+                        normalize-space(.) != ''
+                    ]"/>
                     <xsl:choose>
                         <xsl:when test="exists($secties)">
                             <xsl:variable name="ag" select="map:merge(
