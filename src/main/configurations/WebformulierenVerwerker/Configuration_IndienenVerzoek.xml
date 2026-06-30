@@ -38,6 +38,18 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreXmlDocumentUrl" sessionKey="XmlDocumentUuid"/>
 
+            <!-- Decodeer aanvraagxmldata (optioneel — leeg als niet meegestuurd) -->
+            <XsltPipe name="GetAanvraagXmlDataBase64" xpathExpression="//aanvraagxmldata" getInputFromSessionKey="originalMessage">
+                <Forward name="exception" path="isErrorXML"/>
+            </XsltPipe>
+            <PutInSessionPipe name="StoreAanvraagXmlDataBase64" sessionKey="AanvraagXmlDataBase64"/>
+
+            <Base64Pipe name="DecodeAanvraagXml" action="decode" charset="UTF-8" getInputFromSessionKey="AanvraagXmlDataBase64">
+                <Forward name="success" path="StoreAanvraagXml"/>
+                <Forward name="exception" path="StoreAanvraagXml"/>
+            </Base64Pipe>
+            <PutInSessionPipe name="StoreAanvraagXml" sessionKey="AanvraagXml"/>
+
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->
             <XsltPipe name="Transform_Productaanvraag_Body"
                       styleSheetName="xsl/IndienenVerzoek/productaanvraag_request.xsl"
@@ -52,6 +64,7 @@
                 <Param name="aanvraagtype" sessionKey="Aanvraagtype"/>
                 <Param name="pdfDocumentUuid" sessionKey="PdfDocumentUuid"/>
                 <Param name="xmlDocumentUuid" sessionKey="XmlDocumentUuid"/>
+                <Param name="aanvraagXml" sessionKey="AanvraagXml" defaultValue=""/>
                 <Forward name="success" path="Send_ProductaanvraagNaarObjectenApi"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>

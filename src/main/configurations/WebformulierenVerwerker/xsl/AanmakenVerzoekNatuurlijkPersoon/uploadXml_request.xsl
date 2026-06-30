@@ -18,6 +18,7 @@
         <xsl:text>"bestandsnaam": "</xsl:text><xsl:value-of select="$aanvraagtype"/><xsl:text>-aanvraagdata.xml",</xsl:text>
         <xsl:text>"formaat": "application/xml",</xsl:text>
         <xsl:text>"status": "definitief",</xsl:text>
+        <xsl:text>"indicatieGebruiksrecht": false,</xsl:text>
         <xsl:text>"vertrouwelijkheidaanduiding": "</xsl:text><xsl:value-of select="$vertrouwelijkheidaanduiding"/><xsl:text>"}</xsl:text>
     </xsl:template>
 </xsl:stylesheet>
