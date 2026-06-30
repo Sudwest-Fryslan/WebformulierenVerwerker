@@ -54,10 +54,8 @@
         <xsl:text>}</xsl:text>
     </xsl:template>
 
-    <!-- Genereer aanvraaggegevens JSON vanuit de aanvraag-XML.
-         Structuur: elke child van <answers> is een sectie; velden krijgen de sectienaam als prefix
-         zodat gelijke veldnamen in verschillende secties niet botsen (bijv. 'telefoonnummer').
-         Geneste velden worden recursief platgeslagen: globals/stuf/geslachtsnaam → globals_stuf_geslachtsnaam. -->
+    <!-- Sectie-filter: sluit systeemblokken uit op naam.
+         Veldfilter: sluit bekende Atabix-systeemvelden uit op naampatroon. -->
     <xsl:template name="aanvraaggegevens">
         <xsl:choose>
             <xsl:when test="$aanvraagXml != ''">
@@ -73,7 +71,7 @@
                         <xsl:when test="exists($secties)">
                             <xsl:variable name="ag" select="map:merge(
                                 for $s in $secties
-                                return map{local-name($s): local:sectie-naar-platte-map($s, local-name($s))}
+                                return map{local-name($s): local:element-naar-waarde($s)}
                             )"/>
                             <xsl:value-of select="serialize($ag, map{'method': 'json'})"/>
                         </xsl:when>
@@ -88,19 +86,37 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- Zet een XML sectie recursief om naar een platte map met geprefixte sleutels.
-         Bladeren worden: {prefix}_{veldnaam} → waarde (string).
-         Geneste elementen worden recursief platgeslagen met uitgebreide prefix. -->
-    <xsl:function name="local:sectie-naar-platte-map" as="map(*)">
+    <!-- Recursief: zet een element om naar een JSON-waarde, met veldniveau-filter op systeemvelden. -->
+    <xsl:function name="local:element-naar-waarde" as="item()">
         <xsl:param name="elem" as="element()"/>
-        <xsl:param name="prefix" as="xs:string"/>
-        <xsl:sequence select="map:merge(
-            for $child in $elem/*
-            return
-                if ($child/*)
-                then local:sectie-naar-platte-map($child, concat($prefix, '_', local-name($child)))
-                else map{concat($prefix, '_', local-name($child)): string($child)}
-        )"/>
+        <xsl:choose>
+            <xsl:when test="$elem/*">
+                <xsl:variable name="relevante-children" select="$elem/*[local:is-relevant-veld(local-name())]"/>
+                <xsl:sequence select="map:merge(
+                    for $child in $relevante-children
+                    return map{local-name($child): local:element-naar-waarde($child)}
+                )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="string($elem)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
+    <!-- Veldfilter: true als het veld relevante gebruikersdata is.
+         Sluit Atabix-systeemvelden uit op naampatroon (digid*, stuf, nps*, sss_*, procstuf*, xslt_*, xsp_*, *efautogen*). -->
+    <xsl:function name="local:is-relevant-veld" as="xs:boolean">
+        <xsl:param name="naam" as="xs:string"/>
+        <xsl:sequence select="
+            not(matches($naam, '^digid')) and
+            not($naam = 'stuf') and
+            not(matches($naam, '^nps')) and
+            not(matches($naam, '^sss_')) and
+            not(matches($naam, '^procstuf')) and
+            not(matches($naam, '^xslt_')) and
+            not(matches($naam, '^xsp_')) and
+            not(contains($naam, 'efautogen'))
+        "/>
     </xsl:function>
 
 </xsl:stylesheet>
