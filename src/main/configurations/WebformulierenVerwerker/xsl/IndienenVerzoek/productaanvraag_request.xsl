@@ -55,8 +55,9 @@
     </xsl:template>
 
     <!-- Genereer aanvraaggegevens JSON vanuit de aanvraag-XML.
-         Structuur: elke child van <answers> is een sectie (kopje),
-         de children van die sectie zijn key-value pairs (recursief). -->
+         Structuur: elke child van <answers> is een sectie; velden krijgen de sectienaam als prefix
+         zodat gelijke veldnamen in verschillende secties niet botsen (bijv. 'telefoonnummer').
+         Geneste velden worden recursief platgeslagen: globals/stuf/geslachtsnaam → globals_stuf_geslachtsnaam. -->
     <xsl:template name="aanvraaggegevens">
         <xsl:choose>
             <xsl:when test="$aanvraagXml != ''">
@@ -67,7 +68,7 @@
                         <xsl:when test="exists($secties)">
                             <xsl:variable name="ag" select="map:merge(
                                 for $s in $secties
-                                return map{local-name($s): local:element-naar-waarde($s)}
+                                return map{local-name($s): local:sectie-naar-platte-map($s, local-name($s))}
                             )"/>
                             <xsl:value-of select="serialize($ag, map{'method': 'json'})"/>
                         </xsl:when>
@@ -82,20 +83,19 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- Recursief: zet een XML element om naar een JSON-waarde (string of genest object) -->
-    <xsl:function name="local:element-naar-waarde" as="item()">
+    <!-- Zet een XML sectie recursief om naar een platte map met geprefixte sleutels.
+         Bladeren worden: {prefix}_{veldnaam} → waarde (string).
+         Geneste elementen worden recursief platgeslagen met uitgebreide prefix. -->
+    <xsl:function name="local:sectie-naar-platte-map" as="map(*)">
         <xsl:param name="elem" as="element()"/>
-        <xsl:choose>
-            <xsl:when test="$elem/*">
-                <xsl:sequence select="map:merge(
-                    for $child in $elem/*
-                    return map{local-name($child): local:element-naar-waarde($child)}
-                )"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:sequence select="string($elem)"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:param name="prefix" as="xs:string"/>
+        <xsl:sequence select="map:merge(
+            for $child in $elem/*
+            return
+                if ($child/*)
+                then local:sectie-naar-platte-map($child, concat($prefix, '_', local-name($child)))
+                else map{concat($prefix, '_', local-name($child)): string($child)}
+        )"/>
     </xsl:function>
 
 </xsl:stylesheet>
