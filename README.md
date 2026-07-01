@@ -67,7 +67,7 @@ docker compose up
 
 | Dienst | Poort |
 |--------|-------|
-| Frank!Framework console | `8090` |
+| Frank!Framework console | `8080` |
 | Mockservices (voor testen) | `8081` |
 
 Wijzigingen in XML-adapters en XSL-bestanden worden automatisch opgepakt zonder herstart.
@@ -84,7 +84,7 @@ webformulierenverwerker-soapui-project.xml
 
 Het bevat testcases voor alle koppelingen (Corsa, CAReL, ZAC). Voor lokaal testen moet de mockservice in het SoapUI-project actief zijn.
 
-Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8090`) voor het debuggen van berichtstromen.
+Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8080`) voor het debuggen van berichtstromen.
 
 ---
 

@@ -18,7 +18,7 @@ docker compose -f compose.frank.dev.yaml up --build --force-recreate --watch
 docker compose up
 ```
 
-The app runs on **port 8090**. Mock services (for e2e tests) run on **port 8081**.
+The app runs on **port 8080**. Mock services (for e2e tests) run on **port 8081**.
 
 Hot-reload works via `ScanningDirectoryClassLoader` — changes to XML configs and XSL files are picked up automatically without restart.
 
