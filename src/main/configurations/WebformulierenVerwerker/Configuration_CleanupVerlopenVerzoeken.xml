@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+
+    <!--
+        Nachtelijke opruiming van verlopen verzoeken.
+
+        Als Kodison stap 3 (indienenVerzoek) nooit aanroept na stap 1 en/of stap 2,
+        blijven rijen achter in INFO_CACHE en VERZOEK_BIJLAGEN. Deze adapter verwijdert
+        alle entries ouder dan 7 dagen. Wordt elke nacht om 02:00 uitgevoerd via de Scheduler.
+    -->
+    <Adapter name="CleanupVerlopenVerzoeken">
+        <Receiver name="CleanupVerlopenVerzoeken">
+            <JavaListener name="CleanupVerlopenVerzoeken"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="SUCCESS" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <!-- Verwijder eerst bijlagen van verlopen verzoeken (foreign key richting INFO_CACHE) -->
+            <SenderPipe name="VerwijderVerlopen_VERZOEK_BIJLAGEN" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="DELETE FROM VERZOEK_BIJLAGEN WHERE REGISTRATIENUMMER IN (SELECT REGISTRATIENUMMER FROM INFO_CACHE WHERE STOREDATE &lt; CURRENT_DATE - 7)"/>
+                <Forward name="success" path="VerwijderVerlopen_INFO_CACHE"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </SenderPipe>
+
+            <!-- Verwijder daarna de verlopen INFO_CACHE entries zelf -->
+            <SenderPipe name="VerwijderVerlopen_INFO_CACHE" getInputFromFixedValue="&lt;dummy/&gt;">
+                <FixedQuerySender
+                    query="DELETE FROM INFO_CACHE WHERE STOREDATE &lt; CURRENT_DATE - 7"/>
+                <Forward name="success" path="SUCCESS"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </SenderPipe>
+
+        </Pipeline>
+    </Adapter>
+
+</Module>
