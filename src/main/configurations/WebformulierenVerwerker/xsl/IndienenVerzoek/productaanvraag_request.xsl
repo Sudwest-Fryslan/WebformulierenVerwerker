@@ -34,8 +34,8 @@
                     <xsl:text>"naam": "</xsl:text><xsl:value-of select="$bron.naam"/><xsl:text>",</xsl:text>
                     <xsl:text>"kenmerk": "</xsl:text><xsl:value-of select="$verzoekIdentificatie"/><xsl:text>"</xsl:text>
                 <xsl:text>},</xsl:text>
-                <xsl:text>"type": "</xsl:text><xsl:value-of select="$aanvraagtype"/><xsl:text>",</xsl:text>
-                <xsl:variable name="effectieve-omschrijving" select="if ($omschrijving != '') then $omschrijving else concat('Aanvraag ', $aanvraagtype)"/>
+                <xsl:text>"type": "</xsl:text><xsl:value-of select="normalize-space($aanvraagtype)"/><xsl:text>",</xsl:text>
+                <xsl:variable name="effectieve-omschrijving" select="if (normalize-space($omschrijving) != '') then normalize-space($omschrijving) else concat('Aanvraag ', normalize-space($aanvraagtype))"/>
                 <xsl:text>"zaakgegevens": {"omschrijving": "</xsl:text><xsl:value-of select="$effectieve-omschrijving"/><xsl:text>"},</xsl:text>
                 <xsl:text>"aanvraaggegevens": </xsl:text>
                 <xsl:call-template name="aanvraaggegevens"/>
