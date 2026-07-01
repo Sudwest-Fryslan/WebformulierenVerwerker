@@ -48,14 +48,10 @@ jar cvf WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVer
 ### Request Flow
 
 1. **Dispatcher** (`Configuration_WebformulierenVerwerkerDispatcher.xml`) — single SOAP listener validates against `GeneriekeFormulierAfhandeling.wsdl`, unwraps the SOAP envelope, and routes to action-specific adapters via XPath on the operation name.
-2. **Action adapters** (e.g. `Configuration_OpslaanInkNatuurlijkPersoon.xml`) — each handles one operation end-to-end:
-   - Transform incoming request to Corsa format (XSLT)
-   - Connect to Corsa SOAP service
-   - Query/create person or company record
-   - Store document
-   - Disconnect
-   - Transform Corsa response back to Kodison format (XSLT)
-3. **Common adapters** — shared logic for Corsa Connect/Disconnect and error handling (`xsl/Common/`).
+2. **Corsa adapters** (e.g. `Configuration_OpslaanInkNatuurlijkPersoon.xml`) — each handles one operation end-to-end: transform → Connect → query/create person → store document → Disconnect → transform response.
+3. **CAReL adapters** (`Configuration_OpslaanAanvraag*.xml`) — generate zaak/document IDs via OpenZaakBrug, then register zaak and documents via StUF Lk01 messages to CAReL.
+4. **ZAC adapters** (`Configuration_AanmakenVerzoek*.xml`, `Configuration_ToevoegenVerzoekDocument.xml`, `Configuration_IndienenVerzoek.xml`) — three-step flow: upload documents to Documenten API → POST productaanvraag to Objecten API → ZAC creates zaak via Notificaties API.
+5. **Common XSL** — shared logic for Corsa Connect/Disconnect and error handling (`xsl/Common/`).
 
 ### Key File Locations
 
@@ -115,5 +111,7 @@ Project documentation lives in `docs/`:
 - `docs/corsa-carel-flow.md` — Corsa en CAReL koppeling
 - `docs/zac-koppeling-flow.md` — ZAC koppeling overzicht
 - `docs/zac-koppeling-koppelvlak.md` — koppelvlakspecificatie voor Kodison/Hein
+- `docs/zac-koppeling-setup.md` — configuratiehandleiding ZAC-koppeling (Open Zaak, ZAC, Frank)
+- `docs/gevonden-issues.md` — bekende issues en workarounds tijdens ZAC-koppeling
 - `docs/carel/` — ZDS 1.1.02 specificaties (WSDLs, XSDs)
 - `docs/Corsa_Webservice_Technical_Description_v1.0.60.pdf` — Corsa API-referentie

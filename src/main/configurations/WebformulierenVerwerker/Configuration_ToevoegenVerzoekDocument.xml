@@ -48,7 +48,7 @@
 
             <!-- Upload bijlage/document naar Documenten API -->
             <XsltPipe name="Transform_UploadBijlage_Body"
-                      styleSheetName="xsl/ToevoegenVerzoekBijlage/uploadBijlage_request.xsl"
+                      styleSheetName="xsl/ToevoegenVerzoekDocument/uploadBijlage_request.xsl"
                       getInputFromFixedValue="&lt;Default/&gt;"
                       omitXmlDeclaration="true">
                 <Param name="bronorganisatie" value="${zac.bronorganisatie}"/>

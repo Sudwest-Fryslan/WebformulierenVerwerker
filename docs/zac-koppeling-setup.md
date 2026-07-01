@@ -1,7 +1,7 @@
 # ZAC-koppeling setup (feature/zac-koppeling)
 
 Documentatie van de configuratie die gedaan is voor de ZAC-integratie.
-Bijgewerkt: 28 juni 2026.
+Bijgewerkt: 02 juli 2026.
 
 ## Overzicht
 
