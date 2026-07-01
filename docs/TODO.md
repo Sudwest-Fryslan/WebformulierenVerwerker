@@ -1,43 +1,28 @@
-# Opschoning en structuur — TODO
+# Openstaande actiepunten
 
-## Hoge prioriteit
+## WSDL-synchronisatie — actie bij WeAreFrank
 
-### SoapUI-projecten — 3 bestanden, 1 actief
-| Bestand | Inhoud | Status |
-|---------|--------|--------|
-| `docs/WebformulierenVerwerker-soapui-project.xml` | Alleen interface-definitie, **geen testcases** | **Verwijderen** — geen waarde |
-| `e2e/soapui-project.xml` | 1 testsuite "Carel": opslaanAanvraagNatuurlijkPersoon + opslaanAanvraagBijlage | **Verwijderen** — volledig opgenomen in nieuw project |
-| `e2e/webformulierenverwerker-soapui-project.xml` | 3 testcases: **Corsa** + **CAReL** + CAReL endpoint direct | **Behouden** — actief project (Eduard, juni 2026) |
+Bij elke uitbreiding van de WSDL moeten drie bestanden handmatig bijgewerkt worden:
 
-> De Corsa-tests zitten wél in het nieuwe project ("WebformulierenVerwerker Corsa TestCase"). Niets gaat verloren bij verwijderen van de twee oudere bestanden.
+| Bestand | URL |
+|---------|-----|
+| `src/.../GeneriekeFormulierAfhandeling.wsdl` | `testtsjinstbus...` (intern Frank) |
+| `src/.../webcontent/GeneriekeFormulierAfhandeling.wsdl` | `tsjinstbus...` (productie) |
+| `src/.../webcontent/GeneriekeFormulierAfhandelingTest.wsdl` | `testtsjinstbus...` (Atabix TST) |
 
-### WSDL's — 3 bestanden met URL-verschil, handmatig gesynchroniseerd
-| Bestand | URL | Bedoeling |
-|---------|-----|-----------|
-| `src/.../GeneriekeFormulierAfhandeling.wsdl` | `testtsjinstbus...` | Intern (Frank!Framework gebruikt dit) |
-| `src/.../webcontent/GeneriekeFormulierAfhandeling.wsdl` | `tsjinstbus...` (productie) | Atabix productie |
-| `src/.../webcontent/GeneriekeFormulierAfhandelingTest.wsdl` | `testtsjinstbus...` | Atabix TST |
-
-**Probleem:** bij elke uitbreiding moeten alle drie handmatig bijgewerkt worden (was al mis bij de CAReL-operaties in mei 2026).  
-**Oplossing (toegezegd door WeAreFrank):** één WSDL met omgevingsvariabele voor de host-URL. Nog niet gerealiseerd.
+WeAreFrank heeft toegezegd dit op te lossen met één WSDL en een omgevingsvariabele voor de host-URL. Nog niet gerealiseerd.
 
 ---
 
-## Lage prioriteit
+## Docusaurus — vullen of verwijderen
 
-### Docusaurus — ingericht maar leeg
-- `docusaurus/` bevat volledige scaffolding maar nauwelijks content (124 regels markdown, `index.md` is leeg)
-- Keuze: vullen of opruimen
-- Huidige documentatie staat in `docs/carel/` (markdown)
-
-### Documentatie verspreid over twee plekken
-- `docs/` — mix van CAReL-docs (actueel), oude Corsa-PDF (2023, 3.6 MB), legacy SoapUI-project
-- Corsa-specificatie PDF (`docs/`) is waarschijnlijk niet meer relevant nu CAReL de nieuwe richting is — controleren of weg kan
+`docusaurus/` bevat een complete scaffolding maar nauwelijks content. De actuele documentatie staat in `docs/*.md`. Keuze: nieuwe MD-documenten ook in Docusaurus publiceren, of de hele map verwijderen.
 
 ---
 
-## Geen actie nodig
+## Afgehandeld
 
-- Alle `Configuration_*.xml` adapters zijn actief en correct gereferenced — geen orphans
-- `DeploymentSpecifics.properties` commentaarregels zijn bewust als Docker-referentie — laten staan
-- `e2e/Zaak_DocumentServices_1_1_02/` WSDLs zijn testfixtures — horen daar
+- SoapUI: opgeschoond naar één actief project (`webformulierenverwerker-soapui-project.xml` in projectroot)
+- `e2e/` map verwijderd; ZDS-specificaties staan nu in `docs/carel/`
+- `docs/beschrijving in pseudo code.docx` vervangen door `docs/corsa-carel-flow.md`
+- ZAC-koppeling gedocumenteerd in `docs/zac-koppeling-flow.md` en `docs/zac-koppeling-koppelvlak.md`
