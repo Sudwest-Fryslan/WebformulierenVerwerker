@@ -105,8 +105,11 @@ ZAC API calls require a Bearer token. Configure it in `src/main/secrets/credenti
 
 H2 in-memory by default (development). PostgreSQL is supported (driver in `src/main/drivers/`). Schema managed by Liquibase via `DatabaseChangelog.xml`.
 
-## Documentation Site
+## Documentation
 
-```bash
-cd docusaurus && yarn install && yarn start
-```
+Project documentation lives in `docs/`:
+- `docs/corsa-carel-flow.md` — Corsa en CAReL koppeling
+- `docs/zac-koppeling-flow.md` — ZAC koppeling overzicht
+- `docs/zac-koppeling-koppelvlak.md` — koppelvlakspecificatie voor Kodison/Hein
+- `docs/carel/` — ZDS 1.1.02 specificaties (WSDLs, XSDs)
+- `docs/Corsa_Webservice_Technical_Description_v1.0.60.pdf` — Corsa API-referentie
