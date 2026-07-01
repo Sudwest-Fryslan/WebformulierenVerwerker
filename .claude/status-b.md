@@ -46,7 +46,9 @@
 
 ⚠️ Slechts 1 document zichtbaar (PDF), XML-aanvraagdata en bijlage ontbreken. Mogelijk ZAC-kant document-koppeling issue.
 
-**Actie voor Sessie A:** check ZAC-logs op document-koppeling bij ZAAK-2026-0000000047. Frank stuurt 3 UUIDs (pdf, xml, bijlage) in de productaanvraag JSON — controleer of ZAC die correct verwerkt.
+**Fix ec225d7 ingezet:** lege bijlage-UUIDs worden nu gefilterd uit de productaanvraag JSON (`$bijlageUuids[normalize-space(.) != '']`). Container bijgewerkt + reload gedaan.
+
+Sessie A: na Docker-rebuild ZAC opnieuw testen met de SoapUI ZAC testcase.
 
 ---
 
