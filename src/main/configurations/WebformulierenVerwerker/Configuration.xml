@@ -11,9 +11,17 @@
 <!ENTITY AanmakenVerzoekNatuurlijkPersoon SYSTEM "Configuration_AanmakenVerzoekNatuurlijkPersoon.xml">
 <!ENTITY ToevoegenVerzoekDocument SYSTEM "Configuration_ToevoegenVerzoekDocument.xml">
 <!ENTITY IndienenVerzoek SYSTEM "Configuration_IndienenVerzoek.xml">
+<!ENTITY CleanupVerlopenVerzoeken SYSTEM "Configuration_CleanupVerlopenVerzoeken.xml">
 <!ENTITY WebformulierenVerwerkerDispatcher SYSTEM "Configuration_WebformulierenVerwerkerDispatcher.xml">
 ]>
 <Configuration>
+    <Scheduler>
+        <Job name="CleanupVerlopenVerzoeken"
+             cronExpression="0 0 2 * * ?"
+             function="sendMessage"
+             adapterName="CleanupVerlopenVerzoeken"
+             description="Ruim verlopen verzoeken op ouder dan 7 dagen (stap 3 nooit aangeroepen)"/>
+    </Scheduler>
     <SharedResources>
         <HttpSession
             name="SharedHttpSession"
@@ -33,5 +41,6 @@
     &AanmakenVerzoekNatuurlijkPersoon;
     &ToevoegenVerzoekDocument;
     &IndienenVerzoek;
+    &CleanupVerlopenVerzoeken;
     &WebformulierenVerwerkerDispatcher;
 </Configuration>

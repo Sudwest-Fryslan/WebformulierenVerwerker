@@ -255,542 +255,549 @@
   </con:interface>
   <con:interface xsi:type="con:WsdlInterface" id="b3c36b32-234c-4422-b90d-410640b89e49" wsaVersion="NONE" name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGeneriekeFormulierAfhandeling" soapVersion="1_1" anonymous="optional" definition="${#Project#WebformulierenverwerkerEndpoint}webcontent/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache type="TEXT" rootPart="http://localhost:8090/webcontent/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl"><con:part><con:url>http://localhost:8090/webcontent/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl</con:url><con:content><![CDATA[<?xml version='1.0' encoding='utf-8' ?>
-<wsdl:definitions name="GeneriekeFormulierAfhandeling" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<wsdl:types>
-		<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-			<xs:element name="Version">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="VersionResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="VersionResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Info">
-				<xs:complexType>
-					<xs:sequence/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="InfoResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="InfoResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="maakInkomendDocumentregistratie">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="afzenderbsn" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="maakInkomendDocumentregistratieResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="maakInkomendDocumentregistratieResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="bewaarDocument">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="registratieIdentificatie" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="bewaarDocumentResponse">
-				<xs:complexType>
-					<xs:sequence/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInkNatuurlijkPersoon">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="afzenderbsn" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
-						<xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInkNatuurlijkPersoonResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanInkNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInkNietNatuurlijkPersoon">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="afzenderkvk" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
-						<xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInkNietNatuurlijkPersoonResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanInkNietNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanBijlage">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="registratienummer" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanBijlageResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanBijlageResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInk">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
-						<xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanInkResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanInkResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanAanvraagNatuurlijkPersoon">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="omschrijving" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagpdfname" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagpdfdata" nillable="false" type="xs:base64Binary"/>
-						<xs:element minOccurs="1" name="aanvraagxmldata" nillable="false" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanAanvraagNatuurlijkPersoonResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanAanvraagNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanAanvraagBijlage">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="1" name="zaakidentificatie" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="documenttype" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="filename" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="filedata" nillable="false" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="opslaanAanvraagBijlageResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="opslaanAanvraagBijlageResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<!-- ZAC verzoek operaties -->
-			<xs:element name="aanmakenVerzoekNatuurlijkPersoon">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagpdfname" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagpdfdata" nillable="false" type="xs:base64Binary"/>
-						<xs:element minOccurs="1" name="aanvraagxmlname" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="aanvraagxmldata" nillable="false" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="aanmakenVerzoekNatuurlijkPersoonResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="verzoekIdentificatie" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="pdfDocumentUuid" nillable="true" type="xs:string"/>
-						<xs:element minOccurs="0" name="xmlDocumentUuid" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="toevoegenVerzoekDocument">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="documenttype" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="filename" nillable="false" type="xs:string"/>
-						<xs:element minOccurs="1" name="filedata" nillable="false" type="xs:base64Binary"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="toevoegenVerzoekDocumentResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="toevoegenVerzoekDocumentResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="indienenVerzoek">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="indienenVerzoekResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element minOccurs="0" name="indienenVerzoekResult" nillable="true" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:schema>
-		<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
-			<xs:element name="anyType" nillable="true" type="xs:anyType"/>
-			<xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
-			<xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
-			<xs:element name="boolean" nillable="true" type="xs:boolean"/>
-			<xs:element name="byte" nillable="true" type="xs:byte"/>
-			<xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
-			<xs:element name="decimal" nillable="true" type="xs:decimal"/>
-			<xs:element name="double" nillable="true" type="xs:double"/>
-			<xs:element name="float" nillable="true" type="xs:float"/>
-			<xs:element name="int" nillable="true" type="xs:int"/>
-			<xs:element name="long" nillable="true" type="xs:long"/>
-			<xs:element name="QName" nillable="true" type="xs:QName"/>
-			<xs:element name="short" nillable="true" type="xs:short"/>
-			<xs:element name="string" nillable="true" type="xs:string"/>
-			<xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
-			<xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
-			<xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
-			<xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
-			<xs:element name="char" nillable="true" type="tns:char"/>
-			<xs:simpleType name="char">
-				<xs:restriction base="xs:int"/>
-			</xs:simpleType>
-			<xs:element name="duration" nillable="true" type="tns:duration"/>
-			<xs:simpleType name="duration">
-				<xs:restriction base="xs:duration">
-					<xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
-					<xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
-					<xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
-				</xs:restriction>
-			</xs:simpleType>
-			<xs:element name="guid" nillable="true" type="tns:guid"/>
-			<xs:simpleType name="guid">
-				<xs:restriction base="xs:string">
-					<xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
-				</xs:restriction>
-			</xs:simpleType>
-			<xs:attribute name="FactoryType" type="xs:QName"/>
-			<xs:attribute name="Id" type="xs:ID"/>
-			<xs:attribute name="Ref" type="xs:IDREF"/>
-		</xs:schema>
-	</wsdl:types>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_Version_InputMessage">
-		<wsdl:part name="parameters" element="tns:Version"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_Version_OutputMessage">
-		<wsdl:part name="parameters" element="tns:VersionResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_Info_InputMessage">
-		<wsdl:part name="parameters" element="tns:Info"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_Info_OutputMessage">
-		<wsdl:part name="parameters" element="tns:InfoResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage">
-		<wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratie"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage">
-		<wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratieResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage">
-		<wsdl:part name="parameters" element="tns:bewaarDocument"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage">
-		<wsdl:part name="parameters" element="tns:bewaarDocumentResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanInkNatuurlijkPersoon"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_OutputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanInkNatuurlijkPersoonResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_InputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanInkNietNatuurlijkPersoon"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanInkNietNatuurlijkPersoonResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanBijlage"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanBijlage_OutputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanBijlageResponse"/>
-	</wsdl:message>
-	<!-- toevoeging leerlingvervoer -->
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_InputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanAanvraagNatuurlijkPersoon"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_OutputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanAanvraagNatuurlijkPersoonResponse"/>
-	</wsdl:message>
-	<!-- toevoeging leerlingvervoer bijlage -->
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_InputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanAanvraagBijlage"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage">
-		<wsdl:part name="parameters" element="tns:opslaanAanvraagBijlageResponse"/>
-	</wsdl:message>
-	<!-- ZAC verzoek operaties -->
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage">
-		<wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoon"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage">
-		<wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoonResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekDocument_InputMessage">
-		<wsdl:part name="parameters" element="tns:toevoegenVerzoekDocument"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekDocument_OutputMessage">
-		<wsdl:part name="parameters" element="tns:toevoegenVerzoekDocumentResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage">
-		<wsdl:part name="parameters" element="tns:indienenVerzoek"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage">
-		<wsdl:part name="parameters" element="tns:indienenVerzoekResponse"/>
-	</wsdl:message>
-	<wsdl:portType name="IGeneriekeFormulierAfhandeling">
-		<wsdl:operation name="Version">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" message="tns:IGeneriekeFormulierAfhandeling_Version_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/VersionResponse" message="tns:IGeneriekeFormulierAfhandeling_Version_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="Info">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" message="tns:IGeneriekeFormulierAfhandeling_Info_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/InfoResponse" message="tns:IGeneriekeFormulierAfhandeling_Info_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="maakInkomendDocumentregistratie">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratieResponse" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="bewaarDocument">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocumentResponse" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanInkNatuurlijkPersoon">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanBijlage">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanBijlage_OutputMessage"/>
-		</wsdl:operation>
-		<!-- toevoeging leerlingvervoer-->
-		<wsdl:operation name="opslaanAanvraagNatuurlijkPersoon">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_OutputMessage"/>
-		</wsdl:operation>
-		<!-- toevoeging leerlingvervoer bijlage-->
-		<wsdl:operation name="opslaanAanvraagBijlage">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage"/>
-		</wsdl:operation>
-		<!-- ZAC verzoek operaties -->
-		<wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="toevoegenVerzoekDocument">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekDocument" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekDocument_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekDocumentResponse" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekDocument_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="indienenVerzoek">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoekResponse" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage"/>
-		</wsdl:operation>
-	</wsdl:portType>
-	<wsdl:binding name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="tns:IGeneriekeFormulierAfhandeling">
-		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-		<wsdl:operation name="Version">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="Info">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="maakInkomendDocumentregistratie">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="bewaarDocument">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanInkNatuurlijkPersoon">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="opslaanBijlage">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<!-- Leerlingvervoer-->
-		<wsdl:operation name="opslaanAanvraagNatuurlijkPersoon">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<!-- toevoeging leerlingvervoer bijlage-->
-		<wsdl:operation name="opslaanAanvraagBijlage">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<!-- ZAC verzoek operaties -->
-		<wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="toevoegenVerzoekDocument">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekDocument" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="indienenVerzoek">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-	</wsdl:binding>
-	<wsdl:service name="GeneriekeFormulierAfhandeling">
-		<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
-			<soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
-		</wsdl:port>
-	</wsdl:service>
-	<!-- <wsdl:service name="GeneriekeFormulierAfhandeling">
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8090/webcontent/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl"><con:part><con:url>http://localhost:8090/webcontent/WebformulierenVerwerker/GeneriekeFormulierAfhandeling.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GeneriekeFormulierAfhandeling" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Version">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VersionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VersionResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Info">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InfoResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="maakInkomendDocumentregistratie">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="afzenderbsn" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="maakInkomendDocumentregistratieResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maakInkomendDocumentregistratieResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="bewaarDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="registratieIdentificatie" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="bewaarDocumentResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInkNatuurlijkPersoon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="afzenderbsn" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+            <xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInkNatuurlijkPersoonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanInkNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInkNietNatuurlijkPersoon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="afzenderkvk" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+            <xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInkNietNatuurlijkPersoonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanInkNietNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanBijlage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="registratienummer" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanBijlageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanBijlageResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInk">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="vertrouwelijkheid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="behandelaarnaam" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="onderwerp" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="inhoud" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="filedata" nillable="true" type="xs:base64Binary"/>
+            <xs:element minOccurs="0" name="dossiercode" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="afgehandeld" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanInkResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanInkResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanAanvraagNatuurlijkPersoon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="omschrijving" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagpdfname" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagpdfdata" nillable="false" type="xs:base64Binary"/>
+            <xs:element minOccurs="1" name="aanvraagxmldata" nillable="false" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanAanvraagNatuurlijkPersoonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanAanvraagNatuurlijkPersoonResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanAanvraagBijlage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="zaakidentificatie" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="documenttype" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="filename" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="filedata" nillable="false" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="opslaanAanvraagBijlageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="opslaanAanvraagBijlageResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--ZAC verzoek operaties-->
+      <xs:element name="aanmakenVerzoekNatuurlijkPersoon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="omschrijving" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagpdfname" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagpdfdata" nillable="false" type="xs:base64Binary"/>
+            <xs:element minOccurs="1" name="aanvraagxmldata" nillable="false" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="aanmakenVerzoekNatuurlijkPersoonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="verzoekIdentificatie" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="pdfDocumentUuid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="xmlDocumentUuid" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="toevoegenVerzoekBijlage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="documenttype" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="vertrouwelijkheid" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="filename" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="filedata" nillable="false" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="toevoegenVerzoekBijlageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="toevoegenVerzoekBijlageResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="indienenVerzoek">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="verzoekIdentificatie" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="afzenderbsn" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="aanvraagtype" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="1" name="pdfDocumentUuid" nillable="false" type="xs:string"/>
+            <xs:element minOccurs="0" name="xmlDocumentUuid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="bijlageUuid" nillable="true" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element minOccurs="0" name="aanvraagxmldata" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="indienenVerzoekResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="indienenVerzoekResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_Version_InputMessage">
+    <wsdl:part name="parameters" element="tns:Version"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_Version_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VersionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_Info_InputMessage">
+    <wsdl:part name="parameters" element="tns:Info"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_Info_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage">
+    <wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratie"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratieResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:bewaarDocument"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:bewaarDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanInkNatuurlijkPersoon"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanInkNatuurlijkPersoonResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_InputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanInkNietNatuurlijkPersoon"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanInkNietNatuurlijkPersoonResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanBijlage"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanBijlage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanBijlageResponse"/>
+  </wsdl:message>
+  <!--toevoeging leerlingvervoer-->
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_InputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanAanvraagNatuurlijkPersoon"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanAanvraagNatuurlijkPersoonResponse"/>
+  </wsdl:message>
+  <!--toevoeging leerlingvervoer bijlage-->
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_InputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanAanvraagBijlage"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:opslaanAanvraagBijlageResponse"/>
+  </wsdl:message>
+  <!--ZAC verzoek operaties-->
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage">
+    <wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoon"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:aanmakenVerzoekNatuurlijkPersoonResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_InputMessage">
+    <wsdl:part name="parameters" element="tns:toevoegenVerzoekBijlage"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:toevoegenVerzoekBijlageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage">
+    <wsdl:part name="parameters" element="tns:indienenVerzoek"/>
+  </wsdl:message>
+  <wsdl:message name="IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:indienenVerzoekResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IGeneriekeFormulierAfhandeling">
+    <wsdl:operation name="Version">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" message="tns:IGeneriekeFormulierAfhandeling_Version_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/VersionResponse" message="tns:IGeneriekeFormulierAfhandeling_Version_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Info">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" message="tns:IGeneriekeFormulierAfhandeling_Info_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/InfoResponse" message="tns:IGeneriekeFormulierAfhandeling_Info_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="maakInkomendDocumentregistratie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratieResponse" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="bewaarDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocumentResponse" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanInkNatuurlijkPersoon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanBijlage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanBijlage_OutputMessage"/>
+    </wsdl:operation>
+    <!--toevoeging leerlingvervoer-->
+    <wsdl:operation name="opslaanAanvraagNatuurlijkPersoon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagNatuurlijkPersoon_OutputMessage"/>
+    </wsdl:operation>
+    <!--toevoeging leerlingvervoer bijlage-->
+    <wsdl:operation name="opslaanAanvraagBijlage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanAanvraagBijlage_OutputMessage"/>
+    </wsdl:operation>
+    <!--ZAC verzoek operaties-->
+    <wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_aanmakenVerzoekNatuurlijkPersoon_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="toevoegenVerzoekBijlage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlage" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlageResponse" message="tns:IGeneriekeFormulierAfhandeling_toevoegenVerzoekBijlage_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="indienenVerzoek">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoekResponse" message="tns:IGeneriekeFormulierAfhandeling_indienenVerzoek_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" type="tns:IGeneriekeFormulierAfhandeling">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Version">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/Version" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Info">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="maakInkomendDocumentregistratie">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bewaarDocument">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanInkNatuurlijkPersoon">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opslaanBijlage">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <!--Leerlingvervoer-->
+    <wsdl:operation name="opslaanAanvraagNatuurlijkPersoon">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagNatuurlijkPersoon" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <!--toevoeging leerlingvervoer bijlage-->
+    <wsdl:operation name="opslaanAanvraagBijlage">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanAanvraagBijlage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <!--ZAC verzoek operaties-->
+    <wsdl:operation name="aanmakenVerzoekNatuurlijkPersoon">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toevoegenVerzoekBijlage">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="indienenVerzoek">
+      <soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GeneriekeFormulierAfhandeling">
+    <wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
+      <soap:address location="https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker"/>
+    </wsdl:port>
+  </wsdl:service>
+  <!--<wsdl:service name="GeneriekeFormulierAfhandeling">
 						<wsdl:port name="BasicHttpBinding_IGeneriekeFormulierAfhandeling" binding="tns:BasicHttpBinding_IGeneriekeFormulierAfhandeling">
 						<soap:address location="http://localhost:59830/corsakoppeling/GeneriekeFormulierAfhandeling.svc"/>
 						</wsdl:port>
-						</wsdl:service> -->
-				</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#WebformulierenverwerkerEndpoint}services/WebformulierenVerwerker</con:endpoint><con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint></con:endpoints>
+						</wsdl:service>-->
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>${#Project#WebformulierenverwerkerEndpoint}services/WebformulierenVerwerker</con:endpoint><con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint><con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint></con:endpoints>
     <con:operation id="40c0c4cd-c1e0-4c92-ae7b-dabd182dd902" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" name="bewaarDocument" bindingOperationName="bewaarDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="99632a61-0368-4e98-bc7f-24bc92fab2a2" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -813,7 +820,7 @@
       <con:call id="d3fe8dfc-9115-4231-8a15-992e545c72ec" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -829,7 +836,7 @@
       <con:call id="1dac590e-1e87-46d9-8600-b57f07508380" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -856,7 +863,7 @@
       <con:call id="069ed658-2201-45f5-a81e-73fa860b4e79" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -881,7 +888,7 @@
       <con:call id="f58b45a4-6757-49ef-93e6-04c038847984" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -908,7 +915,7 @@
       <con:call id="f95fec69-2ba0-464c-9ac9-06a998a8cdd9" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -931,7 +938,7 @@
       <con:call id="ec5e5269-aeb7-46c4-9274-4951bcb40510" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -966,7 +973,7 @@
       <con:call id="ade30f7b-60ad-4b88-a5f1-1a4140850981" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -1001,7 +1008,7 @@
       <con:call id="467d1b2b-f40a-4e61-9d1a-cb1ff8b874e4" name="Request 1">
         <con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>https://tsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
+        <con:endpoint>https://testtsjinstbus.sudwestfryslan.nl/webformulierenverwerker/services/WebformulierenVerwerker</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -1017,7 +1024,7 @@
     </con:operation>
   
     <con:operation id="0e83b8c8-2966-4cb9-9e51-ab007ad24811" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon" name="aanmakenVerzoekNatuurlijkPersoon" bindingOperationName="aanmakenVerzoekNatuurlijkPersoon" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation>
-    <con:operation id="7ad25b42-57b1-4554-b5dd-1a0773b89e39" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekDocument" name="toevoegenVerzoekDocument" bindingOperationName="toevoegenVerzoekDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation>
+    <con:operation id="7ad25b42-57b1-4554-b5dd-1a0773b89e39" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/toevoegenVerzoekBijlage" name="toevoegenVerzoekBijlage" bindingOperationName="toevoegenVerzoekBijlage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation>
     <con:operation id="9c6c9ef5-2e73-4a37-a61d-9b671b5c2f95" isOneWay="false" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/indienenVerzoek" name="indienenVerzoek" bindingOperationName="indienenVerzoek" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation>
   </con:interface>
   <con:testSuite id="8f30f011-7a01-4631-af30-a68f6183b6e6" name="TestSuites">
@@ -1621,9 +1628,9 @@
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
-            <con:property><con:name>verzoekIdentificatie</con:name><con:value/></con:property>
-            <con:property><con:name>pdfDocumentUuid</con:name><con:value/></con:property>
-            <con:property><con:name>xmlDocumentUuid</con:name><con:value/></con:property><con:property><con:name>bijlageUuid</con:name><con:value/></con:property>
+            <con:property><con:name>verzoekIdentificatie</con:name><con:value>ac15001c--1f0c3f49_19f1aa982d6_-7fa9</con:value></con:property>
+            <con:property><con:name>pdfDocumentUuid</con:name><con:value>74c10221-7035-4630-9543-65495c4ee370</con:value></con:property>
+            <con:property><con:name>xmlDocumentUuid</con:name><con:value>b034d340-aad1-43bd-8793-99d57a68555f</con:value></con:property><con:property><con:name>bijlageUuid</con:name><con:value>01de2f90-647a-4229-94aa-c29f8024d54f</con:value></con:property>
           </con:properties>
         </con:config>
       </con:testStep>
@@ -1641,7 +1648,7 @@
     </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1e495646-4e31-4f7b-8c0a-761daf4b3ea9" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/IGeneriekeFormulierAfhandeling/aanmakenVerzoekNatuurlijkPersoon"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep>
       <con:testStep type="transfer" name="01b-getVerzoekData" id="48e05879-7550-42da-981f-f2b59efd591a"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false"><con:name>verzoekIdentificatie</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>01-aanmakenVerzoekNatuurlijkPersoon</con:sourceStep><con:sourcePath>declare namespace tns='http://tempuri.org/'; //tns:verzoekIdentificatie</con:sourcePath><con:targetType>verzoekIdentificatie</con:targetType><con:targetStep>Properties</con:targetStep><con:targetPath/><con:type>XPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false"><con:name>pdfDocumentUuid</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>01-aanmakenVerzoekNatuurlijkPersoon</con:sourceStep><con:sourcePath>declare namespace tns='http://tempuri.org/'; //tns:pdfDocumentUuid</con:sourcePath><con:targetType>pdfDocumentUuid</con:targetType><con:targetStep>Properties</con:targetStep><con:targetPath/><con:type>XPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false"><con:name>xmlDocumentUuid</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>01-aanmakenVerzoekNatuurlijkPersoon</con:sourceStep><con:sourcePath>declare namespace tns='http://tempuri.org/'; //tns:xmlDocumentUuid</con:sourcePath><con:targetType>xmlDocumentUuid</con:targetType><con:targetStep>Properties</con:targetStep><con:targetPath/><con:type>XPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep>
-            <con:testStep type="request" name="02-toevoegenVerzoekDocument" id="03b78734-eba0-4a5f-856c-d934fa517f77" disabled="false"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BasicHttpBinding_IGeneriekeFormulierAfhandeling</con:interface><con:operation>toevoegenVerzoekDocument</con:operation><con:request name="02-toevoegenVerzoekDocument" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a99e23f3-019c-487b-aaac-71f7acd4b26c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#WebformulierenverwerkerEndpoint}services/WebformulierenVerwerker</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            <con:testStep type="request" name="02-toevoegenVerzoekDocument" id="03b78734-eba0-4a5f-856c-d934fa517f77" disabled="false"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BasicHttpBinding_IGeneriekeFormulierAfhandeling</con:interface><con:operation>toevoegenVerzoekBijlage</con:operation><con:request name="02-toevoegenVerzoekDocument" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a99e23f3-019c-487b-aaac-71f7acd4b26c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#WebformulierenverwerkerEndpoint}services/WebformulierenVerwerker</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
     <soapenv:Header/>
     <soapenv:Body>
