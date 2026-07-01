@@ -46,9 +46,15 @@
 
 ⚠️ Slechts 1 document zichtbaar (PDF), XML-aanvraagdata en bijlage ontbreken. Mogelijk ZAC-kant document-koppeling issue.
 
-**Fix ec225d7 ingezet:** lege bijlage-UUIDs worden nu gefilterd uit de productaanvraag JSON (`$bijlageUuids[normalize-space(.) != '']`). Container bijgewerkt + reload gedaan.
+**Fix ec225d7 ingezet:** lege bijlage-UUIDs worden nu gefilterd. Container bijgewerkt + reload gedaan.
 
-Sessie A: na Docker-rebuild ZAC opnieuw testen met de SoapUI ZAC testcase.
+**ZAAK-2026-0000000048 aangemaakt (01-07-2026 02:23)** ✅
+- Omschrijving: "Aanvraag leerlingenvervoer voor Jan Staart" ✅
+- PDF (Formulier) ✅
+- Bijlage ✅
+- XML aanvraagdata ontbreekt ⚠️ — zit als `"csv"` veld in productaanvraag JSON
+
+**Vraag voor Sessie A:** linkt ZAC het `"csv"` veld uit de productaanvraag JSON als informatieobject aan de zaak? Of is dat niet geïmplementeerd?
 
 ---
 
