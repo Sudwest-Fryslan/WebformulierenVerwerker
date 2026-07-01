@@ -108,12 +108,8 @@ Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8090`) voor he
 ---
 
 <details>
-<summary>🐸 Foar de Fryske lêzer</summary>
+<summary>🐸</summary>
 
-> *"Wy ferwurkje jo formulieren mei soarch en fluggens — sûnder ien rigel Java-koade."*
->
-> Dizze yntegraasjebrêge is boud foar Súdwest-Fryslân, de grutste gemeente fan Fryslân. Fan Snits oant Ljouwert, fan Harns oant It Hearrenfean — elke webformulier-oanfraach komt hjir goed telâne.
->
-> 🌊 *Grutsk makke yn it Heitelân.*
+> *Makke foar Súdwest-Fryslân. Wurket.*
 
 </details>
