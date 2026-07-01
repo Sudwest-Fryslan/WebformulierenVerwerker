@@ -1,41 +1,74 @@
 # WebformulierenVerwerker
 
-Communicate between Kodison and Corsa. This configuration transforms incoming Kodison messages and makes them into Corsa requests. The responses are then transformed into messages accepted by Kodison.
+De WebformulierenVerwerker verwerkt aanvragen uit gemeentelijke webformulieren en registreert deze, inclusief documenten en metadata, in de daarvoor bestemde zaak- en documentbeheersystemen. Het onderdeel werkt als integratiebrug tussen Atabix/Kodison (het webformulierenplatform van SWF) en de backendkoppelingen met Corsa, CAReL en ZAC.
 
-This application processes SOAP requests that satisfy a WSDL that has been copied from the predecessor of this bridge. The WSDL is included in this project.
+De applicatie bevat geen eigen Java-code. Alle verwerkingslogica is beschreven in Frank!Framework XML-adapters en XSLT-stylesheets.
 
-## Testing
-This project can be tested using the SoapUI project in the Tests folder. For local testing you must run the Mockservice contained within the SoapUI project and then run the General Tests testcase. For testing on a configured test environment you will not need the mockservice. However, you will have to change the project's custom property "WebformulierenVerwerkerEndpoint" to the Corsa endpoint. 
+## Ondersteunde koppelingen
 
-The mockservice runs on port 8081. Communication with the Frank! is presumed to be on port 8080.
+**Corsa** (documentbeheer):
+- `opslaanInkNatuurlijkPersoon` — document opslaan voor een burger (BSN-opzoeken of aanmaken)
+- `opslaanInkNietNatuurlijkPersoon` — document opslaan voor een organisatie (KvK-opzoeken of aanmaken)
+- `opslaanBijlage` — bijlage toevoegen aan een bestaand Corsa-document
+- `opslaanInk` — document opslaan zonder persoonskoppeling
 
-## Advanced Information
+**CAReL** (zaakregistratie via StUF/ZDS):
+- `opslaanAanvraagNatuurlijkPersoon` — zaak aanmaken in CAReL voor een burger, inclusief PDF en XML-aanvraagdata
+- `opslaanAanvraagBijlage` — bijlage toevoegen aan een bestaande CAReL-zaak
 
-The WebformulierenVerwerker is a Frank! which runs on Frank!Framework version 7.9-20231002.120318. This version may differ in production as it is currently deployed on Het Integratie Platform which runs its own version of the Framework.
+**ZAC** (zaakregistratie via Dimpact productaanvraag-flow):
+- `aanmakenVerzoekNatuurlijkPersoon` — PDF en XML uploaden naar de Documenten API
+- `toevoegenVerzoekDocument` — aanvullende bijlage uploaden naar de Documenten API
+- `indienenVerzoek` — productaanvraag plaatsen in de Objecten API, waarna ZAC automatisch een zaak aanmaakt via de Notificaties API
 
-Every incoming message arrives at Configuration_WebformulierenVerwerkerDispatcher.xml under the adapter WebformulierenVerwerker. It is in that adapter that a WebserviceListener receives the incoming SOAP messages. After validating the input using the file GeneriekeFormulierAfhandeling.wsdl the configuration unwraps the message. 
-A XMLSwitchPipe determines the flow based on the action noted in the input. (i.e. action "Version" will follow the VersionAction flow.)
-It then stores the SoapAction in a sessionkey so it can be used for logging and errorHandling later on.
-The last action the WebformulierenVerwerker adapter takes is to call the adapter corresponding to the action. 
+## Hoe het werkt
 
-The next steps are taken by the adapter corresponding to the action. In this description we will discuss the most complex adapter in the hope that other adapters will become easier to figure out on your own.
-Presuming that the action was "opslaanInkNatuurlijkPersoon", we follow the flow to it's respective adapter in Configuration_WebformulierenVerwerker.xml.
+Alle inkomende berichten komen binnen via één SOAP-listener in `Configuration_WebformulierenVerwerkerDispatcher.xml`. De dispatcher valideert het bericht tegen de WSDL, haalt de operatienaam op en roept de bijbehorende adapter aan.
 
-The first step the adapter opslaanInkNatuurlijkPersoon takes is to apply a locker. The locker is used to prevent issues with multiple messages coming in at the same time.
-The adapter then prepares and sends a connect request to Corsa. Once a confirmation of a successful connection attempt is returned, the configuration checks if a BSN element is present in the input message. If one is present then the configuration sends a query to Corsa to retrieve the corresponding person registration. If there is no BSN included then the configuration does not aim to connect the input message to a person registration and moves on to storing the input document.
+Elke adapter verwerkt één operatie van begin tot eind: verzoek transformeren → backend aanroepen → respons transformeren.
 
-The person registration query aims to return one result or none at all. In the event that a person registration is found, we get exactly one result back. This result is then used to extract the person registration number so that it may be used to connect the incoming documents to that person (Pipe "GetSPNum").
-If no result is found, we make the presumption that no person registration is present and that the Frank! is responsible for creating one. In this case we send a request to create a person registration (Pipe "ConvertToCreatePerson").
+```
+Atabix/Kodison → Frank!Framework (SOAP, poort 8090)
+  Corsa-flow    → Corsa SOAP webservice (documentbeheer)
+  CAReL-flow    → OpenZaakBrug (ID-generatie) + CAReL (zaakregistratie via StUF/ZDS)
+  ZAC-flow      → Documenten API + Objecten API → Notificaties API → ZAC
+```
 
-After the work with person registration documents has finished, the Frank! gets to processing the input document. It proceeds to first register the document in Corsa. If successful, it sends another request to Corsa but this time it is a request to assign a version to the file that the Frank! just registered in Corsa. The request is created in pipe "ConvertToCreateFileVersion".
-If every step so far has been succesful, we send a disconnect request and store the authentication value in our database (Pipe "StoreVertrouwelijkheid"). This authentication value is necessary for the OpslaanBijlage adapter as it requires this value but is not given the value in the input.
+## Lokaal draaien
 
-Under any circumstance, the Frank! will attempt to do proper error handling. In the event that an error message is returned at any of the sender pipes, the Frank! will immediately transfer the returned message to the pipe storeErrorResponse. Shortly after a properly readable error message is created which contains additional information that may be useful to the user. Java errors in other pipes are not always handled this way as they do not tend to contain information that is useful to the user.
+```bash
+# Ontwikkeling met hot-reload (voorkeur)
+docker compose -f compose.frank.dev.yaml up --build --force-recreate --watch
 
-The description above does not describe every pipe in the pipeline, but it is safe to assume that every part takes the same steps:
-1. Create the request
-2. Wrap the request
-3. Validate the request
-4. Send the request
-5. Unwrap the response
-6. Check if response is succesful
+# Productie-image
+docker compose up
+```
+
+De Frank!Framework-console is bereikbaar op **poort 8090**. Mockservices voor testen draaien op **poort 8081**.
+
+Hot-reload werkt via `ScanningDirectoryClassLoader` — wijzigingen in XML-adapters en XSL-bestanden worden automatisch opgepakt zonder herstart.
+
+## Testen
+
+Testen gaan via SoapUI. Het projectbestand staat in de repository-root:
+
+```
+webformulierenverwerker-soapui-project.xml
+```
+
+Het bevat testcases voor alle koppelingen (Corsa, CAReL, ZAC). Voor lokaal testen moet de mockservice in het SoapUI-project actief zijn.
+
+Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console) voor het debuggen van berichtstromen.
+
+## Documentatie
+
+- [`docs/corsa-carel-flow.md`](docs/corsa-carel-flow.md) — werking Corsa- en CAReL-koppeling
+- [`docs/zac-koppeling-flow.md`](docs/zac-koppeling-flow.md) — overzicht ZAC-koppeling
+- [`docs/zac-koppeling-koppelvlak.md`](docs/zac-koppeling-koppelvlak.md) — koppelvlakspecificatie voor Atabix/Kodison
+- [`docs/zac-koppeling-setup.md`](docs/zac-koppeling-setup.md) — configuratiehandleiding ZAC-koppeling
+- [`docs/gevonden-issues.md`](docs/gevonden-issues.md) — bekende issues en workarounds
+- [`docs/Corsa_Webservice_Technical_Description_v1.0.60.pdf`](docs/Corsa_Webservice_Technical_Description_v1.0.60.pdf) — Corsa API-referentie
+
+## Licentie
+
+EUPL v1.2 — zie [LICENSE.md](LICENSE.md).

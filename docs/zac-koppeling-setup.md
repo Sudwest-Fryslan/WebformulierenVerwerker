@@ -85,19 +85,13 @@ zac.objecten.token=<token uit objecten-api admin>
 ```
 
 ### Adapters
-| Adapter | Doel |
-|---------|------|
-| `aanmakenVerzoekNatuurlijkPersoon` | Verzoek aanmaken voor burger (BSN) |
-| `toevoegenVerzoekBijlage` | Bijlage toevoegen aan verzoek |
-| `indienenVerzoek` | Productaanvraag plaatsen in Objecten API → triggert ZAC |
 
-### Adapters
 | Adapter | Doel |
 |---------|------|
 | `ZacJwtToken` | Sub-adapter: genereert vers ZGW JWT Bearer token per aanvraag (HmacSHA256) |
-| `aanmakenVerzoekNatuurlijkPersoon` | PDF + XML uploaden naar Documenten API, DRC-URLs + UUID terug |
-| `toevoegenVerzoekBijlage` | Bijlage uploaden naar Documenten API, DRC-URL terug |
-| `indienenVerzoek` | Productaanvraag posten naar Objecten API → triggert ZAC via Notificaties |
+| `aanmakenVerzoekNatuurlijkPersoon` | PDF + XML uploaden naar Documenten API; DRC-URLs + UUID terug naar Kodison |
+| `toevoegenVerzoekDocument` | Bijlage uploaden naar Documenten API; DRC-URL terug naar Kodison |
+| `indienenVerzoek` | Productaanvraag posten naar Objecten API → triggert ZAC via Notificaties API |
 
 ## Docker stack opstarten
 
