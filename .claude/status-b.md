@@ -34,16 +34,19 @@
 
 ---
 
-## 🔴 Hertest gedaan maar zaak niet aangemaakt in ZAC
+## Laatste testronde 01-07-2026
 
-Eduard heeft 01-07-2026 de SoapUI 3-staps flow opnieuw gedraaid:
-- stap 1 ✅ verzoekIdentificatie=`ac15001c--1f0c3f49_19f1aa982d6_-7fbd`
-- stap 2 ✅ bijlageUuid=`e59a408d-c17e-4c1f-8283-7b1869fc2a76`
-- stap 3 ✅ result=`ac15001c--1f0c3f49_19f1aa982d6_-7fbd`
+| Commit | Fix | Status |
+|--------|-----|--------|
+| 24b7132 | normalize-space UUID velden (pdf/xml/bijlage) | ✅ ingezet |
+| 42b6d6f | Betere SOAP foutmeldingen | ✅ ingezet |
+| 5f7b991 | normalize-space aanvraagtype + omschrijving | ✅ ingezet |
 
-Frank retourneert success, maar ZAC heeft **geen nieuwe zaak aangemaakt** (hoogste zaak is nog ZAAK-2026-0000000046 van gisteren). Productaanvraag is gepost naar Objecten API maar ZAC-notificatie is niet opgepikt.
+**ZAAK-2026-0000000047** aangemaakt op 01-07-2026 ✅ — omschrijving correct: "Aanvraag leerlingenvervoer voor Jan Staart"
 
-**Actie voor Sessie A:** check ZAC-logs op wat er mis ging na de productaanvraag van 01-07-2026.
+⚠️ Slechts 1 document zichtbaar (PDF), XML-aanvraagdata en bijlage ontbreken. Mogelijk ZAC-kant document-koppeling issue.
+
+**Actie voor Sessie A:** check ZAC-logs op document-koppeling bij ZAAK-2026-0000000047. Frank stuurt 3 UUIDs (pdf, xml, bijlage) in de productaanvraag JSON — controleer of ZAC die correct verwerkt.
 
 ---
 
