@@ -2,7 +2,7 @@
 
 Beschrijft de werking van de bestaande (hybride) koppelingen met Corsa (documentbeheer) en CAReL (zaaksysteem via StUF/ZDS). Deze koppelingen draaien naast de nieuwe ZAC-koppeling.
 
-Bijgewerkt: 01 juli 2026.
+Bijgewerkt: 02 juli 2026.
 
 ---
 

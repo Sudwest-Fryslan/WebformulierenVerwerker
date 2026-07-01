@@ -2,7 +2,7 @@
 
 Technische afspraken tussen het Kodison-webformuliersysteem (Hein) en de WebformulierenVerwerker voor het aanmaken van zaken in ZAC.
 
-Bijgewerkt: 01 juli 2026.
+Bijgewerkt: 02 juli 2026.
 
 ---
 

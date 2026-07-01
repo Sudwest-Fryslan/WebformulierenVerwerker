@@ -2,7 +2,7 @@
 
 Beschrijft de volledige gegevensstroom van Kodison (webformulieren) naar ZAC (zaakafhandelcomponent) via de WebformulierenVerwerker.
 
-Bijgewerkt: 01 juli 2026.
+Bijgewerkt: 02 juli 2026.
 
 ---
 
