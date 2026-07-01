@@ -104,12 +104,3 @@ Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8090`) voor he
 ## ⚖️ Licentie
 
 [EUPL v1.2](LICENSE.md) — Europese Unie Publieke Licentie
-
----
-
-<details>
-<summary>🐸</summary>
-
-> *Makke foar Súdwest-Fryslân. Wurket.*
-
-</details>
