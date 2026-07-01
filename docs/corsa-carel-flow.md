@@ -146,7 +146,7 @@ voegZaakdocumentToe_Lk01 (CAReL) — XML-aanvraagdata toevoegen aan zaak
 Response naar Kodison met zaakidentificatie
 ```
 
-**Aanvraagtype-switch:** de adapter schakelt op basis van het `aanvraagtype`-veld in het SOAP-verzoek. Momenteel is alleen `leerlingenvervoer` geconfigureerd. Een nieuw aanvraagtype vereist een nieuwe XSL-mapping onder `xsl/OpslaanAanvraag<Type>NatuurlijkPersoon/`.
+**Aanvraagtype-switch:** de adapter schakelt op basis van het `aanvraagtype`-veld in het SOAP-verzoek. Momenteel is alleen `leerlingenvervoer` geconfigureerd en getest. Meer aanvraagtypen worden in de toekomst toegevoegd. Een nieuw aanvraagtype vereist een nieuwe XSL-mapping onder `xsl/OpslaanAanvraag<Type>NatuurlijkPersoon/` en een extra forward in de `XmlSwitchPipe` in `Configuration_OpslaanAanvraagNatuurlijkPersoon.xml`.
 
 **Asynchroon:** de CAReL-aanroepen (`creeerZaak_Lk01`, `voegZaakdocumentToe_Lk01`) zijn asynchroon — CAReL bevestigt ontvangst maar verwerkt de zaak pas daarna. De verwerker wacht niet op de definitieve zaakverwerking.
 

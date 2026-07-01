@@ -28,6 +28,19 @@
             </SenderPipe>
             <PutInSessionPipe name="StoreInfoCacheResult" sessionKey="InfoCacheResult"/>
 
+            <!-- Geef een duidelijke fout als het verzoek niet in de cache staat (bijv. na herstart) -->
+            <XmlSwitchPipe name="CheckVerzoekBestaatInCache"
+                           getInputFromSessionKey="InfoCacheResult"
+                           xpathExpression="count(//row) = 0">
+                <Forward name="true" path="VerzoekNietGevonden"/>
+                <Forward name="false" path="ExtractAfzenderBsn"/>
+                <Forward name="exception" path="isErrorXML"/>
+            </XmlSwitchPipe>
+            <FixedResultPipe name="VerzoekNietGevonden"
+                             returnString="verzoekIdentificatie niet gevonden. Het verzoek is mogelijk verlopen (ouder dan 7 dagen) of de applicatie is herstart na stap 1.">
+                <Forward name="success" path="isErrorXML"/>
+            </FixedResultPipe>
+
             <XsltPipe name="ExtractAfzenderBsn" xpathExpression="//field[@name='AFZENDER']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
