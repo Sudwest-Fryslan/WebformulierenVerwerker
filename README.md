@@ -10,7 +10,7 @@ De applicatie bevat geen eigen Java-code. Alle logica zit in **Frank!Framework**
 
 ---
 
-## Hoe het werkt
+## 🔄 Hoe het werkt
 
 ```
 Atabix / Kodison  ──SOAP──►  WebformulierenVerwerker (Frank!Framework, :8090)
@@ -25,7 +25,7 @@ Alle inkomende berichten komen binnen via één SOAP-listener. De dispatcher val
 
 ---
 
-## Ondersteunde koppelingen
+## 🔌 Ondersteunde koppelingen
 
 ### Corsa — documentbeheer
 
@@ -55,7 +55,7 @@ Alle inkomende berichten komen binnen via één SOAP-listener. De dispatcher val
 
 ---
 
-## Lokaal draaien
+## 🚀 Lokaal draaien
 
 ```bash
 # Ontwikkeling met hot-reload (voorkeur)
@@ -74,7 +74,7 @@ Wijzigingen in XML-adapters en XSL-bestanden worden automatisch opgepakt zonder 
 
 ---
 
-## Testen
+## 🧪 Testen
 
 Testen gaan via **SoapUI**. Het projectbestand staat in de repository-root:
 
@@ -88,7 +88,7 @@ Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8090`) voor he
 
 ---
 
-## Documentatie
+## 📚 Documentatie
 
 | Document | Inhoud |
 |----------|--------|
@@ -101,6 +101,19 @@ Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8090`) voor he
 
 ---
 
-## Licentie
+## ⚖️ Licentie
 
 [EUPL v1.2](LICENSE.md) — Europese Unie Publieke Licentie
+
+---
+
+<details>
+<summary>🐸 Foar de Fryske lêzer</summary>
+
+> *"Wy ferwurkje jo formulieren mei soarch en fluggens — sûnder ien rigel Java-koade."*
+>
+> Dizze yntegraasjebrêge is boud foar Súdwest-Fryslân, de grutste gemeente fan Fryslân. Fan Snits oant Ljouwert, fan Harns oant It Hearrenfean — elke webformulier-oanfraach komt hjir goed telâne.
+>
+> 🌊 *Grutsk makke yn it Heitelân.*
+
+</details>
