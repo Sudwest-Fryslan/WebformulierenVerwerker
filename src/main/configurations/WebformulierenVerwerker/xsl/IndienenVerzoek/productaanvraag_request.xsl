@@ -49,7 +49,7 @@
                 <xsl:text>"pdf": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space($pdfDocumentUuid))"/><xsl:text>",</xsl:text>
                 <xsl:text>"csv": "</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space($xmlDocumentUuid))"/><xsl:text>",</xsl:text>
                 <xsl:text>"bijlagen": [</xsl:text>
-                    <xsl:for-each select="$bijlageUuids">
+                    <xsl:for-each select="$bijlageUuids[normalize-space(.) != '']">
                         <xsl:if test="position() > 1"><xsl:text>,</xsl:text></xsl:if>
                         <xsl:text>"</xsl:text><xsl:value-of select="concat($documentenUrl, '/enkelvoudiginformatieobjecten/', normalize-space(.))"/><xsl:text>"</xsl:text>
                     </xsl:for-each>
