@@ -18,7 +18,7 @@ docker compose -f compose.frank.dev.yaml up --build --force-recreate --watch
 docker compose up
 ```
 
-The app runs on **port 8080**. Mock services (for e2e tests) run on **port 8081**.
+The app runs on **port 8090**. Mock services (for e2e tests) run on **port 8081**.
 
 Hot-reload works via `ScanningDirectoryClassLoader` — changes to XML configs and XSL files are picked up automatically without restart.
 
@@ -63,7 +63,10 @@ jar cvf WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVer
 |------|-------|
 | Main config entry point | `src/main/configurations/WebformulierenVerwerker/Configuration.xml` |
 | Dispatcher (SOAP routing) | `Configuration_WebformulierenVerwerkerDispatcher.xml` |
-| Action adapters | `Configuration_Opslaan*.xml`, `Configuration_Version.xml`, `Configuration_Info.xml` |
+| Corsa/CAReL adapters | `Configuration_Opslaan*.xml`, `Configuration_Version.xml`, `Configuration_Info.xml` |
+| ZAC adapters | `Configuration_AanmakenVerzoekNatuurlijkPersoon.xml`, `Configuration_ToevoegenVerzoekDocument.xml`, `Configuration_IndienenVerzoek.xml` |
+| ZAC JWT token | `Configuration_ZacJwtToken.xml` — generates fresh HS256 JWT per request |
+| Nightly cleanup | `Configuration_CleanupVerlopenVerzoeken.xml` — deletes expired INFO_CACHE entries |
 | XSLT transformations | `src/main/configurations/WebformulierenVerwerker/xsl/` (per-action subfolders + `Common/`) |
 | App properties (URLs, StUF headers) | `src/main/configurations/WebformulierenVerwerker/DeploymentSpecifics.properties` |
 | Framework properties | `src/main/resources/DeploymentSpecifics.properties` |
@@ -84,11 +87,12 @@ jar cvf WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVer
 - `opslaanAanvraagBijlage` — store request attachment
 
 **ZAC flow (new — feature/zac-koppeling):**
-- `aanmakenVerzoekNatuurlijkPersoon` — uploads PDF + XML to Documenten API, returns DRC URLs + a UUID (`verzoekIdentificatie`) to Kodison
-- `toevoegenVerzoekBijlage` — uploads a single attachment to Documenten API, returns its DRC URL
-- `indienenVerzoek` — receives the DRC URLs collected above, POSTs a `productaanvraag` JSON object to the Objecten API; a Notificaties API listener in ZAC picks this up and creates the zaak automatically
+- `aanmakenVerzoekNatuurlijkPersoon` — uploads PDF + XML to Documenten API, stores UUIDs in INFO_CACHE, returns `verzoekIdentificatie` (UUID) + DRC URLs to Kodison
+- `toevoegenVerzoekDocument` — uploads a single attachment to Documenten API, stores UUID in VERZOEK_BIJLAGEN, returns DRC URL
+- `indienenVerzoek` — reads INFO_CACHE + VERZOEK_BIJLAGEN, POSTs a complete `productaanvraag` JSON to the Objecten API, then cleans up DB rows; ZAC picks this up via Notificaties API and creates the zaak automatically
+- `CleanupVerlopenVerzoeken` — nightly scheduler (02:00) that deletes INFO_CACHE and VERZOEK_BIJLAGEN entries older than 7 days
 
-The ZAC flow is **stateless from this application's perspective** — Kodison orchestrates the three calls and passes DRC URLs between them. No locker, no Corsa connection, no database writes.
+The ZAC flow uses **minimal temporary state**: document UUIDs and metadata are stored between the three Kodison calls (INFO_CACHE + VERZOEK_BIJLAGEN tables). After `indienenVerzoek` the rows are deleted. If Frank restarts between step 1 and step 3, `indienenVerzoek` returns a clear SOAP fault.
 
 ### External Systems
 
