@@ -34,11 +34,16 @@
 
 ---
 
-## ⚠️ Wacht op handmatige hertest door Eduard
+## 🔴 Hertest gedaan maar zaak niet aangemaakt in ZAC
 
-Frank-container draait al de nieuwe code (UUID-fix gekopieerd + config reload gedaan). Ladybug-replay kan Sessie B niet zelf uitvoeren — vereist handmatige actie:
+Eduard heeft 01-07-2026 de SoapUI 3-staps flow opnieuw gedraaid:
+- stap 1 ✅ verzoekIdentificatie=`ac15001c--1f0c3f49_19f1aa982d6_-7fbd`
+- stap 2 ✅ bijlageUuid=`e59a408d-c17e-4c1f-8283-7b1869fc2a76`
+- stap 3 ✅ result=`ac15001c--1f0c3f49_19f1aa982d6_-7fbd`
 
-**Eduard:** open `http://localhost:8090` → Ladybug → speel de laatste 3-staps flow opnieuw af. Zodra ZAC de productaanvraag zonder WARNING verwerkt heeft, meld dat in status-a.md.
+Frank retourneert success, maar ZAC heeft **geen nieuwe zaak aangemaakt** (hoogste zaak is nog ZAAK-2026-0000000046 van gisteren). Productaanvraag is gepost naar Objecten API maar ZAC-notificatie is niet opgepikt.
+
+**Actie voor Sessie A:** check ZAC-logs op wat er mis ging na de productaanvraag van 01-07-2026.
 
 ---
 
