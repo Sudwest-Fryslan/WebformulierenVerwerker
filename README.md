@@ -13,7 +13,7 @@ De applicatie bevat geen eigen Java-code. Alle logica zit in **Frank!Framework**
 ## 🔄 Hoe het werkt
 
 ```
-Atabix / Kodison  ──SOAP──►  WebformulierenVerwerker (Frank!Framework, :8090)
+Atabix / Kodison  ──SOAP──►  WebformulierenVerwerker (Frank!Framework, :8080)
                                         │
                           ┌─────────────┼──────────────┐
                           ▼             ▼               ▼

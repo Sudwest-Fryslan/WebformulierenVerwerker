@@ -56,7 +56,7 @@
                 <Forward name="opslaanAanvraagNatuurlijkPersoon" path="AanvraagPersoonSoapActionSetter" />
                 <Forward name="opslaanAanvraagBijlage" path="AanvraagBijlageSoapActionSetter" />
                 <Forward name="aanmakenVerzoekNatuurlijkPersoon" path="AanmakenVerzoekNatuurlijkPersoonSoapActionSetter" />
-                <Forward name="toevoegenVerzoekDocument" path="ToevoegenVerzoekBijlageSoapActionSetter" />
+                <Forward name="toevoegenVerzoekDocument" path="ToevoegenVerzoekDocumentSoapActionSetter" />
                 <Forward name="indienenVerzoek" path="IndienenVerzoekSoapActionSetter" />
             </XmlSwitchPipe>
             
@@ -202,12 +202,12 @@
                 <Forward name="exception" path="wrapOutput" />
             </SenderPipe>
 
-            <PutInSessionPipe name="ToevoegenVerzoekBijlageSoapActionSetter" sessionKey="SOAPAction"
+            <PutInSessionPipe name="ToevoegenVerzoekDocumentSoapActionSetter" sessionKey="SOAPAction"
                               value="toevoegenVerzoekDocumentResponse">
-                <Forward name="success" path="CallToevoegenVerzoekBijlage" />
+                <Forward name="success" path="CallToevoegenVerzoekDocument" />
             </PutInSessionPipe>
 
-            <SenderPipe name="CallToevoegenVerzoekBijlage">
+            <SenderPipe name="CallToevoegenVerzoekDocument">
                 <IbisLocalSender
                     name="toevoegenVerzoekDocumentLocalSender"
                     javaListener="toevoegenVerzoekDocument">

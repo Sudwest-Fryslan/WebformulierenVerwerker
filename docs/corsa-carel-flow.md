@@ -11,7 +11,7 @@ Bijgewerkt: 02 juli 2026.
 De WebformulierenVerwerker ontvangt één SOAP-bericht van Kodison en vertaalt dat naar de juiste reeks API-calls richting Corsa en/of CAReL.
 
 ```
-Kodison → WebformulierenVerwerker (Frank, poort 8090)
+Kodison → WebformulierenVerwerker (Frank, poort 8080)
   Corsa-flow:  → Corsa SOAP webservice (documentbeheer)
   CAReL-flow:  → OpenZaakBrug (ID-generatie) + CAReL (zaakregistratie via StUF/ZDS)
 ```
