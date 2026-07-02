@@ -19,7 +19,6 @@
         <Job name="CleanupVerlopenVerzoeken"
              cronExpression="0 0 2 * * ?"
              function="sendMessage"
-             adapterName="CleanupVerlopenVerzoeken"
              javaListener="CleanupVerlopenVerzoeken"
              description="Ruim verlopen verzoeken op ouder dan 7 dagen (stap 3 nooit aangeroepen)"/>
     </Scheduler>

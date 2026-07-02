@@ -15,9 +15,9 @@
             </Exits>
 
             <!-- JWT header is altijd hetzelfde: {"typ":"JWT","alg":"HS256"} in base64url -->
-            <FixedResultPipe name="SetHeader" returnString="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9">
+            <EchoPipe name="SetHeader" getInputFromFixedValue="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9">
                 <Forward name="success" path="StoreHeader"/>
-            </FixedResultPipe>
+            </EchoPipe>
             <PutInSessionPipe name="StoreHeader" sessionKey="JwtHeader"/>
 
             <!-- Bouw payload JSON met huidige Unix-timestamp -->

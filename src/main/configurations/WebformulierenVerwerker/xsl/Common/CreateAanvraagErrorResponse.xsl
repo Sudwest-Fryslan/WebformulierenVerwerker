@@ -8,6 +8,7 @@
     <xsl:param name="soapAction" select="''" as="xs:string" />
     <xsl:param name="aanvraagErrorMessage" as="xs:string" />
     <xsl:param name="errorInfo" as="xs:string" />
+    <xsl:param name="targetUrl" select="''" as="xs:string" />
 
     <xsl:template match="/">
         <tns:Fault>
@@ -17,6 +18,9 @@
             </tns:faultstring>
             <tns:detail>
                 <tns:ErrorInfo><xsl:value-of select="$errorInfo" /></tns:ErrorInfo>
+                <xsl:if test="$targetUrl != ''">
+                    <tns:TargetUrl><xsl:value-of select="$targetUrl" /></tns:TargetUrl>
+                </xsl:if>
                 <tns:BackendResponse><xsl:value-of select="$aanvraagResponse" /></tns:BackendResponse>
             </tns:detail>
         </tns:Fault>

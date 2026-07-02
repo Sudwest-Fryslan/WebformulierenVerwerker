@@ -36,10 +36,10 @@
                 <Forward name="false" path="ExtractAfzenderBsn"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XmlSwitchPipe>
-            <FixedResultPipe name="VerzoekNietGevonden"
-                             returnString="verzoekIdentificatie niet gevonden. Het verzoek is mogelijk verlopen (ouder dan 7 dagen) of de applicatie is herstart na stap 1.">
+            <EchoPipe name="VerzoekNietGevonden"
+                      getInputFromFixedValue="verzoekIdentificatie niet gevonden. Het verzoek is mogelijk verlopen (ouder dan 7 dagen) of de applicatie is herstart na stap 1.">
                 <Forward name="success" path="isErrorXML"/>
-            </FixedResultPipe>
+            </EchoPipe>
 
             <XsltPipe name="ExtractAfzenderBsn" xpathExpression="//field[@name='AFZENDER']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
@@ -169,6 +169,7 @@
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
+                <Param name="targetUrl" value="${zac.objecten.url}/objects"/>
                 <Forward name="success" path="EXCEPTION"/>
             </XsltPipe>
 

@@ -199,6 +199,7 @@
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
+                <Param name="targetUrl" value="${zac.documenten.url}/enkelvoudiginformatieobjecten"/>
                 <Forward name="success" path="EXCEPTION"/>
             </XsltPipe>
 
