@@ -26,6 +26,9 @@ services:
     volumes:
       - h2-data:/opt/frank/h2:rw
       - logs:/usr/local/tomcat/logs:rw
+    networks:
+      - default
+      - zac_default
     develop:
       watch:
         - action: sync+restart
@@ -63,3 +66,8 @@ services:
 volumes:
   logs:
   h2-data:
+
+networks:
+  default:
+  zac_default:
+    external: true
