@@ -1628,9 +1628,9 @@
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
-            <con:property><con:name>verzoekIdentificatie</con:name><con:value>ac15001c--1f0c3f49_19f1aa982d6_-7fa9</con:value></con:property>
-            <con:property><con:name>pdfDocumentUuid</con:name><con:value>74c10221-7035-4630-9543-65495c4ee370</con:value></con:property>
-            <con:property><con:name>xmlDocumentUuid</con:name><con:value>b034d340-aad1-43bd-8793-99d57a68555f</con:value></con:property><con:property><con:name>bijlageUuid</con:name><con:value>01de2f90-647a-4229-94aa-c29f8024d54f</con:value></con:property>
+            <con:property><con:name>verzoekIdentificatie</con:name><con:value xsi:nil="true"/></con:property>
+            <con:property><con:name>pdfDocumentUuid</con:name><con:value xsi:nil="true"/></con:property>
+            <con:property><con:name>xmlDocumentUuid</con:name><con:value xsi:nil="true"/></con:property><con:property><con:name>bijlageUuid</con:name><con:value xsi:nil="true"/></con:property>
           </con:properties>
         </con:config>
       </con:testStep>
