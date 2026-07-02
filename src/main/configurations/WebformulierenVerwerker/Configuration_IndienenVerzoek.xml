@@ -12,11 +12,18 @@
                 <Exit name="EXCEPTION" state="ERROR"/>
             </Exits>
 
+            <!-- Foutcontext: onthoudt in welke stap het misgaat, zonder de berichtstroom te verstoren -->
+            <PutInSessionPipe name="SetStap_InlezenVelden" sessionKey="ErrorInfo"
+                               value="Inlezen verzoekIdentificatie uit binnenkomend verzoek"/>
+
             <!-- Enige SOAP-input: verzoekIdentificatie -->
             <XsltPipe name="GetVerzoekIdentificatie" xpathExpression="//verzoekIdentificatie">
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StoreVerzoekIdentificatie" sessionKey="VerzoekIdentificatie"/>
+
+            <PutInSessionPipe name="SetStap_OpzoekenCache" sessionKey="ErrorInfo"
+                               value="Opzoeken van verzoekgegevens in de INFO_CACHE-tabel"/>
 
             <!-- Lees alle metadata uit INFO_CACHE (opgeslagen door stap 1) -->
             <SenderPipe name="LeesAllesUitCache" getInputFromFixedValue="&lt;dummy/&gt;">
@@ -33,13 +40,19 @@
                            getInputFromSessionKey="InfoCacheResult"
                            xpathExpression="count(//row) = 0">
                 <Forward name="true" path="VerzoekNietGevonden"/>
-                <Forward name="false" path="ExtractAfzenderBsn"/>
+                <Forward name="false" path="SetStap_UitlezenCacheVelden"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XmlSwitchPipe>
+            <PutInSessionPipe name="SetStap_VerzoekNietGevonden" sessionKey="ErrorInfo"
+                               value="Controle of verzoekIdentificatie nog aanwezig is in de INFO_CACHE-tabel"/>
             <EchoPipe name="VerzoekNietGevonden"
                       getInputFromFixedValue="verzoekIdentificatie niet gevonden. Het verzoek is mogelijk verlopen (ouder dan 7 dagen) of de applicatie is herstart na stap 1.">
                 <Forward name="success" path="isErrorXML"/>
+                <Forward name="exception" path="isErrorXML"/>
             </EchoPipe>
+
+            <PutInSessionPipe name="SetStap_UitlezenCacheVelden" sessionKey="ErrorInfo"
+                               value="Uitlezen velden (afzender, omschrijving, aanvraagtype, document-UUID's) uit INFO_CACHE-resultaat"/>
 
             <XsltPipe name="ExtractAfzenderBsn" xpathExpression="//field[@name='AFZENDER']" getInputFromSessionKey="InfoCacheResult">
                 <Forward name="exception" path="isErrorXML"/>
@@ -71,6 +84,9 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagXml" sessionKey="AanvraagXml"/>
 
+            <PutInSessionPipe name="SetStap_OpzoekenBijlagen" sessionKey="ErrorInfo"
+                               value="Opzoeken van bijlage-UUID's in de VERZOEK_BIJLAGEN-tabel"/>
+
             <!-- Lees bijlage-UUIDs uit VERZOEK_BIJLAGEN (0..n bijlagen opgeslagen door stap 2) -->
             <SenderPipe name="LeesVerzoekBijlagen" getInputFromFixedValue="&lt;dummy/&gt;">
                 <FixedQuerySender queryType="select"
@@ -80,6 +96,9 @@
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
             <PutInSessionPipe name="StoreBijlageUuidsXml" sessionKey="BijlageUuidsXml"/>
+
+            <PutInSessionPipe name="SetStap_OpschonenCache" sessionKey="ErrorInfo"
+                               value="Opschonen van INFO_CACHE en VERZOEK_BIJLAGEN na uitlezen"/>
 
             <!-- Verwijder cache-entries na uitlezen -->
             <SenderPipe name="VerwijderInfoCacheEntry" getInputFromFixedValue="&lt;dummy/&gt;">
@@ -94,9 +113,12 @@
                 <FixedQuerySender
                     query="DELETE FROM VERZOEK_BIJLAGEN WHERE REGISTRATIENUMMER = ?"/>
                 <Param name="REGISTRATIENUMMER" sessionKey="VerzoekIdentificatie"/>
-                <Forward name="success" path="Transform_Productaanvraag_Body"/>
+                <Forward name="success" path="SetStap_OpbouwenProductaanvraag"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
+
+            <PutInSessionPipe name="SetStap_OpbouwenProductaanvraag" sessionKey="ErrorInfo"
+                               value="Opbouwen van de productaanvraag-JSON"/>
 
             <!-- Bouw productaanvraag JSON en POST naar Objecten API -->
             <XsltPipe name="Transform_Productaanvraag_Body"
@@ -115,9 +137,14 @@
                 <Param name="aanvraagXml" sessionKey="AanvraagXml" defaultValue=""/>
                 <Param name="omschrijving" sessionKey="Omschrijving" defaultValue=""/>
                 <Param name="bijlageUuidsXml" sessionKey="BijlageUuidsXml" defaultValue=""/>
-                <Forward name="success" path="Send_ProductaanvraagNaarObjectenApi"/>
+                <Forward name="success" path="SetStap_VerstureNaarObjectenApi"/>
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
+
+            <PutInSessionPipe name="SetStap_VerstureNaarObjectenApi" sessionKey="ErrorInfo"
+                               value="Versturen van de productaanvraag naar de ZAC Objecten API"/>
+            <PutInSessionPipe name="SetTargetUrl_VerstureNaarObjectenApi" sessionKey="TargetUrl"
+                               value="${zac.objecten.url}/objects"/>
 
             <!-- POST productaanvraag naar Objecten API → triggert dimpact-ZAC via notificatie -->
             <SenderPipe name="Send_ProductaanvraagNaarObjectenApi">
@@ -129,9 +156,12 @@
                     <Param name="Authorization" value="Token ${zac.objecten.token}"/>
                     <Param name="Content-Crs" value="EPSG:4326"/>
                 </HttpSender>
-                <Forward name="success" path="ConvertToResponse"/>
+                <Forward name="success" path="SetStap_OpbouwenRespons"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
+
+            <PutInSessionPipe name="SetStap_OpbouwenRespons" sessionKey="ErrorInfo"
+                               value="Opbouwen van de SOAP-respons naar Kodison"/>
 
             <!-- Bouw SOAP response -->
             <XsltPipe name="ConvertToResponse"
@@ -148,17 +178,22 @@
                 <Forward name="exception" path="isErrorXML"/>
             </SoapWrapperPipe>
 
-            <!-- Error Handling -->
+            <!-- Error Handling: elke tak eindigt gegarandeerd bij EXCEPTION, nooit bij een onafgevangen technische fout -->
             <IsXmlPipe name="isErrorXML">
                 <Forward name="then" path="storeErrorResponse"/>
                 <Forward name="else" path="errorToXML"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </IsXmlPipe>
 
-            <Text2XmlPipe xmlTag="error" name="errorToXML"/>
+            <Text2XmlPipe xmlTag="error" name="errorToXML">
+                <Forward name="success" path="storeErrorResponse"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="aanvraagResponse"/>
                 <Forward name="success" path="buildErrorMsg"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </PutInSessionPipe>
 
             <XsltPipe name="buildErrorMsg"
@@ -169,8 +204,9 @@
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
-                <Param name="targetUrl" value="${zac.objecten.url}/objects"/>
+                <Param name="targetUrl" sessionKey="TargetUrl" defaultValue=""/>
                 <Forward name="success" path="EXCEPTION"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </XsltPipe>
 
         </Pipeline>

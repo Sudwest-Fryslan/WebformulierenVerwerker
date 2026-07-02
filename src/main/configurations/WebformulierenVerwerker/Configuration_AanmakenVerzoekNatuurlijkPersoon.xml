@@ -12,6 +12,10 @@
                 <Exit name="EXCEPTION" state="ERROR"/>
             </Exits>
 
+            <!-- Foutcontext: onthoudt in welke stap het misgaat, zonder de berichtstroom te verstoren -->
+            <PutInSessionPipe name="SetStap_InlezenVelden" sessionKey="ErrorInfo"
+                               value="Inlezen SOAP-velden uit binnenkomend verzoek (afzenderbsn, bestandsnamen, bestandsdata)"/>
+
             <!-- Sla ruwe SOAP-velden op -->
             <XsltPipe name="GetAfzenderBsn" xpathExpression="//afzenderbsn">
                 <Forward name="exception" path="isErrorXML"/>
@@ -38,12 +42,18 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreAanvraagxmldata" sessionKey="Aanvraagxmldata"/>
 
+            <PutInSessionPipe name="SetStap_DecoderenXml" sessionKey="ErrorInfo"
+                               value="Decoderen van het base64-gecodeerde aanvraag-XML"/>
+
             <!-- Decodeer base64 XML → lees aanvraagtype, omschrijving, vertrouwelijkheid uit het XML-formulier -->
             <Base64Pipe name="DecodeAanvraagXml" direction="DECODE" getInputFromSessionKey="Aanvraagxmldata">
                 <Forward name="success" path="StoreAanvraagXmlDecoded"/>
                 <Forward name="exception" path="isErrorXML"/>
             </Base64Pipe>
             <PutInSessionPipe name="StoreAanvraagXmlDecoded" sessionKey="AanvraagXmlDecoded"/>
+
+            <PutInSessionPipe name="SetStap_UitlezenAanvraagtype" sessionKey="ErrorInfo"
+                               value="Uitlezen aanvraagtype/omschrijving/vertrouwelijkheid uit het aanvraag-XML"/>
 
             <XsltPipe name="GetAanvraagtype" xpathExpression="//aanvraagtype" getInputFromSessionKey="AanvraagXmlDecoded">
                 <Forward name="exception" path="isErrorXML"/>
@@ -60,6 +70,9 @@
             </XsltPipe>
             <PutInSessionPipe name="StoreVertrouwelijkheid" sessionKey="Vertrouwelijkheid"/>
 
+            <PutInSessionPipe name="SetStap_JwtOphalen" sessionKey="ErrorInfo"
+                               value="Genereren van JWT-token voor de ZAC Documenten API"/>
+
             <!-- Haal vers JWT op voor Documenten API calls -->
             <SenderPipe name="GetZacJwtToken">
                 <IbisLocalSender javaListener="ZacJwtToken"/>
@@ -67,6 +80,11 @@
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
             <PutInSessionPipe name="StoreZacJwtToken" sessionKey="ZacJwtToken"/>
+
+            <PutInSessionPipe name="SetStap_UploadenPdf" sessionKey="ErrorInfo"
+                               value="Uploaden van de aanvraag-PDF naar de ZAC Documenten API"/>
+            <PutInSessionPipe name="SetTargetUrl_UploadPdf" sessionKey="TargetUrl"
+                               value="${zac.documenten.url}/enkelvoudiginformatieobjecten"/>
 
             <!-- Stap 1: Upload PDF naar Documenten API -->
             <XsltPipe name="Transform_UploadPdf_Body"
@@ -104,6 +122,11 @@
                 <Forward name="exception" path="isErrorXML"/>
             </XsltPipe>
             <PutInSessionPipe name="StorePdfDocumentUrl" sessionKey="PdfDocumentUuid"/>
+
+            <PutInSessionPipe name="SetStap_UploadenXml" sessionKey="ErrorInfo"
+                               value="Uploaden van het aanvraag-XML naar de ZAC Documenten API"/>
+            <PutInSessionPipe name="SetTargetUrl_UploadXml" sessionKey="TargetUrl"
+                               value="${zac.documenten.url}/enkelvoudiginformatieobjecten"/>
 
             <!-- Stap 2: Upload XML-formulierdata naar Documenten API -->
             <XsltPipe name="Transform_UploadXml_Body"
@@ -144,7 +167,12 @@
 
             <!-- Genereer verzoekIdentificatie en sla alle metadata op in INFO_CACHE voor gebruik in stap 3 -->
             <UUIDGeneratorPipe name="GenerateVerzoekIdentificatie"
-                               storeResultInSessionKey="VerzoekIdentificatie"/>
+                               storeResultInSessionKey="VerzoekIdentificatie">
+                <Forward name="exception" path="isErrorXML"/>
+            </UUIDGeneratorPipe>
+
+            <PutInSessionPipe name="SetStap_WegschrijvenCache" sessionKey="ErrorInfo"
+                               value="Wegschrijven van verzoekgegevens naar de INFO_CACHE-tabel"/>
 
             <SenderPipe name="SlaAllesOpInCache" getInputFromFixedValue="&lt;dummy/&gt;">
                 <FixedQuerySender
@@ -157,9 +185,12 @@
                 <Param name="PDF_UUID" sessionKey="PdfDocumentUuid"/>
                 <Param name="XML_UUID" sessionKey="XmlDocumentUuid"/>
                 <Param name="AANVRAAG_XML" sessionKey="AanvraagXmlDecoded"/>
-                <Forward name="success" path="ConvertToResponse"/>
+                <Forward name="success" path="SetStap_OpbouwenRespons"/>
                 <Forward name="exception" path="isErrorXML"/>
             </SenderPipe>
+
+            <PutInSessionPipe name="SetStap_OpbouwenRespons" sessionKey="ErrorInfo"
+                               value="Opbouwen van de SOAP-respons naar Kodison"/>
 
             <!-- Bouw SOAP response met verzoekIdentificatie + beide DRC-URLs -->
             <XsltPipe name="ConvertToResponse"
@@ -178,17 +209,22 @@
                 <Forward name="exception" path="isErrorXML"/>
             </SoapWrapperPipe>
 
-            <!-- Error Handling -->
+            <!-- Error Handling: elke tak eindigt gegarandeerd bij EXCEPTION, nooit bij een onafgevangen technische fout -->
             <IsXmlPipe name="isErrorXML">
                 <Forward name="then" path="storeErrorResponse"/>
                 <Forward name="else" path="errorToXML"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </IsXmlPipe>
 
-            <Text2XmlPipe xmlTag="error" name="errorToXML"/>
+            <Text2XmlPipe xmlTag="error" name="errorToXML">
+                <Forward name="success" path="storeErrorResponse"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </Text2XmlPipe>
 
             <PutInSessionPipe name="storeErrorResponse">
                 <Param name="aanvraagResponse"/>
                 <Forward name="success" path="buildErrorMsg"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </PutInSessionPipe>
 
             <XsltPipe name="buildErrorMsg"
@@ -199,8 +235,9 @@
                 <Param name="aanvraagErrorMessage" sessionKey="aanvraagResponse" defaultValue="No Error Message"/>
                 <Param name="soapAction" sessionKey="RequestSoapAction"/>
                 <Param name="errorInfo" sessionKey="ErrorInfo" defaultValue="No Error Info"/>
-                <Param name="targetUrl" value="${zac.documenten.url}/enkelvoudiginformatieobjecten"/>
+                <Param name="targetUrl" sessionKey="TargetUrl" defaultValue=""/>
                 <Forward name="success" path="EXCEPTION"/>
+                <Forward name="exception" path="EXCEPTION"/>
             </XsltPipe>
 
         </Pipeline>

@@ -11,10 +11,12 @@
     <xsl:param name="targetUrl" select="''" as="xs:string" />
 
     <xsl:template match="/">
+        <xsl:variable name="soapActionPart" select="if ($soapAction != '') then concat('[', $soapAction, '] ') else ''" />
+        <xsl:variable name="stepPart" select="if ($errorInfo != '' and $errorInfo != 'No Error Info') then concat('[', $errorInfo, '] ') else ''" />
         <tns:Fault>
             <tns:faultcode>SOAP-ENV:Server</tns:faultcode>
             <tns:faultstring>
-                <xsl:value-of select="if ($soapAction != '') then concat('[', $soapAction, '] ', $aanvraagErrorMessage) else $aanvraagErrorMessage" />
+                <xsl:value-of select="concat($soapActionPart, $stepPart, $aanvraagErrorMessage)" />
             </tns:faultstring>
             <tns:detail>
                 <tns:ErrorInfo><xsl:value-of select="$errorInfo" /></tns:ErrorInfo>
@@ -22,6 +24,9 @@
                     <tns:TargetUrl><xsl:value-of select="$targetUrl" /></tns:TargetUrl>
                 </xsl:if>
                 <tns:BackendResponse><xsl:value-of select="$aanvraagResponse" /></tns:BackendResponse>
+                <xsl:if test="$aanvraagRequest != ''">
+                    <tns:OriginalRequest><xsl:value-of select="$aanvraagRequest" /></tns:OriginalRequest>
+                </xsl:if>
             </tns:detail>
         </tns:Fault>
     </xsl:template>
