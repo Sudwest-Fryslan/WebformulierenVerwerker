@@ -47,6 +47,9 @@ Alle inkomende berichten komen binnen via één SOAP-listener. De dispatcher val
 
 ### ZAC — zaakregistratie via Dimpact productaanvraag
 
+> Status: in ontwikkeling op branch `feature/zac-koppeling`, nog niet gemerged naar `main`.
+> Zie [`docs/zac-koppeling-status.md`](docs/zac-koppeling-status.md) voor wat af is en wat nog open staat.
+
 | Operatie | Beschrijving |
 |----------|-------------|
 | `aanmakenVerzoekNatuurlijkPersoon` | PDF en XML uploaden naar de Documenten API |
@@ -93,6 +96,7 @@ Gebruik **Ladybug** (ingebouwd in de Frank!Framework-console op `:8080`) voor he
 | Document | Inhoud |
 |----------|--------|
 | [`docs/corsa-carel-flow.md`](docs/corsa-carel-flow.md) | Werking Corsa- en CAReL-koppeling |
+| [`docs/zac-koppeling-status.md`](docs/zac-koppeling-status.md) | Status en overdracht: wat is af, wat staat nog open |
 | [`docs/zac-koppeling-flow.md`](docs/zac-koppeling-flow.md) | Overzicht ZAC-koppeling (3 stappen) |
 | [`docs/zac-koppeling-koppelvlak.md`](docs/zac-koppeling-koppelvlak.md) | Koppelvlakspecificatie voor Atabix/Kodison |
 | [`docs/zac-koppeling-setup.md`](docs/zac-koppeling-setup.md) | Configuratiehandleiding ZAC-koppeling |
