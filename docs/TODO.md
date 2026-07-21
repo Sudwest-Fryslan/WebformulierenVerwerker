@@ -1,15 +1,22 @@
 # Opschoning en structuur — TODO
 
+## Afgehandeld
+
+### SoapUI-projecten — opgeschoond naar 1 actief bestand (21 juli 2026)
+`docs/WebformulierenVerwerker-soapui-project.xml` (interface-only, geen testcases) en
+`e2e/soapui-project.xml` (volledig opgenomen in het nieuwe project) zijn verwijderd.
+Ook een los toegevoegd back-upbestand (`docs/20260615-WebformulierenVerwerker-soapui-project.xml`,
+van een ander systeem) is gecontroleerd en weggegooid: de testinhoud was al aanwezig in het actieve
+project, op één plek zelfs met een regressie (hardcoded `zaakidentificatie` i.p.v. de correcte
+`${Properties#ZaakIdentificatie}`-doorgifte).
+
+`e2e/webformulierenverwerker-soapui-project.xml` is het enige actieve project: 3 testcases
+(**Corsa**, **CAReL**, CAReL endpoint direct), inclusief de CAReL creeerZaak-berichtformaat-update
+van 15 juni 2026.
+
+---
+
 ## Hoge prioriteit
-
-### SoapUI-projecten — 3 bestanden, 1 actief
-| Bestand | Inhoud | Status |
-|---------|--------|--------|
-| `docs/WebformulierenVerwerker-soapui-project.xml` | Alleen interface-definitie, **geen testcases** | **Verwijderen** — geen waarde |
-| `e2e/soapui-project.xml` | 1 testsuite "Carel": opslaanAanvraagNatuurlijkPersoon + opslaanAanvraagBijlage | **Verwijderen** — volledig opgenomen in nieuw project |
-| `e2e/webformulierenverwerker-soapui-project.xml` | 3 testcases: **Corsa** + **CAReL** + CAReL endpoint direct | **Behouden** — actief project (Eduard, juni 2026) |
-
-> De Corsa-tests zitten wél in het nieuwe project ("WebformulierenVerwerker Corsa TestCase"). Niets gaat verloren bij verwijderen van de twee oudere bestanden.
 
 ### WSDL's — 3 bestanden met URL-verschil, handmatig gesynchroniseerd
 | Bestand | URL | Bedoeling |

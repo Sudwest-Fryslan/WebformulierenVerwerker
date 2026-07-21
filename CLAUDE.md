@@ -25,8 +25,7 @@ Hot-reload works via `ScanningDirectoryClassLoader` — changes to XML configs a
 ## Testing
 
 There are no unit tests. Testing is integration-based via **SoapUI**:
-- `e2e/soapui-project.xml` — generic tests
-- `e2e/webformulierenverwerker-soapui-project.xml` — application-specific tests
+- `e2e/webformulierenverwerker-soapui-project.xml` — the single active project (Corsa, CAReL, CAReL-endpoint testcases)
 
 Use the **Ladybug** tool (built into Frank!Framework) for debugging message flows at runtime.
 
