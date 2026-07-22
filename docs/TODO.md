@@ -107,8 +107,21 @@ Ladybug-captures.
 | `src/.../webcontent/GeneriekeFormulierAfhandeling.wsdl` | `tsjinstbus...` (productie) | Atabix productie |
 | `src/.../webcontent/GeneriekeFormulierAfhandelingTest.wsdl` | `testtsjinstbus...` | Atabix TST |
 
-**Probleem:** bij elke uitbreiding moeten alle drie handmatig bijgewerkt worden (was al mis bij de CAReL-operaties in mei 2026 — dat specifieke incident is inmiddels opgelost, de drie bestanden zijn nu weer gelijk buiten de URL).
-**Oplossing (toegezegd door WeAreFrank):** één WSDL met omgevingsvariabele voor de host-URL. Nog niet gerealiseerd.
+**Probleem:** bij elke uitbreiding moeten alle drie handmatig bijgewerkt worden (was al mis bij de
+CAReL-operaties in mei 2026). **Oplossing (toegezegd door WeAreFrank):** één WSDL met omgevingsvariabele
+voor de host-URL. Nog niet gerealiseerd.
+
+**Update 22 juli 2026, onderzocht:** Frank!Framework heeft zelf een automatische WSDL-generator, maar
+die ondersteunt (nog) geen meerdere operaties per WSDL — een bekend, open, onopgelost upstream-issue
+([frankframework/frankframework#5115](https://github.com/frankframework/frankframework/issues/5115),
+sinds juli 2023). `webcontent/`-bestanden worden bovendien puur statisch geserveerd, zonder
+property-substitutie. Een oplossing met een custom `entrypoint.sh` (WSDL's genereren bij containerstart)
+is gebouwd en werkend getest, maar weer teruggedraaid op verzoek van Eduard — te veel eigen mechanisme
+voor dit probleem. **Alternatief, nog niet gebouwd:** XInclude — 1 gedeeld WSDL-fragment (schema +
+operaties) plus 3 dunne bestanden die alleen het adres verschillen en de rest includen. Vereist wel een
+resolutiestap op het moment dat het bestand wordt geserveerd of gebouwd (XInclude wordt niet automatisch
+opgelost bij statische bestand-serving) — bijvoorbeeld één `xmllint --xinclude`-stap tijdens de
+Docker-build, simpeler dan een runtime-script. Nog te bouwen en te testen. **Status: open.**
 
 ### WSDL — operatie `opslaanInk` ontbreekt in portType/binding (bevestigd 21 juli 2026)
 `GeneriekeFormulierAfhandeling.wsdl` heeft wél de schema-elementen `opslaanInk`/`opslaanInkResponse`
