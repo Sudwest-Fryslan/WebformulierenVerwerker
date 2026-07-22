@@ -10,7 +10,7 @@
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
 
             <Locker objectId="opslaanInk" numRetries="3" retryDelay="5000" />
@@ -30,7 +30,7 @@
             <XsltPipe name="ConvertToConnectRequest_Password"
                 styleSheetName="xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" username="NO_USER"/>
-                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" username="NO_PASS"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" password="NO_PASS"/>
                 <Param name="ConnectionID" value="${ConnectionID}" />
             </XsltPipe>
 

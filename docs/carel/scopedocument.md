@@ -222,3 +222,158 @@ Datums met `git` zijn bevestigd uit git-geschiedenis. Overige datums zijn afkoms
 | 11 jun 2026 | Teams-chat | Nieuwe blokkade: Eljakim serverconflict + datumconflict |
 | 12 jun 2026 | e-mail + Teams-chat | Lorenzo + Petra testen; serverissue opgelost; Eljakim stuurt referentie-XML (`Voorbeeld_bericht.xml`) |
 | 15 jun 2026 | Teams-chat | Eduard stuurt aangepast SoapUI-project naar Eljakim; keten nog niet door Eduard zelf bevestigd |
+| 17 jun 2026 | e-mail | Project gepauzeerd tot na de zomer (besluit Petra Schaap, akkoord Mohammed Benmhammed); evaluatiegesprek gepland week 38 (14-16 sept 2026) |
+| 21 jul 2026 | e-mail (`tmp/Re_ Xml.eml`) | Hein Vlietstra verstuurt testaanvraag met het nieuwe formulier (schooljaar 2026-2027) |
+| 22 jul 2026 | analyse + e-mail | Eduard constateert gewijzigd exportformaat van de aanvraag-XML (boomstructuur → platte naam/waarde-lijst), bevestigt dat dit de CAReL-mapping breekt (`creeerZaak_Lk01_mapping.xsl:21`), en meldt dit per e-mail aan Hein Vlietstra en Mark Ritzema |
+| 22 jul 2026 | mondeling/chat | Petra Schaap nog bezig met bekijken/verwerken in CAReL van de eerdere (2025-)testaanvragen die Eduard vanuit SoapUI had verstuurd — los van de formaatkwestie hierboven |
+
+---
+
+## 9. Nieuwe formulierversie 2026-2027: exportformaat van de aanvraag-XML gewijzigd
+
+**Bron:** testaanvraag Hein Vlietstra, 21 juli 2026 (`tmp/Re_ Xml.eml`, Ladybug-capture), vergeleken met
+`docs/carel/20260302/Leerlingenvervoer.xml` (schooljaar 2025-2026).
+
+Het Atabix-formulier voor schooljaar 2026-2027 levert de `aanvraagxmldata` (het XML-deel van
+`opslaanAanvraagNatuurlijkPersoon`) aan in een **andere structuur** dan voorheen:
+- **Oud:** boomstructuur `FORMULIER/ELEMENTEN/form/answers/...`, elk antwoord op een vaste plek.
+- **Nieuw:** platte lijst `output/transformedData/element` met losse `name`/`value`-paren, zonder pad.
+
+**Concreet, bevestigd gevolg:** `creeerZaak_Lk01_mapping.xsl:21` selecteert met
+`/FORMULIER/ELEMENTEN/form/answers` — dat pad bestaat niet meer in de nieuwe export, dus de volledige
+mapping naar `zakLk01` (regels 27 e.v.) wordt niet meer aangeroepen. Zonder aanpassing levert een
+aanvraag met het nieuwe formulier een lege of onvolledige CAReL-zaak op.
+
+**Genuanceerd:** dit is geen dataverlies — 136 van de 156 velden die de XSLT gebruikt staan onder
+dezelfde naam nog in de nieuwe export. Wel is een deel van de veldnamen niet meer eenduidig
+(`bsn` komt 7×, `telefoonnummer` 5×, `emailadres` 4× voor, zonder padcontext om te bepalen welke bij de
+aanvrager hoort). Vergelijkingsbestanden staan in `docs/carel/Leerlingenvervoer-oud-2025-2026.xml` en
+`docs/carel/Leerlingenvervoer-nieuw-2026-2027.xml`; volledige analyse in
+`docs/carel/delta_formulierversie_2025_2026.md`.
+
+**Actie:** Eduard heeft dit per e-mail (22 juli 2026) gemeld aan Hein Vlietstra en Mark Ritzema, met het
+verzoek bij de formulierleverancier na te vragen of dit een bewuste, blijvende wijziging is of een
+neveneffect, en hoe destijds aan de oude versie is gekomen.
+
+**Status: open** — wachten op reactie Hein Vlietstra / formulierleverancier. Bepaalt of dit meerwerk
+richting WeAreFrank wordt (XSLT aanpassen aan nieuw formaat) of dat de bron wordt gecorrigeerd.
+
+**Update 22 juli 2026 — oorzaak gevonden, waarschijnlijk géén meerwerk:**
+Hein Vlietstra meldt dat hij zelf een generieke XSLT-stylesheet heeft gemaakt om de XML vanuit het
+scenario naar buiten te krijgen voor deze test. Die stylesheet zet elk element, hoe diep ook genest, om
+naar een los `<element><name>/<value></element>` en laat daarbij ook de tussenliggende containers zelf
+als apart element staan (met alle onderliggende tekst aan elkaar geplakt als waarde). Dit verklaart het
+waargenomen patroon exact (dubbele veldnamen, lange tekstbrij-waarden) en is dus **niet** een wijziging
+vanuit Atabix/CAReL/het formulierenplatform zelf, maar een bijproduct van Heins eigen teststap.
+
+**Open vraag (uitstaand bij Hein, 22 juli 2026):** was deze stylesheet-stap nodig omdat Hein handmatig
+vanuit de scenario-editor testte (in plaats van een echte aanvraag via de live site)? Zo ja, dan komt een
+echte aanvraag waarschijnlijk nog steeds in het oude, geneste formaat binnen en is er aan de
+WebformulierenVerwerker-kant niets aan te passen. Gevraagd aan Hein: (1) waarom de stylesheet nodig was,
+(2) of de rauwe XML uit het scenario (zonder stylesheet) beschikbaar is ter vergelijking, (3) of een
+live/productie-aanvraag ook via deze stylesheet zou gaan.
+
+**Update 22 juli 2026, later — Kodison bevestigt: er moet altijd een XSLT tussen zitten** in de
+scenario-exportstap (dit is dus geen keuze van Hein, maar een vaste eis van het platform). Daarmee
+verschuift de vraag van "kan de stylesheet weg" naar "welke stylesheet moet Hein gebruiken". Op basis van
+een volledige doorlichting van `creeerZaak_Lk01_mapping.xsl` is een voorstel gemaakt:
+`docs/carel/WebformulierenVerwerker_Passthrough.xml` — een **pure identity-transform** (kopieert de XmlAnswers
+ongewijzigd door, zonder enige veldnaam of formulierstructuur te veronderstellen). Dit is bewust
+onvoorwaardelijk generiek gehouden: het werkt voor elk Kodison-formulier, niet alleen leerlingenvervoer,
+en laat altijd alle ingevulde waarden meekomen. Een optionele, formulier-specifieke opschoning (twee
+platform-boilerplate-onderdelen "defaults" en "summary" weglaten, aantoonbaar ongebruikt door de mapping)
+staat als aparte, duidelijk gemarkeerde toevoeging in het bestand — alleen te gebruiken als bevestigd is
+dat dat patroon voor elk scenario geldt.
+
+**Waarom niet selectief velden doorgeven:** binnen `fleerlingenvervoerv3vervoer` construeert de mapping
+de veldnaam per dag dynamisch op basis van het gekozen vervoertype (bv. `maandagvervoerfiets`). Een
+vooraf vastgestelde veldenlijst zou dat soort dynamische lookup breken, dus moet de volledige boom
+worden doorgegeven in plaats van een uitgekozen subset.
+
+**Update 22 juli 2026, screenshot Atabix-scenario (`tmp/screenshot atabix.png`):** de processorstap
+"Xslt transformation" in het scenario heeft `Source` en `Stylesheet` als verplichte velden — bevestigt
+visueel dat een XSLT-stap hier niet optioneel is. Source staat op `[*XmlAnswers]` (de ingebouwde
+platformvariabele met alle formulierantwoorden), Stylesheet verwijst naar `data/Stylesheet1.xml`.
+Opvallend: het Namespace-veld van deze stap staat op `xml_BerichtCorsa` — wijst erop dat deze stap
+mogelijk gekopieerd is vanuit een oudere (Corsa-gerelateerde) configuratie, met alleen de
+stylesheet-inhoud vervangen. **Actie:** eerst bij Hein navragen of de `data/`-map in het scenario nog een
+ander, ouder stylesheet-bestand bevat dat bij het oude (2025-2026) scenario al correct werkte — dan is
+"deze stap terugwijzen naar dat bestand" simpeler dan een nieuwe stylesheet invoeren.
+
+**Update 22 juli 2026, definitief bevestigd via Ladybug-capture ("nieuwe-xsl"):** Hein had inmiddels
+zijn flatten-stylesheet vervangen (de nesting-structuur per veld is terug), maar de root van de
+`XmlAnswers` is `<form>` zelf, **zonder** de omliggende `FORMULIER`/`ELEMENTEN`-laag. Gevolg, hard
+bevestigd in de capture: `creeerZaak_Lk01_mapping.xsl` levert een leeg resultaat op (alleen de
+XML-declaratie), en er wordt een **volledig lege SOAP-body** (`<soapenv:Body></soapenv:Body>`) naar
+CAReL gestuurd — vandaar de generieke fout "Something went wrong... No Error Info".
+
+**Fix:** `docs/carel/WebformulierenVerwerker_Passthrough.xml` is aangepast: zet alleen de ontbrekende
+`FORMULIER`/`FORMULIERID`/`DATUMVERZENDING`/`ELEMENTEN`-laag om het binnenkomende `<form>`-element heen
+(gebruikt `form/@startDateTime` voor DATUMVERZENDING en `form/scenarioName` voor FORMULIERID — geen
+formulier-specifieke veldnamen, dus generiek voor elk Kodison-scenario), en kopieert de rest ongewijzigd
+door. Getest tegen de echte data uit Heins laatste testaanvraag (lxml/XPath): alle paden die de mapping
+nodig heeft (`globals/bsn`, `globals/stuf/...`, `fleerlingenvervoerv3gegevensburger/telefoonnummer`,
+etc.) resolven na deze wrap naar de juiste waarden. **Status: klaar om naar Hein te sturen.**
+
+**Update 22 juli 2026, scope van de fix expliciet vastgelegd:** de huidige, op TST gedeployde versie van
+WebformulierenVerwerker begrijpt alléén het oude, gewrapte formaat en kan momenteel niet bijgewerkt
+worden. Daarom moet de hybride (oud/nieuw-formaat herkennen tijdens de overgang) **uitsluitend aan de
+Atabix-kant** zitten — in `docs/carel/WebformulierenVerwerker_Passthrough.xml` — en niet in
+`creeerZaak_Lk01_mapping.xsl`. Er is kort een wijziging in de integratie-XSLT geweest om dit ook daar te
+laten werken; die is teruggedraaid (`git checkout`) zodra dit duidelijk werd — de integratie blijft
+ongewijzigd. Eind-tot-eind getest met Saxon: native (nieuwe) formulier-XML → ongewijzigde
+`WebformulierenVerwerker_Passthrough.xml` v1.1 → **onaangepaste** `creeerZaak_Lk01_mapping.xsl` levert
+een volledig correct `zakLk01`-bericht op (alle velden gevuld, `startdatum` juist via de
+`@startDateTime`-fallback in de Atabix-stylesheet). De hybride-laag zit dus volledig op de plek waar hij
+op elk moment losstaand aangepast/getest kan worden, zonder de gedeployde integratie te raken.
+
+**Update 22 juli 2026, cross-check:** Eduard leverde extra bewijsmateriaal aan (`tmp/leerlingenvervoer_hvl.xml`
+en de bijbehorende ruwe SOAP-request uit de Ladybug-testomgeving) — via sha256-hash geverifieerd: dit is
+exact dezelfde testaanvraag als de "nieuwe-xsl"-capture hierboven (zelfde `startDateTime` en `uniqueId`),
+gegenereerd met de eerste (pre-wrapper) versie van de voorstel-stylesheet. Bevestigt de diagnose, geen
+nieuw incident. Op verzoek van Eduard is aan `WebformulierenVerwerker_Passthrough.xml` een
+versie-commentaar toegevoegd (`<!-- Gegenereerd door ..., versie 1.1 -->`, zichtbaar in elke output) zodat
+een volgende Ladybug-capture direct laat zien welke stylesheet-versie een aanvraag heeft geproduceerd.
+
+**Update 22 juli 2026, bevestigd geslaagd:** Hein heeft met versie 1.1 van
+`WebformulierenVerwerker_Passthrough.xml` vier testaanvragen ingevuld (13:34, 14:10, 14:14, 14:24 uur).
+Alle vier zijn end-to-end gecontroleerd via de Ladybug-logs (niet alleen op het antwoord vertrouwd): in
+elk geval bouwt de mapping een compleet `zakLk01`, antwoordt CAReL met een positieve StUF-bevestiging
+(`Bv03Bericht`, geen `Fo03`), worden PDF én XML correct aan de zaak gekoppeld, en sluit de pipeline af
+met `exitState: SUCCESS` en een echte `opslaanAanvraagNatuurlijkPersoonResponse` met resultaat-ID (bv.
+`1900881137`) terug naar Kodison. **Dit onderdeel is hiermee werkend bevestigd** — de gedeployde
+(ongewijzigde) integratie verwerkt de nieuwe formulierversie nu correct via de aangepaste Atabix-stylesheet.
+
+**Controlemechanisme toegevoegd, twee lagen (22 juli 2026):**
+
+1. **In SoapUI:** de 4 teststappen met echte Atabix-data (`WebformulierenVerwerker Carel TestCase (2026)`)
+   hebben elk een Script Assertion die de `aanvraagxmldata` decodeert, het versie-commentaar van
+   `WebformulierenVerwerker_Passthrough.xml` opzoekt, en de test laat falen met een duidelijke boodschap
+   als de versie ontbreekt of lager is dan de minimaal vereiste. Logica gevalideerd door de
+   regex/vergelijking los in Python te herhalen tegen de 4 echte captures.
+
+2. **Live, in de integratie zelf** (op verzoek van Eduard — dit hoort wél bij de dingen die de
+   integratie zelf mag controleren, in tegenstelling tot het daadwerkelijk *verwerken* van het nieuwe
+   formaat): een nieuwe, puur diagnostische stap `CheckAtabixStylesheetVersion`
+   (`xsl/OpslaanAanvraagNatuurlijkPersoon/CheckAtabixStylesheetVersion.xsl`) direct na het decoderen van
+   de aanvraag-XML, die bij elke binnenkomende aanvraag logt of de gebruikte Atabix-stylesheetversie
+   voldoet. Verandert geen data en blokkeert niets — puur een logregel.
+
+   **Belangrijke les tijdens het bouwen hiervan:** de eerste versie controleerde het `xsl:comment` met
+   de versie-tekst — dat werkte foutloos bij direct testen met Saxon, maar gaf **live, via de
+   Frank!Framework-pipeline, altijd "geen versie gevonden"**, ook bij correcte input. Reden:
+   Frank!Framework's eigen XSLT-verwerking geeft XML-commentaar niet door aan de XSLT — een verschil
+   tussen "los een stylesheet draaien" en "een stylesheet laten draaien binnen de pipeline" dat alleen
+   met een levende testomgeving aan het licht kwam. Opgelost door de versie in een **attribuut**
+   (`passthroughVersion` op `FORMULIER`) te zetten in plaats van een commentaar — dat overleeft normale
+   XML-parsing altijd. `WebformulierenVerwerker_Passthrough.xml` is daarom naar **versie 1.2** gegaan
+   (versie 1.1, waarmee Hein zijn 4 geslaagde tests draaide, had dit attribuut nog niet — die captures
+   tonen dus terecht "geen attribuut gevonden" bij de live check, dat is geen nieuw probleem).
+
+   Live getest met drie scenario's (Docker + curl): v1.2 → "OK"; oud formulierformaat (geen attribuut) →
+   neutrale melding, geen fout; gesimuleerde verouderde versie (1.0) → duidelijke waarschuwing met
+   gevonden versus vereiste versie.
+
+**Losstaand, parallel lopend:** Petra Schaap is nog bezig met het bekijken en verwerken in CAReL van de
+eerdere (2025-)testaanvragen die Eduard vanuit SoapUI had verstuurd (zie sectie 6, "Actie WeAreFrank:
+SoapUI-project"). Dit is onafhankelijk van de bovenstaande formaatkwestie van het nieuwe formulier.
