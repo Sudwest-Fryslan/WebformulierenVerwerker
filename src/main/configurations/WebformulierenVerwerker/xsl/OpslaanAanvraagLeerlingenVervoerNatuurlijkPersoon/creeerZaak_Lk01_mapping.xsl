@@ -100,12 +100,29 @@
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftBetrekkingOp>
-                <!-- Rol volgens standaard: aanvrager (ouder/verzorger) -->
+                <!-- Rol volgens standaard: aanvrager (ouder/verzorger). Alle data komt uit de
+                     BRP-prefill (globals/stuf/*) - geen formulierwijziging nodig, in tegenstelling tot
+                     heeftBetrekkingOp. verwerkingssoort="I" op het NPS-object, zelfde redenering als
+                     bij heeftBetrekkingOp (zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.2). -->
                 <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
-                        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
-                            <BG:inp.bsn><xsl:value-of select="globals/bsn"/></BG:inp.bsn><!-- {afzenderbsn} -->
-                            <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+                        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+                            <BG:inp.bsn><xsl:value-of select="globals/stuf/inp/bsn"/></BG:inp.bsn>
+                            <BG:voorletters><xsl:value-of select="globals/stuf/voorletters"/></BG:voorletters>
+                            <BG:voornamen><xsl:value-of select="globals/stuf/voornamen"/></BG:voornamen>
+                            <BG:voorvoegselGeslachtsnaam><xsl:value-of select="globals/stuf/voorvoegselgeslachtsnaam"/></BG:voorvoegselGeslachtsnaam>
+                            <BG:geslachtsnaam><xsl:value-of select="globals/stuf/geslachtsnaam"/></BG:geslachtsnaam>
+                            <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="globals/stuf/geboortedatum"/></xsl:call-template></BG:geboortedatum>
+                            <!-- Let op: BRP levert dit als gemeentecode (bv. "0091"), niet als plaatsnaam -
+                                 nog af te stemmen met Eljakim/CAReL of dat acceptabel is (zie meerwerk-doc §1.2). -->
+                            <BG:inp.geboorteplaats><xsl:value-of select="globals/stuf/inp/geboorteplaats"/></BG:inp.geboorteplaats>
+                            <BG:geslachtsaanduiding><xsl:value-of select="globals/stuf/geslachtsaanduiding"/></BG:geslachtsaanduiding>
+                            <BG:verblijfsadres>
+                                <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
+                                <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
+                                <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
+                                <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                            </BG:verblijfsadres>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftAlsInitiator>
