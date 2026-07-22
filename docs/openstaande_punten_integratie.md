@@ -13,7 +13,7 @@ Hein/Atabix, Petra/CAReL-beheer of Eljakim liggen — dat staat in `docs/carel/s
 | 4 | Foutafhandeling HTTP/SOAP-conventie | Nee | ✅ Opgelost | 1-3 dagen | Nee |
 | 5 | Typo username/password | Nee (Corsa) | ✅ Opgelost | 15-30 min | Nee |
 | 6 | CAReL adres-splitsing + dagstructuur | **Ja** | **Open** | 0,5-1 dag+ | Alleen dat het meerwerk is |
-| 7 | CAReL `heeftBetrekkingOp` / `verwerkingssoort` | **Ja** | **Open** | ~0,5 dag | Alleen dat het afwijking is |
+| 7 | CAReL `heeftBetrekkingOp` / `verwerkingssoort` | **Ja** | **Deels opgelost** | Gedaan | Check bij Petra/Eljakim nog nodig |
 
 **Kernpunt:** van de 7 punten zijn er maar twee (#6, #7) echt CAReL-inhoudelijk — die staan nog open, en
 raken de lopende meerwerk-discussie met WeAreFrank. #1 staat ook nog open — al toegezegd door WeAreFrank,
@@ -126,14 +126,23 @@ i.p.v. de huidige kommagescheiden waarde.
 
 ---
 
-## 7. CAReL-mapping — `heeftBetrekkingOp` ontbreekt, `verwerkingssoort` moet "I" zijn, verblijfsadres ontbreekt bij betrokkenen — **Open**
+## 7. CAReL-mapping — `heeftBetrekkingOp` ontbreekt, `verwerkingssoort` moet "I" zijn, verblijfsadres ontbreekt bij betrokkenen — **Deels opgelost**
 
-Vastgestelde afwijkingen t.o.v. de Eljakim-referentie: de leerling wordt niet als `heeftBetrekkingOp`
-meegestuurd, `verwerkingssoort="T"` moet `"I"` zijn voor de NPS-referenties, en `verblijfsadres` ontbreekt
-bij de betrokkenen.
+Vastgestelde afwijkingen t.o.v. de Eljakim-referentie: de leerling werd niet als `heeftBetrekkingOp`
+meegestuurd, en `verblijfsadres` ontbrak bij de betrokkenen.
 
-- **Zelf te doen?** Technisch ja, zelfde onderbouwing als #6.
-- **Tijdsinschatting:** ~0,5 dag (`verwerkingssoort` is triviaal; `heeftBetrekkingOp` toevoegen kost het
-  meeste tijd).
-- **Gesprek met WeAreFrank?** Zelfde status als #6 — benoemd als afwijking, geen concrete afspraak over
-  uitvoering. **Niet aangeraakt.**
+**Gedaan, op verzoek van Eduard:** `heeftBetrekkingOp` toegevoegd met alle leerlinggegevens die het
+formulier al levert (BSN, voornamen, tussenvoegsel, achternaam, geboortedatum, geslachtsaanduiding),
+`verwerkingssoort="I"` op het NPS-object. Verblijfsadres conditioneel: aanvrageradres overnemen als
+`leerlinganderadres = "Ja"`, anders bewust weggelaten (formulier heeft nog geen eigen leerlingadresvelden
+— zie #6). **Getest** met Saxon in drie scenario's (oude vorm, nieuwe vorm, "Nee"-situatie) — steeds
+correcte, valide XML.
+
+**Nog open:** schema-onderzoek bevestigt dat de StUF-XSD niets verplicht stelt (zelfs BSN niet), maar of
+CAReL's eigen software akkoord gaat met "BSN + basisgegevens, adres alleen conditioneel" is niet
+schema-technisch vast te stellen — moet bevestigd worden met Petra/Eljakim. Zie
+`docs/carel/scopedocument.md` §3.
+
+- **Zelf te doen?** Ja, gedaan.
+- **Gesprek met WeAreFrank?** Niet nodig geweest voor de implementatie zelf — wel nog een check bij
+  Petra/Eljakim nodig of de gekozen aanpak (BSN-plus, geen volledig adres) door CAReL geaccepteerd wordt.
