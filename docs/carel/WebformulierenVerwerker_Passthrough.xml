@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Voorstel-stylesheet voor Hein's scenario-export (elk Kodison/TriplEforms-formulier).
+
+  Bevestigd met een echte Ladybug-capture (22 juli 2026, "nieuwe-xsl"): de XmlAnswers-variabele
+  levert het <form>-element rechtstreeks als root, ZONDER de omliggende FORMULIER/ELEMENTEN-laag
+  die WebformulierenVerwerker verwacht. Daardoor selecteert creeerZaak_Lk01_mapping.xsl:21
+  (/FORMULIER/ELEMENTEN/form/answers) niets, blijft het gegenereerde CAReL-bericht leeg, en wordt er
+  een lege SOAP-body naar CAReL gestuurd - vandaar de fout "Something went wrong... No Error Info".
+
+  Deze stylesheet zet alleen die ontbrekende buitenlaag om het <form>-element heen, en kopieert
+  daarbinnen alles exact door zoals het is ingevuld - geen enkele formulier-specifieke veldnaam
+  wordt aangenomen, dus dit werkt generiek voor elk Kodison-formulier.
+
+  Versie: 1.2 (22 juli 2026). Versie 1.1 (dezelfde dag) had alleen het xsl:comment, geen
+  passthroughVersion-attribuut - Hein heeft zijn 4 geslaagde tests met 1.1 gedraaid, dus captures van
+  vóór deze wijziging tonen "geen versie-attribuut gevonden" bij de live controle; dat is verwacht,
+  geen nieuw probleem. Bij een volgende wijziging: versienummer hieronder, in de xsl:comment
+  én in het passthroughVersion-attribuut ophogen. Het attribuut (niet het commentaar) is wat
+  WebformulierenVerwerker zelf machinaal controleert (zie
+  xsl/OpslaanAanvraagNatuurlijkPersoon/CheckAtabixStylesheetVersion.xsl) - XML-commentaar wordt door
+  Frank!Framework's eigen XSLT-verwerking niet doorgegeven aan de XSLT, dus daar kan niet op
+  gecontroleerd worden. Het commentaar blijft staan voor menselijke leesbaarheid (bv. in een
+  Ladybug-capture).
+
+  Bron/beheer: https://github.com/Sudwest-Fryslan/WebformulierenVerwerker (docs/carel/WebformulierenVerwerker_Passthrough.xml)
+-->
+<xsl:stylesheet
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    version="1.0">
+
+    <xsl:output method="xml" indent="yes"/>
+
+    <!-- Root: XmlAnswers levert <form> direct. WebformulierenVerwerker verwacht die genest onder
+         FORMULIER/ELEMENTEN, met een DATUMVERZENDING die het los uitleest. Die laag bouwen we hier. -->
+    <xsl:template match="/form">
+        <FORMULIER passthroughVersion="1.2">
+            <xsl:comment> Gegenereerd door WebformulierenVerwerker_Passthrough.xml, versie 1.2 (22 juli 2026) - bron/beheer: https://github.com/Sudwest-Fryslan/WebformulierenVerwerker </xsl:comment>
+            <FORMULIERID><xsl:value-of select="scenarioName"/></FORMULIERID>
+            <DATUMVERZENDING><xsl:value-of select="@startDateTime"/></DATUMVERZENDING>
+            <ELEMENTEN>
+                <xsl:copy>
+                    <xsl:apply-templates select="@*|node()"/>
+                </xsl:copy>
+            </ELEMENTEN>
+        </FORMULIER>
+    </xsl:template>
+
+    <!-- Verder alles ongewijzigd doorkopiëren, precies zoals ingevuld -->
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+</xsl:stylesheet>

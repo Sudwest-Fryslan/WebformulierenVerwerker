@@ -234,18 +234,6 @@
 	<wsdl:message name="IGeneriekeFormulierAfhandeling_Info_OutputMessage">
 		<wsdl:part name="parameters" element="tns:InfoResponse"/>
 	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage">
-		<wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratie"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage">
-		<wsdl:part name="parameters" element="tns:maakInkomendDocumentregistratieResponse"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage">
-		<wsdl:part name="parameters" element="tns:bewaarDocument"/>
-	</wsdl:message>
-	<wsdl:message name="IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage">
-		<wsdl:part name="parameters" element="tns:bewaarDocumentResponse"/>
-	</wsdl:message>
 	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage">
 		<wsdl:part name="parameters" element="tns:opslaanInkNatuurlijkPersoon"/>
 	</wsdl:message>
@@ -257,6 +245,12 @@
 	</wsdl:message>
 	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage">
 		<wsdl:part name="parameters" element="tns:opslaanInkNietNatuurlijkPersoonResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInk_InputMessage">
+		<wsdl:part name="parameters" element="tns:opslaanInk"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanInk_OutputMessage">
+		<wsdl:part name="parameters" element="tns:opslaanInkResponse"/>
 	</wsdl:message>
 	<wsdl:message name="IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage">
 		<wsdl:part name="parameters" element="tns:opslaanBijlage"/>
@@ -287,14 +281,6 @@
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/Info" message="tns:IGeneriekeFormulierAfhandeling_Info_InputMessage"/>
 			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/InfoResponse" message="tns:IGeneriekeFormulierAfhandeling_Info_OutputMessage"/>
 		</wsdl:operation>
-		<wsdl:operation name="maakInkomendDocumentregistratie">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratieResponse" message="tns:IGeneriekeFormulierAfhandeling_maakInkomendDocumentregistratie_OutputMessage"/>
-		</wsdl:operation>
-		<wsdl:operation name="bewaarDocument">
-			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_InputMessage"/>
-			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocumentResponse" message="tns:IGeneriekeFormulierAfhandeling_bewaarDocument_OutputMessage"/>
-		</wsdl:operation>
 		<wsdl:operation name="opslaanInkNatuurlijkPersoon">
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_InputMessage"/>
 			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNatuurlijkPersoon_OutputMessage"/>
@@ -302,6 +288,10 @@
 		<wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_InputMessage"/>
 			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoonResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInkNietNatuurlijkPersoon_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="opslaanInk">
+			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInk" message="tns:IGeneriekeFormulierAfhandeling_opslaanInk_InputMessage"/>
+			<wsdl:output wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkResponse" message="tns:IGeneriekeFormulierAfhandeling_opslaanInk_OutputMessage"/>
 		</wsdl:operation>
 		<wsdl:operation name="opslaanBijlage">
 			<wsdl:input wsaw:Action="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanBijlage" message="tns:IGeneriekeFormulierAfhandeling_opslaanBijlage_InputMessage"/>
@@ -338,24 +328,6 @@
 				<soap:body use="literal"/>
 			</wsdl:output>
 		</wsdl:operation>
-		<wsdl:operation name="maakInkomendDocumentregistratie">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/maakInkomendDocumentregistratie" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
-		<wsdl:operation name="bewaarDocument">
-			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/bewaarDocument" style="document"/>
-			<wsdl:input>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal"/>
-			</wsdl:output>
-		</wsdl:operation>
 		<wsdl:operation name="opslaanInkNatuurlijkPersoon">
 			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNatuurlijkPersoon" style="document"/>
 			<wsdl:input>
@@ -367,6 +339,15 @@
 		</wsdl:operation>
 		<wsdl:operation name="opslaanInkNietNatuurlijkPersoon">
 			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInkNietNatuurlijkPersoon" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opslaanInk">
+			<soap:operation soapAction="http://tempuri.org/IGeneriekeFormulierAfhandeling/opslaanInk" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>

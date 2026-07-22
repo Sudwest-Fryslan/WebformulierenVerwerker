@@ -10,7 +10,7 @@
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
 
             <Locker objectId="opslaanInkNatuurlijkPersoon" numRetries="3" retryDelay="5000" />
@@ -125,7 +125,7 @@
                 getInputFromSessionKey="originalMessage">
 
                 <Forward name="success" path="WrapCreatePersonRequest" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreatePersonRequest" storeResultInSessionKey="corsaRequest" />

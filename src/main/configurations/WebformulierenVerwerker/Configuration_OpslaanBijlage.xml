@@ -8,7 +8,7 @@
         <Pipeline>
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
 
             <Locker objectId="opslaanBijlage" numRetries="3" retryDelay="5000" />
@@ -28,7 +28,7 @@
             <XsltPipe name="ConvertToConnectRequest_Password"
                 styleSheetName="xsl/Common/Message2Connect.xsl">
                 <Param name="username" authAlias="corsa-soap.connect" pattern="{username}" username="NO_USER"/>
-                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" username="NO_PASS"/>
+                <Param name="password" authAlias="corsa-soap.connect" pattern="{password}" password="NO_PASS"/>
                 <Param name="ConnectionID" value="${ConnectionID}" />
             </XsltPipe>
 
@@ -69,7 +69,7 @@
             <XmlIfPipe name="CheckForVertrouwelijkheid" xpathExpression="count(//rowset/row) > 0">
                 <Param name="Vertrouwelijkheid" sessionKey="Vertrouwelijkheid" />
                 <Forward name="then" path="GetVertrouwelijkheid" />
-                <Forward name="else" path="EXCEPTION" />
+                <Forward name="else" path="isErrorXML" />
             </XmlIfPipe>
 
             <XsltPipe name="GetVertrouwelijkheid"
@@ -92,7 +92,7 @@
                 <Param name="Afzender" sessionKey="Afzender" />
                 <Param name="Onderwerp" sessionKey="Onderwerp" />
                 <Forward name="success" path="WrapCreateMetaDocumentBijlageRequest" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </XsltPipe>
 
             <SoapWrapperPipe name="WrapCreateMetaDocumentBijlageRequest"
@@ -112,7 +112,7 @@
             <SoapWrapperPipe name="Wrapper5" removeOutputNamespaces="true"
                 storeResultInSessionKey="DocumentForBijlage">
                 <Forward name="success" path="DocumentForBijlageCheck" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </SoapWrapperPipe>
 
             <XmlSwitchPipe
@@ -143,7 +143,7 @@
 
             <SoapWrapperPipe name="Wrapper6" removeOutputNamespaces="true">
                 <Forward name="success" path="ConvertToModObjectRelation" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="exception" path="isErrorXML" />
             </SoapWrapperPipe>
 
             <XsltPipe name="ConvertToModObjectRelation"

@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORMULIER>
+    <FORMULIERID>Aanvraag Leerlingenvervoer</FORMULIERID>
+    <DATUMVERZENDING>2026-01-29T09:35:46</DATUMVERZENDING>
+    <ELEMENTEN>
+        <form url="http://localhost:44300/formulier/nl-NL/DefaultEnvironment/scLeerlingenVervoerV3.aspx/" version="000.001" projectId="Sudwest-Fryslan" environmentId="DefaultEnvironment" scenarioID="scLeerlingenVervoerV3" scenarioIdIsAForm="false" startDateTime="2026-01-29T09:33:51.0583482+01:00" xml:lang="nl-nl">
+  <answers uniqueId="1fcee389-69bb-4cbc-97ac-9b731dc236a5">
+    <globals>
+      <afgehandeld key="Nee">Nee</afgehandeld>
+      <akkoordverklaring key="false">false</akkoordverklaring>
+      <behandelaaremailaddress key="h.vlietstra@sudwestfryslan.nl">h.vlietstra@sudwestfryslan.nl</behandelaaremailaddress>
+      <behandelaaremailaddresscorsa key="webmaster@sudwestfryslan.nl">webmaster@sudwestfryslan.nl</behandelaaremailaddresscorsa>
+      <behanderlaarcorsa key="tsondsd">tsondsd</behanderlaarcorsa>
+      <bsnweergave key="false">false</bsnweergave>
+      <contactgegevens key="Team Ondersteuning Sociaal Domein, Leerlingenvervoer">Team Ondersteuning Sociaal Domein, Leerlingenvervoer</contactgegevens>
+      <contactgegevensandersmailhtml key="Marktstraat 8&lt;br&gt;&#xD;&#xA;8601 CT Sneek&lt;br&gt;&#xD;&#xA;Postbus 10.000&lt;br&gt;&#xD;&#xA;8600 HA Sneek&lt;br&gt;&#xD;&#xA;Tel: 14 0515 (zonder netnummer)">Marktstraat 8&lt;br&gt;
+8601 CT Sneek&lt;br&gt;
+Postbus 10.000&lt;br&gt;
+8600 HA Sneek&lt;br&gt;
+Tel: 14 0515 (zonder netnummer)</contactgegevensandersmailhtml>
+      <contactgegevensandersweb key="Marktstraat 8, 8601 CT Sneek&lt;br&gt;&#xD;&#xA;Postbus 10.000, 8600 HA Sneek&lt;br&gt;&#xD;&#xA;Telefoon 14 0515&lt;br&gt;">Marktstraat 8, 8601 CT Sneek&lt;br&gt;
+Postbus 10.000, 8600 HA Sneek&lt;br&gt;
+Telefoon 14 0515&lt;br&gt;</contactgegevensandersweb>
+      <contactopeningstijden key="&lt;a href=&quot;https://sudwestfryslan.nl/onderwerp/openingstijden/&quot;&gt;Contact en openingstijden&lt;/a&gt;&lt;br&gt;">&lt;a href="https://sudwestfryslan.nl/onderwerp/openingstijden/"&gt;Contact en openingstijden&lt;/a&gt;&lt;br&gt;</contactopeningstijden>
+      <corsacheckuitschakelen key="false">false</corsacheckuitschakelen>
+      <corsanaarmail key="true">true</corsanaarmail>
+      <corsaomgeving key="https://corsa-swf-test.iszf.local/web/stdw/viewobject.html?object_type=S&amp;object_id=">https://corsa-swf-test.iszf.local/web/stdw/viewobject.html?object_type=S&amp;object_id=</corsaomgeving>
+      <digid_prefil_storing key="Helaas kunnen we jouw gegevens niet ophalen, probeer het later nog eens.">Helaas kunnen we jouw gegevens niet ophalen, probeer het later nog eens.</digid_prefil_storing>
+      <dossiercode key="00034">00034</dossiercode>
+      <downloadtekstknop key="Samenvatting downloaden">Samenvatting downloaden</downloadtekstknop>
+      <eherkenningloa key="2">2</eherkenningloa>
+      <emailbody key="We hebben de aanvraag geregistreerd.">We hebben de aanvraag geregistreerd.</emailbody>
+      <emailbodyhtml key="Bedankt voor het invullen van het aanvraagformulier leerlingenvervoer&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;Binnen acht weken nemen wij een besluit. Dit besluit krijgt u in een brief thuisgestuurd. &#xD;&#xA;Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijgt u binnen 8 weken een brief van ons thuisgestuurd. Het uiteindelijke besluit kan dan nog hoogstens vier weken duren.&#xD;&#xA;&lt;br&gt;&lt;br&gt;&#xD;&#xA;">Bedankt voor het invullen van het aanvraagformulier leerlingenvervoer&lt;br&gt;&lt;br&gt;
+
+Binnen acht weken nemen wij een besluit. Dit besluit krijgt u in een brief thuisgestuurd. 
+Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijgt u binnen 8 weken een brief van ons thuisgestuurd. Het uiteindelijke besluit kan dan nog hoogstens vier weken duren.
+&lt;br&gt;&lt;br&gt;
+</emailbodyhtml>
+      <errormailemailaddress key="h.vlietstra@sudwestfryslan.nl">h.vlietstra@sudwestfryslan.nl</errormailemailaddress>
+      <extratekstafronding key="Bericht en afhandeling:&#xD;&#xA;Als je jouw e-mailadres hebt opgegeven ontvang je vandaag een bevestiging per e-mail.&#xD;&#xA;&#xD;&#xA;Binnen acht weken nemen wij een besluit. Dit besluit krijg je in een brief thuisgestuurd. &#xD;&#xA;Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg je binnen 8 weken een brief van ons thuisgestuurd. Het uiteindelijke besluit kan dan nog hoogstens vier weken duren.&#xD;&#xA;">Bericht en afhandeling:
+Als je jouw e-mailadres hebt opgegeven ontvang je vandaag een bevestiging per e-mail.
+
+Binnen acht weken nemen wij een besluit. Dit besluit krijg je in een brief thuisgestuurd. 
+Het kan zijn dat we het besluit niet binnen 8 weken kunnen nemen. Ook dan krijg je binnen 8 weken een brief van ons thuisgestuurd. Het uiteindelijke besluit kan dan nog hoogstens vier weken duren.
+</extratekstafronding>
+      <formulieroffline key="false">false</formulieroffline>
+      <formulierofflinecorsa key=""></formulierofflinecorsa>
+      <formulierofflinedate key="21-3-2025">21-3-2025</formulierofflinedate>
+      <formulierofflinemelding key="Vanwege werkzaamheden is dit formulier momenteel niet beschikbaar. Probeer het later opnieuw.">Vanwege werkzaamheden is dit formulier momenteel niet beschikbaar. Probeer het later opnieuw.</formulierofflinemelding>
+      <formulierofflinemeldingcorsa key="In verband met werkzaamheden is dit formulier momenteel niet beschikbaar. Probeer het later nog eens.">In verband met werkzaamheden is dit formulier momenteel niet beschikbaar. Probeer het later nog eens.</formulierofflinemeldingcorsa>
+      <formulierofflinetime key="15:00">15:00</formulierofflinetime>
+      <interngebruik key="185.114.197.200,&#xD;&#xA;185.114.197.201,&#xD;&#xA;185.114.197.202,&#xD;&#xA;185.114.197.203,&#xD;&#xA;185.114.197.204,&#xD;&#xA;185.114.197.205,&#xD;&#xA;185.114.197.206,&#xD;&#xA;185.114.197.207,&#xD;&#xA;185.114.197.209,&#xD;&#xA;185.114.197.170,&#xD;&#xA;62.165.70.164">185.114.197.200,
+185.114.197.201,
+185.114.197.202,
+185.114.197.203,
+185.114.197.204,
+185.114.197.205,
+185.114.197.206,
+185.114.197.207,
+185.114.197.209,
+185.114.197.170,
+62.165.70.164</interngebruik>
+      <kenmerkbetaling key="False">False</kenmerkbetaling>
+      <kenmerkprefix key="SWF">SWF</kenmerkprefix>
+      <legessettings key="[*Right([#globals.KenmerkAanvraag];10)]">[*Right([#globals.KenmerkAanvraag];10)]</legessettings>
+      <mailnaaraanvrager key="true">true</mailnaaraanvrager>
+      <pdfomgeving key="Ontwikkel">Ontwikkel</pdfomgeving>
+      <sessiontime key="120">120</sessiontime>
+      <sessiontimewarning key="true">true</sessiontimewarning>
+      <sessiontimewarningminutesbeforeend key="1">1</sessiontimewarningminutesbeforeend>
+      <teammailadres key=""></teammailadres>
+      <telefoonnummer key="Telefoon 14 0515">Telefoon 14 0515</telefoonnummer>
+      <tijdformulieronline key="15:00">15:00</tijdformulieronline>
+      <usedigid key="false">false</usedigid>
+      <usedigidniveau key="1">1</usedigidniveau>
+      <useeherkenning key="false">false</useeherkenning>
+      <useeidasbedrijf key="dummy">dummy</useeidasbedrijf>
+      <useeidasburger key="dummy">dummy</useeidasburger>
+      <verplichtevelden key="Alleen velden met een &lt;b STYLE=&quot;color: #BF0042;&quot;&gt;*&lt;/B&gt; zijn verplicht.">Alleen velden met een &lt;b STYLE="color: #BF0042;"&gt;*&lt;/B&gt; zijn verplicht.</verplichtevelden>
+      <vertrouwelijkheidcorsa key="V-SOZA">V-SOZA</vertrouwelijkheidcorsa>
+      <allesok key="true">true</allesok>
+      <kenmerkaanvraag key="">SWF-1112b2d469b7</kenmerkaanvraag>
+      <ditjaar key="">2026</ditjaar>
+      <volgendjaar key="">2027</volgendjaar>
+      <vorigjaar key="">2025</vorigjaar>
+      <digid>
+        <ingelogd key="true">true</ingelogd>
+      </digid>
+      <bsn key="900106505">900106505</bsn>
+      <gegevensset key="">Max</gegevensset>
+      <input>
+        <bsn key="">900106505</bsn>
+        <kvkofvest key=""></kvkofvest>
+      </input>
+      <stuf>
+        <inp>
+          <bsn key="">900106505</bsn>
+          <geboorteplaats key="">0091</geboorteplaats>
+          <geboorteland key="">6030</geboorteland>
+        </inp>
+        <geslachtsnaam key="">Witteveen</geslachtsnaam>
+        <voorvoegselgeslachtsnaam key=""></voorvoegselgeslachtsnaam>
+        <voorletters key="">E.Y.</voorletters>
+        <voornamen key="">Eduard Yeb</voornamen>
+        <aanduidingnaamgebruik key="">E</aanduidingnaamgebruik>
+        <geslachtsnaampartner key="">Terluin</geslachtsnaampartner>
+        <voorvoegselgeslachtsnaampartner key=""></voorvoegselgeslachtsnaampartner>
+        <geslachtsaanduiding key="">M</geslachtsaanduiding>
+        <geboortedatum key="">19770221</geboortedatum>
+        <aanhefaanschrijving key="">Mijnheer</aanhefaanschrijving>
+        <voornamenaanschrijving key="">Eduard Yeb</voornamenaanschrijving>
+        <geslachtsnaamaanschrijving key="">Witteveen</geslachtsnaamaanschrijving>
+        <adellijketitelpredikaat key=""></adellijketitelpredikaat>
+        <sub>
+          <telefoonnummer key=""></telefoonnummer>
+          <faxnummer key=""></faxnummer>
+          <emailadres key="">eduard@witteveen.frl</emailadres>
+        </sub>
+        <overlijdensdatum key=""></overlijdensdatum>
+        <organisatie key="">1900</organisatie>
+        <acdcode iteration="1">
+          <code key=""></code>
+        </acdcode>
+        <acdcode iteration="2">
+          <code key=""></code>
+        </acdcode>
+        <acdcode iteration="3">
+          <code key=""></code>
+        </acdcode>
+        <verblijfsadres iteration="1">
+          <woonplaats key="">Bolsward</woonplaats>
+          <openbareruimtenaam key="">Snekerstraat</openbareruimtenaam>
+          <straat key="">Snekerstraat</straat>
+          <postcode key="">8701XE</postcode>
+          <huisnummer key="">30</huisnummer>
+          <huisletter key=""></huisletter>
+          <huisnummertoevoeging key=""></huisnummertoevoeging>
+          <locatiebeschrijving key=""></locatiebeschrijving>
+          <aoa>
+            <identificatie key="">0064200000140031</identificatie>
+          </aoa>
+          <wpl>
+            <identificatie key="">2079</identificatie>
+          </wpl>
+        </verblijfsadres>
+        <correspondentieadres iteration="1">
+          <woonplaats key=""></woonplaats>
+          <openbareruimtenaam key=""></openbareruimtenaam>
+          <postcode key=""></postcode>
+          <huisnummer key=""></huisnummer>
+          <huisletter key=""></huisletter>
+          <huisnummertoevoeging key=""></huisnummertoevoeging>
+          <aoa>
+            <identificatie key=""></identificatie>
+          </aoa>
+        </correspondentieadres>
+        <nationaliteit iteration="1">
+          <code key="">1</code>
+          <omschrijving key="">Nederlandse</omschrijving>
+        </nationaliteit>
+      </stuf>
+      <persoon>
+        <value>
+          <persoon>
+            <telefoonnummer key="">0515123456</telefoonnummer>
+            <emailadres key="">h.vlietstra@sudwestfryslan.nl</emailadres>
+          </persoon>
+        </value>
+      </persoon>
+      <applicantemailaddress key="">h.vlietstra@sudwestfryslan.nl</applicantemailaddress>
+      <gevondenpostcode key=""></gevondenpostcode>
+    </globals>
+    <scinitialize>
+      <scerrorcorsamailnaarwebmaster>
+        <errormailnaarbehandelaar />
+      </scerrorcorsamailnaarwebmaster>
+      <fformulierfout />
+      <corsatje>
+        <info key="">
+ Integratie: WebformulierenVerwerker - Version 6.18.1
+ Platform: Het Integratie Platform - Version 6.21.5
+ Framework: Frank!Framework - Version 9.1.1-20251108.110041
+ Server: openzksbrugt001
+ Endpoint: /webformulierenverwerker/services/WebformulierenVerwerker
+ Server Type: TOMCAT
+ OS Name: Linux
+ Directory: /opt/frank/configurations
+ Corsa Version: Corsa/Webservice - BCT BV. Version: 7.2.279.119
+ Stage: TST
+ Connected Webservice: http://swfkvt04/wsCorsa7/Corsa72WS4j.asmx</info>
+      </corsatje>
+    </scinitialize>
+    <scgenereerkenmerk />
+    <fleerlingenvervoeraanvraagcheck>
+      <leerlingverblijftswf key="j">Ja</leerlingverblijftswf>
+      <dichtstbijzijndetoegankelijkeschool key="j">Ja</dichtstbijzijndetoegankelijkeschool>
+      <welkonderwijsvolgtleerling key="1">Regulier Basis Onderwijs</welkonderwijsvolgtleerling>
+      <reisafstandmeerdan6km key="j">Ja</reisafstandmeerdan6km>
+      <leerlingkanzelfstandigreizen key="1">Ja</leerlingkanzelfstandigreizen>
+      <hoegaatdeleerlingnaarschool key="1">Met de fiets. (Dan is de fietsvergoeding € 0,09 per kilometer van huis naar school en terug).  </hoegaatdeleerlingnaarschool>
+      <leerlingenvervoeraanvragen key="j">Ja</leerlingenvervoeraanvragen>
+      <belastingjaar key="">2017</belastingjaar>
+    </fleerlingenvervoeraanvraagcheck>
+    <fleerlingenvervoerv3privacy />
+    <fleerlingenvervoerv3aanvraag>
+      <ditjaar>
+        <welkschooljaar key="4">2025 - 2026</welkschooljaar>
+      </ditjaar>
+      <ingangsdatum key="">29-1-2026</ingangsdatum>
+      <burgerbedrijf key="b">Burger</burgerbedrijf>
+      <belastingjaar key="">2023</belastingjaar>
+      <fleerlingenvervoerv3aanvraag3efautogen7 key=""></fleerlingenvervoerv3aanvraag3efautogen7>
+      <fleerlingenvervoerv3aanvraagefautogen2 key=""></fleerlingenvervoerv3aanvraagefautogen2>
+      <fleerlingenvervoerv3aanvraagefautogen4 key=""></fleerlingenvervoerv3aanvraagefautogen4>
+    </fleerlingenvervoerv3aanvraag>
+    <digidintro />
+    <digid>
+      <digiddummy>
+        <inloggen key="true">Ja</inloggen>
+        <bsn key="">900106505</bsn>
+        <digiddummyefautogen1 key=""></digiddummyefautogen1>
+      </digiddummy>
+    </digid>
+    <sccentricprefill>
+      <npslv01_prs_natuurlijkpersoon>
+        <procstufprefillcommon>
+          <xsp_maakstufbericht />
+          <sss_stuurstufbericht>
+            <success key="True">True</success>
+            <response key="&lt;npsLa01-prs-NatuurlijkPersoon xmlns=&quot;http://www.egem.nl/StUF/sector/bg/0310&quot; xmlns:StUF=&quot;http://www.egem.nl/StUF/StUF0301&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype=&quot;NPS&quot;&gt;&lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil=&quot;true&quot; StUF:noValue=&quot;nietOndersteund&quot;&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil=&quot;true&quot;&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil=&quot;true&quot; StUF:noValue=&quot;geenWaarde&quot;&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype=&quot;NPSNAT&quot;&gt;&lt;gerelateerde StUF:entiteittype=&quot;NAT&quot;&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;npsLa01-prs-NatuurlijkPersoon xmlns="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;stuurgegevens&gt;&lt;StUF:berichtcode&gt;La01&lt;/StUF:berichtcode&gt;&lt;StUF:zender&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/StUF:applicatie&gt;&lt;/StUF:zender&gt;&lt;StUF:ontvanger&gt;&lt;StUF:organisatie&gt;1900&lt;/StUF:organisatie&gt;&lt;StUF:applicatie&gt;PFS&lt;/StUF:applicatie&gt;&lt;/StUF:ontvanger&gt;&lt;StUF:referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/StUF:referentienummer&gt;&lt;StUF:tijdstipBericht&gt;20260129093425502&lt;/StUF:tijdstipBericht&gt;&lt;StUF:entiteittype&gt;NPS&lt;/StUF:entiteittype&gt;&lt;/stuurgegevens&gt;&lt;parameters&gt;&lt;StUF:indicatorVervolgvraag&gt;false&lt;/StUF:indicatorVervolgvraag&gt;&lt;/parameters&gt;&lt;antwoord&gt;&lt;object StUF:entiteittype="NPS"&gt;&lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&lt;voorvoegselGeslachtsnaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaam&gt;&lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&lt;voorvoegselGeslachtsnaamPartner xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/voorvoegselGeslachtsnaamPartner&gt;&lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&lt;adellijkeTitelPredikaat xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/adellijkeTitelPredikaat&gt;&lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&lt;overlijdensdatum xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/overlijdensdatum&gt;&lt;verblijfsadres&gt;&lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;inp.locatiebeschrijving xsi:nil="true" StUF:noValue="nietOndersteund"&gt;&lt;/inp.locatiebeschrijving&gt;&lt;/verblijfsadres&gt;&lt;sub.correspondentieAdres&gt;&lt;wpl.woonplaatsNaam&gt;&lt;/wpl.woonplaatsNaam&gt;&lt;postcode xsi:nil="true"&gt;&lt;/postcode&gt;&lt;aoa.identificatie xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.identificatie&gt;&lt;gor.openbareRuimteNaam xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/gor.openbareRuimteNaam&gt;&lt;aoa.huisnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummer&gt;&lt;aoa.huisletter xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisletter&gt;&lt;aoa.huisnummertoevoeging xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/aoa.huisnummertoevoeging&gt;&lt;/sub.correspondentieAdres&gt;&lt;sub.telefoonnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.telefoonnummer&gt;&lt;sub.faxnummer xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/sub.faxnummer&gt;&lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;acd.code xsi:nil="true" StUF:noValue="geenWaarde"&gt;&lt;/acd.code&gt;&lt;inp.heeftAlsNationaliteit StUF:entiteittype="NPSNAT"&gt;&lt;gerelateerde StUF:entiteittype="NAT"&gt;&lt;code&gt;1&lt;/code&gt;&lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&lt;/gerelateerde&gt;&lt;/inp.heeftAlsNationaliteit&gt;&lt;/object&gt;&lt;/antwoord&gt;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;</response>
+          </sss_stuurstufbericht>
+          <xslt_removenamespace>
+            <result key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;npsLa01-prs-NatuurlijkPersoon&gt;&#xD;&#xA;  &lt;stuurgegevens&gt;&#xD;&#xA;    &lt;berichtcode&gt;La01&lt;/berichtcode&gt;&#xD;&#xA;    &lt;zender&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/applicatie&gt;&#xD;&#xA;    &lt;/zender&gt;&#xD;&#xA;    &lt;ontvanger&gt;&#xD;&#xA;      &lt;organisatie&gt;1900&lt;/organisatie&gt;&#xD;&#xA;      &lt;applicatie&gt;PFS&lt;/applicatie&gt;&#xD;&#xA;    &lt;/ontvanger&gt;&#xD;&#xA;    &lt;referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/referentienummer&gt;&#xD;&#xA;    &lt;tijdstipBericht&gt;20260129093425502&lt;/tijdstipBericht&gt;&#xD;&#xA;    &lt;entiteittype&gt;NPS&lt;/entiteittype&gt;&#xD;&#xA;  &lt;/stuurgegevens&gt;&#xD;&#xA;  &lt;parameters&gt;&#xD;&#xA;    &lt;indicatorVervolgvraag&gt;false&lt;/indicatorVervolgvraag&gt;&#xD;&#xA;  &lt;/parameters&gt;&#xD;&#xA;  &lt;antwoord&gt;&#xD;&#xA;    &lt;object entiteittype=&quot;NPS&quot;&gt;&#xD;&#xA;      &lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;&#xD;&#xA;      &lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;voorletters&gt;E.Y.&lt;/voorletters&gt;&#xD;&#xA;      &lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;&#xD;&#xA;      &lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;&#xD;&#xA;      &lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;&#xD;&#xA;      &lt;voorvoegselGeslachtsnaamPartner nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;&#xD;&#xA;      &lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;&#xD;&#xA;      &lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;&#xD;&#xA;      &lt;adellijkeTitelPredikaat nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;&#xD;&#xA;      &lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;&#xD;&#xA;      &lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;&#xD;&#xA;      &lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;&#xD;&#xA;      &lt;overlijdensdatum nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;verblijfsadres&gt;&#xD;&#xA;        &lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;&#xD;&#xA;        &lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;&#xD;&#xA;        &lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;&#xD;&#xA;        &lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;&#xD;&#xA;        &lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;inp.locatiebeschrijving nil=&quot;true&quot; noValue=&quot;nietOndersteund&quot; /&gt;&#xD;&#xA;      &lt;/verblijfsadres&gt;&#xD;&#xA;      &lt;sub.correspondentieAdres&gt;&#xD;&#xA;        &lt;wpl.woonplaatsNaam /&gt;&#xD;&#xA;        &lt;postcode nil=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;aoa.identificatie nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;gor.openbareRuimteNaam nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisletter nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;        &lt;aoa.huisnummertoevoeging nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;/sub.correspondentieAdres&gt;&#xD;&#xA;      &lt;sub.telefoonnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.faxnummer nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;acd.code nil=&quot;true&quot; noValue=&quot;geenWaarde&quot; /&gt;&#xD;&#xA;      &lt;inp.heeftAlsNationaliteit entiteittype=&quot;NPSNAT&quot;&gt;&#xD;&#xA;        &lt;gerelateerde entiteittype=&quot;NAT&quot;&gt;&#xD;&#xA;          &lt;code&gt;1&lt;/code&gt;&#xD;&#xA;          &lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;&#xD;&#xA;        &lt;/gerelateerde&gt;&#xD;&#xA;      &lt;/inp.heeftAlsNationaliteit&gt;&#xD;&#xA;    &lt;/object&gt;&#xD;&#xA;  &lt;/antwoord&gt;&#xD;&#xA;&lt;/npsLa01-prs-NatuurlijkPersoon&gt;">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;npsLa01-prs-NatuurlijkPersoon&gt;
+  &lt;stuurgegevens&gt;
+    &lt;berichtcode&gt;La01&lt;/berichtcode&gt;
+    &lt;zender&gt;
+      &lt;organisatie&gt;1900&lt;/organisatie&gt;
+      &lt;applicatie&gt;TriplEforms scLeerlingenVervoerV3&lt;/applicatie&gt;
+    &lt;/zender&gt;
+    &lt;ontvanger&gt;
+      &lt;organisatie&gt;1900&lt;/organisatie&gt;
+      &lt;applicatie&gt;PFS&lt;/applicatie&gt;
+    &lt;/ontvanger&gt;
+    &lt;referentienummer&gt;20b5792d-91fc-468b-b877-66031626478c&lt;/referentienummer&gt;
+    &lt;tijdstipBericht&gt;20260129093425502&lt;/tijdstipBericht&gt;
+    &lt;entiteittype&gt;NPS&lt;/entiteittype&gt;
+  &lt;/stuurgegevens&gt;
+  &lt;parameters&gt;
+    &lt;indicatorVervolgvraag&gt;false&lt;/indicatorVervolgvraag&gt;
+  &lt;/parameters&gt;
+  &lt;antwoord&gt;
+    &lt;object entiteittype="NPS"&gt;
+      &lt;inp.bsn&gt;900106505&lt;/inp.bsn&gt;
+      &lt;geslachtsnaam&gt;Witteveen&lt;/geslachtsnaam&gt;
+      &lt;voorvoegselGeslachtsnaam nil="true" noValue="geenWaarde" /&gt;
+      &lt;voorletters&gt;E.Y.&lt;/voorletters&gt;
+      &lt;voornamen&gt;Eduard Yeb&lt;/voornamen&gt;
+      &lt;aanduidingNaamgebruik&gt;E&lt;/aanduidingNaamgebruik&gt;
+      &lt;geslachtsnaamPartner&gt;Terluin&lt;/geslachtsnaamPartner&gt;
+      &lt;voorvoegselGeslachtsnaamPartner nil="true" noValue="geenWaarde" /&gt;
+      &lt;aanhefAanschrijving&gt;Mijnheer&lt;/aanhefAanschrijving&gt;
+      &lt;voornamenAanschrijving&gt;Eduard Yeb&lt;/voornamenAanschrijving&gt;
+      &lt;geslachtsnaamAanschrijving&gt;Witteveen&lt;/geslachtsnaamAanschrijving&gt;
+      &lt;adellijkeTitelPredikaat nil="true" noValue="geenWaarde" /&gt;
+      &lt;geslachtsaanduiding&gt;M&lt;/geslachtsaanduiding&gt;
+      &lt;geboortedatum&gt;19770221&lt;/geboortedatum&gt;
+      &lt;inp.geboorteplaats&gt;0091&lt;/inp.geboorteplaats&gt;
+      &lt;inp.geboorteLand&gt;6030&lt;/inp.geboorteLand&gt;
+      &lt;overlijdensdatum nil="true" noValue="geenWaarde" /&gt;
+      &lt;verblijfsadres&gt;
+        &lt;aoa.identificatie&gt;0064200000140031&lt;/aoa.identificatie&gt;
+        &lt;wpl.identificatie&gt;2079&lt;/wpl.identificatie&gt;
+        &lt;wpl.woonplaatsNaam&gt;Bolsward&lt;/wpl.woonplaatsNaam&gt;
+        &lt;gor.openbareRuimteNaam&gt;Snekerstraat&lt;/gor.openbareRuimteNaam&gt;
+        &lt;gor.straatnaam&gt;Snekerstraat&lt;/gor.straatnaam&gt;
+        &lt;aoa.postcode&gt;8701XE&lt;/aoa.postcode&gt;
+        &lt;aoa.huisnummer&gt;30&lt;/aoa.huisnummer&gt;
+        &lt;aoa.huisletter nil="true" noValue="geenWaarde" /&gt;
+        &lt;aoa.huisnummertoevoeging nil="true" noValue="geenWaarde" /&gt;
+        &lt;inp.locatiebeschrijving nil="true" noValue="nietOndersteund" /&gt;
+      &lt;/verblijfsadres&gt;
+      &lt;sub.correspondentieAdres&gt;
+        &lt;wpl.woonplaatsNaam /&gt;
+        &lt;postcode nil="true" /&gt;
+        &lt;aoa.identificatie nil="true" noValue="geenWaarde" /&gt;
+        &lt;gor.openbareRuimteNaam nil="true" noValue="geenWaarde" /&gt;
+        &lt;aoa.huisnummer nil="true" noValue="geenWaarde" /&gt;
+        &lt;aoa.huisletter nil="true" noValue="geenWaarde" /&gt;
+        &lt;aoa.huisnummertoevoeging nil="true" noValue="geenWaarde" /&gt;
+      &lt;/sub.correspondentieAdres&gt;
+      &lt;sub.telefoonnummer nil="true" noValue="geenWaarde" /&gt;
+      &lt;sub.faxnummer nil="true" noValue="geenWaarde" /&gt;
+      &lt;sub.emailadres&gt;eduard@witteveen.frl&lt;/sub.emailadres&gt;
+      &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
+      &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
+      &lt;acd.code nil="true" noValue="geenWaarde" /&gt;
+      &lt;inp.heeftAlsNationaliteit entiteittype="NPSNAT"&gt;
+        &lt;gerelateerde entiteittype="NAT"&gt;
+          &lt;code&gt;1&lt;/code&gt;
+          &lt;omschrijving&gt;Nederlandse&lt;/omschrijving&gt;
+        &lt;/gerelateerde&gt;
+      &lt;/inp.heeftAlsNationaliteit&gt;
+    &lt;/object&gt;
+  &lt;/antwoord&gt;
+&lt;/npsLa01-prs-NatuurlijkPersoon&gt;</result>
+          </xslt_removenamespace>
+          <bsn key="">900106505</bsn>
+          <bestand key="">npsLv01-prs-NatuurlijkPersoon-max.xml</bestand>
+          <soapaction key="">npsLv01-prs-NatuurlijkPersoon</soapaction>
+          <kvkofvest key=""></kvkofvest>
+        </procstufprefillcommon>
+        <bsn key="">900106505</bsn>
+        <gegevensset key="">Max</gegevensset>
+        <specifiekbestand key=""></specifiekbestand>
+      </npslv01_prs_natuurlijkpersoon>
+      <bsn key="">900106505</bsn>
+      <kvkofvest key=""></kvkofvest>
+      <welkeprefill key="">NPSMax</welkeprefill>
+      <specifiekbestand key=""></specifiekbestand>
+    </sccentricprefill>
+    <fleerlingenvervoerv3gegevensburger>
+      <telefoonnummer key="">0515123456</telefoonnummer>
+      <emailadres key="">h.vlietstra@sudwestfryslan.nl</emailadres>
+      <welkeibannummer key="1">Mijn eigen IBAN</welkeibannummer>
+      <iban key="">GB33BUKB20201555555555</iban>
+      <ibannaam key="">wedfew</ibannaam>
+      <realtietotleerling key="1">Ouder</realtietotleerling>
+      <fprefilnawv3_voorletterefautogen9 key=""></fprefilnawv3_voorletterefautogen9>
+      <fleerlingenvervoerv3gegevensburgerefautogen2 key=""></fleerlingenvervoerv3gegevensburgerefautogen2>
+    </fleerlingenvervoerv3gegevensburger>
+    <fleerlingenvervoerv3gegevensleerling>
+      <bsnleerling key="">153817628</bsnleerling>
+      <voornamen key="">testvoornaam</voornamen>
+      <tussenvoegsel key="">testtussenvoegs</tussenvoegsel>
+      <achternaam key="">TestAchternaam</achternaam>
+      <geslacht key="m">Meisje</geslacht>
+      <geboortedatum key="">1-12-2016</geboortedatum>
+      <leerlinganderadres key="j">Ja</leerlinganderadres>
+      <gevondenplaats key=""></gevondenplaats>
+      <postcodeaanvrager key="[8701XE">8701XE</postcodeaanvrager>
+      <fleerlingenvervoerv3gegevensleerlingefautogen7 key=""></fleerlingenvervoerv3gegevensleerlingefautogen7>
+    </fleerlingenvervoerv3gegevensleerling>
+    <fleerlingenvervoerv3regulier>
+      <naamschool key="">Testschool</naamschool>
+      <postcode key="">8601CR</postcode>
+      <nummer key="">15</nummer>
+      <huisletter key=""></huisletter>
+      <ais />
+      <nummertoevoeging key=""></nummertoevoeging>
+      <straat key="">Marktstraat</straat>
+      <woonplaats key="">Sneek</woonplaats>
+      <fleerlingenvervoerv3regulierefautogen2 key=""></fleerlingenvervoerv3regulierefautogen2>
+    </fleerlingenvervoerv3regulier>
+    <fleerlingenvervoerv3eigenbijdrage>
+      <newyear>
+        <hetverzamelinkomen key="1">Minder dan € 31.500</hetverzamelinkomen>
+      </newyear>
+      <belastingaangifte key="f25308df720d465389620c09da109ec1">Checklist beoordeling externe inhuur zzp (2).pdf</belastingaangifte>
+      <fleerlingenvervoerv3eigenbijdrageefautogen6 key=""></fleerlingenvervoerv3eigenbijdrageefautogen6>
+    </fleerlingenvervoerv3eigenbijdrage>
+    <fleerlingenvervoerv3vervoer>
+      <typevergoedingvervoer key="1">Fiets</typevergoedingvervoer>
+      <uploadfiets key="b5bdc5e7aed440fa8c04d7839635f96b">Aanvraagformulier gehandicaptenparkeerkaart (GPK) (1).pdf</uploadfiets>
+      <bijlagen key="719cfe489c8242c88bbdab90fc2446b3">Beschadigde container.pdf</bijlagen>
+      <maandagvervoerfiets />
+      <dinsdagvervoerfiets />
+      <woensdagvervoerfiets />
+      <donderdagvervoerfiets />
+      <vrijdagvervoerfiets key="o">Ochtend</vrijdagvervoerfiets>
+      <vrijdagvervoerfiets key="m">Middag</vrijdagvervoerfiets>
+      <fleerlingenvervoerv3vervoerefautogen2 key=""></fleerlingenvervoerv3vervoerefautogen2>
+      <fleerlingenvervoerv3vervoerefautogen18 key=""></fleerlingenvervoerv3vervoerefautogen18>
+      <fleerlingenvervoerv3vervoerefautogen42 key=""></fleerlingenvervoerv3vervoerefautogen42>
+    </fleerlingenvervoerv3vervoer>
+    <fleerlingenvervoerv3toelichting>
+      <extratoelichting key="">bla bla</extratoelichting>
+    </fleerlingenvervoerv3toelichting>
+    <fcontroleren>
+      <gegevensjuist key="J">Ja</gegevensjuist>
+      <fcontrolerenefautogen3 key=""></fcontrolerenefautogen3>
+    </fcontroleren>
+    <leerlingenvervoername />
+    <scpdfsummarycorsa>
+      <samenvatting />
+    </scpdfsummarycorsa>
+    <scopslaanincorsaall>
+      <scerrorcorsanummermail>
+        <errormailnaarbehandelaar />
+      </scerrorcorsanummermail>
+      <ffoutcorsa />
+    </scopslaanincorsaall>
+  </answers>
+  <defaults>
+    <globals>
+      <digid />
+      <input />
+      <stuf>
+        <inp />
+        <sub />
+        <acdcode iteration="1" />
+        <acdcode iteration="2" />
+        <acdcode iteration="3" />
+        <verblijfsadres iteration="1">
+          <aoa />
+          <wpl />
+        </verblijfsadres>
+        <correspondentieadres iteration="1">
+          <aoa />
+        </correspondentieadres>
+        <nationaliteit iteration="1" />
+      </stuf>
+      <persoon>
+        <value>
+          <persoon />
+        </value>
+      </persoon>
+    </globals>
+    <scinitialize>
+      <scerrorcorsamailnaarwebmaster>
+        <errormailnaarbehandelaar />
+      </scerrorcorsamailnaarwebmaster>
+      <fformulierfout />
+      <corsatje />
+    </scinitialize>
+    <scgenereerkenmerk />
+    <fleerlingenvervoeraanvraagcheck />
+    <fleerlingenvervoerv3privacy />
+    <fleerlingenvervoerv3aanvraag>
+      <ditjaar />
+    </fleerlingenvervoerv3aanvraag>
+    <digidintro />
+    <digid>
+      <digiddummy />
+    </digid>
+    <sccentricprefill>
+      <npslv01_prs_natuurlijkpersoon>
+        <procstufprefillcommon>
+          <xsp_maakstufbericht />
+          <sss_stuurstufbericht />
+          <xslt_removenamespace />
+        </procstufprefillcommon>
+      </npslv01_prs_natuurlijkpersoon>
+    </sccentricprefill>
+    <fleerlingenvervoerv3gegevensburger />
+    <fleerlingenvervoerv3gegevensleerling />
+    <fleerlingenvervoerv3regulier>
+      <ais />
+    </fleerlingenvervoerv3regulier>
+    <fleerlingenvervoerv3eigenbijdrage>
+      <newyear />
+    </fleerlingenvervoerv3eigenbijdrage>
+    <fleerlingenvervoerv3vervoer />
+    <fleerlingenvervoerv3toelichting />
+    <fcontroleren />
+    <leerlingenvervoername />
+    <scpdfsummarycorsa>
+      <samenvatting />
+    </scpdfsummarycorsa>
+    <scopslaanincorsaall>
+      <scerrorcorsanummermail>
+        <errormailnaarbehandelaar />
+      </scerrorcorsanummermail>
+      <ffoutcorsa />
+    </scopslaanincorsaall>
+  </defaults>
+  <summary>
+    <globals>
+      <digid />
+      <input />
+      <stuf>
+        <inp />
+        <sub />
+        <acdcode iteration="1" />
+        <acdcode iteration="2" />
+        <acdcode iteration="3" />
+        <verblijfsadres iteration="1">
+          <aoa />
+          <wpl />
+        </verblijfsadres>
+        <correspondentieadres iteration="1">
+          <aoa />
+        </correspondentieadres>
+        <nationaliteit iteration="1" />
+      </stuf>
+      <persoon>
+        <value>
+          <persoon />
+        </value>
+      </persoon>
+    </globals>
+    <scinitialize>
+      <scerrorcorsamailnaarwebmaster>
+        <errormailnaarbehandelaar />
+      </scerrorcorsamailnaarwebmaster>
+      <fformulierfout />
+      <corsatje />
+    </scinitialize>
+    <scgenereerkenmerk />
+    <fleerlingenvervoeraanvraagcheck>
+      <id_e3f6d2c0-2e13-44c3-8855-9763ccf948db type="Header">
+        <columns>
+          <column>Aanvraagcheck</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_e3f6d2c0-2e13-44c3-8855-9763ccf948db>
+      <leerlingverblijftswf type="Text">
+        <columns>
+          <column>Woont de leerling op schooldagen in de gemeente Súdwest-Fryslân?</column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </leerlingverblijftswf>
+      <dichtstbijzijndetoegankelijkeschool type="Text">
+        <columns>
+          <column>Gaat de leerling naar de dichtstbijzijnde toegankelijke school?</column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </dichtstbijzijndetoegankelijkeschool>
+      <welkonderwijsvolgtleerling type="Text">
+        <columns>
+          <column>Welk onderwijs volgt de leerling? </column>
+          <column>Regulier Basis Onderwijs</column>
+          <column></column>
+        </columns>
+      </welkonderwijsvolgtleerling>
+      <reisafstandmeerdan6km type="Text">
+        <columns>
+          <column>Is de enkele reisafstand van woonadres naar school meer dan 6 kilometer? </column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </reisafstandmeerdan6km>
+      <leerlingkanzelfstandigreizen type="Text">
+        <columns>
+          <column>Kan de leerling zelfstandig reizen?</column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </leerlingkanzelfstandigreizen>
+      <hoegaatdeleerlingnaarschool type="Text">
+        <columns>
+          <column>Hoe gaat de leerling naar school? </column>
+          <column>Met de fiets. (Dan is de fietsvergoeding € 0,09 per kilometer van huis naar school en terug).  </column>
+          <column></column>
+        </columns>
+      </hoegaatdeleerlingnaarschool>
+      <leerlingenvervoeraanvragen type="Text">
+        <columns>
+          <column>Wil je leerlingenvervoer aanvragen?</column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </leerlingenvervoeraanvragen>
+      <id_eb133293-9ae8-4727-aec5-6608bc2d4ced type="Title">
+        <columns>
+          <column>Twijfel je of je een aanvraag wilt indienen? Neem dan contact met ons op via telefoonnummer 140515 en vraag naar de consulent leerlingenvervoer.</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_eb133293-9ae8-4727-aec5-6608bc2d4ced>
+    </fleerlingenvervoeraanvraagcheck>
+    <fleerlingenvervoerv3privacy />
+    <fleerlingenvervoerv3aanvraag>
+      <id_4b7a046f-c24c-4774-af75-8d8dbda8c5d4 type="Header">
+        <columns>
+          <column>Aanvraag</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_4b7a046f-c24c-4774-af75-8d8dbda8c5d4>
+      <id_161d3b34-2c55-4af8-8c3d-54f2efbefb7c type="Text-single-column">
+        <columns>
+          <column>Ieder kind heeft recht op passend onderwijs. Soms is de afstand naar de school te groot of kan het kind door een vastgestelde handicap niet zelfstandig naar school. Dan krijg je misschien een tegemoetkoming in de kosten voor leerlingenvervoer.
+
+Je krijgt direct na het indienen van de aanvraag een bevestiging per e-mail. We behandelen deze aanvraag binnen 12 weken. Je ontvangt dan een brief met daarin het besluit.
+
+Let op: leerlingenvervoer kan niet met terugwerkende kracht aangevraagd worden en kan alleen aangevraagd worden wanneer de leerling in de gemeente Súdwest-Fryslân verblijft.
+</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_161d3b34-2c55-4af8-8c3d-54f2efbefb7c>
+      <ditjaar>
+        <welkschooljaar type="Text">
+          <columns>
+            <column>Voor welk schooljaar wil je leerlingenvervoer aanvragen?</column>
+            <column>2025 - 2026</column>
+            <column></column>
+          </columns>
+        </welkschooljaar>
+      </ditjaar>
+      <ingangsdatum type="Text">
+        <columns>
+          <column>Vanaf welke datum wil je gebruik maken van leerlingenvervoer?</column>
+          <column>29-1-2026</column>
+          <column></column>
+        </columns>
+      </ingangsdatum>
+      <id_f20e3151-cf62-45b0-8d92-33dc262762d5 type="Header">
+        <columns>
+          <column>Aanvraag</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_f20e3151-cf62-45b0-8d92-33dc262762d5>
+      <burgerbedrijf type="Text">
+        <columns>
+          <column>Doe je deze aanvraag als burger of namens een organisatie?</column>
+          <column>Burger</column>
+          <column></column>
+        </columns>
+      </burgerbedrijf>
+    </fleerlingenvervoerv3aanvraag>
+    <digidintro />
+    <digid>
+      <digiddummy />
+    </digid>
+    <sccentricprefill>
+      <npslv01_prs_natuurlijkpersoon>
+        <procstufprefillcommon>
+          <xsp_maakstufbericht />
+          <sss_stuurstufbericht />
+          <xslt_removenamespace />
+        </procstufprefillcommon>
+      </npslv01_prs_natuurlijkpersoon>
+    </sccentricprefill>
+    <fleerlingenvervoerv3gegevensburger>
+      <id_ee926806-26e0-4dd0-af2b-b0ae2183354e type="Header">
+        <columns>
+          <column>Persoonsgegevens</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_ee926806-26e0-4dd0-af2b-b0ae2183354e>
+      <id_85839e1e-560f-4502-b9bf-0ba3fe024b31 type="Text">
+        <columns>
+          <column>Burgerservicenummer:</column>
+          <column>900106505</column>
+          <column></column>
+        </columns>
+      </id_85839e1e-560f-4502-b9bf-0ba3fe024b31>
+      <id_e5cfd958-2d6e-4aa1-8db0-f5838cf16b4a type="Text">
+        <columns>
+          <column>Voornamen</column>
+          <column>E.Y.</column>
+          <column></column>
+        </columns>
+      </id_e5cfd958-2d6e-4aa1-8db0-f5838cf16b4a>
+      <id_5da81be1-b3ef-43da-9c20-acd8161c5edf type="Text">
+        <columns>
+          <column>Tussenvoegsel(s)</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_5da81be1-b3ef-43da-9c20-acd8161c5edf>
+      <id_1ca1bd54-4c26-4e08-8763-2da2fef0c10d type="Text">
+        <columns>
+          <column>Achternaam</column>
+          <column>Witteveen</column>
+          <column></column>
+        </columns>
+      </id_1ca1bd54-4c26-4e08-8763-2da2fef0c10d>
+      <id_c7c4f9c6-960d-40d9-a4c5-4159c95b5ab9 type="Text">
+        <columns>
+          <column>Geboortedatum</column>
+          <column>21-2-1977</column>
+          <column></column>
+        </columns>
+      </id_c7c4f9c6-960d-40d9-a4c5-4159c95b5ab9>
+      <id_b7f447f6-5210-4624-9dcf-058ffe86b698 type="Text">
+        <columns>
+          <column>Adres</column>
+          <column>Snekerstraat 30  
+8701XE Bolsward</column>
+          <column></column>
+        </columns>
+      </id_b7f447f6-5210-4624-9dcf-058ffe86b698>
+      <telefoonnummer type="Text">
+        <columns>
+          <column>Telefoonnummer</column>
+          <column>0515123456</column>
+          <column></column>
+        </columns>
+      </telefoonnummer>
+      <emailadres type="Text">
+        <columns>
+          <column>E-mailadres</column>
+          <column>h.vlietstra@sudwestfryslan.nl</column>
+          <column></column>
+        </columns>
+      </emailadres>
+      <welkeibannummer type="Text">
+        <columns>
+          <column>Op welke IBAN moeten wij de eventuele vergoeding overmaken. </column>
+          <column>Mijn eigen IBAN</column>
+          <column></column>
+        </columns>
+      </welkeibannummer>
+      <iban type="Text">
+        <columns>
+          <column>Vul hier de IBAN in</column>
+          <column>GB33BUKB20201555555555</column>
+          <column></column>
+        </columns>
+      </iban>
+      <ibannaam type="Text">
+        <columns>
+          <column>Vul hier de namen en voorletter(s) in die op de bankpas staan.</column>
+          <column>wedfew</column>
+          <column></column>
+        </columns>
+      </ibannaam>
+      <id_21698174-8e9a-4cad-9773-f5fbbc64f781 type="Header">
+        <columns>
+          <column>Relatie</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_21698174-8e9a-4cad-9773-f5fbbc64f781>
+      <realtietotleerling type="Text">
+        <columns>
+          <column>Wat is jouw relatie tot de leerling?</column>
+          <column>Ouder</column>
+          <column></column>
+        </columns>
+      </realtietotleerling>
+    </fleerlingenvervoerv3gegevensburger>
+    <fleerlingenvervoerv3gegevensleerling>
+      <id_edf44ee2-0eb4-481e-b690-c400a7864b5a type="Header">
+        <columns>
+          <column>Gegevens leerling</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_edf44ee2-0eb4-481e-b690-c400a7864b5a>
+      <bsnleerling type="Text">
+        <columns>
+          <column>BSN-leerling</column>
+          <column>153817628</column>
+          <column></column>
+        </columns>
+      </bsnleerling>
+      <voornamen type="Text">
+        <columns>
+          <column>Roepnaam</column>
+          <column>testvoornaam</column>
+          <column></column>
+        </columns>
+      </voornamen>
+      <tussenvoegsel type="Text">
+        <columns>
+          <column>Tussenvoegsel</column>
+          <column>testtussenvoegs</column>
+        </columns>
+      </tussenvoegsel>
+      <achternaam type="Text">
+        <columns>
+          <column>Achternaam</column>
+          <column>TestAchternaam</column>
+        </columns>
+      </achternaam>
+      <geslacht type="Text">
+        <columns>
+          <column>Geslacht:</column>
+          <column>Meisje</column>
+          <column></column>
+        </columns>
+      </geslacht>
+      <geboortedatum type="Text">
+        <columns>
+          <column>Geboortedatum:</column>
+          <column>1-12-2016</column>
+          <column></column>
+        </columns>
+      </geboortedatum>
+      <leerlinganderadres type="Text">
+        <columns>
+          <column>Is het adres van de leerling gelijk aan die van de aanvrager?</column>
+          <column>Ja</column>
+          <column></column>
+        </columns>
+      </leerlinganderadres>
+    </fleerlingenvervoerv3gegevensleerling>
+    <fleerlingenvervoerv3regulier>
+      <id_8f4a2d5a-7111-417b-a028-71c6e31412a5 type="Header">
+        <columns>
+          <column>Regulier onderwijs</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_8f4a2d5a-7111-417b-a028-71c6e31412a5>
+      <naamschool type="Text">
+        <columns>
+          <column>Naam school</column>
+          <column>Testschool</column>
+          <column></column>
+        </columns>
+      </naamschool>
+      <ais />
+      <straat type="Text">
+        <columns>
+          <column>Adres: </column>
+          <column>Marktstraat 15  
+8601CR Sneek</column>
+          <column></column>
+        </columns>
+      </straat>
+    </fleerlingenvervoerv3regulier>
+    <fleerlingenvervoerv3eigenbijdrage>
+      <id_08f12716-b477-494a-985f-624f742fb50e type="Header">
+        <columns>
+          <column>Eigen bijdrage</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_08f12716-b477-494a-985f-624f742fb50e>
+      <newyear>
+        <id_3a7551ac-ab76-464d-a2e9-051521d6eb93 type="Text-single-column">
+          <columns>
+            <column>2025 – 2026
+
+Je betaalt een eigen bijdrage van € 601,39 als het verzamelinkomen over 2023 hoger was dan € 31.500 en de leerling naar het Regulier Basis Onderwijs gaat.
+
+Je betaalt eventueel een draagkrachtafhankelijke bijdrage als de woning meer dan 20 kilometer van de reguliere basisschool gelegen is.
+ 
+Voor bedragen, zie https://sudwestfryslan.nl/onderwerp/leerlingenvervoer/</column>
+            <column></column>
+            <column></column>
+          </columns>
+        </id_3a7551ac-ab76-464d-a2e9-051521d6eb93>
+        <hetverzamelinkomen type="Text">
+          <columns>
+            <column>Wil je hier je gezinsverzamelinkomen over 2023 aangeven? </column>
+            <column>Minder dan € 31.500</column>
+            <column></column>
+          </columns>
+        </hetverzamelinkomen>
+      </newyear>
+      <belastingaangifte type="Text">
+        <columns>
+          <column>Wil je hier je belastingaangifte 2023 uploaden?</column>
+          <column>Checklist beoordeling externe inhuur zzp (2).pdf</column>
+          <column></column>
+        </columns>
+      </belastingaangifte>
+    </fleerlingenvervoerv3eigenbijdrage>
+    <fleerlingenvervoerv3vervoer>
+      <id_a87d79a3-8c8c-41fb-b8b2-1b17e86a070c type="Header">
+        <columns>
+          <column>Soort vervoer</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_a87d79a3-8c8c-41fb-b8b2-1b17e86a070c>
+      <typevergoedingvervoer type="Text">
+        <columns>
+          <column>Voor welk type vervoer wil je een vergoeding aanvragen?</column>
+          <column>Fiets</column>
+          <column></column>
+        </columns>
+      </typevergoedingvervoer>
+      <uploadfiets type="Text">
+        <columns>
+          <column>Wil je hier de uitdraai van de ANWB routeplannen kortste route toevoegen.</column>
+          <column>Aanvraagformulier gehandicaptenparkeerkaart (GPK) (1).pdf</column>
+          <column></column>
+        </columns>
+      </uploadfiets>
+      <bijlagen type="Text">
+        <columns>
+          <column>Voeg hier de vervoersverklaring bij welke je van school hebt ontvangen.</column>
+          <column>Beschadigde container.pdf</column>
+          <column></column>
+        </columns>
+      </bijlagen>
+      <id_d9db70ba-1eff-48b7-ade5-d04454f16277 type="Text">
+        <columns>
+          <column>Vanaf welke datum heeft de leerling het vervoer nodig?</column>
+          <column>29-1-2026</column>
+          <column></column>
+        </columns>
+      </id_d9db70ba-1eff-48b7-ade5-d04454f16277>
+      <id_33df0bf2-2d96-41b4-ac34-c1dedda7e901 type="Text">
+        <columns>
+          <column>Maandag:
+Dinsdag:
+Woensdag:
+Donderdag:
+Vrijdag:</column>
+          <column>
+
+
+
+Ochtend, Middag</column>
+          <column></column>
+        </columns>
+      </id_33df0bf2-2d96-41b4-ac34-c1dedda7e901>
+    </fleerlingenvervoerv3vervoer>
+    <fleerlingenvervoerv3toelichting>
+      <id_e1dcc416-4914-4f71-8163-4c3a1ccd735c type="Header">
+        <columns>
+          <column>Toelichting</column>
+          <column></column>
+          <column></column>
+        </columns>
+      </id_e1dcc416-4914-4f71-8163-4c3a1ccd735c>
+      <extratoelichting type="Text">
+        <columns>
+          <column>Zijn er bijzonderheden waarmee wij rekening moeten houden, dan kun je dat hier opschrijven.</column>
+          <column>bla bla</column>
+          <column></column>
+        </columns>
+      </extratoelichting>
+    </fleerlingenvervoerv3toelichting>
+    <fcontroleren />
+    <leerlingenvervoername />
+    <scpdfsummarycorsa>
+      <samenvatting />
+    </scpdfsummarycorsa>
+    <scopslaanincorsaall>
+      <scerrorcorsanummermail>
+        <errormailnaarbehandelaar />
+      </scerrorcorsanummermail>
+      <ffoutcorsa />
+    </scopslaanincorsaall>
+  </summary>
+  <questions>
+    <globals>
+      <digid />
+      <input />
+      <stuf>
+        <inp />
+        <sub />
+        <acdcode iteration="1" />
+        <acdcode iteration="2" />
+        <acdcode iteration="3" />
+        <verblijfsadres iteration="1">
+          <aoa />
+          <wpl />
+        </verblijfsadres>
+        <correspondentieadres iteration="1">
+          <aoa />
+        </correspondentieadres>
+        <nationaliteit iteration="1" />
+      </stuf>
+      <persoon>
+        <value>
+          <persoon />
+        </value>
+      </persoon>
+    </globals>
+    <scinitialize>
+      <scerrorcorsamailnaarwebmaster>
+        <errormailnaarbehandelaar />
+      </scerrorcorsamailnaarwebmaster>
+      <fformulierfout />
+      <corsatje />
+    </scinitialize>
+    <scgenereerkenmerk />
+    <fleerlingenvervoeraanvraagcheck />
+    <fleerlingenvervoerv3privacy />
+    <fleerlingenvervoerv3aanvraag>
+      <ditjaar />
+    </fleerlingenvervoerv3aanvraag>
+    <digidintro />
+    <digid>
+      <digiddummy />
+    </digid>
+    <sccentricprefill>
+      <npslv01_prs_natuurlijkpersoon>
+        <procstufprefillcommon>
+          <xsp_maakstufbericht />
+          <sss_stuurstufbericht />
+          <xslt_removenamespace />
+        </procstufprefillcommon>
+      </npslv01_prs_natuurlijkpersoon>
+    </sccentricprefill>
+    <fleerlingenvervoerv3gegevensburger />
+    <fleerlingenvervoerv3gegevensleerling />
+    <fleerlingenvervoerv3regulier>
+      <ais />
+    </fleerlingenvervoerv3regulier>
+    <fleerlingenvervoerv3eigenbijdrage>
+      <newyear />
+    </fleerlingenvervoerv3eigenbijdrage>
+    <fleerlingenvervoerv3vervoer />
+    <fleerlingenvervoerv3toelichting />
+    <fcontroleren />
+    <leerlingenvervoername />
+    <scpdfsummarycorsa>
+      <samenvatting />
+    </scpdfsummarycorsa>
+    <scopslaanincorsaall>
+      <scerrorcorsanummermail>
+        <errormailnaarbehandelaar />
+      </scerrorcorsanummermail>
+      <ffoutcorsa />
+    </scopslaanincorsaall>
+  </questions>
+  <attachments>
+    <attachment name="StUF_Bericht.xml" id="1b4b3fb3397046e2b843e3cea21a6770" dmsName="filesystem" key="StUF_Bericht.xml" scope="sccentricprefill.npslv01_prs_natuurlijkpersoon.procstufprefillcommon.xsp_maakstufbericht" type="Generic" length="3252"></attachment>
+    <attachment name="Checklist beoordeling externe inhuur zzp (2).pdf" id="f25308df720d465389620c09da109ec1" dmsName="filesystem" key="25b6b482-1b85-f4cf-032e-53eb8084b3f2" scope="fleerlingenvervoerv3eigenbijdrage.belastingaangifte" type="Upload" length="193911"></attachment>
+    <attachment name="Aanvraagformulier gehandicaptenparkeerkaart (GPK) (1).pdf" id="b5bdc5e7aed440fa8c04d7839635f96b" dmsName="filesystem" key="624a773f-466c-3305-d95d-b2f1b6ae9b25" scope="fleerlingenvervoerv3vervoer.uploadfiets" type="Upload" length="148757"></attachment>
+    <attachment name="Beschadigde container.pdf" id="719cfe489c8242c88bbdab90fc2446b3" dmsName="filesystem" key="d7a4583d-a2a0-c1db-9c39-c8c1e51afe7d" scope="fleerlingenvervoerv3vervoer.bijlagen" type="Upload" length="98763"></attachment>
+  </attachments>
+  <scenarioName>Aanvraag Leerlingenvervoer</scenarioName>
+</form>
+    </ELEMENTEN>
+</FORMULIER>
