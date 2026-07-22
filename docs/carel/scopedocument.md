@@ -97,6 +97,26 @@ daarmee niet met zekerheid vastgesteld. **Nog te bevestigen met Petra/Eljakim** 
 `leerlinganderadres = "Nee"`-situatie — in alle gevallen correcte, valide XML; verblijfsadres verschijnt
 alleen in de eerste twee (waar `"Ja"` geldt), terecht afwezig in het derde scenario.
 
+**Update 22 juli 2026 — afwijking #2 ook opgelost, op verzoek van Eduard:** `heeftAlsInitiator`
+(aanvrager) is uitgebreid van alleen BSN + `authentiek=J` naar volledige persoonsgegevens:
+voorletters, voornamen, voorvoegselGeslachtsnaam, geslachtsnaam, geboortedatum, geboorteplaats,
+geslachtsaanduiding en verblijfsadres — allemaal uit `globals/stuf/*` (BRP-prefill), **geen
+formulierwijziging nodig** voor de aanvrager (in tegenstelling tot de leerling bij afwijking #1).
+`verwerkingssoort="I"` gezet op het NPS-object, conform meerwerk-document §1.2.
+
+**Kanttekening geboorteplaats:** de BRP levert `inp.geboorteplaats` als gemeentecode (bv. `0091`), niet
+als plaatsnaam — nog af te stemmen met Eljakim/CAReL of een code acceptabel is (staat ook al zo in het
+meerwerk-document).
+
+**Getest** (Saxon, oude en nieuwe formulierformaat): in beide gevallen correcte, volledig gevulde
+`heeftAlsInitiator` (BSN, naam, geboortedatum, adres), geen regressie op de rest van het bericht (nog
+steeds 47 extraElementen).
+
+**Nog open van deze sectie:** afwijking #3 (`aanvrager_adres`-extraElement mist huisnummer) en #4
+(`aanvrager_tussenvoegsel` hardcoded leeg) — dat zijn de extraElementen, niet de `heeftAlsInitiator`-
+structuur, en horen bij punt #6 (adres-splitsing) in `docs/openstaande_punten_integratie.md`, nog niet
+aangepast. #5 (`samenvatting_datum`/`samenvatting_tijd`) ook nog niet opgepakt.
+
 ---
 
 ## 4. Aanvullende scope-opmerkingen

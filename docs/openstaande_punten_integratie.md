@@ -13,15 +13,14 @@ Hein/Atabix, Petra/CAReL-beheer of Eljakim liggen — dat staat in `docs/carel/s
 | 4 | Foutafhandeling HTTP/SOAP-conventie | Nee | ✅ Opgelost | 1-3 dagen | Nee |
 | 5 | Typo username/password | Nee (Corsa) | ✅ Opgelost | 15-30 min | Nee |
 | 6 | CAReL adres-splitsing + dagstructuur | **Ja** | **Open** | 0,5-1 dag+ | Alleen dat het meerwerk is |
-| 7 | CAReL `heeftBetrekkingOp` / `verwerkingssoort` | **Ja** | **Deels opgelost** | Gedaan | Check bij Petra/Eljakim nog nodig |
+| 7 | CAReL `heeftBetrekkingOp` / `verwerkingssoort` | **Ja** | ✅ Opgelost | Gedaan | Check bij Petra/Eljakim nog nodig (geen code-actie) |
 
-**Kernpunt:** van de 7 punten zijn er maar twee (#6, #7) echt CAReL-inhoudelijk — die staan nog open, en
-raken de lopende meerwerk-discussie met WeAreFrank. #1 staat ook nog open — al toegezegd door WeAreFrank,
-en een werkende technische oplossing (custom `entrypoint.sh`) is gebouwd, live getest, en weer
-teruggedraaid: te veel eigen mechanisme voor dit probleem. Zie sectie 1 voor een eenvoudiger alternatief
-(XInclude) dat nog niet gebouwd is. #2 t/m #5 zijn generieke Corsa/integratiekwaliteit, geen
-CAReL-inhoud, en zijn al opgelost en getest op branch `fix/integratie-openstaande-punten-juli-2026` (nog
-niet gepusht/gemerged).
+**Kernpunt:** 6 van de 7 punten zijn opgelost en getest (#2 t/m #5 generieke Corsa/integratiekwaliteit,
+#7 CAReL-mapping). Nog open: **#1** (WSDL structureel — al toegezegd door WeAreFrank; een werkende
+technische oplossing is gebouwd, live getest, en weer teruggedraaid omdat het te veel eigen mechanisme
+was — zie sectie 1 voor een eenvoudiger XInclude-alternatief, nog niet gebouwd) en **#6** (CAReL
+adres-splitsing + dagstructuur — wacht op nieuwe formuliervelden van Hein). Alles is gecommit op branch
+`fix/integratie-openstaande-punten-juli-2026` (nog niet gepusht/gemerged).
 
 ---
 
@@ -126,22 +125,33 @@ i.p.v. de huidige kommagescheiden waarde.
 
 ---
 
-## 7. CAReL-mapping — `heeftBetrekkingOp` ontbreekt, `verwerkingssoort` moet "I" zijn, verblijfsadres ontbreekt bij betrokkenen — **Deels opgelost**
+## 7. CAReL-mapping — `heeftBetrekkingOp` ontbreekt, `verwerkingssoort` moet "I" zijn, verblijfsadres ontbreekt bij betrokkenen — ✅ **Opgelost**
 
 Vastgestelde afwijkingen t.o.v. de Eljakim-referentie: de leerling werd niet als `heeftBetrekkingOp`
-meegestuurd, en `verblijfsadres` ontbrak bij de betrokkenen.
+meegestuurd, `heeftAlsInitiator` (aanvrager) had alleen BSN, en `verwerkingssoort` stond op `"T"` i.p.v.
+`"I"`.
 
-**Gedaan, op verzoek van Eduard:** `heeftBetrekkingOp` toegevoegd met alle leerlinggegevens die het
-formulier al levert (BSN, voornamen, tussenvoegsel, achternaam, geboortedatum, geslachtsaanduiding),
-`verwerkingssoort="I"` op het NPS-object. Verblijfsadres conditioneel: aanvrageradres overnemen als
-`leerlinganderadres = "Ja"`, anders bewust weggelaten (formulier heeft nog geen eigen leerlingadresvelden
-— zie #6). **Getest** met Saxon in drie scenario's (oude vorm, nieuwe vorm, "Nee"-situatie) — steeds
-correcte, valide XML.
+**Gedaan, op verzoek van Eduard:**
+- `heeftBetrekkingOp` (leerling) toegevoegd met alle leerlinggegevens die het formulier al levert (BSN,
+  voornamen, tussenvoegsel, achternaam, geboortedatum, geslachtsaanduiding), `verwerkingssoort="I"`.
+  Verblijfsadres conditioneel: aanvrageradres overnemen als `leerlinganderadres = "Ja"`, anders bewust
+  weggelaten (formulier heeft nog geen eigen leerlingadresvelden — zie #6).
+- `heeftAlsInitiator` (aanvrager) uitgebreid van alleen BSN naar volledige persoonsgegevens + adres,
+  ook `verwerkingssoort="I"` — alles uit de BRP-prefill, **geen formulierwijziging nodig** voor dit deel.
 
-**Nog open:** schema-onderzoek bevestigt dat de StUF-XSD niets verplicht stelt (zelfs BSN niet), maar of
-CAReL's eigen software akkoord gaat met "BSN + basisgegevens, adres alleen conditioneel" is niet
-schema-technisch vast te stellen — moet bevestigd worden met Petra/Eljakim. Zie
-`docs/carel/scopedocument.md` §3.
+**Getest** met Saxon, oude én nieuwe formulierformaat — steeds correcte, volledig gevulde XML, geen
+regressie op de rest van het bericht.
+
+**Nog open, geen code-actie:**
+1. Schema-onderzoek bevestigt dat de StUF-XSD niets verplicht stelt (zelfs BSN niet), maar of CAReL's
+   eigen software akkoord gaat met "BSN + basisgegevens, leerling-adres alleen conditioneel" is niet
+   schema-technisch vast te stellen — **te bevestigen met Petra/Eljakim.**
+2. BRP levert `inp.geboorteplaats` als gemeentecode, niet als plaatsnaam — **eveneens af te stemmen.**
+3. De extraElementen `aanvrager_adres` (mist huisnummer), `aanvrager_tussenvoegsel` (hardcoded leeg) en
+   `samenvatting_datum`/`samenvatting_tijd` (ontbreken) zijn een **apart** punt, horen bij #6
+   (adres-splitsing) en zijn niet meegenomen in deze fix.
+
+Zie `docs/carel/scopedocument.md` §3 voor de volledige onderbouwing.
 
 - **Zelf te doen?** Ja, gedaan.
 - **Gesprek met WeAreFrank?** Niet nodig geweest voor de implementatie zelf — wel nog een check bij
