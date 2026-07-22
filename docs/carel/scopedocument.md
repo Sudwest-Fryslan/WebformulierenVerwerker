@@ -75,6 +75,28 @@ De onderstaande punten zijn geconstateerd bij vergelijking van `creeerzaak_carel
 
 **Afwijking #1 is het meest kritisch:** zonder `heeftBetrekkingOp` ontvangt CAReL geen leerlinggegevens in de zaakstructuur zelf.
 
+**Update 22 juli 2026 — afwijking #1 opgelost, op verzoek van Eduard:** `heeftBetrekkingOp` is toegevoegd
+in `creeerZaak_Lk01_mapping.xsl`, met alle leerlinggegevens die het formulier al levert: BSN, voornamen,
+tussenvoegsel, achternaam, geboortedatum (genormaliseerd), geslachtsaanduiding (`Jongen`/`Meisje` →
+`M`/`V`, `O` als fallback). `verwerkingssoort="I"` gebruikt op het NPS-object, conform de Eljakim-referentie
+en de StUF-schema-analyse (zie hieronder). Verblijfsadres wordt **conditioneel** meegenomen: als
+`leerlinganderadres = "Ja"` (leerling-adres gelijk aan aanvrager, per meerwerk-document) wordt het
+aanvrageradres uit de BRP-prefill gebruikt; bij `"Nee"` blijft verblijfsadres bewust weg, omdat het
+formulier nog geen eigen leerlingadresvelden heeft (zie meerwerk-document §1.1) — beter niets sturen dan
+onjuiste data.
+
+**Schema-onderzoek (vraag van Eduard: is BSN-alleen genoeg?):** de StUF-XSD (`NPS-kerngegevens` in
+`bg0310_ent_basis.xsd`) heeft **geen enkel verplicht veld** — alles staat op `minOccurs="0"`, ook BSN
+zelf. Functioneel is BSN wel het praktische minimum voor `verwerkingssoort="I"` (Identificatie = alleen
+verwijzen naar een bekend persoon). Kanttekening: de Eljakim-referentie stuurt bij `"I"` toch volledige
+naam/geboortedatum/adres mee — CAReL's eigen acceptatielogica (los van de generieke schema-validatie) is
+daarmee niet met zekerheid vastgesteld. **Nog te bevestigen met Petra/Eljakim** of onze implementatie
+(BSN + bekende basisgegevens, adres alleen conditioneel) voldoet.
+
+**Getest** (Saxon, drie scenario's): oude formulierformaat, nieuwe formulierformaat, en de
+`leerlinganderadres = "Nee"`-situatie — in alle gevallen correcte, valide XML; verblijfsadres verschijnt
+alleen in de eerste twee (waar `"Ja"` geldt), terecht afwezig in het derde scenario.
+
 ---
 
 ## 4. Aanvullende scope-opmerkingen

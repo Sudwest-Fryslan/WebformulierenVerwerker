@@ -62,6 +62,44 @@
                         <ZKN:ingangsdatumObject xsi:nil="true" StUF:noValue="geenWaarde"/>
                     </ZKN:gerelateerde>
                 </ZKN:isVan>
+                <!-- Rol volgens standaard: leerling (kind waarvoor vervoer wordt aangevraagd).
+                     verwerkingssoort="I" op het NPS-object (Identificatie): dit is bewust alleen een
+                     verwijzing naar een bekend persoon, geen volledige persoonsregistratie - vandaar
+                     dat schema-technisch niets hier verplicht is (zie docs/carel/scopedocument.md §7).
+                     Alle hieronder gebruikte velden zijn al aanwezig in het formulier; het
+                     verblijfsadres van de leerling nog niet als de leerling een ander adres heeft dan
+                     de aanvrager (leerlinganderadres = "Nee") - de daarvoor benodigde formuliervelden
+                     bestaan nog niet, zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.1. -->
+                <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+                    <ZKN:gerelateerde>
+                        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+                            <BG:inp.bsn><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/bsnleerling"/></BG:inp.bsn>
+                            <BG:voornamen><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/voornamen"/></BG:voornamen>
+                            <BG:voorvoegselGeslachtsnaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/tussenvoegsel"/></BG:voorvoegselGeslachtsnaam>
+                            <BG:geslachtsnaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/achternaam"/></BG:geslachtsnaam>
+                            <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geboortedatum"/></xsl:call-template></BG:geboortedatum>
+                            <BG:geslachtsaanduiding>
+                                <xsl:choose>
+                                    <xsl:when test="fleerlingenvervoerv3gegevensleerling/geslacht = 'Jongen'">M</xsl:when>
+                                    <xsl:when test="fleerlingenvervoerv3gegevensleerling/geslacht = 'Meisje'">V</xsl:when>
+                                    <xsl:otherwise>O</xsl:otherwise>
+                                </xsl:choose>
+                            </BG:geslachtsaanduiding>
+                            <!-- leerlinganderadres = "Ja" betekent (per meerwerk-document): adres leerling
+                                 gelijk aan aanvrager - dan is het aanvrageradres uit de BRP-prefill bekend.
+                                 Bij "Nee" is er een eigen leerlingadres nodig dat het formulier nog niet
+                                 uitvraagt; verblijfsadres blijft dan bewust weg (geen onjuiste data sturen). -->
+                            <xsl:if test="fleerlingenvervoerv3gegevensleerling/leerlinganderadres = 'Ja'">
+                                <BG:verblijfsadres>
+                                    <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
+                                    <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
+                                    <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
+                                    <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                                </BG:verblijfsadres>
+                            </xsl:if>
+                        </ZKN:natuurlijkPersoon>
+                    </ZKN:gerelateerde>
+                </ZKN:heeftBetrekkingOp>
                 <!-- Rol volgens standaard: aanvrager (ouder/verzorger) -->
                 <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
