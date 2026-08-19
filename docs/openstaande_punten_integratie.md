@@ -19,8 +19,15 @@ Hein/Atabix, Petra/CAReL-beheer of Eljakim liggen — dat staat in `docs/carel/s
 #7 CAReL-mapping). Nog open: **#1** (WSDL structureel — al toegezegd door WeAreFrank; een werkende
 technische oplossing is gebouwd, live getest, en weer teruggedraaid omdat het te veel eigen mechanisme
 was — zie sectie 1 voor een eenvoudiger XInclude-alternatief, nog niet gebouwd) en **#6** (CAReL
-adres-splitsing + dagstructuur — wacht op nieuwe formuliervelden van Hein). Alles is gecommit op branch
-`fix/integratie-openstaande-punten-juli-2026` (nog niet gepusht/gemerged).
+adres-splitsing + dagstructuur — wacht op nieuwe formuliervelden van Hein, en op afstemming met Eljakim
+over de vrije velden, zie sectie 6). Alles is gecommit op branch `fix/integratie-openstaande-punten-juli-2026`
+(nog niet gepusht/gemerged).
+
+**Update 24 juli 2026:** de #7-fix is handmatig, rechtstreeks tegen de CAReL-testomgeving getest (los van
+de WebformulierenVerwerker, via SoapUI) — zaak 1900881353, met `heeftBetrekkingOp` (leerling) en de
+volledige `heeftAlsInitiator` (aanvrager). CAReL accepteerde het bericht (`Bv03Bericht`-bevestiging, geen
+SOAP Fault). Zie sectie 7 voor details. Diezelfde dag heeft Eljakim (Lorenzo van den Oudenrijn) drie
+concrete bevindingen teruggekoppeld over de eerdere testzaken — zie secties 6 en 7 voor de uitwerking.
 
 ---
 
@@ -114,11 +121,24 @@ Aanvrager/leerling/school-adres moeten gesplitst worden (straat, huisnummer, hui
 i.p.v. gecombineerd), en de vervoersdagen moeten als Ja/Nee + begin-/eindtijd per dag aangeleverd worden
 i.p.v. de huidige kommagescheiden waarde.
 
-- **Zelf te doen?** Technisch ja. Praktisch onzeker: de dagstructuur-wijziging hangt af van
-  formuliervelden voor begin-/eindtijd die mogelijk nog niet bestaan (open punt bij Hein, zie
-  scopedocument §6).
-- **Tijdsinschatting:** ~0,5-1 dag voor de adres-splitsing; dagstructuur onbekend totdat bevestigd is
-  welke formuliervelden er zijn.
+**Update 19 augustus 2026 — definitieve lijst na terugkoppeling Lorenzo (Eljakim, via Petra):** Lorenzo
+bevestigt dat de berichtstructuur verder in orde is ("de mapping in CARel is in ieder geval in orde") en
+geeft een concrete prioriteitenlijst van velden. Daaruit blijven twee concrete, losse acties over:
+
+1. **Adres-splitsing** — expliciet bevestigd door Lorenzo voor zowel het leerling- als het
+   schooladres: straat, huisnummer, huisletter, huisnummertoevoeging apart i.p.v. gecombineerd. De
+   aanvrager-kant (uit de BRP-prefill) levert dit al gesplitst aan; nog na te gaan of het webformulier
+   deze velden voor leerling/school ook los uitvraagt (vraag aan Hein).
+2. **Volledige keuzelijsten voor de twee bekende mismatch-velden** — `vervoer_type` en de
+   dag/dagdeel-velden (`vervoer_maandag` t/m `vervoer_vrijdag`, momenteel samengevoegd tot één
+   tekstwaarde per dag). CAReL loopt hier specifiek op vast (ja/nee-vertaling lukt niet zonder de
+   volledige lijst mogelijke antwoorden). Vraag aan Hein: welke keuzeopties bestaan er per veld.
+
+- **Zelf te doen?** De adres-splitsing technisch ja, zodra bekend is welke formuliervelden er zijn. De
+  vervoer-/dagstructuur-mapping ook zelf te bouwen zodra de volledige optielijst van Hein binnen is —
+  hangt dus niet meer op een principiële CAReL-vraag, alleen nog op formulier-informatie.
+- **Tijdsinschatting:** ~0,5-1 dag voor de adres-splitsing; dagstructuur-mapping vergelijkbare orde van
+  grootte zodra de optielijst bekend is.
 - **Gesprek met WeAreFrank?** Al benoemd als meerwerk (overleg geweest **dat** het meerwerk is), maar
   niet over wie het uitvoert of wanneer — dat ligt bij de pauze/evaluatie in september. **Niet
   aangeraakt.**
@@ -142,11 +162,26 @@ meegestuurd, `heeftAlsInitiator` (aanvrager) had alleen BSN, en `verwerkingssoor
 **Getest** met Saxon, oude én nieuwe formulierformaat — steeds correcte, volledig gevulde XML, geen
 regressie op de rest van het bericht.
 
+**Empirisch bevestigd tegen echte CAReL-testomgeving (24 juli 2026):** handmatig, los van de
+WebformulierenVerwerker, een bericht met deze nieuwe mapping rechtstreeks naar CAReL-acceptatie gestuurd
+(`https://testtsjinstbus.sudwestfryslan.nl/CARELLG/stuf-zkn/sudwestfryslan`) — zaak 1900881353, leerling
+BSN 197642378 via `heeftBetrekkingOp`, aanvrager BSN 900106505 met volledige gegevens via
+`heeftAlsInitiator`. CAReL accepteerde het bericht: HTTP 200, `Bv03Bericht`-bevestiging met matchend
+`referentienummer`/`crossRefnummer`, geen SOAP Fault. Bevestigt dat de berichtstructuur (twee losse
+rollen, volledige NPS-objecten) door CAReL wordt geaccepteerd.
+
 **Nog open, geen code-actie:**
-1. Schema-onderzoek bevestigt dat de StUF-XSD niets verplicht stelt (zelfs BSN niet), maar of CAReL's
-   eigen software akkoord gaat met "BSN + basisgegevens, leerling-adres alleen conditioneel" is niet
-   schema-technisch vast te stellen — **te bevestigen met Petra/Eljakim.**
-2. BRP levert `inp.geboorteplaats` als gemeentecode, niet als plaatsnaam — **eveneens af te stemmen.**
+1. ~~Of CAReL's eigen software akkoord gaat met "BSN + basisgegevens"~~ — **bijgesteld, 24 juli 2026:**
+   Eljakim (Lorenzo van den Oudenrijn) meldt dat CAReL het BSN prima herkent en zelf een BRP-bevraging
+   doet om de persoonsgegevens aan te vullen; bij de eerdere testzaak (1900881137, verstuurd met de oude,
+   BSN-only mapping) faalde die BRP-bevraging met een **HTTP 500 "proxy niet gevonden"** op de
+   CAReL-acceptatieomgeving. Dit is een **infrastructuurprobleem aan de kant van Eljakim/CAReL**, los van
+   hoeveel gegevens wij meesturen. Nog te bevestigen: of onze nu volledig gevulde `heeftAlsInitiator`/
+   `heeftBetrekkingOp` de persoon ook zonder werkende BRP-koppeling al met de juiste gegevens vult (test
+   hierboven toont aan dat CAReL het bericht in elk geval accepteert; of de persoon nu wél gegevens heeft
+   moet Pieter/Eljakim nog in CAReL zelf controleren voor zaak 1900881353).
+2. BRP levert `inp.geboorteplaats` als gemeentecode, niet als plaatsnaam — **eveneens af te stemmen,
+   nog open.**
 3. De extraElementen `aanvrager_adres` (mist huisnummer), `aanvrager_tussenvoegsel` (hardcoded leeg) en
    `samenvatting_datum`/`samenvatting_tijd` (ontbreken) zijn een **apart** punt, horen bij #6
    (adres-splitsing) en zijn niet meegenomen in deze fix.
