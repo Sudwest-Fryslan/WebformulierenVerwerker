@@ -25,6 +25,24 @@
     
     <!-- Main template -->
     <xsl:template match="answers">
+        <!-- Verplichte velden conform veldencontract (tmp/20260901-velden_carel_met_types.md):
+             BSN leerling, BSN aanvrager en vervoer_upload_vervoersverklaring. Ontbreekt een van
+             deze, dan stopt de mapping direct met een duidelijke foutmelding i.p.v. een onvolledig
+             bericht naar CAReL te sturen - komt via de bestaande foutafhandeling (isErrorXML) terug
+             als SOAP-fault naar Atabix/Hein. Extra, hier onbekende velden die Hein meestuurt leveren
+             bewust geen fout op: xsl:template match="@*|node()" hierboven negeert die stilzwijgend. -->
+        <xsl:call-template name="require-field">
+            <xsl:with-param name="veldnaam" select="'BSN leerling (fleerlingenvervoerv3gegevensleerling/bsnleerling)'"/>
+            <xsl:with-param name="waarde" select="string(fleerlingenvervoerv3gegevensleerling/bsnleerling)"/>
+        </xsl:call-template>
+        <xsl:call-template name="require-field">
+            <xsl:with-param name="veldnaam" select="'BSN aanvrager (globals/stuf/inp/bsn)'"/>
+            <xsl:with-param name="waarde" select="string(globals/stuf/inp/bsn)"/>
+        </xsl:call-template>
+        <xsl:call-template name="require-field">
+            <xsl:with-param name="veldnaam" select="'vervoer_upload_vervoersverklaring (fleerlingenvervoerv3vervoer/bijlagen)'"/>
+            <xsl:with-param name="waarde" select="string(fleerlingenvervoerv3vervoer/bijlagen)"/>
+        </xsl:call-template>
         <ZKN:zakLk01>
             <ZKN:stuurgegevens>
                 <StUF:berichtcode>Lk01</StUF:berichtcode>
@@ -152,8 +170,10 @@
                     <StUF:extraElement naam="school_adres"><xsl:value-of select="fleerlingenvervoerv3regulier/straat"/></StUF:extraElement>
                     <StUF:extraElement naam="school_postcode"><xsl:value-of select="fleerlingenvervoerv3regulier/postcode"/></StUF:extraElement>
                     <StUF:extraElement naam="school_plaats"><xsl:value-of select="fleerlingenvervoerv3regulier/woonplaats"/></StUF:extraElement>
-                    <!-- Eigen bijdrage -->
-                    <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_2023"><xsl:value-of select="fleerlingenvervoerv3eigenbijdrage/newyear/hetverzamelinkomen"/></StUF:extraElement>
+                    <!-- Eigen bijdrage. Hernoemd per contract (was eigenbijdrage_verzamelinkomen_2023,
+                         nu jaar-onafhankelijk Ja/Nee i.p.v. inkomensklasse), zie
+                         tmp/20260901-velden_carel_met_types_baseline.md. -->
+                    <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar"><xsl:value-of select="fleerlingenvervoerv3eigenbijdrage/newyear/hetverzamelinkomen"/></StUF:extraElement>
                     <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"><xsl:value-of select="fleerlingenvervoerv3eigenbijdrage/belastingaangifte"/></StUF:extraElement>
                     <!-- Soort vervoer. vervoer_upload_routeplanner en vervoer_vanaf_datum_nodig zijn
                          vervallen (routeplanner-check gebeurt nu bij CAReL zelf; vanaf-datum was dubbel
@@ -162,12 +182,15 @@
                     <StUF:extraElement naam="vervoer_type"><xsl:value-of select="fleerlingenvervoerv3vervoer/typevergoedingvervoer"/></StUF:extraElement>
                     <StUF:extraElement naam="vervoer_upload_vervoersverklaring"><xsl:value-of select="fleerlingenvervoerv3vervoer/bijlagen"/></StUF:extraElement>
 
-                    <!-- Dagdeel-structuur (Brengen/Ophalen/Geen per dag) staat nog niet in het
-                         formulier - de bestaande vervoer_<dag>-velden (kommagescheiden Ochtend/Middag)
-                         blijven daarom voorlopig staan totdat de Atabix-formulierbeheerder de nieuwe velden heeft gebouwd, zie
-                         mailwisseling "260820 toevoeging aanpassing nav overleg vervoer" (1 sep 2026)
-                         en tmp/20260901-velden_carel_met_types_baseline.md. Niet zomaar vervangen: dan
-                         mapt deze template op niets totdat de nieuwe formuliervelden er echt zijn. -->
+                    <!-- Dagdeel-structuur (Brengen/Ophalen/Geen per dag, 15 velden i.p.v. de oude 5
+                         kommagescheiden vervoer_<dag>-velden), per contract van 1 sep 2026. Hein moet
+                         het formulier nog ombouwen naar deze structuur - de bronveldnamen hieronder
+                         (vervoer_<dag>_brengen/_ophalen/_geen als Atabix-veldnaam per dag) zijn een
+                         AANNAME van Eduard, nog niet door Hein bevestigd. Volgt dezelfde conventie als
+                         de bestaande vervoer_<dag>vervoer<type>-velden (checkbox-node-set per dag),
+                         dus zodra Hein de velden zo bouwt werkt dit zonder verdere aanpassing. Als de
+                         daadwerkelijke veldnamen afwijken: alleen de drie xsl:variable-selects hieronder
+                         aanpassen. -->
                     <xsl:apply-templates select="fleerlingenvervoerv3vervoer"/>
                     
                     <!-- Toelichting -->
@@ -177,23 +200,38 @@
         </ZKN:zakLk01>
     </xsl:template>
     
-    <!-- Special case: dagen vervoer -->
+    <!-- Special case: dagdeel vervoer (Brengen/Ophalen/Geen per dag).
+         AANNAME (nog niet door Hein bevestigd): Atabix levert per dag drie velden aan volgens
+         dezelfde naamconventie als de bestaande <dag>vervoer<type>-checkboxvelden, namelijk
+         <dag>vervoerbrengen / <dag>vervoerophalen / <dag>vervoergeen met waarde "Ja"/"Nee".
+         Wijkt de daadwerkelijke naamgeving af, dan hoeven alleen de vijf xsl:variable-groepen
+         hieronder aangepast te worden - de rest van de mapping blijft ongewijzigd. -->
     <xsl:template match="fleerlingenvervoerv3vervoer">
-        <xsl:variable name="type" select="replace(normalize-space(lower-case(typevergoedingvervoer)), '\s+', '')"/>
-        
-        <xsl:variable name="maandagvervoer" select="*[local-name() = concat('maandagvervoer', $type)]"/>
-        <xsl:variable name="dinsdagvervoer" select="*[local-name() = concat('dinsdagvervoer', $type)]"/>
-        <xsl:variable name="woensdagvervoer" select="*[local-name() = concat('woensdagvervoer', $type)]"/>
-        <xsl:variable name="donderdagvervoer" select="*[local-name() = concat('donderdagvervoer', $type)]"/>
-        <xsl:variable name="vrijdagvervoer" select="*[local-name() = concat('vrijdagvervoer', $type)]"/>
-        
-        <StUF:extraElement naam="vervoer_maandag"><xsl:value-of select="string-join($maandagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
-        <StUF:extraElement naam="vervoer_dinsdag"><xsl:value-of select="string-join($dinsdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
-        <StUF:extraElement naam="vervoer_woensdag"><xsl:value-of select="string-join($woensdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
-        <StUF:extraElement naam="vervoer_donderdag"><xsl:value-of select="string-join($donderdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
-        <StUF:extraElement naam="vervoer_vrijdag"><xsl:value-of select="string-join($vrijdagvervoer ! normalize-space(.), ', ')"/></StUF:extraElement>
+        <xsl:variable name="vervoer" select="."/>
+        <xsl:for-each select="('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag')">
+            <xsl:variable name="dag" select="."/>
+            <xsl:variable name="brengen" select="$vervoer/*[local-name() = concat($dag, 'vervoerbrengen')]"/>
+            <xsl:variable name="ophalen" select="$vervoer/*[local-name() = concat($dag, 'vervoerophalen')]"/>
+            <xsl:variable name="geen" select="$vervoer/*[local-name() = concat($dag, 'vervoergeen')]"/>
+
+            <StUF:extraElement naam="{concat('vervoer_', $dag, '_brengen')}"><xsl:value-of select="if ($brengen) then normalize-space($brengen[1]) else 'Nee'"/></StUF:extraElement>
+            <StUF:extraElement naam="{concat('vervoer_', $dag, '_ophalen')}"><xsl:value-of select="if ($ophalen) then normalize-space($ophalen[1]) else 'Nee'"/></StUF:extraElement>
+            <StUF:extraElement naam="{concat('vervoer_', $dag, '_geen')}"><xsl:value-of select="if ($geen) then normalize-space($geen[1]) else 'Nee'"/></StUF:extraElement>
+        </xsl:for-each>
     </xsl:template>
     
+    <!-- Verplichte-veldcontrole: zelfde patroon als normalize-date's foutafhandeling hieronder
+         (xsl:message terminate="yes") - stopt de transformatie met een duidelijke melding i.p.v.
+         een StUF-bericht met een leeg verplicht veld naar CAReL te sturen. -->
+    <xsl:template name="require-field">
+        <xsl:param name="veldnaam" as="xs:string"/>
+        <xsl:param name="waarde" as="xs:string?"/>
+
+        <xsl:if test="normalize-space($waarde) = ''">
+            <xsl:message terminate="yes">Verplicht veld ontbreekt of is leeg: <xsl:value-of select="$veldnaam"/></xsl:message>
+        </xsl:if>
+    </xsl:template>
+
     <xsl:template name="normalize-date">
         <xsl:param name="input" as="node()?"/>
         
