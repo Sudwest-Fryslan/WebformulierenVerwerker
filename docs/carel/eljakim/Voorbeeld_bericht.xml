@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.egem.nl/StUF/StUF0301" xmlns:ns2="http://www.egem.nl/StUF/sector/zkn/0310">
+	<SOAP-ENV:Body>
+		<ns2:zakLk01>
+			<ns2:stuurgegevens>
+				<ns1:berichtcode>Lk01</ns1:berichtcode>
+				<ns1:zender>
+					<ns1:organisatie>INTRACTO</ns1:organisatie>
+					<ns1:applicatie>DRUPAL</ns1:applicatie>
+				</ns1:zender>
+				<ns1:ontvanger>
+					<ns1:applicatie>CAREL</ns1:applicatie>
+				</ns1:ontvanger>
+				<ns1:referentienummer>1667301804401525</ns1:referentienummer>
+				<ns1:tijdstipBericht>20221101122324000</ns1:tijdstipBericht>
+				<ns1:entiteittype>ZAK</ns1:entiteittype>
+			</ns2:stuurgegevens>
+			<ns2:parameters>
+				<ns1:mutatiesoort>T</ns1:mutatiesoort>
+				<ns1:indicatorOvername>V</ns1:indicatorOvername>
+			</ns2:parameters>
+			<ns2:object ns1:entiteittype="ZAK" ns1:verwerkingssoort="T">
+				<ns2:identificatie>1814801667301804</ns2:identificatie>
+				<ns2:omschrijving/>
+				<ns2:startdatum>20210505</ns2:startdatum>
+				<ns2:registratiedatum>20221101</ns2:registratiedatum>
+				<ns1:extraElementen>
+					<ns1:extraElement naam="burgerservicenummer">123456782</ns1:extraElement>
+					<ns1:extraElement naam="voorletter_s_">V.</ns1:extraElement>
+					<ns1:extraElement naam="tussenvoegsel_s_">de</ns1:extraElement>
+					<ns1:extraElement naam="achternaam">Geslachtsnaam</ns1:extraElement>
+					<ns1:extraElement naam="straatnaam">Straat</ns1:extraElement>
+					<ns1:extraElement naam="huisnummer">1</ns1:extraElement>
+					<ns1:extraElement naam="huisletter"/>
+					<ns1:extraElement naam="huisnummertoevoeging"/>
+					<ns1:extraElement naam="postcode">1234AB</ns1:extraElement>
+					<ns1:extraElement naam="woonplaats">Plaats</ns1:extraElement>
+					<ns1:extraElement naam="e_mailadres">naam@hotmail.com</ns1:extraElement>
+					<ns1:extraElement naam="telefoonnummer">0612345678</ns1:extraElement>
+					<ns1:extraElement naam="is_er_sprake_van_co_ouderschap_">Nee</ns1:extraElement>
+					<ns1:extraElement naam="de_leerling_is_mijn_">Kind</ns1:extraElement>
+					<ns1:extraElement naam="burgerservicenummer_leerling">123456789</ns1:extraElement>
+					<ns1:extraElement naam="roepnaam_leerling">Kind</ns1:extraElement>
+					<ns1:extraElement naam="voorletter_s_leerling">K.</ns1:extraElement>
+					<ns1:extraElement naam="tussenvoegsel_s_leerling">de</ns1:extraElement>
+					<ns1:extraElement naam="achternaam_leerling">Geslachtsnaam</ns1:extraElement>
+					<ns1:extraElement naam="geboortedatum_leerling">02-08-2012</ns1:extraElement>
+					<ns1:extraElement naam="geslacht_leerling">Man</ns1:extraElement>
+					<ns1:extraElement naam="woont_de_leerling_op_hetzelfde_adres_als_de_aanvrager_">Ja</ns1:extraElement>
+					<ns1:extraElement naam="straatnaam_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="huisnummer_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="huisletter_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="huisnummertoevoeging_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="postcode_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="woonplaats_alternatief_woonadres_leerling"/>
+					<ns1:extraElement naam="naar_welk_onderwijs_gaat_de_leerling_">Speciale school voor basisonderwijs (SBO)</ns1:extraElement>
+					<ns1:extraElement naam="gaat_de_leerling_naar_een_school_vanwege_een_levensovertuiging_r"/>
+					<ns1:extraElement naam="naar_onderwijs_voor_"/>
+					<ns1:extraElement naam="belastbare_inkomen_over_2019"/>
+					<ns1:extraElement naam="is_dit_de_dichtsbijzijnde_toegankelijke_school_voor_de_leerling_">Ja</ns1:extraElement>
+					<ns1:extraElement naam="vraagt_u_leerlingenvervoer_aan_in_verband_met_een_handicap_of_om">Nee</ns1:extraElement>
+					<ns1:extraElement naam="is_de_reistijd_met_het_openbaar_vervoer_langer_dan_1_5_uur_">Nee</ns1:extraElement>
+					<ns1:extraElement naam="geef_een_verklaring_waarin_u_uitlegt_wat_de_aard_van_de_handicap"/>
+					<ns1:extraElement naam="waarom_kan_de_leerling_nog_niet_met_de_fiets_het_openbaar_vervoe"/>
+					<ns1:extraElement naam="waarom_kan_jij_of_mensen_in_je_omgeving_de_leerling_niet_begelei"/>
+					<ns1:extraElement naam="maakt_de_leerling_gebruik_van_een_hulpmiddel"/>
+					<ns1:extraElement naam="wat_voor_soort_hulpmiddel_heeft_de_leerling_"/>
+					<ns1:extraElement naam="voor_welk_vervoer_wil_je_een_vergoeding_aanvragen_">taxi(bus)</ns1:extraElement>
+					<ns1:extraElement naam="gaat_de_leerling_naar_school_volgens_de_standaard_openingstijden">Ja</ns1:extraElement>
+					<ns1:extraElement naam="_iban_rekeningnummer">NL12INGB0123456789</ns1:extraElement>
+					<ns1:extraElement naam="naam_rekeninghouder">V. de Geslachtsnaam</ns1:extraElement>
+					<ns1:extraElement naam="vanaf_wanneer_wil_je_vergoeding_aanvragen_">14-11-2022</ns1:extraElement>
+					<ns1:extraElement naam="naam_school">School </ns1:extraElement>
+					<ns1:extraElement naam="straatnaam_school">Weg</ns1:extraElement>
+					<ns1:extraElement naam="huisnummer_school">1</ns1:extraElement>
+					<ns1:extraElement naam="huisletter_school"/>
+					<ns1:extraElement naam="huisnummertoevoeging_school"/>
+					<ns1:extraElement naam="postcode_school">4321BA</ns1:extraElement>
+					<ns1:extraElement naam="plaatsnaam_school">Plaats</ns1:extraElement>
+					<ns1:extraElement naam="telefoonnummer_school">0123-456789</ns1:extraElement>
+					<ns1:extraElement naam="e_mailadres_school">mail@school.nl</ns1:extraElement>
+					<ns1:extraElement naam="maandag">Ja</ns1:extraElement>
+					<ns1:extraElement naam="begintijd_maandag">08:30</ns1:extraElement>
+					<ns1:extraElement naam="eindtijd_maandag">14:00</ns1:extraElement>
+					<ns1:extraElement naam="dinsdag">Ja</ns1:extraElement>
+					<ns1:extraElement naam="begintijd_dinsdag">08:30</ns1:extraElement>
+					<ns1:extraElement naam="eindtijd_dinsdag">14:00</ns1:extraElement>
+					<ns1:extraElement naam="woensdag">Ja</ns1:extraElement>
+					<ns1:extraElement naam="begintijd_woensdag">08:30</ns1:extraElement>
+					<ns1:extraElement naam="eindtijd_woensdag">14:00</ns1:extraElement>
+					<ns1:extraElement naam="donderdag">Ja</ns1:extraElement>
+					<ns1:extraElement naam="begintijd_donderdag">08:30</ns1:extraElement>
+					<ns1:extraElement naam="eindtijd_donderdag">14:00</ns1:extraElement>
+					<ns1:extraElement naam="vrijdag">Nee</ns1:extraElement>
+					<ns1:extraElement naam="begintijd_vrijdag"/>
+					<ns1:extraElement naam="eindtijd_vrijdag"/>
+					<ns1:extraElement naam="wil_je_een_afwijkend_adres_opgeven_">Nee</ns1:extraElement>
+					<ns1:extraElement naam="naam_contactpersoon"/>
+					<ns1:extraElement naam="straatnaam_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="huisnummer_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="huisletter_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="huisnummertoevoeging_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="postcode_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="plaatsnaam_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="telefoonnummer_contactpersoon_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="maandag_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="begintijd_alternatief_haal_breng_adres_maandag"/>
+					<ns1:extraElement naam="eindtijd_alternatief_haal_breng_adres_maandag"/>
+					<ns1:extraElement naam="dinsdag_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="begintijd_alternatief_haal_breng_adres_dinsdag"/>
+					<ns1:extraElement naam="eindtijd_alternatief_haal_breng_adres_dinsdag"/>
+					<ns1:extraElement naam="woensdag_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="begintijd_alternatief_haal_breng_adres_woensdag"/>
+					<ns1:extraElement naam="eindtijd_alternatief_haal_breng_adres_woensdag"/>
+					<ns1:extraElement naam="donderdag_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="begintijd_alternatief_haal_breng_adres_donderdag"/>
+					<ns1:extraElement naam="eindtijd_alternatief_haal_breng_adres_donderdag"/>
+					<ns1:extraElement naam="vrijdag_alternatief_haal_breng_adres"/>
+					<ns1:extraElement naam="begintijd_alternatief_haal_breng_adres_vrijdag"/>
+					<ns1:extraElement naam="eindtijd_alternatief_haal_breng_adres_vrijdag"/>
+					<ns1:extraElement naam="toelichting_opmerkingen">Mijn kind heeft vervoer nodig.</ns1:extraElement>
+					<ns1:extraElement naam="aantalBijlagen">0</ns1:extraElement>
+				</ns1:extraElementen>
+				<ns2:isVan ns1:entiteittype="ZAKZKT" ns1:verwerkingssoort="T">
+					<ns2:gerelateerde ns1:entiteittype="ZKT" ns1:verwerkingssoort="T">
+						<ns2:omschrijving/>
+						<ns2:code>AANVR01</ns2:code>
+					</ns2:gerelateerde>
+				</ns2:isVan>
+				<ns2:heeftBetrekkingOp ns1:entiteittype="ZAKOBJ" ns1:verwerkingssoort="T">
+					<ns2:gerelateerde>
+						<ns2:natuurlijkPersoon ns1:entiteittype="NPS" ns1:verwerkingssoort="I">
+							<inp.bsn xmlns="http://www.egem.nl/StUF/sector/bg/0310">123456782</inp.bsn>
+							<voorletters xmlns="http://www.egem.nl/StUF/sector/bg/0310">V.</voorletters>
+							<voornamen xmlns="http://www.egem.nl/StUF/sector/bg/0310">V.</voornamen>
+							<voorvoegselGeslachtsnaam xmlns="http://www.egem.nl/StUF/sector/bg/0310">de</voorvoegselGeslachtsnaam>
+							<geslachtsnaam xmlns="http://www.egem.nl/StUF/sector/bg/0310">Geslachtsnaam</geslachtsnaam>
+							<geboortedatum xmlns="http://www.egem.nl/StUF/sector/bg/0310">20120802</geboortedatum>
+							<inp.geboorteplaats xmlns="http://www.egem.nl/StUF/sector/bg/0310">Plaats</inp.geboorteplaats>
+							<geslachtsaanduiding xmlns="http://www.egem.nl/StUF/sector/bg/0310">Man</geslachtsaanduiding>
+							<verblijfsadres xmlns="http://www.egem.nl/StUF/sector/bg/0310">
+								<aoa.postcode>1234AB</aoa.postcode>
+								<aoa.huisnummer>1</aoa.huisnummer>
+								<gor.openbareRuimteNaam>Straat</gor.openbareRuimteNaam>
+								<wpl.woonplaatsNaam>Plaats</wpl.woonplaatsNaam>
+							</verblijfsadres>
+						</ns2:natuurlijkPersoon>
+					</ns2:gerelateerde>
+				</ns2:heeftBetrekkingOp>
+				<ns2:heeftAlsInitiator ns1:entiteittype="ZAKBTRINI" ns1:verwerkingssoort="T">
+					<ns2:gerelateerde>
+						<ns2:natuurlijkPersoon ns1:entiteittype="NPS" ns1:verwerkingssoort="I">
+							<inp.bsn xmlns="http://www.egem.nl/StUF/sector/bg/0310">123456782</inp.bsn>
+							<voorletters xmlns="http://www.egem.nl/StUF/sector/bg/0310">V.</voorletters>
+							<voornamen xmlns="http://www.egem.nl/StUF/sector/bg/0310">V.</voornamen>
+							<voorvoegselGeslachtsnaam xmlns="http://www.egem.nl/StUF/sector/bg/0310">de</voorvoegselGeslachtsnaam>
+							<geslachtsnaam xmlns="http://www.egem.nl/StUF/sector/bg/0310">Geslachtsnaam</geslachtsnaam>
+							<geboortedatum xmlns="http://www.egem.nl/StUF/sector/bg/0310">20120802</geboortedatum>
+							<inp.geboorteplaats xmlns="http://www.egem.nl/StUF/sector/bg/0310">Plaats</inp.geboorteplaats>
+							<geslachtsaanduiding xmlns="http://www.egem.nl/StUF/sector/bg/0310">Man</geslachtsaanduiding>
+							<verblijfsadres xmlns="http://www.egem.nl/StUF/sector/bg/0310">
+								<aoa.postcode>1234AB</aoa.postcode>
+								<aoa.huisnummer>1</aoa.huisnummer>
+								<gor.openbareRuimteNaam>Straat</gor.openbareRuimteNaam>
+								<wpl.woonplaatsNaam>Plaats</wpl.woonplaatsNaam>
+							</verblijfsadres>
+						</ns2:natuurlijkPersoon>
+					</ns2:gerelateerde>
+				</ns2:heeftAlsInitiator>
+			</ns2:object>
+		</ns2:zakLk01>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
