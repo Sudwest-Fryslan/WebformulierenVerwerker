@@ -100,29 +100,18 @@
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftBetrekkingOp>
-                <!-- Rol volgens standaard: aanvrager (ouder/verzorger). Alle data komt uit de
-                     BRP-prefill (globals/stuf/*) - geen formulierwijziging nodig, in tegenstelling tot
-                     heeftBetrekkingOp. verwerkingssoort="I" op het NPS-object, zelfde redenering als
-                     bij heeftBetrekkingOp (zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.2). -->
+                <!-- Rol volgens standaard: aanvrager (ouder/verzorger). Alleen BSN: de aanvrager is
+                     zelf ingelogd met DigiD, die authenticatie legt de identiteit al vast, en CAReL
+                     haalt de overige persoonsgegevens zelf op via GBAV op basis van het BSN. Overige
+                     NPS-velden zouden hoe dan ook dezelfde waarde opleveren, en zijn dus overbodig
+                     (principe 1, zie tmp/20260901-velden_carel_met_types_baseline.md - bevestigd door
+                     CAReL/Eljakim, mailwisseling "260820 toevoeging aanpassing nav overleg vervoer",
+                     1 sep 2026). verwerkingssoort="I" op het NPS-object: alleen een verwijzing naar een
+                     bekend persoon. -->
                 <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
                             <BG:inp.bsn><xsl:value-of select="globals/stuf/inp/bsn"/></BG:inp.bsn>
-                            <BG:voorletters><xsl:value-of select="globals/stuf/voorletters"/></BG:voorletters>
-                            <BG:voornamen><xsl:value-of select="globals/stuf/voornamen"/></BG:voornamen>
-                            <BG:voorvoegselGeslachtsnaam><xsl:value-of select="globals/stuf/voorvoegselgeslachtsnaam"/></BG:voorvoegselGeslachtsnaam>
-                            <BG:geslachtsnaam><xsl:value-of select="globals/stuf/geslachtsnaam"/></BG:geslachtsnaam>
-                            <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="globals/stuf/geboortedatum"/></xsl:call-template></BG:geboortedatum>
-                            <!-- Let op: BRP levert dit als gemeentecode (bv. "0091"), niet als plaatsnaam -
-                                 nog af te stemmen met Eljakim/CAReL of dat acceptabel is (zie meerwerk-doc §1.2). -->
-                            <BG:inp.geboorteplaats><xsl:value-of select="globals/stuf/inp/geboorteplaats"/></BG:inp.geboorteplaats>
-                            <BG:geslachtsaanduiding><xsl:value-of select="globals/stuf/geslachtsaanduiding"/></BG:geslachtsaanduiding>
-                            <BG:verblijfsadres>
-                                <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
-                                <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
-                                <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
-                                <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
-                            </BG:verblijfsadres>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftAlsInitiator>
@@ -140,15 +129,9 @@
                     <StUF:extraElement naam="aanvraag_schooljaar"><xsl:value-of select="fleerlingenvervoerv3aanvraag/ditjaar/welkschooljaar"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer"><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3aanvraag/ingangsdatum"/></xsl:call-template></StUF:extraElement>
                     <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie"><xsl:value-of select="fleerlingenvervoerv3aanvraag/burgerbedrijf"/></StUF:extraElement>
-                    <!-- Gegevens aanvrager -->
-                    <StUF:extraElement naam="aanvrager_bsn"><xsl:value-of select="globals/stuf/inp/bsn"/></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_voornamen"><xsl:value-of select="globals/stuf/voorletters"/></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_tussenvoegsel"/>
-                    <StUF:extraElement naam="aanvrager_achternaam"><xsl:value-of select="globals/stuf/geslachtsnaam"/></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_geboortedatum"><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="globals/stuf/geboortedatum"/></xsl:call-template></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_adres"><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_postcode"><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></StUF:extraElement>
-                    <StUF:extraElement naam="aanvrager_plaats"><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></StUF:extraElement>
+                    <!-- Gegevens aanvrager - alleen wat niet al via heeftAlsInitiator/BSN bekend is bij
+                         CAReL (GBAV). De dubbele BRP-velden (bsn/voornamen/tussenvoegsel/achternaam/
+                         geboortedatum/adres/postcode/plaats) zijn vervallen, zie principe 1 hierboven. -->
                     <StUF:extraElement naam="aanvrager_telefoonnummer"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/telefoonnummer"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_emailadres"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/emailadres"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_relatie_tot_leerling"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/relatietotleerling"/></StUF:extraElement>
@@ -172,12 +155,19 @@
                     <!-- Eigen bijdrage -->
                     <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_2023"><xsl:value-of select="fleerlingenvervoerv3eigenbijdrage/newyear/hetverzamelinkomen"/></StUF:extraElement>
                     <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"><xsl:value-of select="fleerlingenvervoerv3eigenbijdrage/belastingaangifte"/></StUF:extraElement>
-                    <!-- Soort vervoer -->
+                    <!-- Soort vervoer. vervoer_upload_routeplanner en vervoer_vanaf_datum_nodig zijn
+                         vervallen (routeplanner-check gebeurt nu bij CAReL zelf; vanaf-datum was dubbel
+                         met aanvraag_vanaf_datum_gebruik_leerlingenvervoer), zie
+                         tmp/20260901-velden_carel_met_types_baseline.md. -->
                     <StUF:extraElement naam="vervoer_type"><xsl:value-of select="fleerlingenvervoerv3vervoer/typevergoedingvervoer"/></StUF:extraElement>
-                    <StUF:extraElement naam="vervoer_upload_routeplanner"><xsl:value-of select="fleerlingenvervoerv3vervoer/uploadfiets"/></StUF:extraElement>
                     <StUF:extraElement naam="vervoer_upload_vervoersverklaring"><xsl:value-of select="fleerlingenvervoerv3vervoer/bijlagen"/></StUF:extraElement>
-                    <StUF:extraElement naam="vervoer_vanaf_datum_nodig"><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3aanvraag/ingangsdatum"/></xsl:call-template></StUF:extraElement>
-                    
+
+                    <!-- Dagdeel-structuur (Brengen/Ophalen/Geen per dag) staat nog niet in het
+                         formulier - de bestaande vervoer_<dag>-velden (kommagescheiden Ochtend/Middag)
+                         blijven daarom voorlopig staan totdat Hein de nieuwe velden heeft gebouwd, zie
+                         mailwisseling "260820 toevoeging aanpassing nav overleg vervoer" (1 sep 2026)
+                         en tmp/20260901-velden_carel_met_types_baseline.md. Niet zomaar vervangen: dan
+                         mapt deze template op niets totdat de nieuwe formuliervelden er echt zijn. -->
                     <xsl:apply-templates select="fleerlingenvervoerv3vervoer"/>
                     
                     <!-- Toelichting -->
