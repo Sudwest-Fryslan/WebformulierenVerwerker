@@ -36,7 +36,7 @@
             
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
             
             <SoapWrapperPipe name="Unwrapper" direction="UNWRAP" removeOutputNamespaces="true">
