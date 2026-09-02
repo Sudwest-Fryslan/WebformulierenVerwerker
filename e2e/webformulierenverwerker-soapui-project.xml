@@ -14171,7 +14171,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
 <SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <SOAP-ENV:Header/>
    <SOAP-ENV:Body>
-      <ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <ZKN:zakLk01>
    <ZKN:stuurgegevens>
       <StUF:berichtcode>Lk01</StUF:berichtcode>
       <StUF:zender>
@@ -14183,8 +14183,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer>7bce44a8-c271-43bd-90d3-a5a8ec198ba7</StUF:referentienummer>
-      <StUF:tijdstipBericht>2026072400000000</StUF:tijdstipBericht>
+      <StUF:referentienummer>5be7596d-7e68-4328-a902-6654f1ccd613</StUF:referentienummer>
+      <StUF:tijdstipBericht>2026090300000000</StUF:tijdstipBericht>
       <StUF:entiteittype>ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -14195,11 +14195,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
-         <ZKN:kenmerk>SWF-f49721393325</ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-testcontract-20260901</ZKN:kenmerk>
          <ZKN:bron>Kodision</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260722</ZKN:startdatum>
-      <ZKN:registratiedatum>20260723</ZKN:registratiedatum>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260903</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -14207,96 +14207,83 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
             <ZKN:ingangsdatumObject xsi:nil="true" StUF:noValue="geenWaarde"/>
          </ZKN:gerelateerde>
       </ZKN:isVan>
+      <!-- Sectie 1 van het contract: leerling, altijd volledig + verblijfsadres gesplitst -->
       <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde>
             <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
                <BG:inp.bsn>111222333</BG:inp.bsn>
                <BG:voornamen>Sanne</BG:voornamen>
-               <BG:voorvoegselGeslachtsnaam></BG:voorvoegselGeslachtsnaam>
+               <BG:voorvoegselGeslachtsnaam>van der</BG:voorvoegselGeslachtsnaam>
                <BG:geslachtsnaam>Bakker</BG:geslachtsnaam>
-               <BG:geboortedatum>20191201</BG:geboortedatum>
-               <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
+               <BG:geboortedatum>20150312</BG:geboortedatum>
+               <BG:geslachtsaanduiding>V</BG:geslachtsaanduiding>
                <BG:verblijfsadres>
                   <BG:aoa.postcode>8601AB</BG:aoa.postcode>
-                  <BG:aoa.huisnummer>30</BG:aoa.huisnummer>
+                  <BG:aoa.huisnummer>12</BG:aoa.huisnummer>
                   <BG:gor.openbareRuimteNaam>Kerkstraat</BG:gor.openbareRuimteNaam>
                   <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
                </BG:verblijfsadres>
             </ZKN:natuurlijkPersoon>
          </ZKN:gerelateerde>
       </ZKN:heeftBetrekkingOp>
+      <!-- Sectie 2 van het contract: aanvrager, alleen BSN (principe 1, bevestigd door CAReL/Eljakim) -->
       <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde>
             <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
                <BG:inp.bsn>444555666</BG:inp.bsn>
-               <BG:voorletters>J.P.</BG:voorletters>
-               <BG:voornamen>Jan Piet</BG:voornamen>
-               <BG:voorvoegselGeslachtsnaam/>
-               <BG:geslachtsnaam>Jansen</BG:geslachtsnaam>
-               <BG:geboortedatum>19770221</BG:geboortedatum>
-               <BG:inp.geboorteplaats>0091</BG:inp.geboorteplaats>
-               <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
-               <BG:verblijfsadres>
-                  <BG:aoa.postcode>8601AB</BG:aoa.postcode>
-                  <BG:aoa.huisnummer>30</BG:aoa.huisnummer>
-                  <BG:gor.openbareRuimteNaam>Kerkstraat</BG:gor.openbareRuimteNaam>
-                  <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
-               </BG:verblijfsadres>
             </ZKN:natuurlijkPersoon>
          </ZKN:gerelateerde>
       </ZKN:heeftAlsInitiator>
+      <!-- Sectie 3 van het contract: vrije velden -->
       <StUF:extraElementen>
          <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
          <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
          <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Regulier Basis Onderwijs</StUF:extraElement>
          <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
          <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Ja</StUF:extraElement>
-         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Met de fiets. (Dan is de fietsvergoeding € 0,11 per kilometer van huis naar school en terug).  </StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Met de fiets. (Dan is de fietsvergoeding € 0,11 per kilometer van huis naar school en terug).</StUF:extraElement>
          <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
-         <StUF:extraElement naam="aanvraag_schooljaar"/>
-         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260802</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
          <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_bsn">444555666</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_voornamen">J.P.</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_tussenvoegsel"/>
-         <StUF:extraElement naam="aanvrager_achternaam">Jansen</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_geboortedatum">19770221</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_adres">Kerkstraat</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_postcode">8601AB</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_plaats">Sneek</StUF:extraElement>
          <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
          <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
-         <StUF:extraElement naam="aanvrager_relatie_tot_leerling"/>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
          <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
          <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
          <StUF:extraElement naam="iban_naam_rekeninghouder">J. de Vries</StUF:extraElement>
-         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
-         <StUF:extraElement naam="leerling_roepnaam">Sanne</StUF:extraElement>
-         <StUF:extraElement naam="leerling_tussenvoegsel"></StUF:extraElement>
-         <StUF:extraElement naam="leerling_achternaam">Bakker</StUF:extraElement>
-         <StUF:extraElement naam="leerling_geslacht">Jongen</StUF:extraElement>
-         <StUF:extraElement naam="leerling_geboortedatum">20191201</StUF:extraElement>
-         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Ja</StUF:extraElement>
-         <StUF:extraElement naam="school_naam">testschool</StUF:extraElement>
-         <StUF:extraElement naam="school_adres">Marktstraat</StUF:extraElement>
-         <StUF:extraElement naam="school_postcode">8601CR</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Súdwester</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Kaatsland 5b</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8608CX</StUF:extraElement>
          <StUF:extraElement naam="school_plaats">Sneek</StUF:extraElement>
-         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_2023">Minder dan € 33.700</StUF:extraElement>
-         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"/>
+         <!-- Hernoemd per contract: was eigenbijdrage_verzamelinkomen_2023, nu jaar-onafhankelijk en Ja/Nee i.p.v. inkomensklasse -->
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Ja</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
          <StUF:extraElement naam="vervoer_type">Fiets</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_upload_routeplanner">GeluidshinderFO.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">Kitesurfen.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vanaf_datum_nodig">20260802</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag">Ochtend</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag">Middag</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag">Ochtend, Middag</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag">Ochtend</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag">Ochtend</StUF:extraElement>
-         <StUF:extraElement naam="toelichting">ik geef hier een toelichting bla bla bla</StUF:extraElement>
+         <!-- vervoer_upload_routeplanner en vervoer_vanaf_datum_nodig zijn vervallen, bewust niet meegestuurd -->
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <!-- Nieuwe dagdeel-structuur: 15 velden i.p.v. de oude 5 kommagescheiden vervoer_<dag>-velden.
+              Voorbeeldweek uit het contract: ma/wo/vr heen+terug, di/do geen vervoer nodig. -->
+         <StUF:extraElement naam="vervoer_maandag_brengen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_ophalen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_geen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_brengen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_ophalen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_geen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_brengen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_ophalen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_geen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_brengen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_ophalen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_geen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_brengen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_ophalen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_geen">Nee</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Testbericht conform het veldencontract van 1 september 2026 - nieuwe dagdeel-structuur en BSN-only aanvrager.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
-   </SOAP-ENV:Body>
+      </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 ]]></con:request><con:assertion type="SOAP Response" id="3cb2e495-2a67-440c-92d2-dc7a422a76cd" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="77aec6d5-bcd1-489e-878f-f49b93530cf5" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="541213c3-8a77-46cc-aa8c-84def6698c02" name="02-zds-creeerZaak_Lk01-Voorbeeld_bericht.xml van Eljakim 20260612"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="02-zds-creeerZaak_Lk01-Voorbeeld_bericht.xml van Eljakim 20260612" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="4afca0bd-189b-4572-b269-39ac6814fb73"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.egem.nl/StUF/StUF0301" xmlns:ns2="http://www.egem.nl/StUF/sector/zkn/0310">
 	<SOAP-ENV:Body>
