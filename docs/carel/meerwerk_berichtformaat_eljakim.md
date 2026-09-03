@@ -1,5 +1,11 @@
 # Meerwerk: berichtformaat CAReL — concrete specificatie
 
+**Achterhaald (3 september 2026):** dit document dateert van 15 juni 2026 en is op meerdere punten
+ingehaald door latere besluiten (o.a. `heeftAlsInitiator` alleen-BSN i.p.v. volledig, de
+dagdeel-structuur Brengen/Ophalen/Geen i.p.v. Ja/Nee+tijden). Voor de actuele, veld-voor-veld stand van
+zaken: zie `docs/carel/veldencontract_leerlingenvervoer.md` en sectie 10 van `scopedocument.md`. Dit
+document blijft staan als historisch uitgangspunt van de meerwerk-discussie.
+
 **Datum:** 15 juni 2026  
 **Status:** meerwerk — buiten de oorspronkelijke opdracht  
 **Aanleiding:** Eljakim heeft op 12 juni 2026 referentie-XML aangeleverd (`docs/carel/eljakim/Voorbeeld_bericht.xml`) die laat zien welk formaat CAReL daadwerkelijk verwacht. Dit wijkt op meerdere punten af van de oorspronkelijke spec (`docs/carel/20260302/creeerzaak_carel.xml`).
