@@ -421,40 +421,37 @@ SoapUI-project"). Dit is onafhankelijk van de bovenstaande formaatkwestie van he
 
 ---
 
-## 10. Nieuwe formulierversie 2026-2027: veldencontract afgerond met de Atabix-formulierbeheerder (3 september 2026)
+## 10. Nieuwe formulierversie 2026-2027: reactie de Atabix-formulierbeheerder op de 5 formulierpunten, voorstellen voor het veldencontract (3 september 2026)
 
 **Bron:** e-mail de Atabix-formulierbeheerder → de Solution Innovator (ontwikkelaar) e.a., 3 september 2026
 (`Re_ 260820 toevoeging aanpassing nav overleg vervoer (4).eml`), reactie op de 5 openstaande
-formulierpunten uit de "260820"-mailwisseling. Volledig veld-voor-veld contract:
+formulierpunten uit de "260820"-mailwisseling. Het veldencontract zelf blijft leidend:
 `docs/carel/veldencontract_leerlingenvervoer.md` (opvolger van `meerwerk_berichtformaat_eljakim.md` in
-sectie 7, dat inmiddels op meerdere punten is achterhaald).
+sectie 7, dat inmiddels op meerdere punten is achterhaald) — onderstaande punten zijn **voorstellen** voor
+dat contract, geen afgeronde stand van zaken. Code volgt het contract, niet andersom: mapping-aanpassingen
+op basis van een aanname zijn geen bevestiging dat een punt is opgelost.
 
-**Uitkomst per punt, na afstemming met de Solution Innovator (ontwikkelaar):**
-1. **Dagen vervoer:** bevestigd als 3 onafhankelijke checkboxes per dag (Brengen/Ophalen/Geen, Brengen
-   én Ophalen mogen beide "Ja" zijn — de normale situatie). "Geen" sluit de andere twee uit via
-   weblogica bij de Atabix-formulierbeheerder, die zelf de visualisatie mag kiezen zolang de integratie
-   het resultaat kan vertalen. Dit was al zo geïmplementeerd in `creeerZaak_Lk01_mapping.xsl`
-   (15 velden `vervoer_<dag>_brengen/_ophalen/_geen`) — geen mappingwijziging nodig, alleen bevestiging.
-2. **Leerlingadres:** besloten dat dit altijd verstuurd moet worden (niet meer alleen bij "gelijk aan
-   aanvrager"). Bij het vinkje: kopie van het aanvrageradres. Bij een eigen adres: blijft een bouwpunt
-   bij de Atabix-formulierbeheerder (formulierveld bestaat nog niet). Mapping aangepast: de conditionele
-   `xsl:if` is een `xsl:choose` geworden met een fallback-tak voor het (nog te bouwen) eigen
-   leerlingadres — tot dat veld bestaat is het praktische resultaat ongewijzigd.
-3. **Schooladres:** bevestigd, de recent (op verzoek van de Doorstroommedewerker) ingerichte
-   gesplitste opzet voldoet — geen wijziging nodig.
+**Voorstellen per punt, ter bespreking:**
+1. **Dagen vervoer:** de Atabix-formulierbeheerder bevestigt het model van 3 onafhankelijke checkboxes
+   per dag (Brengen/Ophalen/Geen, Brengen én Ophalen mogen beide "Ja" zijn — de normale situatie).
+   "Geen" sluit de andere twee uit via weblogica bij de Atabix-formulierbeheerder, die zelf de
+   visualisatie mag kiezen zolang de integratie het resultaat kan vertalen. De exacte veldnamen die
+   Atabix straks daadwerkelijk gaat leveren zijn nog niet vastgesteld — de mapping-code gebruikt hiervoor
+   voorlopig een eigen aanname, dat is geen bevestiging van dit punt.
+2. **Leerlingadres:** voorstel: dit altijd versturen (niet meer alleen bij "gelijk aan aanvrager"). Bij
+   het vinkje: kopie van het aanvrageradres. Bij een eigen adres: blijft een bouwpunt bij de
+   Atabix-formulierbeheerder (formulierveld bestaat nog niet) — dus in de praktijk pas uitvoerbaar zodra
+   dat veld er is.
+3. **Schooladres:** de recent (op verzoek van de Doorstroommedewerker) ingerichte gesplitste opzet lijkt
+   te voldoen aan wat het contract vraagt.
 4. **Typefout `realtietotleerling` → `relatietotleerling`:** opgelost door de Atabix-formulierbeheerder.
-5. **Organisatie-naamveld:** bleek al volledig te bestaan (compleet "Gegevens Organisatie"-blok,
-   inclusief BAG-conform gesplitst adres — meer dan verwacht). Scope voor CAReL vastgesteld: alleen
-   organisatienaam, contactpersoonnaam en telefoonnummer nodig; adres wordt bewust niet verstuurd,
-   eHerkenning blijft buiten scope. Mapping uitgebreid met twee nieuwe extraElementen
-   (`aanvrager_organisatie_naam`, `aanvrager_naam`) en een omgeschakelde bron voor
-   `aanvrager_telefoonnummer` bij de organisatieroute — brondveldnamen van het organisatieblok zijn nog
-   een aanname, te bevestigen bij de Atabix-formulierbeheerder.
+5. **Organisatie-naamveld:** blijkt al volledig te bestaan in het formulier (compleet "Gegevens
+   Organisatie"-blok, inclusief BAG-conform gesplitst adres — meer dan verwacht). Voorstel voor de
+   CAReL-scope: alleen organisatienaam, contactpersoonnaam en telefoonnummer versturen; adres bewust niet
+   meesturen, eHerkenning blijft buiten scope. Ook hier is de exacte brondveldnaam van het
+   organisatieblok in het formulier nog niet met de Atabix-formulierbeheerder geverifieerd.
 
-**Getest** (Saxon): bestaande testcapture (burger-route) ongewijzigd correct, plus een nieuw synthetisch
-scenario (organisatie-aanvrager + eigen leerlingadres) — beide leveren het verwachte `zakLk01` op.
-
-**Nog open:** de exacte brondveldnamen voor zowel de dagdeel-checkboxes als het organisatieblok zijn
-aannames totdat de Atabix-formulierbeheerder ze daadwerkelijk bouwt/bevestigt; de actieve CAReL-kant
-bevestiging van de dagdeel-structuur door de CAReL-leverancier (Eljakim) staat nog open (zie
-`docs/carel/veldencontract_leerlingenvervoer.md`, sectie "Open punten").
+**Nog open, voordat dit als afgesproken kan gelden:** de exacte brondveldnamen voor zowel de
+dagdeel-checkboxes als het organisatieblok moeten nog door de Atabix-formulierbeheerder bevestigd worden;
+de actieve CAReL-kant bevestiging van de dagdeel-structuur door de CAReL-leverancier (Eljakim) staat ook
+nog open (zie `docs/carel/veldencontract_leerlingenvervoer.md`, sectie "Open punten").

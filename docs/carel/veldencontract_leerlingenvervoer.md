@@ -58,7 +58,7 @@ integratie. De integratie ontvangt alleen de uitkomst.
 | `BG:geslachtsnaam` | Achternaam | Tekst | *Fictief: "Bakker"* | — |
 | `BG:geboortedatum` | Geboortedatum | Datum | *Fictief: 12-3-2015 → 20150312* | Formulier levert `D-M-JJJJ`; integratie normaliseert naar `JJJJMMDD` |
 | `BG:geslachtsaanduiding` | Geslacht | Code (M/V/O), berekend | Jongen→M, Meisje→V, overig→O | Formulieropties: "Jongen" / "Meisje" / "Anders" / "Wil ik liever niet zeggen", laatste twee vallen beide onder O |
-| `BG:verblijfsadres` (`aoa.postcode`/`aoa.huisnummer`/`gor.openbareRuimteNaam`/`wpl.woonplaatsNaam`) | Verblijfsadres leerling | — | *Fictief: Kerkstraat / 12 / — / — / 8601AB / Sneek* | **Bevestigd besluit (3 sep. 2026, ipv aanname):** altijd verstuurd, BAG-conform en gesplitst, op basis van het ingevoerde/overgenomen adres (geen BRP-opzoeking voor de leerling). Bij vinkje "adres leerling gelijk aan aanvrager": kopie van het aanvrageradres. Anders: het apart ingevoerde leerlingadres — **bouwpunt de Atabix-formulierbeheerder**, dit formulierveld bestaat nog niet, dus in de praktijk wordt tot die tijd nog niets verstuurd in dat geval. CAReL toont zelf een melding als het adres niet in de BAG voorkomt |
+| `BG:verblijfsadres` (`aoa.postcode`/`aoa.huisnummer`/`gor.openbareRuimteNaam`/`wpl.woonplaatsNaam`) | Verblijfsadres leerling | — | *Fictief: Kerkstraat / 12 / — / — / 8601AB / Sneek* | **Voorstel (3 sep. 2026):** altijd versturen, BAG-conform en gesplitst, op basis van het ingevoerde/overgenomen adres (geen BRP-opzoeking voor de leerling). Bij vinkje "adres leerling gelijk aan aanvrager": kopie van het aanvrageradres. Anders: het apart ingevoerde leerlingadres — **bouwpunt de Atabix-formulierbeheerder**, dit formulierveld bestaat nog niet, dus in de praktijk kan dit pas als dat veld er is. CAReL toont zelf een melding als het adres niet in de BAG voorkomt |
 
 ## 2. Rol: aanvrager (`heeftAlsInitiator`, StUF-ZKN NPS-object, burger-route)
 
@@ -122,20 +122,20 @@ Hier is de "Echte naam" al gelijk aan de kolom "CAReL-veld" — dat is namelijk 
 | `aanvrager_telefoonnummer` | Tekst/numeriek | *Fictief: 0612345678* | Vrij invulveld, geen BRP-veld. Bij "Organisatie" komt de waarde uit het telefoonnummer-veld van het organisatieblok i.p.v. het burgerblok — zelfde CAReL-veldnaam, andere bron, want burger/organisatie sluiten elkaar uit |
 | `aanvrager_emailadres` | Tekst | *Fictief: voorbeeld@email.nl* | Vrij invulveld |
 | `aanvrager_relatie_tot_leerling` | Keuzeveld (dropdown) | "Ouder" / "Voogd" / "Verzorger" / "Bewindvoerder" / "Curator" / "Anders" | **Bouwpunt:** de mapping leest dit uit `relatietotleerling`, het formulierpad heet nu nog (typefout) `realtietotleerling`, vermoedelijk de reden dat dit veld leeg blijft. Besloten: het formulierpad wordt gecorrigeerd naar `relatietotleerling`. Te herstellen in het Atabix-webformulier |
-| `aanvrager_organisatie_naam` | Tekst | *Fictief: "Stichting Voorbeeld"* | **Bevestigd (3 sep. 2026).** Alleen relevant als `aanvraag_namens_burger_of_organisatie` = "Organisatie". Bedrijfsnaam uit het al bestaande "Gegevens Organisatie"-blok van het formulier (bevestigd door de Atabix-formulierbeheerder, screenshot 3 sep.) |
-| `aanvrager_naam` | Tekst | *Fictief: "J. van der Berg"* | **Bevestigd (3 sep. 2026).** Naam van de contactpersoon bij de organisatie (voornamen + tussenvoegsel + achternaam samengevoegd — geen BRP-controle nodig, dus geen aparte velden zoals bij de leerling). Alleen relevant bij "Organisatie" |
+| `aanvrager_organisatie_naam` | Tekst | *Fictief: "Stichting Voorbeeld"* | **Voorstel (3 sep. 2026).** Alleen relevant als `aanvraag_namens_burger_of_organisatie` = "Organisatie". Bedrijfsnaam uit het al bestaande "Gegevens Organisatie"-blok van het formulier (screenshot van de Atabix-formulierbeheerder, 3 sep. — brondveldnaam nog niet met hem geverifieerd) |
+| `aanvrager_naam` | Tekst | *Fictief: "J. van der Berg"* | **Voorstel (3 sep. 2026).** Naam van de contactpersoon bij de organisatie (voornamen + tussenvoegsel + achternaam samengevoegd — geen BRP-controle nodig, dus geen aparte velden zoals bij de leerling). Alleen relevant bij "Organisatie" |
 
 **Vervallen, met de echte namen (allemaal BRP-afkomstig, zie principe 1):** `aanvrager_bsn`,
 `aanvrager_voornamen` (bevat nu feitelijk de voorletters — bekende bug, wordt irrelevant), `aanvrager_
 tussenvoegsel` (staat nu al leeg in de mapping — bekende bug, wordt irrelevant), `aanvrager_achternaam`,
 `aanvrager_geboortedatum`, `aanvrager_adres`, `aanvrager_postcode`, `aanvrager_plaats`.
 
-**Organisatie-adres — bewust niet meegestuurd (besloten 3 sep. 2026):** het Atabix-formulier heeft bij
+**Organisatie-adres — voorstel om niet mee te sturen (3 sep. 2026):** het Atabix-formulier heeft bij
 "namens een organisatie" inmiddels een volledig "Gegevens Organisatie"-blok, inclusief BAG-conform
 gesplitst adres van de contactpersoon (bevestigd door de Atabix-formulierbeheerder, screenshot 3 sep. 2026) — dus geen bouwpunt
-meer. Voor CAReL is echter alleen organisatienaam, contactpersoonnaam en telefoonnummer nodig (zie
-hierboven); het adres van de organisatie/contactpersoon wordt (voorlopig) niet als extraElement
-verstuurd. eHerkenning blijft, zoals eerder besloten, buiten scope.
+meer aan formulierkant. Voorstel voor de CAReL-scope: alleen organisatienaam, contactpersoonnaam en
+telefoonnummer versturen (zie hierboven); het adres van de organisatie/contactpersoon wordt dan niet als
+extraElement verstuurd. eHerkenning blijft, zoals eerder afgesproken, buiten scope.
 
 ### IBAN
 
@@ -170,7 +170,7 @@ verstuurd. eHerkenning blijft, zoals eerder besloten, buiten scope.
 | `vervoer_upload_vervoersverklaring` | Vervoersverklaring/treinbewijs uploaden | Bestand (upload) | *"vervoersverklaring_school.pdf"* | Blijft, en **wordt verplicht** |
 | `vervoer_vanaf_datum_nodig` | Vanaf welke datum nodig? | Datum | *1-9-2026* | **Overbodig, kan weg** — dubbel met `aanvraag_vanaf_datum_gebruik_leerlingenvervoer` |
 
-**Dagdeel-velden — bevestigd model (3 sep. 2026), geïmplementeerd in de mapping:**
+**Dagdeel-velden — voorstel na reactie de Atabix-formulierbeheerder (3 sep. 2026), nog te bevestigen:**
 
 **Vervallen (oude structuur):** 5 velden, één per dag — `vervoer_maandag`, `vervoer_dinsdag`,
 `vervoer_woensdag`, `vervoer_donderdag`, `vervoer_vrijdag`. Elk bevatte een **kommagescheiden vrije
@@ -183,8 +183,8 @@ is een bewuste, expliciete derde optie die de andere twee uitsluit — **weblogi
 wat de integratie afdwingt), zodat de aanvrager niet alle blokjes hoeft aan te vinken om aan te geven dat
 er die dag geen vervoer nodig is. Atabix is vrij in de exacte visualisatie (checkboxes, of iets anders),
 zolang de drie onafhankelijke waarden bij de integratie terugkomen — de integratie converteert zo nodig.
-Reeds geïmplementeerd in `creeerZaak_Lk01_mapping.xsl`; de brondveldnamen hieronder zijn nog een
-**aanname**, te bevestigen zodra Atabix dit daadwerkelijk bouwt:
+De onderstaande CAReL-veldnamen zijn een **voorstel**, nog te bevestigen zodra Atabix dit
+daadwerkelijk bouwt:
 
 | CAReL-veldnaam (`extraElement naam=`) | Type |
 |---|---|
@@ -233,23 +233,25 @@ terug vervoer nodig heeft, en op dinsdag/donderdag niet — dan staan `vervoer_m
 - ~~Organisatie als aanvrager, basisrichting~~ — beantwoord door de CAReL-leverancier (Eljakim), 24 augustus 2026: BSN
   om aan een bekende ouder te koppelen; zonder bekende ouder een vrij naamveld, zoveel als nodig uit te
   breiden. Verwerkt als `aanvrager_organisatie_naam` in sectie 3.
-- ~~Reactie van de Atabix-formulierbeheerder op de 5 formulierpunten uit de "260820"-mail~~ — binnen, 3 september 2026
-  (`Re_ 260820 toevoeging aanpassing nav overleg vervoer (4).eml`), per punt:
-  1. **Dagen vervoer:** bevestigd als 3 losse checkboxes (Brengen/Ophalen/Geen, niet mutueel exclusief
-     tussen Brengen en Ophalen — "Geen" sluit de andere twee uit via weblogica bij de
-     Atabix-formulierbeheerder, die zelf de visualisatie mag kiezen; de integratie doet zo nodig
-     conversie. Exacte veldnamen blijven een aanname tot de Atabix-formulierbeheerder daadwerkelijk
-     bouwt.
-  2. **Leerlingadres altijd gesplitst:** bevestigd — altijd versturen; bij "gelijk aan aanvrager" een
-     kopie van het aanvrageradres. Eigen leerlingadres blijft een bouwpunt bij de Atabix-formulierbeheerder (formulierveld bestaat
-     nog niet). Zie sectie 1 hierboven.
-  3. **Schooladres gesplitst:** bevestigd, huidige opzet (recent op verzoek van de Doorstroommedewerker en een collega ingericht)
-     voldoet.
-  4. **Typefout `realtietotleerling`:** opgelost door de Atabix-formulierbeheerder, 3 september 2026.
-  5. **Organisatie-naamveld:** bestaat al volledig (compleet "Gegevens Organisatie"-blok met BAG-conform
-     adres, bevestigd met screenshot). Scope voor CAReL vastgesteld: alleen organisatienaam,
-     contactpersoonnaam en telefoonnummer — geen adres, geen eHerkenning. Zie sectie "Aanvullende vrije
-     velden bij de aanvrager" hierboven.
+- ~~Typefout `realtietotleerling` in het formulierpad~~ — opgelost door de Atabix-formulierbeheerder, 3 september 2026.
+
+**Reactie de Atabix-formulierbeheerder op de overige 4 formulierpunten uit de "260820"-mail** (binnen, 3 september 2026,
+`Re_ 260820 toevoeging aanpassing nav overleg vervoer (4).eml`) — dit zijn **voorstellen voor het
+contract**, geen afgeronde punten: de precieze brondveldnamen en de scope-keuzes moeten nog met de Atabix-formulierbeheerder
+en/of de CAReL-leverancier (Eljakim) worden vastgezet.
+1. **Dagen vervoer:** de Atabix-formulierbeheerder bevestigt het model van 3 onafhankelijke checkboxes per dag (Brengen/Ophalen/
+   Geen, niet mutueel exclusief tussen Brengen en Ophalen — "Geen" sluit de andere twee uit via
+   weblogica bij de Atabix-formulierbeheerder, die zelf de visualisatie mag kiezen zolang de integratie het resultaat kan
+   vertalen). De exacte veldnamen die Atabix straks gaat leveren zijn nog niet vastgesteld.
+2. **Leerlingadres altijd gesplitst:** voorstel — altijd versturen; bij "gelijk aan aanvrager" een kopie
+   van het aanvrageradres. Eigen leerlingadres blijft een bouwpunt bij de Atabix-formulierbeheerder (formulierveld bestaat nog
+   niet). Zie sectie 1 hierboven.
+3. **Schooladres gesplitst:** de recent (op verzoek van de Doorstroommedewerker en een collega) ingerichte opzet lijkt te
+   voldoen — nog te bevestigen.
+4. **Organisatie-naamveld:** blijkt al te bestaan (compleet "Gegevens Organisatie"-blok met BAG-conform
+   adres, getoond via screenshot). Voorstel voor de CAReL-scope: alleen organisatienaam,
+   contactpersoonnaam en telefoonnummer — geen adres, geen eHerkenning. Zie sectie "Aanvullende vrije
+   velden bij de aanvrager" hierboven. Brondveldnaam van het organisatieblok nog niet geverifieerd.
 
 **Aangenomen (stilzwijgend akkoord, geen actieve bevestiging):**
 - **Dagdeel-structuur (Brengen/Ophalen/Geen × 5 dagen).** Op 24 augustus 2026 kon de CAReL-leverancier (Eljakim) dit nog niet
