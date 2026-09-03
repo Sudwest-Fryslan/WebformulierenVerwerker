@@ -242,7 +242,10 @@ en/of de CAReL-leverancier (Eljakim) worden vastgezet.
 1. **Dagen vervoer:** de Atabix-formulierbeheerder bevestigt het model van 3 onafhankelijke checkboxes per dag (Brengen/Ophalen/
    Geen, niet mutueel exclusief tussen Brengen en Ophalen — "Geen" sluit de andere twee uit via
    weblogica bij de Atabix-formulierbeheerder, die zelf de visualisatie mag kiezen zolang de integratie het resultaat kan
-   vertalen). De exacte veldnamen die Atabix straks gaat leveren zijn nog niet vastgesteld.
+   vertalen). De exacte veldnamen die Atabix straks gaat leveren zijn nog niet vastgesteld — en dat is
+   **geen blokkade** voor de Atabix-formulierbeheerder om te bouwen: mocht de daadwerkelijke naamgeving/structuur afwijken van
+   de aanname in de mapping, dan lossen we dat op in de integratie (XSLT-aanpassing), niet iets waar
+   Atabix op hoeft te wachten of aan hoeft te voldoen.
 2. **Leerlingadres altijd gesplitst:** voorstel — altijd versturen; bij "gelijk aan aanvrager" een kopie
    van het aanvrageradres. Eigen leerlingadres blijft een bouwpunt bij de Atabix-formulierbeheerder (formulierveld bestaat nog
    niet). Zie sectie 1 hierboven.
