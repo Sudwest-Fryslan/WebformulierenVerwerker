@@ -170,46 +170,47 @@ extraElement verstuurd. eHerkenning blijft, zoals eerder afgesproken, buiten sco
 | `vervoer_upload_vervoersverklaring` | Vervoersverklaring/treinbewijs uploaden | Bestand (upload) | *"vervoersverklaring_school.pdf"* | Blijft, en **wordt verplicht** |
 | `vervoer_vanaf_datum_nodig` | Vanaf welke datum nodig? | Datum | *1-9-2026* | **Overbodig, kan weg** — dubbel met `aanvraag_vanaf_datum_gebruik_leerlingenvervoer` |
 
-**Dagdeel-velden — richting heropend na reactie de CAReL-leverancier (Eljakim) (3 sep. 2026), nog niet vastgesteld:**
+**Dagdeel-velden — bijgesteld naar tijden, conform reactie de CAReL-leverancier (Eljakim) (3 sep. 2026):**
 
 **Vervallen (oude structuur):** 5 velden, één per dag — `vervoer_maandag`, `vervoer_dinsdag`,
 `vervoer_woensdag`, `vervoer_donderdag`, `vervoer_vrijdag`. Elk bevatte een **kommagescheiden vrije
 tekst** van alle aangevinkte dagdelen (bijv. "Ochtend, Middag") — de mismatch waar CAReL op vastliep,
 want CAReL verwacht een ja/nee-structuur, geen vrije tekst.
 
-**Tussentijds voorstel (3 sep., ná Heins reactie maar vóór de CAReL-leverancier (Eljakim)'s):** per dag drie losse,
-onafhankelijke Ja/Nee-vlaggen — Brengen / Ophalen / Geen — dus 15 velden in plaats van 5. de Atabix-formulierbeheerder bevestigde
-dat hij dit als checkboxes kan bouwen. **Let op:** de CAReL-leverancier (Eljakim) liet daarna weten dat CAReL's eigen
-mechanisme werkt met een heen- en terugtijdstip per adres, en dat automatisch vullen met alleen Ja/Nee
-lastig wordt — zie de "Reactie de CAReL-leverancier (Eljakim)"-paragraaf in `Open punten`. Op basis daarvan is besloten de lijn
-van CAReL te volgen i.p.v. dit Ja/Nee-only-model door te zetten. Dit voorstel (en de onderstaande 15
-veldnamen) staat daarmee **niet meer vast** — eerst moet bij de CAReL-leverancier (Eljakim) het exacte, door CAReL betrouwbaar
-te verwerken veldformaat worden opgevraagd voordat hier iets aan de Atabix-formulierbeheerder gevraagd wordt. Onderstaande tabel
-blijft staan als referentie van het eerdere voorstel, niet als huidig contract:
+**Ook vervallen (tussentijds voorstel, 3 sep., nooit aan de Atabix-formulierbeheerder gevraagd):** 15 losse Ja/Nee-velden
+(Brengen/Ophalen/Geen per dag). de CAReL-leverancier (Eljakim) gaf aan dat CAReL's eigen mechanisme werkt met een
+heen-tijdstip en een terug-tijdstip, en dat automatisch vullen met alleen Ja/Nee lastig wordt (nieuwe,
+bij CAReL nog niet eerder gebruikte functionaliteit). We volgen daarin de lijn van de leverancier i.p.v.
+tegen hun systeem in te bouwen.
+
+**Besloten (3 sep. 2026):** per dag twee tijdvelden — een heen-tijdstip en een terug-tijdstip — in plaats
+van de Ja/Nee-vlaggen. Leeg = geen vervoer nodig in die richting op die dag. Dit is een rechtstreekse
+vertaling van de CAReL-leverancier (Eljakim)'s eigen beschrijving ("wij kunnen voor een opgegeven adres een heen tijdstip en een
+terug tijdstip invullen"), dus 10 velden in plaats van 15:
 
 | CAReL-veldnaam (`extraElement naam=`) | Type |
 |---|---|
-| `vervoer_maandag_brengen` | Keuzeveld (Ja/Nee) |
-| `vervoer_maandag_ophalen` | Keuzeveld (Ja/Nee) |
-| `vervoer_maandag_geen` | Keuzeveld (Ja/Nee) |
-| `vervoer_dinsdag_brengen` | Keuzeveld (Ja/Nee) |
-| `vervoer_dinsdag_ophalen` | Keuzeveld (Ja/Nee) |
-| `vervoer_dinsdag_geen` | Keuzeveld (Ja/Nee) |
-| `vervoer_woensdag_brengen` | Keuzeveld (Ja/Nee) |
-| `vervoer_woensdag_ophalen` | Keuzeveld (Ja/Nee) |
-| `vervoer_woensdag_geen` | Keuzeveld (Ja/Nee) |
-| `vervoer_donderdag_brengen` | Keuzeveld (Ja/Nee) |
-| `vervoer_donderdag_ophalen` | Keuzeveld (Ja/Nee) |
-| `vervoer_donderdag_geen` | Keuzeveld (Ja/Nee) |
-| `vervoer_vrijdag_brengen` | Keuzeveld (Ja/Nee) |
-| `vervoer_vrijdag_ophalen` | Keuzeveld (Ja/Nee) |
-| `vervoer_vrijdag_geen` | Keuzeveld (Ja/Nee) |
+| `vervoer_maandag_heentijd` | Tijdstip (bv. "08:15"), leeg = niet nodig |
+| `vervoer_maandag_terugtijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_dinsdag_heentijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_dinsdag_terugtijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_woensdag_heentijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_woensdag_terugtijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_donderdag_heentijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_donderdag_terugtijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_vrijdag_heentijd` | Tijdstip, leeg = niet nodig |
+| `vervoer_vrijdag_terugtijd` | Tijdstip, leeg = niet nodig |
 
-*Voorbeeld van een ingevulde week (fictief): een leerling die op maandag, woensdag en vrijdag heen én
-terug vervoer nodig heeft, en op dinsdag/donderdag niet — dan staan `vervoer_maandag_brengen`,
-`vervoer_maandag_ophalen`, `vervoer_woensdag_brengen`, `vervoer_woensdag_ophalen`,
-`vervoer_vrijdag_brengen` en `vervoer_vrijdag_ophalen` op "Ja", en `vervoer_dinsdag_geen`/
-`vervoer_donderdag_geen` op "Ja" (de overige 8 op "Nee").*
+*Voorbeeld van een ingevulde week (fictief): een leerling die op maandag, woensdag en vrijdag om 08:15
+naar school en om 15:30 terug moet, en op dinsdag/donderdag geen vervoer nodig heeft — dan staan
+`vervoer_maandag_heentijd`/`vervoer_woensdag_heentijd`/`vervoer_vrijdag_heentijd` op "08:15",
+`vervoer_maandag_terugtijd`/`vervoer_woensdag_terugtijd`/`vervoer_vrijdag_terugtijd` op "15:30", en alle
+dinsdag/donderdag-velden leeg.*
+
+**Let op — dit vraagt nieuwe formuliervelden bij Atabix:** het huidige formulier vraagt nergens
+klokTIJDEN uit (alleen welke dagen/dagdelen). de Atabix-formulierbeheerder moet deze 10 tijdvelden nog toevoegen — dat is een
+nieuw bouwpunt, groter dan het eerdere Ja/Nee-voorstel. Zolang dat er niet is, blijft dit voorstel op
+papier.
 
 ### Toelichting
 
@@ -261,16 +262,14 @@ en/of de CAReL-leverancier (Eljakim) worden vastgezet.
 
 **Reactie de CAReL-leverancier (Eljakim), 3 september 2026** (`RE_ 260820 toevoeging aanpassing nav overleg vervoer
 (5).eml`), op dezelfde mailwisseling:
-1. **Dagen vervoer — richting bijgesteld, nog niet afgerond.** de CAReL-leverancier (Eljakim) geeft aan dat CAReL's eigen
-   mechanisme werkt met een **heen-tijdstip en een terug-tijdstip** per adres, en dat dit bij CAReL
-   nieuwe, nog niet bij klanten gebruikte functionaliteit is. Met alleen Ja/Nee (het Brengen/Ophalen/Geen-
-   model) wordt automatisch vullen vanuit de e-formulieren-koppeling naar zijn zeggen lastig; handmatig
-   invullen in CAReL kan met de knop "standaard ritschema vullen". **Besloten (de Solution Innovator (ontwikkelaar), 3 sep. 2026):** we
-   volgen hierin de lijn van CAReL/Eljakim in plaats van tegen hun systeem in te bouwen — alleen dingen
-   gebruiken waarvan de leverancier zelf zegt dat het goed en betrouwbaar werkt. Het eerder voorgestelde
-   Ja/Nee-only-model (Brengen/Ophalen/Geen) staat daarmee weer open; **nog terug te vragen aan de CAReL-leverancier (Eljakim):**
-   het exacte veldformaat dat CAReL nodig heeft (bijv. per dag een heen- en terugtijdstip, of iets anders)
-   voordat we dit verder kunnen uitwerken richting de Atabix-formulierbeheerder.
+1. **Dagen vervoer — bijgesteld naar tijden.** de CAReL-leverancier (Eljakim) geeft aan dat CAReL's eigen mechanisme werkt met
+   een **heen-tijdstip en een terug-tijdstip** per adres, en dat dit bij CAReL nieuwe, nog niet bij
+   klanten gebruikte functionaliteit is. Met alleen Ja/Nee (het Brengen/Ophalen/Geen-model) wordt
+   automatisch vullen vanuit de e-formulieren-koppeling naar zijn zeggen lastig. **Besloten (de Solution Innovator (ontwikkelaar),
+   3 sep. 2026):** we volgen de lijn van CAReL/Eljakim — alleen dingen gebruiken waarvan de leverancier
+   zelf zegt dat het goed en betrouwbaar werkt. Het Ja/Nee-only-model vervalt; contract aangepast naar 10
+   tijdvelden (heen-/terug-tijdstip per dag), rechtstreeks vertaald uit de CAReL-leverancier (Eljakim)'s eigen beschrijving. Zie
+   de bijgewerkte tabel hierboven bij "Vervoer". We gaan hiermee door en checken dit nog even bij de CAReL-leverancier (Eljakim).
 2. **Leerlingadres/ophaalpunt.** de CAReL-leverancier (Eljakim)'s technische randvoorwaarde: CAReL vult het standaard ophaalpunt
    met óf het leerlingadres óf het aanvrageradres, niet beide. Zijn voorstel: altijd het leerlingadres
    aanleveren, waarbij Atabix zelf (indien "leerling heeft ander adres dan aanvrager" = Nee) onderwater
