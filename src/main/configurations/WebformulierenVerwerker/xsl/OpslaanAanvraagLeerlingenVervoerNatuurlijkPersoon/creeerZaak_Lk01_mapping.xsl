@@ -84,10 +84,11 @@
                      verwerkingssoort="I" op het NPS-object (Identificatie): dit is bewust alleen een
                      verwijzing naar een bekend persoon, geen volledige persoonsregistratie - vandaar
                      dat schema-technisch niets hier verplicht is (zie docs/carel/scopedocument.md §7).
-                     Alle hieronder gebruikte velden zijn al aanwezig in het formulier; het
-                     verblijfsadres van de leerling nog niet als de leerling een ander adres heeft dan
-                     de aanvrager (leerlinganderadres = "Nee") - de daarvoor benodigde formuliervelden
-                     bestaan nog niet, zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.1. -->
+                     Verblijfsadres leerling: bevestigd besluit (3 sep. 2026) dat dit altijd verstuurd
+                     moet worden, zie tmp/20260901-velden_carel_met_types_baseline.md sectie 1. Bij een
+                     ander adres dan de aanvrager (leerlinganderadres = "Nee") blijft dit in de praktijk
+                     nog leeg - dat eigen leerlingadresveld bestaat nog niet in het formulier (bouwpunt
+                     bij Hein), zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.1. -->
                 <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
@@ -104,17 +105,29 @@
                                 </xsl:choose>
                             </BG:geslachtsaanduiding>
                             <!-- leerlinganderadres = "Ja" betekent (per meerwerk-document): adres leerling
-                                 gelijk aan aanvrager - dan is het aanvrageradres uit de BRP-prefill bekend.
-                                 Bij "Nee" is er een eigen leerlingadres nodig dat het formulier nog niet
-                                 uitvraagt; verblijfsadres blijft dan bewust weg (geen onjuiste data sturen). -->
-                            <xsl:if test="fleerlingenvervoerv3gegevensleerling/leerlinganderadres = 'Ja'">
-                                <BG:verblijfsadres>
-                                    <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
-                                    <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
-                                    <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
-                                    <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
-                                </BG:verblijfsadres>
-                            </xsl:if>
+                                 gelijk aan aanvrager - dan kopiëren we het aanvrageradres uit de
+                                 BRP-prefill. Bij "Nee" hoort hier het eigen leerlingadres (AANNAME
+                                 fleerlingenvervoerv3gegevensleerling/verblijfsadres/*, zelfde structuur
+                                 als globals/stuf/verblijfsadres) - dat formulierveld bestaat nog niet
+                                 (bouwpunt bij Hein), dus dit blok levert tot die tijd niets op. -->
+                            <xsl:choose>
+                                <xsl:when test="fleerlingenvervoerv3gegevensleerling/leerlinganderadres = 'Ja'">
+                                    <BG:verblijfsadres>
+                                        <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
+                                        <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
+                                        <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
+                                        <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                                    </BG:verblijfsadres>
+                                </xsl:when>
+                                <xsl:when test="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode">
+                                    <BG:verblijfsadres>
+                                        <BG:aoa.postcode><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode"/></BG:aoa.postcode>
+                                        <BG:aoa.huisnummer><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
+                                        <BG:gor.openbareRuimteNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
+                                        <BG:wpl.woonplaatsNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                                    </BG:verblijfsadres>
+                                </xsl:when>
+                            </xsl:choose>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftBetrekkingOp>
@@ -149,9 +162,31 @@
                     <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie"><xsl:value-of select="fleerlingenvervoerv3aanvraag/burgerbedrijf"/></StUF:extraElement>
                     <!-- Gegevens aanvrager - alleen wat niet al via heeftAlsInitiator/BSN bekend is bij
                          CAReL (GBAV). De dubbele BRP-velden (bsn/voornamen/tussenvoegsel/achternaam/
-                         geboortedatum/adres/postcode/plaats) zijn vervallen, zie principe 1 hierboven. -->
-                    <StUF:extraElement naam="aanvrager_telefoonnummer"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/telefoonnummer"/></StUF:extraElement>
+                         geboortedatum/adres/postcode/plaats) zijn vervallen, zie principe 1 hierboven.
+                         Bij "Organisatie" komt telefoonnummer uit het organisatieblok i.p.v. het
+                         burgerblok - zelfde CAReL-veldnaam, andere bron, want burger/organisatie sluiten
+                         elkaar uit (aanvraag_namens_burger_of_organisatie). -->
+                    <StUF:extraElement naam="aanvrager_telefoonnummer">
+                        <xsl:choose>
+                            <xsl:when test="fleerlingenvervoerv3aanvraag/burgerbedrijf = 'Organisatie'">
+                                <xsl:value-of select="fleerlingenvervoerv3gegevensorganisatie/telefoonnummer"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="fleerlingenvervoerv3gegevensburger/telefoonnummer"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_emailadres"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/emailadres"/></StUF:extraElement>
+                    <!-- Organisatiegegevens - alleen relevant bij aanvraag_namens_burger_of_organisatie
+                         = "Organisatie". Scope bevestigd 3 sep. 2026: alleen naam en contactpersoonnaam,
+                         geen adres (bestaat al gesplitst in het formulier, maar CAReL heeft het niet
+                         nodig) en geen eHerkenning. AANNAME voor de brondveldnamen (container
+                         fleerlingenvervoerv3gegevensorganisatie met bedrijfsnaam/voornamen/
+                         tussenvoegsel/achternaam, naar het "Gegevens Organisatie"-blok uit Heins
+                         screenshot van 3 sep. 2026) - nog niet met Hein geverifieerd. Bij "Burger"
+                         bestaat dit blok niet, dus leveren deze velden gewoon leeg op. -->
+                    <StUF:extraElement naam="aanvrager_organisatie_naam"><xsl:value-of select="fleerlingenvervoerv3gegevensorganisatie/bedrijfsnaam"/></StUF:extraElement>
+                    <StUF:extraElement naam="aanvrager_naam"><xsl:value-of select="string-join((fleerlingenvervoerv3gegevensorganisatie/voornamen, fleerlingenvervoerv3gegevensorganisatie/tussenvoegsel, fleerlingenvervoerv3gegevensorganisatie/achternaam)[normalize-space(.) != ''], ' ')"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_relatie_tot_leerling"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/relatietotleerling"/></StUF:extraElement>
                     <!-- IBAN gegevens -->
                     <StUF:extraElement naam="iban_type"><xsl:value-of select="fleerlingenvervoerv3gegevensburger/welkeibannummer"/></StUF:extraElement>
