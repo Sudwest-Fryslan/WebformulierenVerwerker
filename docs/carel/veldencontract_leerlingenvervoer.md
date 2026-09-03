@@ -58,7 +58,7 @@ integratie. De integratie ontvangt alleen de uitkomst.
 | `BG:geslachtsnaam` | Achternaam | Tekst | *Fictief: "Bakker"* | — |
 | `BG:geboortedatum` | Geboortedatum | Datum | *Fictief: 12-3-2015 → 20150312* | Formulier levert `D-M-JJJJ`; integratie normaliseert naar `JJJJMMDD` |
 | `BG:geslachtsaanduiding` | Geslacht | Code (M/V/O), berekend | Jongen→M, Meisje→V, overig→O | Formulieropties: "Jongen" / "Meisje" / "Anders" / "Wil ik liever niet zeggen", laatste twee vallen beide onder O |
-| `BG:verblijfsadres` (`aoa.postcode`/`aoa.huisnummer`/`gor.openbareRuimteNaam`/`wpl.woonplaatsNaam`) | Verblijfsadres leerling | — | *Fictief: Kerkstraat / 12 / — / — / 8601AB / Sneek* | **Voorstel (3 sep. 2026):** altijd versturen, BAG-conform en gesplitst, op basis van het ingevoerde/overgenomen adres (geen BRP-opzoeking voor de leerling). Bij vinkje "adres leerling gelijk aan aanvrager": kopie van het aanvrageradres. Anders: het apart ingevoerde leerlingadres — **bouwpunt de Atabix-formulierbeheerder**, dit formulierveld bestaat nog niet, dus in de praktijk kan dit pas als dat veld er is. CAReL toont zelf een melding als het adres niet in de BAG voorkomt |
+| `BG:verblijfsadres` (`aoa.postcode`/`aoa.huisnummer`/`aoa.huisletter`/`aoa.huisnummertoevoeging`/`gor.openbareRuimteNaam`/`wpl.woonplaatsNaam`) | Verblijfsadres leerling | — | *Fictief: Kerkstraat / 12 / — / — / 8601AB / Sneek* | **Besloten (3 sep. 2026, na reactie de CAReL-leverancier (Eljakim)):** altijd versturen, BAG-conform en volledig gesplitst (incl. huisletter/huisnummertoevoeging, zie ook `Open punten`). De integratie maakt zelf **geen** keuze meer op basis van "leerling heeft ander adres dan aanvrager" — dat kopiëren (aanvrageradres → leerlingveld, indien van toepassing) is **weblogica bij Atabix**, niet bij de integratie. De integratie stuurt gewoon wat er in het leerling-adresveld staat. Aanvrageradres wordt zelf nooit los als aanvrager-adres naar CAReL gestuurd (zie sectie 2). **Bouwpunt de Atabix-formulierbeheerder:** dit leerling-adresveld (incl. de kopieerlogica) bestaat nog niet in het formulier |
 
 ## 2. Rol: aanvrager (`heeftAlsInitiator`, StUF-ZKN NPS-object, burger-route)
 
@@ -170,21 +170,22 @@ extraElement verstuurd. eHerkenning blijft, zoals eerder afgesproken, buiten sco
 | `vervoer_upload_vervoersverklaring` | Vervoersverklaring/treinbewijs uploaden | Bestand (upload) | *"vervoersverklaring_school.pdf"* | Blijft, en **wordt verplicht** |
 | `vervoer_vanaf_datum_nodig` | Vanaf welke datum nodig? | Datum | *1-9-2026* | **Overbodig, kan weg** — dubbel met `aanvraag_vanaf_datum_gebruik_leerlingenvervoer` |
 
-**Dagdeel-velden — voorstel na reactie de Atabix-formulierbeheerder (3 sep. 2026), nog te bevestigen:**
+**Dagdeel-velden — richting heropend na reactie de CAReL-leverancier (Eljakim) (3 sep. 2026), nog niet vastgesteld:**
 
 **Vervallen (oude structuur):** 5 velden, één per dag — `vervoer_maandag`, `vervoer_dinsdag`,
 `vervoer_woensdag`, `vervoer_donderdag`, `vervoer_vrijdag`. Elk bevatte een **kommagescheiden vrije
 tekst** van alle aangevinkte dagdelen (bijv. "Ochtend, Middag") — de mismatch waar CAReL op vastliep,
 want CAReL verwacht een ja/nee-structuur, geen vrije tekst.
 
-**Huidig:** per dag drie losse, onafhankelijke Ja/Nee-vlaggen — Brengen / Ophalen / Geen — dus 15 velden
-in plaats van 5. Brengen en Ophalen mogen allebei "Ja" zijn (de normale situatie: heen én terug). "Geen"
-is een bewuste, expliciete derde optie die de andere twee uitsluit — **weblogica bij Atabix** (niet iets
-wat de integratie afdwingt), zodat de aanvrager niet alle blokjes hoeft aan te vinken om aan te geven dat
-er die dag geen vervoer nodig is. Atabix is vrij in de exacte visualisatie (checkboxes, of iets anders),
-zolang de drie onafhankelijke waarden bij de integratie terugkomen — de integratie converteert zo nodig.
-De onderstaande CAReL-veldnamen zijn een **voorstel**, nog te bevestigen zodra Atabix dit
-daadwerkelijk bouwt:
+**Tussentijds voorstel (3 sep., ná Heins reactie maar vóór de CAReL-leverancier (Eljakim)'s):** per dag drie losse,
+onafhankelijke Ja/Nee-vlaggen — Brengen / Ophalen / Geen — dus 15 velden in plaats van 5. de Atabix-formulierbeheerder bevestigde
+dat hij dit als checkboxes kan bouwen. **Let op:** de CAReL-leverancier (Eljakim) liet daarna weten dat CAReL's eigen
+mechanisme werkt met een heen- en terugtijdstip per adres, en dat automatisch vullen met alleen Ja/Nee
+lastig wordt — zie de "Reactie de CAReL-leverancier (Eljakim)"-paragraaf in `Open punten`. Op basis daarvan is besloten de lijn
+van CAReL te volgen i.p.v. dit Ja/Nee-only-model door te zetten. Dit voorstel (en de onderstaande 15
+veldnamen) staat daarmee **niet meer vast** — eerst moet bij de CAReL-leverancier (Eljakim) het exacte, door CAReL betrouwbaar
+te verwerken veldformaat worden opgevraagd voordat hier iets aan de Atabix-formulierbeheerder gevraagd wordt. Onderstaande tabel
+blijft staan als referentie van het eerdere voorstel, niet als huidig contract:
 
 | CAReL-veldnaam (`extraElement naam=`) | Type |
 |---|---|
@@ -246,23 +247,44 @@ en/of de CAReL-leverancier (Eljakim) worden vastgezet.
    **geen blokkade** voor de Atabix-formulierbeheerder om te bouwen: mocht de daadwerkelijke naamgeving/structuur afwijken van
    de aanname in de mapping, dan lossen we dat op in de integratie (XSLT-aanpassing), niet iets waar
    Atabix op hoeft te wachten of aan hoeft te voldoen.
-2. **Leerlingadres altijd gesplitst:** voorstel — altijd versturen; bij "gelijk aan aanvrager" een kopie
-   van het aanvrageradres. Eigen leerlingadres blijft een bouwpunt bij de Atabix-formulierbeheerder (formulierveld bestaat nog
-   niet). Zie sectie 1 hierboven.
+2. **Leerlingadres altijd gesplitst:** **besloten** (na reactie de CAReL-leverancier (Eljakim), zie hieronder) — altijd
+   versturen, en de kopieerlogica (aanvrageradres → leerlingveld indien van toepassing) ligt bij Atabix
+   (weblogica), niet bij de integratie. Eigen leerlingadresveld blijft een bouwpunt bij de Atabix-formulierbeheerder
+   (formulierveld bestaat nog niet). Zie sectie 1 hierboven.
 3. **Schooladres gesplitst:** de recent (op verzoek van de Doorstroommedewerker en een collega) ingerichte opzet lijkt te
-   voldoen — nog te bevestigen.
+   voldoen — nog te bevestigen. Zie ook de CAReL-leverancier (Eljakim)'s punt 3 hieronder: geldt inmiddels voor alle adressen,
+   niet alleen school.
 4. **Organisatie-naamveld:** blijkt al te bestaan (compleet "Gegevens Organisatie"-blok met BAG-conform
    adres, getoond via screenshot). Voorstel voor de CAReL-scope: alleen organisatienaam,
    contactpersoonnaam en telefoonnummer — geen adres, geen eHerkenning. Zie sectie "Aanvullende vrije
    velden bij de aanvrager" hierboven. Brondveldnaam van het organisatieblok nog niet geverifieerd.
 
+**Reactie de CAReL-leverancier (Eljakim), 3 september 2026** (`RE_ 260820 toevoeging aanpassing nav overleg vervoer
+(5).eml`), op dezelfde mailwisseling:
+1. **Dagen vervoer — richting bijgesteld, nog niet afgerond.** de CAReL-leverancier (Eljakim) geeft aan dat CAReL's eigen
+   mechanisme werkt met een **heen-tijdstip en een terug-tijdstip** per adres, en dat dit bij CAReL
+   nieuwe, nog niet bij klanten gebruikte functionaliteit is. Met alleen Ja/Nee (het Brengen/Ophalen/Geen-
+   model) wordt automatisch vullen vanuit de e-formulieren-koppeling naar zijn zeggen lastig; handmatig
+   invullen in CAReL kan met de knop "standaard ritschema vullen". **Besloten (de Solution Innovator (ontwikkelaar), 3 sep. 2026):** we
+   volgen hierin de lijn van CAReL/Eljakim in plaats van tegen hun systeem in te bouwen — alleen dingen
+   gebruiken waarvan de leverancier zelf zegt dat het goed en betrouwbaar werkt. Het eerder voorgestelde
+   Ja/Nee-only-model (Brengen/Ophalen/Geen) staat daarmee weer open; **nog terug te vragen aan de CAReL-leverancier (Eljakim):**
+   het exacte veldformaat dat CAReL nodig heeft (bijv. per dag een heen- en terugtijdstip, of iets anders)
+   voordat we dit verder kunnen uitwerken richting de Atabix-formulierbeheerder.
+2. **Leerlingadres/ophaalpunt.** de CAReL-leverancier (Eljakim)'s technische randvoorwaarde: CAReL vult het standaard ophaalpunt
+   met óf het leerlingadres óf het aanvrageradres, niet beide. Zijn voorstel: altijd het leerlingadres
+   aanleveren, waarbij Atabix zelf (indien "leerling heeft ander adres dan aanvrager" = Nee) onderwater
+   het aanvrageradres al in de leerling-adresvelden zet. **Besloten (de Solution Innovator (ontwikkelaar), 3 sep. 2026):** dit is
+   precies de aanpak die we volgen — zie de bijgewerkte rij in sectie 1. Het aanvrageradres wordt zelf
+   nooit los naar CAReL gestuurd.
+3. **Alle adressen BAG-conform gesplitst.** CAReL zoekt adressen zelf op via de BAG om te controleren of
+   alles klopt, en wil daarom voor **alle** adressen (niet alleen school) straat/huisnummer/huisletter/
+   huisnummertoevoeging/postcode/plaats los. **Besloten (de Solution Innovator (ontwikkelaar), 3 sep. 2026):** dit passen we toe op
+   alle adressen conform BAG. Voor het leerlingadres (sectie 1) betekent dit dat ook huisletter en
+   huisnummertoevoeging nog aan de mapping/het formulier toegevoegd moeten worden — nog niet gebouwd.
+   Voor schooladres (zie punt 3 hierboven bij de Atabix-formulierbeheerder) en organisatie-adres (dat sowieso niet verstuurd
+   wordt, zie sectie "Aanvullende vrije velden bij de aanvrager") is dit al bekend resp. niet van
+   toepassing.
+
 **Aangenomen (stilzwijgend akkoord, geen actieve bevestiging):**
-- **Dagdeel-structuur (Brengen/Ophalen/Geen × 5 dagen).** Op 24 augustus 2026 kon de CAReL-leverancier (Eljakim) dit nog niet
-  direct beoordelen ("nog erg nieuw aan onze kant"). In de mail van 1 september is bewust een
-  stilzwijgend-akkoord-afspraak gemaakt: *"we gaan er vanuit dat je dit dagdeel-verhaal aan CAReL-kant
-  kunt inrichten - mocht dat niet zo zijn, dan graag even een reactie."* Er is geen tegenspraak ontvangen
-  (wel twee reacties van de Doorstroommedewerker sindsdien, niets van de CAReL-leverancier (Eljakim) over dit punt) — onder onze eigen voorwaarden
-  gaan we dus door op de aanname dat dit werkt. Geen blokkade meer voor vervolgstappen (bijv. de Atabix-formulierbeheerder aan het
-  werk zetten), maar nog geen actieve bevestiging - als de CAReL-leverancier (Eljakim) later toch bezwaar maakt, moet dit
-  mogelijk worden aangepast.
 - Geboorteplaats aanvrager als gemeentecode i.p.v. plaatsnaam — nog steeds niet met Eljakim afgestemd.
