@@ -84,11 +84,13 @@
                      verwerkingssoort="I" op het NPS-object (Identificatie): dit is bewust alleen een
                      verwijzing naar een bekend persoon, geen volledige persoonsregistratie - vandaar
                      dat schema-technisch niets hier verplicht is (zie docs/carel/scopedocument.md §7).
-                     Verblijfsadres leerling: bevestigd besluit (3 sep. 2026) dat dit altijd verstuurd
-                     moet worden, zie tmp/20260901-velden_carel_met_types_baseline.md sectie 1. Bij een
-                     ander adres dan de aanvrager (leerlinganderadres = "Nee") blijft dit in de praktijk
-                     nog leeg - dat eigen leerlingadresveld bestaat nog niet in het formulier (bouwpunt
-                     bij Hein), zie docs/carel/meerwerk_berichtformaat_eljakim.md §1.1. -->
+                     Verblijfsadres leerling: bevestigd besluit (3 sep. 2026, na reactie Lorenzo) dat dit
+                     altijd verstuurd moet worden, zie tmp/20260901-velden_carel_met_types_baseline.md
+                     sectie 1. Het kopiëren van het aanvrageradres naar het leerlingveld (indien "leerling
+                     heeft ander adres dan aanvrager" = Nee) is weblogica bij Atabix, niet bij de
+                     integratie - de mapping stuurt daarom altijd gewoon het leerling-adresveld, zonder
+                     eigen Ja/Nee-keuze. Dat veld bestaat nog niet in het formulier (bouwpunt bij Hein),
+                     dus dit blok levert tot die tijd niets op. -->
                 <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
                         <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
@@ -104,30 +106,20 @@
                                     <xsl:otherwise>O</xsl:otherwise>
                                 </xsl:choose>
                             </BG:geslachtsaanduiding>
-                            <!-- leerlinganderadres = "Ja" betekent (per meerwerk-document): adres leerling
-                                 gelijk aan aanvrager - dan kopiëren we het aanvrageradres uit de
-                                 BRP-prefill. Bij "Nee" hoort hier het eigen leerlingadres (AANNAME
-                                 fleerlingenvervoerv3gegevensleerling/verblijfsadres/*, zelfde structuur
-                                 als globals/stuf/verblijfsadres) - dat formulierveld bestaat nog niet
-                                 (bouwpunt bij Hein), dus dit blok levert tot die tijd niets op. -->
-                            <xsl:choose>
-                                <xsl:when test="fleerlingenvervoerv3gegevensleerling/leerlinganderadres = 'Ja'">
-                                    <BG:verblijfsadres>
-                                        <BG:aoa.postcode><xsl:value-of select="globals/stuf/verblijfsadres/postcode"/></BG:aoa.postcode>
-                                        <BG:aoa.huisnummer><xsl:value-of select="globals/stuf/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
-                                        <BG:gor.openbareRuimteNaam><xsl:value-of select="globals/stuf/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
-                                        <BG:wpl.woonplaatsNaam><xsl:value-of select="globals/stuf/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
-                                    </BG:verblijfsadres>
-                                </xsl:when>
-                                <xsl:when test="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode">
-                                    <BG:verblijfsadres>
-                                        <BG:aoa.postcode><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode"/></BG:aoa.postcode>
-                                        <BG:aoa.huisnummer><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
-                                        <BG:gor.openbareRuimteNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
-                                        <BG:wpl.woonplaatsNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
-                                    </BG:verblijfsadres>
-                                </xsl:when>
-                            </xsl:choose>
+                            <!-- Adres leerling: altijd sturen, zonder eigen Ja/Nee-keuze (zie toelichting
+                                 hierboven). AANNAME voor de brondveldnamen
+                                 (fleerlingenvervoerv3gegevensleerling/verblijfsadres/*, zelfde structuur
+                                 als globals/stuf/verblijfsadres) - dit formulierveld bestaat nog niet,
+                                 dus dit blok levert tot die tijd niets op. Huisletter/huisnummertoevoeging
+                                 ontbreken hier ook nog (Open punt, BAG-conform per reactie Lorenzo). -->
+                            <xsl:if test="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode">
+                                <BG:verblijfsadres>
+                                    <BG:aoa.postcode><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode"/></BG:aoa.postcode>
+                                    <BG:aoa.huisnummer><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
+                                    <BG:gor.openbareRuimteNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
+                                    <BG:wpl.woonplaatsNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                                </BG:verblijfsadres>
+                            </xsl:if>
                         </ZKN:natuurlijkPersoon>
                     </ZKN:gerelateerde>
                 </ZKN:heeftBetrekkingOp>
@@ -217,15 +209,12 @@
                     <StUF:extraElement naam="vervoer_type"><xsl:value-of select="fleerlingenvervoerv3vervoer/typevergoedingvervoer"/></StUF:extraElement>
                     <StUF:extraElement naam="vervoer_upload_vervoersverklaring"><xsl:value-of select="fleerlingenvervoerv3vervoer/bijlagen"/></StUF:extraElement>
 
-                    <!-- Dagdeel-structuur (Brengen/Ophalen/Geen per dag, 15 velden i.p.v. de oude 5
-                         kommagescheiden vervoer_<dag>-velden), per contract van 1 sep 2026. Hein moet
-                         het formulier nog ombouwen naar deze structuur - de bronveldnamen hieronder
-                         (vervoer_<dag>_brengen/_ophalen/_geen als Atabix-veldnaam per dag) zijn een
-                         AANNAME van Eduard, nog niet door Hein bevestigd. Volgt dezelfde conventie als
-                         de bestaande vervoer_<dag>vervoer<type>-velden (checkbox-node-set per dag),
-                         dus zodra Hein de velden zo bouwt werkt dit zonder verdere aanpassing. Als de
-                         daadwerkelijke veldnamen afwijken: alleen de drie xsl:variable-selects hieronder
-                         aanpassen. -->
+                    <!-- Dagdeel-structuur: heen-/terugtijdstip per dag (10 velden), per besluit van
+                         3 sep. 2026 na reactie Lorenzo (Eljakim) - CAReL verwerkt Ja/Nee-vlaggen niet
+                         betrouwbaar, wél tijden. Vervangt het eerdere Brengen/Ophalen/Geen-voorstel
+                         (15 Ja/Nee-velden), dat nooit aan Hein is gevraagd. Het formulier heeft deze
+                         tijdvelden nog niet (groter bouwpunt dan het vorige voorstel) - de bronveldnamen
+                         hieronder zijn een AANNAME van Eduard, nog niet door Hein bevestigd. -->
                     <xsl:apply-templates select="fleerlingenvervoerv3vervoer"/>
                     
                     <!-- Toelichting -->
@@ -235,23 +224,21 @@
         </ZKN:zakLk01>
     </xsl:template>
     
-    <!-- Special case: dagdeel vervoer (Brengen/Ophalen/Geen per dag).
-         AANNAME (nog niet door Hein bevestigd): Atabix levert per dag drie velden aan volgens
+    <!-- Special case: dagdeel vervoer (heen-/terugtijdstip per dag).
+         AANNAME (nog niet door Hein bevestigd): Atabix levert per dag twee velden aan volgens
          dezelfde naamconventie als de bestaande <dag>vervoer<type>-checkboxvelden, namelijk
-         <dag>vervoerbrengen / <dag>vervoerophalen / <dag>vervoergeen met waarde "Ja"/"Nee".
-         Wijkt de daadwerkelijke naamgeving af, dan hoeven alleen de vijf xsl:variable-groepen
-         hieronder aangepast te worden - de rest van de mapping blijft ongewijzigd. -->
+         <dag>vervoerheentijd / <dag>vervoerterugtijd. Leeg/ontbrekend veld = geen vervoer nodig
+         in die richting op die dag. Wijkt de daadwerkelijke naamgeving af, dan hoeven alleen de
+         twee xsl:variable-selects hieronder aangepast te worden. -->
     <xsl:template match="fleerlingenvervoerv3vervoer">
         <xsl:variable name="vervoer" select="."/>
         <xsl:for-each select="('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag')">
             <xsl:variable name="dag" select="."/>
-            <xsl:variable name="brengen" select="$vervoer/*[local-name() = concat($dag, 'vervoerbrengen')]"/>
-            <xsl:variable name="ophalen" select="$vervoer/*[local-name() = concat($dag, 'vervoerophalen')]"/>
-            <xsl:variable name="geen" select="$vervoer/*[local-name() = concat($dag, 'vervoergeen')]"/>
+            <xsl:variable name="heentijd" select="$vervoer/*[local-name() = concat($dag, 'vervoerheentijd')]"/>
+            <xsl:variable name="terugtijd" select="$vervoer/*[local-name() = concat($dag, 'vervoerterugtijd')]"/>
 
-            <StUF:extraElement naam="{concat('vervoer_', $dag, '_brengen')}"><xsl:value-of select="if ($brengen) then normalize-space($brengen[1]) else 'Nee'"/></StUF:extraElement>
-            <StUF:extraElement naam="{concat('vervoer_', $dag, '_ophalen')}"><xsl:value-of select="if ($ophalen) then normalize-space($ophalen[1]) else 'Nee'"/></StUF:extraElement>
-            <StUF:extraElement naam="{concat('vervoer_', $dag, '_geen')}"><xsl:value-of select="if ($geen) then normalize-space($geen[1]) else 'Nee'"/></StUF:extraElement>
+            <StUF:extraElement naam="{concat('vervoer_', $dag, '_heentijd')}"><xsl:value-of select="normalize-space(string($heentijd[1]))"/></StUF:extraElement>
+            <StUF:extraElement naam="{concat('vervoer_', $dag, '_terugtijd')}"><xsl:value-of select="normalize-space(string($terugtijd[1]))"/></StUF:extraElement>
         </xsl:for-each>
     </xsl:template>
     
