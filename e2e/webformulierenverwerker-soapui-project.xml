@@ -18157,7 +18157,597 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
 			</ns2:object>
 		</ns2:zakLk01>
 	</SOAP-ENV:Body>
-</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3cb2e495-2a67-440c-92d2-dc7a422a76cd" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="77aec6d5-bcd1-489e-878f-f49b93530cf5" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="29c0d454-3050-4fc2-a501-dec62e52d027" name="04-zds-genereerDocumentIdentificatie_Di02"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsVrijeBerichten</con:interface><con:operation>genereerDocumentIdentificatie_Di02</con:operation><con:request name="04-zds-genereerDocumentIdentificatie_Di02" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="81c9b8b2-a7a3-49f5-888e-039de36f3bea"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangVrijBerichtEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\zs-dms\zkn0310_msg_zs-dms_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3cb2e495-2a67-440c-92d2-dc7a422a76cd" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="77aec6d5-bcd1-489e-878f-f49b93530cf5" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="57846cf3-f922-457f-b946-55ac66c9a0f9" name="03a-zds-creeerZaak_Lk01-Voorbeeld-A-basisscenario"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="03a-zds-creeerZaak_Lk01-Voorbeeld-A-basisscenario" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="70b89fde-bf4d-46c0-89ef-e00378612657"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+   <ZKN:stuurgegevens>
+      <StUF:berichtcode xmlns:StUF="http://www.egem.nl/StUF/StUF0301">Lk01</StUF:berichtcode>
+      <StUF:zender xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+         <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+      </StUF:zender>
+      <StUF:ontvanger xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>CAREL</StUF:applicatie>
+      </StUF:ontvanger>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">3656dfdf-6735-4382-815f-b1bbcaa7f8c8</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714441098</StUF:tijdstipBericht>
+      <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
+   </ZKN:stuurgegevens>
+   <ZKN:parameters>
+      <StUF:mutatiesoort xmlns:StUF="http://www.egem.nl/StUF/StUF0301">T</StUF:mutatiesoort>
+      <StUF:indicatorOvername xmlns:StUF="http://www.egem.nl/StUF/StUF0301">V</StUF:indicatorOvername>
+   </ZKN:parameters>
+   <ZKN:object xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+               StUF:sleutelVerzendend="${Properties#ZaakIdentificatie}"
+               StUF:entiteittype="ZAK"
+               StUF:verwerkingssoort="T">
+      <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
+      <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+      <ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-voorbeeld-A-basisscenario</ZKN:kenmerk>
+         <ZKN:bron>Kodision</ZKN:bron>
+      </ZKN:kenmerk>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+         <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:nil="true"
+                                    StUF:noValue="geenWaarde"/>
+         </ZKN:gerelateerde>
+      </ZKN:isVan>
+      <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">111222333</BG:inp.bsn>
+               <BG:voornamen xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Sanne</BG:voornamen>
+               <BG:voorvoegselGeslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">van der</BG:voorvoegselGeslachtsnaam>
+               <BG:geslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Bakker</BG:geslachtsnaam>
+               <BG:geboortedatum xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">20150312</BG:geboortedatum>
+               <BG:geslachtsaanduiding xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">V</BG:geslachtsaanduiding>
+               <BG:verblijfsadres xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">
+                  <BG:aoa.postcode>8601AB</BG:aoa.postcode>
+                  <BG:aoa.huisnummer>12</BG:aoa.huisnummer>
+                  <BG:gor.openbareRuimteNaam>Kerkstraat</BG:gor.openbareRuimteNaam>
+                  <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
+               </BG:verblijfsadres>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftBetrekkingOp>
+      <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">900106505</BG:inp.bsn>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftAlsInitiator>
+      <StUF:extraElementen>
+         <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Regulier Basis Onderwijs</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Met de fiets. (Dan is de fietsvergoeding € 0,11 per kilometer van huis naar school en terug).</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_organisatie_naam"/>
+         <StUF:extraElement naam="aanvrager_naam"/>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
+         <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
+         <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
+         <StUF:extraElement naam="iban_naam_rekeninghouder">J. de Vries</StUF:extraElement>
+         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+         <StUF:extraElement naam="leerling_roepnaam">Sanne</StUF:extraElement>
+         <StUF:extraElement naam="leerling_tussenvoegsel">van der</StUF:extraElement>
+         <StUF:extraElement naam="leerling_achternaam">Bakker</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geslacht">Meisje</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geboortedatum">20150312</StUF:extraElement>
+         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Nee</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Súdwester</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Kaatsland 5b</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8608CX</StUF:extraElement>
+         <StUF:extraElement naam="school_plaats">Sneek</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Ja</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_type">Fiets</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_terugtijd">15:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_dinsdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_terugtijd">12:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">15:30</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht A - basisscenario, standaard weekpatroon met heen-/terugtijden.</StUF:extraElement>
+      </StUF:extraElementen>
+   </ZKN:object>
+</ZKN:zakLk01>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1f86f3a6-ebbf-4592-9de7-76d4fbf7647f" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="e07ba18f-c4c3-495a-b1d6-294e286adcee" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="e2f1592e-a16c-4808-8d78-45dbbc36c3db" name="03b-zds-creeerZaak_Lk01-Voorbeeld-B-so-eigen-adres"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="03b-zds-creeerZaak_Lk01-Voorbeeld-B-so-eigen-adres" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="b50f8b12-d15a-44a2-8966-3e1b0a218140"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+   <ZKN:stuurgegevens>
+      <StUF:berichtcode xmlns:StUF="http://www.egem.nl/StUF/StUF0301">Lk01</StUF:berichtcode>
+      <StUF:zender xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+         <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+      </StUF:zender>
+      <StUF:ontvanger xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>CAREL</StUF:applicatie>
+      </StUF:ontvanger>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">7eafa262-1f45-4ffd-81d5-2cdbd860a88e</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455389</StUF:tijdstipBericht>
+      <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
+   </ZKN:stuurgegevens>
+   <ZKN:parameters>
+      <StUF:mutatiesoort xmlns:StUF="http://www.egem.nl/StUF/StUF0301">T</StUF:mutatiesoort>
+      <StUF:indicatorOvername xmlns:StUF="http://www.egem.nl/StUF/StUF0301">V</StUF:indicatorOvername>
+   </ZKN:parameters>
+   <ZKN:object xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+               StUF:sleutelVerzendend="${Properties#ZaakIdentificatie}"
+               StUF:entiteittype="ZAK"
+               StUF:verwerkingssoort="T">
+      <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
+      <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+      <ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-voorbeeld-B-so-eigen-adres</ZKN:kenmerk>
+         <ZKN:bron>Kodision</ZKN:bron>
+      </ZKN:kenmerk>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+         <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:nil="true"
+                                    StUF:noValue="geenWaarde"/>
+         </ZKN:gerelateerde>
+      </ZKN:isVan>
+      <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">111222333</BG:inp.bsn>
+               <BG:voornamen xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Bram</BG:voornamen>
+               <BG:voorvoegselGeslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"/>
+               <BG:geslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Visser</BG:geslachtsnaam>
+               <BG:geboortedatum xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">20180605</BG:geboortedatum>
+               <BG:geslachtsaanduiding xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">M</BG:geslachtsaanduiding>
+               <BG:verblijfsadres xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">
+                  <BG:aoa.postcode>8441AB</BG:aoa.postcode>
+                  <BG:aoa.huisnummer>22</BG:aoa.huisnummer>
+                  <BG:gor.openbareRuimteNaam>Schoterlandseweg</BG:gor.openbareRuimteNaam>
+                  <BG:wpl.woonplaatsNaam>Heerenveen</BG:wpl.woonplaatsNaam>
+               </BG:verblijfsadres>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftBetrekkingOp>
+      <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">900106505</BG:inp.bsn>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftAlsInitiator>
+      <StUF:extraElementen>
+         <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Speciaal Onderwijs (SO)</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Nee, jonger dan 10 jaar</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Begeleiden de ouders de leerling met het openbaar vervoer naar school?</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_organisatie_naam"/>
+         <StUF:extraElement naam="aanvrager_naam"/>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Verzorger</StUF:extraElement>
+         <StUF:extraElement naam="iban_type">De IBAN van mijn partner</StUF:extraElement>
+         <StUF:extraElement naam="iban_nummer">NL20INGB0001234567</StUF:extraElement>
+         <StUF:extraElement naam="iban_naam_rekeninghouder">M. Jansen</StUF:extraElement>
+         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+         <StUF:extraElement naam="leerling_roepnaam">Bram</StUF:extraElement>
+         <StUF:extraElement naam="leerling_tussenvoegsel"/>
+         <StUF:extraElement naam="leerling_achternaam">Visser</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geslacht">Jongen</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geboortedatum">20180605</StUF:extraElement>
+         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Ja</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Guyot</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Havenstraat 1</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8443CC</StUF:extraElement>
+         <StUF:extraElement naam="school_plaats">Heerenveen</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Ja</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_type">Openbaar vervoer zelfstandig</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_heentijd">08:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_terugtijd">14:45</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_heentijd">08:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">14:45</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_terugtijd">12:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_heentijd">08:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_terugtijd">14:45</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">12:15</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht B - SO-onderwijs, leerling heeft een eigen adres (anders dan de aanvrager), volledige schoolweek.</StUF:extraElement>
+      </StUF:extraElementen>
+   </ZKN:object>
+</ZKN:zakLk01>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1e835de3-ce3d-411e-93dc-6a289456e061" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="4a1d4c61-8c0f-4076-9962-e8beb82d5f1c" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="f7f6cb3f-09c6-459a-be83-6af36dae63bb" name="03c-zds-creeerZaak_Lk01-Voorbeeld-C-organisatie"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="03c-zds-creeerZaak_Lk01-Voorbeeld-C-organisatie" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="c6a44c89-a27a-49ef-a963-1749ba7432e0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+   <ZKN:stuurgegevens>
+      <StUF:berichtcode xmlns:StUF="http://www.egem.nl/StUF/StUF0301">Lk01</StUF:berichtcode>
+      <StUF:zender xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+         <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+      </StUF:zender>
+      <StUF:ontvanger xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>CAREL</StUF:applicatie>
+      </StUF:ontvanger>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">634a404b-38a2-4fff-8bce-ac0a30c9a9d7</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455475</StUF:tijdstipBericht>
+      <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
+   </ZKN:stuurgegevens>
+   <ZKN:parameters>
+      <StUF:mutatiesoort xmlns:StUF="http://www.egem.nl/StUF/StUF0301">T</StUF:mutatiesoort>
+      <StUF:indicatorOvername xmlns:StUF="http://www.egem.nl/StUF/StUF0301">V</StUF:indicatorOvername>
+   </ZKN:parameters>
+   <ZKN:object xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+               StUF:sleutelVerzendend="${Properties#ZaakIdentificatie}"
+               StUF:entiteittype="ZAK"
+               StUF:verwerkingssoort="T">
+      <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
+      <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+      <ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-voorbeeld-C-organisatie</ZKN:kenmerk>
+         <ZKN:bron>Kodision</ZKN:bron>
+      </ZKN:kenmerk>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+         <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:nil="true"
+                                    StUF:noValue="geenWaarde"/>
+         </ZKN:gerelateerde>
+      </ZKN:isVan>
+      <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">111222333</BG:inp.bsn>
+               <BG:voornamen xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Fenna</BG:voornamen>
+               <BG:voorvoegselGeslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">de</BG:voorvoegselGeslachtsnaam>
+               <BG:geslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Boer</BG:geslachtsnaam>
+               <BG:geboortedatum xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">20121120</BG:geboortedatum>
+               <BG:geslachtsaanduiding xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">O</BG:geslachtsaanduiding>
+               <BG:verblijfsadres xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">
+                  <BG:aoa.postcode>8934CJ</BG:aoa.postcode>
+                  <BG:aoa.huisnummer>5</BG:aoa.huisnummer>
+                  <BG:gor.openbareRuimteNaam>Aurum</BG:gor.openbareRuimteNaam>
+                  <BG:wpl.woonplaatsNaam>Leeuwarden</BG:wpl.woonplaatsNaam>
+               </BG:verblijfsadres>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftBetrekkingOp>
+      <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">900106505</BG:inp.bsn>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftAlsInitiator>
+      <StUF:extraElementen>
+         <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Voortgezet Speciaal Onderwijs (VSO)</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Nee, handicap</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Begeleiden de ouders de leerling met eigen vervoer naar school?</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Organisatie</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_telefoonnummer">0512345678</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_organisatie_naam">Stichting Voorbeeld</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_naam">Jan van der Berg</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Bewindvoerder</StUF:extraElement>
+         <StUF:extraElement naam="iban_type">Op het IBAN van de bewindvoerder/curator (beheerrekening)</StUF:extraElement>
+         <StUF:extraElement naam="iban_nummer">NL65RABO0123456789</StUF:extraElement>
+         <StUF:extraElement naam="iban_naam_rekeninghouder">Stichting Voorbeeldzorg</StUF:extraElement>
+         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+         <StUF:extraElement naam="leerling_roepnaam">Fenna</StUF:extraElement>
+         <StUF:extraElement naam="leerling_tussenvoegsel">de</StUF:extraElement>
+         <StUF:extraElement naam="leerling_achternaam">Boer</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geslacht">Anders</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geboortedatum">20121120</StUF:extraElement>
+         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Nee</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Aurum College</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Aurum 10</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8934CJ</StUF:extraElement>
+         <StUF:extraElement naam="school_plaats">Leeuwarden</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Nee</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"/>
+         <StUF:extraElement naam="vervoer_type">Eigen vervoer (auto)</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_heentijd">08:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_terugtijd">15:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_heentijd">08:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">15:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_terugtijd">15:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_heentijd">08:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_terugtijd">15:00</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">15:00</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht C - namens organisatie, eigen vervoer, eigen bijdrage niet van toepassing.</StUF:extraElement>
+      </StUF:extraElementen>
+   </ZKN:object>
+</ZKN:zakLk01>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a6dc0e5c-cea3-459a-9d54-94475774299e" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="1bf6a676-92c9-4f36-85d7-e61e2d38e415" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="5792a878-83e3-4499-99d9-761b27b6269b" name="03d-zds-creeerZaak_Lk01-Voorbeeld-D-geen-vervoer"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="03d-zds-creeerZaak_Lk01-Voorbeeld-D-geen-vervoer" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="390605e7-a0a9-4571-94a0-2d5a23f4b698"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+   <ZKN:stuurgegevens>
+      <StUF:berichtcode xmlns:StUF="http://www.egem.nl/StUF/StUF0301">Lk01</StUF:berichtcode>
+      <StUF:zender xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+         <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+      </StUF:zender>
+      <StUF:ontvanger xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>CAREL</StUF:applicatie>
+      </StUF:ontvanger>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">b848c382-74ff-40de-b23c-b38c199ac9e6</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455578</StUF:tijdstipBericht>
+      <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
+   </ZKN:stuurgegevens>
+   <ZKN:parameters>
+      <StUF:mutatiesoort xmlns:StUF="http://www.egem.nl/StUF/StUF0301">T</StUF:mutatiesoort>
+      <StUF:indicatorOvername xmlns:StUF="http://www.egem.nl/StUF/StUF0301">V</StUF:indicatorOvername>
+   </ZKN:parameters>
+   <ZKN:object xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+               StUF:sleutelVerzendend="${Properties#ZaakIdentificatie}"
+               StUF:entiteittype="ZAK"
+               StUF:verwerkingssoort="T">
+      <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
+      <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+      <ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-voorbeeld-D-geen-vervoer</ZKN:kenmerk>
+         <ZKN:bron>Kodision</ZKN:bron>
+      </ZKN:kenmerk>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+         <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:nil="true"
+                                    StUF:noValue="geenWaarde"/>
+         </ZKN:gerelateerde>
+      </ZKN:isVan>
+      <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">111222333</BG:inp.bsn>
+               <BG:voornamen xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Tobias</BG:voornamen>
+               <BG:voorvoegselGeslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"/>
+               <BG:geslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Kramer</BG:geslachtsnaam>
+               <BG:geboortedatum xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">20160101</BG:geboortedatum>
+               <BG:geslachtsaanduiding xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">O</BG:geslachtsaanduiding>
+               <BG:verblijfsadres xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">
+                  <BG:aoa.postcode>8601AB</BG:aoa.postcode>
+                  <BG:aoa.huisnummer>12</BG:aoa.huisnummer>
+                  <BG:gor.openbareRuimteNaam>Kerkstraat</BG:gor.openbareRuimteNaam>
+                  <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
+               </BG:verblijfsadres>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftBetrekkingOp>
+      <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">900106505</BG:inp.bsn>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftAlsInitiator>
+      <StUF:extraElementen>
+         <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Regulier Basis Onderwijs</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Met het openbaar vervoer. (OV-pas).</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_organisatie_naam"/>
+         <StUF:extraElement naam="aanvrager_naam"/>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
+         <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
+         <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
+         <StUF:extraElement naam="iban_naam_rekeninghouder">J. de Vries</StUF:extraElement>
+         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+         <StUF:extraElement naam="leerling_roepnaam">Tobias</StUF:extraElement>
+         <StUF:extraElement naam="leerling_tussenvoegsel"/>
+         <StUF:extraElement naam="leerling_achternaam">Kramer</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geslacht">Wil ik liever niet zeggen</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geboortedatum">20160101</StUF:extraElement>
+         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Nee</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Súdwester</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Kaatsland 5b</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8608CX</StUF:extraElement>
+         <StUF:extraElement naam="school_plaats">Sneek</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Ja</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_type">Openbaar vervoer zelfstandig</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_heentijd"/>
+         <StUF:extraElement naam="vervoer_maandag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_dinsdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_woensdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_woensdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_vrijdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_vrijdag_terugtijd"/>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht D - randgeval: geen enkele dag vervoer nodig, test dat alle 10 tijdvelden leeg mogen zijn zonder dat de mapping crasht.</StUF:extraElement>
+      </StUF:extraElementen>
+   </ZKN:object>
+</ZKN:zakLk01>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7755c82a-e425-4559-8af3-f5ab6398125f" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="9c9b9cfe-3904-41e0-9c50-637978ad9165" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="17160cf8-b71d-4da3-a658-9854bdd6c6e6" name="03e-zds-creeerZaak_Lk01-Voorbeeld-E-asymmetrisch"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsOntvangAsynchroon</con:interface><con:operation>creeerZaak_Lk01</con:operation><con:request name="03e-zds-creeerZaak_Lk01-Voorbeeld-E-asymmetrisch" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d4e48ef5-969f-44ed-a888-961f425b163e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangAsynchroonEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\mutatie\zkn0310_msg_mutatie_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310">
+   <ZKN:stuurgegevens>
+      <StUF:berichtcode xmlns:StUF="http://www.egem.nl/StUF/StUF0301">Lk01</StUF:berichtcode>
+      <StUF:zender xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+         <StUF:gebruiker>Gebruiker</StUF:gebruiker>
+      </StUF:zender>
+      <StUF:ontvanger xmlns:StUF="http://www.egem.nl/StUF/StUF0301">
+         <StUF:organisatie>1900</StUF:organisatie>
+         <StUF:applicatie>CAREL</StUF:applicatie>
+      </StUF:ontvanger>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">d98d6e2a-7b15-4651-b6b7-dccfec4a5270</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455669</StUF:tijdstipBericht>
+      <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
+   </ZKN:stuurgegevens>
+   <ZKN:parameters>
+      <StUF:mutatiesoort xmlns:StUF="http://www.egem.nl/StUF/StUF0301">T</StUF:mutatiesoort>
+      <StUF:indicatorOvername xmlns:StUF="http://www.egem.nl/StUF/StUF0301">V</StUF:indicatorOvername>
+   </ZKN:parameters>
+   <ZKN:object xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+               StUF:sleutelVerzendend="${Properties#ZaakIdentificatie}"
+               StUF:entiteittype="ZAK"
+               StUF:verwerkingssoort="T">
+      <ZKN:identificatie>${Properties#ZaakIdentificatie}</ZKN:identificatie>
+      <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+      <ZKN:kenmerk>
+         <ZKN:kenmerk>SWF-voorbeeld-E-asymmetrisch</ZKN:kenmerk>
+         <ZKN:bron>Kodision</ZKN:bron>
+      </ZKN:kenmerk>
+      <ZKN:startdatum>20260903</ZKN:startdatum>
+      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+         <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:nil="true"
+                                    StUF:noValue="geenWaarde"/>
+         </ZKN:gerelateerde>
+      </ZKN:isVan>
+      <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">111222333</BG:inp.bsn>
+               <BG:voornamen xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">Amina</BG:voornamen>
+               <BG:voorvoegselGeslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"/>
+               <BG:geslachtsnaam xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">El Idrissi</BG:geslachtsnaam>
+               <BG:geboortedatum xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">20170403</BG:geboortedatum>
+               <BG:geslachtsaanduiding xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">V</BG:geslachtsaanduiding>
+               <BG:verblijfsadres xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">
+                  <BG:aoa.postcode>8601AB</BG:aoa.postcode>
+                  <BG:aoa.huisnummer>12</BG:aoa.huisnummer>
+                  <BG:gor.openbareRuimteNaam>Kerkstraat</BG:gor.openbareRuimteNaam>
+                  <BG:wpl.woonplaatsNaam>Sneek</BG:wpl.woonplaatsNaam>
+               </BG:verblijfsadres>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftBetrekkingOp>
+      <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+         <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
+               <BG:inp.bsn xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310">900106505</BG:inp.bsn>
+            </ZKN:natuurlijkPersoon>
+         </ZKN:gerelateerde>
+      </ZKN:heeftAlsInitiator>
+      <StUF:extraElementen>
+         <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Regulier Basis Onderwijs</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Nee, maar de leerling kan het leren</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">De autorit is minstens de helft korter (kortste afstand volgens de ANWB routeplanner van huis naar school en terug)</StUF:extraElement>
+         <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_schooljaar">2026 - 2027</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">20260901</StUF:extraElement>
+         <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_organisatie_naam"/>
+         <StUF:extraElement naam="aanvrager_naam"/>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
+         <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
+         <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
+         <StUF:extraElement naam="iban_naam_rekeninghouder">J. de Vries</StUF:extraElement>
+         <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+         <StUF:extraElement naam="leerling_roepnaam">Amina</StUF:extraElement>
+         <StUF:extraElement naam="leerling_tussenvoegsel"/>
+         <StUF:extraElement naam="leerling_achternaam">El Idrissi</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geslacht">Meisje</StUF:extraElement>
+         <StUF:extraElement naam="leerling_geboortedatum">20170403</StUF:extraElement>
+         <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Nee</StUF:extraElement>
+         <StUF:extraElement naam="school_naam">Súdwester</StUF:extraElement>
+         <StUF:extraElement naam="school_adres">Kaatsland 5b</StUF:extraElement>
+         <StUF:extraElement naam="school_postcode">8608CX</StUF:extraElement>
+         <StUF:extraElement naam="school_plaats">Sneek</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar">Ja</StUF:extraElement>
+         <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_type">Groepstaxi vervoer</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_maandag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">12:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_woensdag_terugtijd">15:30</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
+         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
+         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:15</StUF:extraElement>
+         <StUF:extraElement naam="vervoer_vrijdag_terugtijd"/>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht E - onafhankelijke heen-/terugtijden per dag: sommige dagen maar een richting nodig.</StUF:extraElement>
+      </StUF:extraElementen>
+   </ZKN:object>
+</ZKN:zakLk01>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:request><con:assertion type="SOAP Response" id="e83f671a-b903-4f87-a1f7-8e6f5deb7ed0" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="7ce7a373-fa8a-4744-9718-0a7c3f2c90e8" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.egem.nl/StUF/sector/zkn/0310/creeerZaak_Lk01"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="29c0d454-3050-4fc2-a501-dec62e52d027" name="04-zds-genereerDocumentIdentificatie_Di02"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ZdsVrijeBerichten</con:interface><con:operation>genereerDocumentIdentificatie_Di02</con:operation><con:request name="04-zds-genereerDocumentIdentificatie_Di02" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="81c9b8b2-a7a3-49f5-888e-039de36f3bea"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@dump-file"/></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#CarelZdsOntvangVrijBerichtEndpoint}</con:endpoint><con:request><![CDATA[<SOAP-ENV:Envelope xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 zkn0310-p28\zs-dms\zkn0310_msg_zs-dms_resolved.xsd" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r
    <SOAP-ENV:Header/>\r
    <SOAP-ENV:Body>\r
       <ZKN:genereerDocumentIdentificatie_Di02>\r
