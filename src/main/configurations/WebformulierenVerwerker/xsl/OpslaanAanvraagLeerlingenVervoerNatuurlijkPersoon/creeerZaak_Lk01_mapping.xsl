@@ -107,17 +107,25 @@
                                 </xsl:choose>
                             </BG:geslachtsaanduiding>
                             <!-- Adres leerling: altijd sturen, zonder eigen Ja/Nee-keuze (zie toelichting
-                                 hierboven). AANNAME voor de brondveldnamen
-                                 (fleerlingenvervoerv3gegevensleerling/verblijfsadres/*, zelfde structuur
-                                 als globals/stuf/verblijfsadres) - dit formulierveld bestaat nog niet,
-                                 dus dit blok levert tot die tijd niets op. Huisletter/huisnummertoevoeging
-                                 ontbreken hier ook nog (Open punt, BAG-conform per reactie Lorenzo). -->
-                            <xsl:if test="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode">
+                                 hierboven). Brondveldnamen bevestigd met live testcapture van de
+                                 Atabix-formulierbeheerder (8 sep. 2026, leerlingenvervoer_2026.xml): de
+                                 adresvelden staan plat, direct onder fleerlingenvervoerv3gegevensleerling
+                                 (niet genest onder een verblijfsadres-subelement), met huisnummer als
+                                 "nummer" en huisnummertoevoeging als "nummertoevoeging". Output naar CAReL
+                                 blijft ongewijzigd conform het veldencontract (BAG-conform, incl.
+                                 huisletter/huisnummertoevoeging). -->
+                            <xsl:if test="fleerlingenvervoerv3gegevensleerling/postcode">
                                 <BG:verblijfsadres>
-                                    <BG:aoa.postcode><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/postcode"/></BG:aoa.postcode>
-                                    <BG:aoa.huisnummer><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/huisnummer"/></BG:aoa.huisnummer>
-                                    <BG:gor.openbareRuimteNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/straat"/></BG:gor.openbareRuimteNaam>
-                                    <BG:wpl.woonplaatsNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/verblijfsadres/woonplaats"/></BG:wpl.woonplaatsNaam>
+                                    <BG:aoa.postcode><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/postcode"/></BG:aoa.postcode>
+                                    <BG:aoa.huisnummer><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/nummer"/></BG:aoa.huisnummer>
+                                    <xsl:if test="normalize-space(fleerlingenvervoerv3gegevensleerling/huisletter) != ''">
+                                        <BG:aoa.huisletter><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/huisletter"/></BG:aoa.huisletter>
+                                    </xsl:if>
+                                    <xsl:if test="normalize-space(fleerlingenvervoerv3gegevensleerling/nummertoevoeging) != ''">
+                                        <BG:aoa.huisnummertoevoeging><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/nummertoevoeging"/></BG:aoa.huisnummertoevoeging>
+                                    </xsl:if>
+                                    <BG:gor.openbareRuimteNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/straat"/></BG:gor.openbareRuimteNaam>
+                                    <BG:wpl.woonplaatsNaam><xsl:value-of select="fleerlingenvervoerv3gegevensleerling/woonplaats"/></BG:wpl.woonplaatsNaam>
                                 </BG:verblijfsadres>
                             </xsl:if>
                         </ZKN:natuurlijkPersoon>
@@ -225,17 +233,17 @@
     </xsl:template>
     
     <!-- Special case: dagdeel vervoer (heen-/terugtijdstip per dag).
-         AANNAME (nog niet door Hein bevestigd): Atabix levert per dag twee velden aan volgens
-         dezelfde naamconventie als de bestaande <dag>vervoer<type>-checkboxvelden, namelijk
-         <dag>vervoerheentijd / <dag>vervoerterugtijd. Leeg/ontbrekend veld = geen vervoer nodig
-         in die richting op die dag. Wijkt de daadwerkelijke naamgeving af, dan hoeven alleen de
-         twee xsl:variable-selects hieronder aangepast te worden. -->
+         Brondveldnamen bevestigd met live testcapture van de Atabix-formulierbeheerder (8 sep. 2026,
+         leerlingenvervoer_2026.xml): de tijden staan genest in een <taxi>-container onder
+         fleerlingenvervoerv3vervoer, als <dag>heentijdstip / <dag>terugtijdstip (zonder "vervoer" in de
+         naam). Leeg/ontbrekend veld = geen vervoer nodig in die richting op die dag. Output naar CAReL
+         blijft ongewijzigd conform het veldencontract (vervoer_<dag>_heentijd/_terugtijd). -->
     <xsl:template match="fleerlingenvervoerv3vervoer">
-        <xsl:variable name="vervoer" select="."/>
+        <xsl:variable name="taxi" select="taxi"/>
         <xsl:for-each select="('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag')">
             <xsl:variable name="dag" select="."/>
-            <xsl:variable name="heentijd" select="$vervoer/*[local-name() = concat($dag, 'vervoerheentijd')]"/>
-            <xsl:variable name="terugtijd" select="$vervoer/*[local-name() = concat($dag, 'vervoerterugtijd')]"/>
+            <xsl:variable name="heentijd" select="$taxi/*[local-name() = concat($dag, 'heentijdstip')]"/>
+            <xsl:variable name="terugtijd" select="$taxi/*[local-name() = concat($dag, 'terugtijdstip')]"/>
 
             <StUF:extraElement naam="{concat('vervoer_', $dag, '_heentijd')}"><xsl:value-of select="normalize-space(string($heentijd[1]))"/></StUF:extraElement>
             <StUF:extraElement naam="{concat('vervoer_', $dag, '_terugtijd')}"><xsl:value-of select="normalize-space(string($terugtijd[1]))"/></StUF:extraElement>
