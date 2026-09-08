@@ -949,7 +949,7 @@
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>123456789</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>omschrijving</tem:omschrijving>
             <tem:vertrouwelijkheid>vertrouwelijkheid</tem:vertrouwelijkheid>
@@ -2874,7 +2874,7 @@ IDE0IDAgUgovUm9vdCAxIDAgUgovU2l6ZSAxNQo+PgpzdGFydHhyZWYKNDc5NTIKJSVFT0YK</tem:fi
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>444555666</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>aanvraag leelringenvervoer</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -5469,7 +5469,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>444555666</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>aanvraag leelringenvervoer</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -10067,7 +10067,7 @@ IDE0IDAgUgovUm9vdCAxIDAgUgovU2l6ZSAxNQo+PgpzdGFydHhyZWYKNDc5NTIKJSVFT0YK</tem:fi
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>444555666</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>aanvraag leerlingenvervoer - bevestigd geslaagde test de Atabix-formulierbeheerder Openbaar vervoer + fiets, test 14:10</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -12657,7 +12657,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>444555666</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>aanvraag leerlingenvervoer - bevestigd geslaagde test de Atabix-formulierbeheerder Openbaar vervoer zelfstandig, test 14:14</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -15210,7 +15210,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>444555666</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>aanvraag leerlingenvervoer - bevestigd geslaagde test de Atabix-formulierbeheerder Openbaar vervoer zelfstandig, test 14:24</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -17930,7 +17930,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde>
             <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="I">
-               <BG:inp.bsn>444555666</BG:inp.bsn>
+               <BG:inp.bsn>900106505</BG:inp.bsn>
             </ZKN:natuurlijkPersoon>
          </ZKN:gerelateerde>
       </ZKN:heeftAlsInitiator>
@@ -18841,7 +18841,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>123456789</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>foutscenario-test</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
@@ -18909,7 +18909,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
     <soapenv:Header/>
     <soapenv:Body>
         <tem:opslaanAanvraagNatuurlijkPersoon>
-            <tem:afzenderbsn>123456789</tem:afzenderbsn>
+            <tem:afzenderbsn>900106505</tem:afzenderbsn>
             <tem:aanvraagtype>leerlingenvervoer</tem:aanvraagtype>
             <tem:omschrijving>foutscenario-test</tem:omschrijving>
             <tem:vertrouwelijkheid>intern</tem:vertrouwelijkheid>
