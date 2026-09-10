@@ -96,6 +96,108 @@ fout kan gaan. Houdt het bronsysteem zich er niet aan, dan vragen we alsnog om a
 daarom altijd, naast de contractvelden, **welk bronveld waar vandaan komt** — zie het veldencontract,
 sectie "Bronveldnamen Atabix".
 
+## Omgevingen en begrippen
+
+Er zijn veel dingen die "test" heten en dat leidt tot misverstanden. We gebruiken daarom **acceptatie**
+voor de omgeving waarop we vóór productie de keten beproeven, en houden de naamgeving per partij uit
+elkaar:
+
+| Wat | Waar | Waarvoor |
+|---|---|---|
+| **VDI-ontwikkelmachine** | binnen het SWF-netwerk | De enige plek van waaruit we CAReL-acceptatie kunnen bereiken. Hier draaien SoapUI én een lokale integratie |
+| **Ontwikkellaptop / WeAreFrank intern** | buiten het SWF-netwerk | Het echte bouwwerk: code, XSLT, configuratie. Geen verbinding met CAReL |
+| **CAReL-acceptatie** | `https://testtsjinstbus.sudwestfryslan.nl/CARELLG/stuf-zkn/sudwestfryslan` | Ontvangende kant, beheerd door Eljakim |
+| **SWF-acceptatie** | interne SWF-omgeving | Draait de gepubliceerde Docker-image; hier testen we de hele keten |
+| **Kodison/Atabix-acceptatie** | Atabix | Het webformulier waar de aanvraag begint |
+| **Productie** | — | Pas aan de beurt als acceptatie volledig goed gaat |
+
+De endpoints staan op twee plekken, en dat is een valkuil: de SoapUI-projectproperty
+`CarelZdsOntvangAsynchroonEndpoint` wijst naar CAReL-acceptatie, maar
+`DeploymentSpecifics.properties` van de applicatie wijst standaard naar een **lokale mock**
+(`host.docker.internal:7771`). Wie de integratie op de VDI echt naar CAReL wil laten sturen, moet die
+property overschrijven — anders test je tegen de mock en lijkt alles te werken.
+
+---
+
+## De testladder
+
+Vier trappen, in deze volgorde. Elke trap voegt precies één onbekende toe, zodat een fout altijd
+toewijsbaar is aan wat er nieuw bij kwam.
+
+### Trap 1 — SoapUI rechtstreeks naar CAReL-acceptatie
+
+Vanaf de VDI-ontwikkelmachine, met de testberichten uit
+`e2e/webformulierenverwerker-soapui-project.xml`. De integratie doet niet mee.
+
+Dit toetst het **contract**: accepteert CAReL de berichtstructuur en de veldnamen? Een `Bv03Bericht` met
+matchend `crossRefnummer` betekent goedgekeurd; een SOAP Fault wijst op het contract, niet op onze code.
+Zo is op 24 juli zaak 1900881353 beproefd.
+
+### Trap 2 — SoapUI naar de integratie op de VDI, die doorstuurt naar CAReL-acceptatie
+
+Integratie én SoapUI draaien op de VDI (`docker compose -f compose.frank.dev.yaml up`). Nieuwe onbekende:
+**onze mapping**. Het contract is in trap 1 al goedgekeurd, dus wat hier misgaat komt van de vertaling.
+
+Vergeet de CAReL-URL in `DeploymentSpecifics.properties` niet om te zetten van de mock naar
+CAReL-acceptatie. Ladybug (in de Frank!Console) laat zien wat er werkelijk de deur uit ging.
+
+### Trap 3 — Heins aangepaste formulier door dezelfde integratie
+
+Hein past het webformulier aan, wij krijgen de resulterende aanvraag-XML en spelen die via SoapUI door de
+integratie op de VDI. Nieuwe onbekende: **de echte invoer**.
+
+Dit is de trap die in juli en september de meeste fouten opleverde — hernoemde secties, ontbrekende
+velden, een afwijkende structuur. Zie ook de mapping-controles: een aanvraag met een onverwachte
+structuur hoort een leesbare fout op te leveren, geen leeg bericht.
+
+### Trap 4 — de hele keten op SWF-acceptatie
+
+Kan pas ná de releasestraat hieronder, want hiervoor moet de nieuwe versie gedeployed zijn:
+**Kodison-acceptatie → integratie op SWF-acceptatie → CAReL-acceptatie**. Nieuwe onbekenden: de echte
+omgeving, echte netwerkpaden, echte credentials.
+
+### Daarna pas productie
+
+Alleen als trap 4 volledig goed gaat. Zelfde route, zelfde image, andere omgeving.
+
+---
+
+## Van pull request naar acceptatieomgeving
+
+Gaan trap 1 tot en met 3 goed, dan pas een pull request. Wat er daarna gebeurt:
+
+1. **Pull request op `main`.** De build draait al bij een PR, maar publiceert nog niets.
+2. **WeAreFrank reviewt en keurt goed.** Zij nemen de applicatie in beheer, dus alles gaat langs hen —
+   zie `README.md`, sectie Reviewproces.
+3. **Merge naar `main`.** Dat is de trigger; niets ervoor publiceert.
+4. **GitHub Actions** (`.github/workflows/ci-build.yml`) bepaalt de versie, bouwt de Docker-image,
+   maakt een GitHub-release met de configuratie-JAR en pusht de image naar Docker Hub als
+   `wearefrank/webformulierenverwerker`, met tags voor de volledige versie, `major.minor`, `major` en
+   `latest`.
+5. **Technisch beheer (WeAreFrank)** zet de juiste versie op de SWF-acceptatieomgeving. Wij deployen niet
+   zelf; wij geven door welke versie erop moet.
+6. **Trap 4** kan draaien.
+
+---
+
+## Versienummers: automatisch, niet handmatig
+
+Het versienummer wordt **niet met de hand opgehoogd**. `semantic-release` leidt het af uit de
+commit-berichten sinds de vorige release, en werkt `CHANGELOG.md`, `src/main/resources/BuildInfo.properties`
+en `publiccode.yaml` zelf bij. Die bestanden zelf aanpassen levert alleen een merge-conflict op.
+
+| Commit-type | Ophoging |
+|---|---|
+| `BREAKING CHANGE` in de footer | major |
+| `feat:` | minor |
+| `fix:`, `perf:`, `revert:`, `docs:`, `style:`, `refactor:`, `test:`, `build:`, `ci:` | patch |
+| `chore:` | geen release |
+
+Het gevolg: **hoe je je commit-bericht schrijft, bepaalt het versienummer.** Een mappingwijziging als
+`chore:` labelen betekent geen nieuwe image, en dus niets om te deployen.
+
+---
+
 ## Waarom zo
 
 - De ontvangende partij kan pas meedenken als er een concreet bericht ligt, niet bij een beschrijving.

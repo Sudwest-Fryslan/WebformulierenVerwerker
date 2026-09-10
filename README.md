@@ -48,8 +48,14 @@ repareren, niet de eerste. Gaat er iets mis, dan gaan we terug de keten in naar 
 aanpassing thuishoort. Het proces is iteratief: contract en testberichten wachten niet op het
 bronsysteem.
 
-Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving,
-inclusief de naamgevingsregel (domeinstandaard leidend, voor adressen de BAG).
+Beproeven gebeurt in vier trappen, elk met precies één nieuwe onbekende: SoapUI rechtstreeks naar
+CAReL-acceptatie, dan via de integratie op de VDI-ontwikkelmachine, dan met het aangepaste webformulier
+van Atabix, en pas daarna de hele keten op de SWF-acceptatieomgeving. Productie volgt alleen als
+acceptatie volledig goed gaat.
+
+Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving:
+de vier stappen, de testladder, de releasestraat, de naamgevingsregel (domeinstandaard leidend, voor
+adressen de BAG) en de versienummering.
 
 ## Reviewproces
 
@@ -57,3 +63,9 @@ inclusief de naamgevingsregel (domeinstandaard leidend, voor adressen de BAG).
 uiteindelijk in beheer, dus wijzigingen moeten aansluiten bij de manier waarop zij Frank!-configuraties
 onderhouden. Merge daarom niet zonder hun review, ook niet bij ogenschijnlijk kleine of puur
 documentaire wijzigingen.
+
+Na goedkeuring en merge naar `main` bepaalt `semantic-release` het versienummer uit de commit-berichten
+en publiceert GitHub Actions een Docker-image naar Docker Hub (`wearefrank/webformulierenverwerker`).
+Technisch beheer van WeAreFrank zet die versie vervolgens op de acceptatieomgeving; wij deployen niet
+zelf. **Het versienummer wordt nooit met de hand opgehoogd** — `CHANGELOG.md`, `BuildInfo.properties` en
+`publiccode.yaml` worden door de release zelf bijgewerkt.
