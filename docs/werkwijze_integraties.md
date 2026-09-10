@@ -162,6 +162,102 @@ Alleen als trap 4 volledig goed gaat. Zelfde route, zelfde image, andere omgevin
 
 ---
 
+## Voordat je een pull request opent
+
+Trap 1 tot en met 3 tonen aan dat de koppeling **functioneel** klopt. Deze controles tonen aan dat de
+wijziging **bouwbaar** is. Ze kosten samen een paar minuten en voorkomen dat de reviewer of de
+build-pipeline een fout vindt die je zelf had kunnen zien. Loop ze in deze volgorde af.
+
+Voor de eerste twee is Saxon nodig — dezelfde XSLT-processor die het Frank!Framework gebruikt. Download
+Saxon-HE plus `xmlresolver.jar` en `xmlresolver-data.jar`, en zet ze samen op het classpath (Saxon 12
+start niet zonder de resolver).
+
+### 1. Draait de mapping op echte formulierdata?
+
+```bash
+java -cp "<saxon>/Saxon-HE-12.5.jar;<saxon>/xmlresolver.jar;<saxon>/xmlresolver-data.jar"   net.sf.saxon.Transform   -s:<echte-capture>.xml   -xsl:src/main/configurations/WebformulierenVerwerker/xsl/OpslaanAanvraagLeerlingenVervoerNatuurlijkPersoon/creeerZaak_Lk01_mapping.xsl   randomuuid=test zaakid=1900999999 stuf_zender_organisatie=1900   stuf_zender_applicatie=WFK stuf_zender_gebruiker=G   stuf_ontvanger_organisatie=1900 stuf_ontvanger_applicatie=CAREL
+```
+
+Gebruik een **echte capture**, geen zelfgemaakt bestand — juist de afwijkingen in echte data leggen
+fouten bloot. Controleer daarna niet alleen of het draait, maar of er velden **leeg** terugkomen:
+
+```bash
+grep -oE '<StUF:extraElement naam="[^"]+"/>' uitvoer.xml
+```
+
+Een leeg veld is geen detail. In september kwamen er zo zeventien leeg terug omdat een formuliersectie
+was hernoemd — de transformatie draaide zonder klagen. Elk leeg veld moet je kunnen verklaren.
+
+### 2. Compileren alle XSLT's?
+
+```bash
+for x in $(find src/main/configurations -name "*.xsl"); do
+  java -cp "<saxon-classpath>" net.sf.saxon.Transform -xsl:"$x" -it:nonexistent 2>&1     | grep -E "Static error|XPST|XTSE" && echo "FOUT in $x"
+done
+```
+
+Vangt typefouten in XPath en verkeerde parametertypes die je anders pas in de draaiende applicatie ziet.
+
+### 3. Is alle XML welgevormd?
+
+Configuratiebestanden, WSDL's en het SoapUI-project. Dat laatste is een groot bestand dat vaak met
+scripts bewerkt wordt, dus juist daar loont de controle:
+
+```bash
+python -c "import xml.dom.minidom, glob; [xml.dom.minidom.parse(f) for f in
+  glob.glob('src/main/configurations/**/*.xml', recursive=True) +
+  glob.glob('src/main/configurations/**/*.wsdl', recursive=True) +
+  glob.glob('e2e/*.xml')]; print('alles welgevormd')"
+```
+
+### 4. Lopen contract, mapping en testberichten gelijk?
+
+De veldenset in het veldencontract, in de mapping en in elk CAReL-testbericht hoort identiek te zijn.
+Vergelijk ze scriptmatig in plaats van met het oog: haal de `extraElement naam="..."`-waarden uit de
+XSLT, uit elk testbericht en uit het contract, en verschil de verzamelingen. Een veld dat in de mapping
+zit maar niet in het contract betekent dat de integratie iets stuurt wat niemand heeft afgesproken.
+
+### 5. Werkt de JAR-stap uit de release-job?
+
+Dezelfde regel die de pipeline draait:
+
+```bash
+jar cvf /tmp/WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVerwerker
+```
+
+### 6. Bouwt de Docker-image?
+
+```bash
+docker compose -f compose.frank.dev.yaml build
+```
+
+Dit is de enige controle die een draaiende Docker-daemon vereist en dus niet overal kan. Kun je het niet
+draaien, **zeg dat dan** in de pull request in plaats van het stilzwijgend over te slaan — de pipeline
+bouwt hem alsnog bij de PR, maar de reviewer moet weten wat er wel en niet lokaal is nagegaan.
+
+### 7. Staan er geen persoonsgegevens in de diff?
+
+Deze repo is publiek.
+
+```bash
+git diff main...HEAD | grep -E '^\+' | grep -ioE "[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,}" | sort -u
+git diff --name-status main...HEAD | grep -E "^A" | grep -iE "\.eml|\.pdf"
+```
+
+Verwacht alleen de vaste fictieve testset. Ruwe formuliercaptures, e-mailexports en PDF-samenvattingen
+horen hier niet in; die blijven intern gearchiveerd.
+
+### 8. Levert je commit-geschiedenis de bedoelde versie op?
+
+```bash
+git log --format='%s' main..HEAD | sed 's/:.*//' | sort | uniq -c
+```
+
+Zit er geen `feat:` of `fix:` tussen en alleen `chore:`, dan komt er **geen release** en dus geen image om
+te deployen. Zie de versietabel hieronder.
+
+---
+
 ## Van pull request naar acceptatieomgeving
 
 Gaan trap 1 tot en met 3 goed, dan pas een pull request. Wat er daarna gebeurt:

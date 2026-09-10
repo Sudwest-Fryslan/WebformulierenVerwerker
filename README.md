@@ -53,9 +53,14 @@ CAReL-acceptatie, dan via de integratie op de VDI-ontwikkelmachine, dan met het 
 van Atabix, en pas daarna de hele keten op de SWF-acceptatieomgeving. Productie volgt alleen als
 acceptatie volledig goed gaat.
 
+Voordat een pull request opengaat draai je acht controles: mapping op echte formulierdata, XSLT's
+compileren, XML-welgevormdheid, contract en testberichten gelijk, de JAR-stap, de Docker-build, geen
+persoonsgegevens in de diff, en of de commit-types de bedoelde versie opleveren. De commando's staan
+in het werkwijzedocument.
+
 Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving:
-de vier stappen, de testladder, de releasestraat, de naamgevingsregel (domeinstandaard leidend, voor
-adressen de BAG) en de versienummering.
+de vier stappen, de testladder, de controles vóór een pull request, de releasestraat, de naamgevingsregel
+(domeinstandaard leidend, voor adressen de BAG) en de versienummering.
 
 ## Reviewproces
 
