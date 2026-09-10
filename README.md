@@ -39,3 +39,43 @@ The description above does not describe every pipe in the pipeline, but it is sa
 4. Send the request
 5. Unwrap the response
 6. Check if response is succesful
+
+## Werkwijze bij koppelingen
+
+Voor het bouwen en wijzigen van koppelingen geldt een vaste volgorde: **contract → testbericht →
+bronsysteem → integratie**. Het veldencontract is de basis; de integratie is de laatste plek waar we
+repareren, niet de eerste. Gaat er iets mis, dan gaan we terug de keten in naar de stap waar de
+aanpassing thuishoort. Het proces is iteratief: contract en testberichten wachten niet op het
+bronsysteem.
+
+Beproeven gebeurt in vier trappen, elk met precies één nieuwe onbekende: SoapUI rechtstreeks naar
+CAReL-acceptatie, dan via de integratie op de VDI-ontwikkelmachine, dan met het aangepaste webformulier
+van Atabix, en pas daarna de hele keten op de SWF-acceptatieomgeving. Productie volgt alleen als
+acceptatie volledig goed gaat.
+
+Voordat een pull request opengaat draai je acht controles: mapping op echte formulierdata, XSLT's
+compileren, XML-welgevormdheid, contract en testberichten gelijk, de JAR-stap, de Docker-build, geen
+persoonsgegevens in de diff, en of de commit-types de bedoelde versie opleveren. De commando's staan
+in het werkwijzedocument.
+
+Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving:
+de vier stappen, de testladder, de controles vóór een pull request, de releasestraat, de naamgevingsregel
+(domeinstandaard leidend, voor adressen de BAG) en de versienummering.
+
+## Reviewproces
+
+**Alle pull requests worden ter controle voorgelegd aan WeAreFrank.** Zij nemen deze applicatie
+uiteindelijk in beheer, dus wijzigingen moeten aansluiten bij de manier waarop zij Frank!-configuraties
+onderhouden. Merge daarom niet zonder hun review, ook niet bij ogenschijnlijk kleine of puur
+documentaire wijzigingen.
+
+Review kost tijd en die tijd schaalt met de omvang van de wijziging. Houd pull requests daarom klein en
+de toelichting concreet.
+
+Na goedkeuring en merge naar `main` bepaalt `semantic-release` het versienummer uit de commit-berichten
+en publiceert GitHub Actions een Docker-image naar Docker Hub (`wearefrank/webformulierenverwerker`).
+Die versie wordt met een **expliciet versienummer** opgehaald en gestart — nooit `latest`. Wie het
+deploymentcommando uitvoert is nog niet vastgelegd; doet SWF het, dan koppelt SWF terug welke versie er
+staat. Leg vóór elke deploy vast welke versie er draait, dat is de terugvalpositie. **Het versienummer
+wordt nooit met de hand opgehoogd** — `CHANGELOG.md`, `BuildInfo.properties` en `publiccode.yaml` worden
+door de release zelf bijgewerkt.
