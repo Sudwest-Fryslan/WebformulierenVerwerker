@@ -282,19 +282,48 @@ te deployen. Zie de versietabel hieronder.
 
 ## Van pull request naar acceptatieomgeving
 
-Gaan trap 1 tot en met 3 goed, dan pas een pull request. Wat er daarna gebeurt:
+Gaan trap 1 tot en met 3 goed, dan pas een pull request. Deze stappen zijn afgesproken met WeAreFrank
+(mailwisseling "Benodigde acties", 14-20 augustus 2026).
 
-1. **Pull request op `main`.** De build draait al bij een PR, maar publiceert nog niets.
-2. **WeAreFrank reviewt en keurt goed.** Zij nemen de applicatie in beheer, dus alles gaat langs hen —
-   zie `README.md`, sectie Reviewproces.
-3. **Merge naar `main`.** Dat is de trigger; niets ervoor publiceert.
-4. **GitHub Actions** (`.github/workflows/ci-build.yml`) bepaalt de versie, bouwt de Docker-image,
-   maakt een GitHub-release met de configuratie-JAR en pusht de image naar Docker Hub als
-   `wearefrank/webformulierenverwerker`, met tags voor de volledige versie, `major.minor`, `major` en
-   `latest`.
-5. **Technisch beheer (WeAreFrank)** zet de juiste versie op de SWF-acceptatieomgeving. Wij deployen niet
-   zelf; wij geven door welke versie erop moet.
-6. **Trap 4** kan draaien.
+1. **Pull request op `main`.** De build draait al bij een PR, maar publiceert nog niets. De pull request
+   is een *voorstel* voor wijziging, niet de wijziging zelf.
+2. **WeAreFrank reviewt, plaatst opmerkingen en keurt goed.** Zij nemen de applicatie in beheer, dus zij
+   beoordelen vóór installatie of de wijziging technisch correct en beheerbaar is. De doorlooptijd hangt
+   af van de omvang van de pull request; grote wijzigingen vragen vooraf afstemming. Houd de pull request
+   daarom klein en de toelichting concreet — dat scheelt doorlooptijd en maakt de review gerichter.
+3. **Merge naar `main`.** Dat is de trigger; niets ervóór publiceert.
+4. **GitHub Actions** (`.github/workflows/ci-build.yml`) bepaalt de versie, bouwt de Docker-image, maakt
+   een GitHub-release met de configuratie-JAR en publiceert de image op Docker Hub als
+   `wearefrank/webformulierenverwerker:<versie>`, met tags voor de volledige versie, `major.minor`,
+   `major` en `latest`.
+5. **De image ophalen op acceptatie**, met een expliciet versienummer — nooit `latest`, want dan weet je
+   achteraf niet wat er draait:
+
+   ```bash
+   docker pull wearefrank/webformulierenverwerker:<nieuw-versienummer>
+   ```
+
+   Daarna wordt de applicatie met dat versienummer gestart.
+6. **Trap 4** kan draaien: de hele keten op acceptatie.
+7. **Naar productie**, dezelfde image en hetzelfde versienummer, als iedereen akkoord is.
+
+### Wie deployt
+
+**Nog open.** Zowel Gemeente SWF als WeAreFrank kan het deploymentcommando uitvoeren. Voert SWF het uit,
+dan koppelt SWF terug aan WeAreFrank welke versie is geplaatst — anders weet de beheerpartij niet wat er
+draait. Zolang dit niet is vastgelegd: spreek per keer af wie het doet en bevestig achteraf het
+versienummer.
+
+### Terugval
+
+**Leg vóór elke deploy vast welke versie er op dat moment draait.** Gaat er iets mis, dan is dat de
+terugvalpositie:
+
+```bash
+docker pull wearefrank/webformulierenverwerker:<vorig-versienummer>
+```
+
+Dat werkt alleen als het oude versienummer bekend is. Noteer het bij de deploy, niet achteraf.
 
 ---
 

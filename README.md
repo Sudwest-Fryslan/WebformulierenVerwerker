@@ -69,8 +69,13 @@ uiteindelijk in beheer, dus wijzigingen moeten aansluiten bij de manier waarop z
 onderhouden. Merge daarom niet zonder hun review, ook niet bij ogenschijnlijk kleine of puur
 documentaire wijzigingen.
 
+Review kost tijd en die tijd schaalt met de omvang van de wijziging. Houd pull requests daarom klein en
+de toelichting concreet.
+
 Na goedkeuring en merge naar `main` bepaalt `semantic-release` het versienummer uit de commit-berichten
 en publiceert GitHub Actions een Docker-image naar Docker Hub (`wearefrank/webformulierenverwerker`).
-Technisch beheer van WeAreFrank zet die versie vervolgens op de acceptatieomgeving; wij deployen niet
-zelf. **Het versienummer wordt nooit met de hand opgehoogd** — `CHANGELOG.md`, `BuildInfo.properties` en
-`publiccode.yaml` worden door de release zelf bijgewerkt.
+Die versie wordt met een **expliciet versienummer** opgehaald en gestart — nooit `latest`. Wie het
+deploymentcommando uitvoert is nog niet vastgelegd; doet SWF het, dan koppelt SWF terug welke versie er
+staat. Leg vóór elke deploy vast welke versie er draait, dat is de terugvalpositie. **Het versienummer
+wordt nooit met de hand opgehoogd** — `CHANGELOG.md`, `BuildInfo.properties` en `publiccode.yaml` worden
+door de release zelf bijgewerkt.
