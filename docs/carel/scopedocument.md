@@ -181,9 +181,11 @@ De volgende wijzigingen in de `extraElementen` zijn gevraagd. Dit zijn afwijking
 |--------------------|----------------|
 | `aanvrager_adres` (straat + huisnummer gecombineerd) | `aanvrager_straat`, `aanvrager_huisnummer`, `aanvrager_huisletter`, `aanvrager_huisnummertoevoeging` |
 | `leerling_adres_gelijk_aan_aanvrager` (boolean) | `leerling_straat`, `leerling_huisnummer`, `leerling_huisletter`, `leerling_huisnummertoevoeging` |
-| `school_adres` (gecombineerd) | `school_straat`, `school_huisnummer`, `school_huisletter`, `school_huisnummertoevoeging` |
+| `school_adres` (gecombineerd) | `school_openbare_ruimte_naam`, `school_huisnummer`, `school_huisletter`, `school_huisnummertoevoeging` (+ `school_postcode`, `school_woonplaats`) — definitief vastgelegd in `veldencontract_leerlingenvervoer.md`, sectie `School` |
 
-**Status: bevestigd meerwerk** — vereist aanpassingen in `creeerZaak_Lk01_mapping.xsl`.
+**Status: schooladres gebouwd (10 sep. 2026)** — de mapping leest het gesplitste schooladres nu uit
+`fleerlingenvervoeraanvraagcheckv2`. Aanvrager- en leerlingadres lopen via de StUF/BG-structuur
+(`heeftAlsInitiator` / `heeftBetrekkingOp`), niet via `extraElementen`; zie het veldencontract.
 
 ### Open punt A: meerdere opties bij keuzevragen
 

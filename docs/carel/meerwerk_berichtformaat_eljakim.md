@@ -114,6 +114,12 @@ Drie gecombineerde velden worden opgesplitst in losse extraElementen.
 
 **School-adres** (huidig `school_adres` bevat alleen straat):
 
+> **Achterhaald (10 sep. 2026).** De definitieve veldnamen staan in
+> `veldencontract_leerlingenvervoer.md`, sectie `School`, en volgen BAG-naamgeving:
+> `school_openbare_ruimte_naam` (niet `school_straatnaam`) en `school_woonplaats` (niet
+> `school_plaats`). Het contract is leidend; onderstaande tabel blijft staan als vastlegging van
+> wat er destijds is voorgesteld.
+
 | Oud | Nieuw |
 |-----|-------|
 | `school_adres` = `"Marktstraat"` (incompleet) | `school_straatnaam` = `"Marktstraat"` |

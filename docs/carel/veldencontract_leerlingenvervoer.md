@@ -100,7 +100,7 @@ Hier is de "Echte naam" al gelijk aan de kolom "CAReL-veld" — dat is namelijk 
 |---|---|---|---|---|---|
 | `aanvraagcheck_woont_in_swf_op_schooldagen` | Woont de leerling op schooldagen in de gemeente Súdwest-Fryslân? | Keuzeveld (Ja/Nee) | Ja / Nee | — | — |
 | `aanvraagcheck_dichtstbijzijnde_toegankelijke_school` | Gaat de leerling naar de dichtstbijzijnde toegankelijke school? | Keuzeveld (Ja/Nee) | Ja / Nee | — | — |
-| `aanvraagcheck_welk_onderwijs` | Welk onderwijs volgt de leerling? | Keuzeveld (dropdown) | "Regulier Basis Onderwijs" / "Speciaal Basis Onderwijs (SBO)" / "Speciaal Onderwijs (SO)" / "Voortgezet Speciaal Onderwijs (VSO)" | **⚙️** Bij "Regulier Basis Onderwijs" toont het formulier geen schoolkeuzelijst maar een vrij tekstveld. Bij de andere 3 typen wél een schoolkeuzelijst, met bij een bekende school automatische gesplitste adresinvulling — zie `school_adres` | Relevant omdat bij bijv. "Regulier Basis Onderwijs" wordt nagebeld — leerlingenvervoer is daar standaard niet voor |
+| `aanvraagcheck_welk_onderwijs` | Welk onderwijs volgt de leerling? | Keuzeveld (dropdown) | "Regulier Basis Onderwijs" / "Speciaal Basis Onderwijs (SBO)" / "Speciaal Onderwijs (SO)" / "Voortgezet Speciaal Onderwijs (VSO)" | **⚙️** Bij "Regulier Basis Onderwijs" toont het formulier geen schoolkeuzelijst maar een vrij tekstveld. Bij de andere 3 typen wél een schoolkeuzelijst, met bij een bekende school automatische gesplitste adresinvulling — zie sectie `School` | Relevant omdat bij bijv. "Regulier Basis Onderwijs" wordt nagebeld — leerlingenvervoer is daar standaard niet voor |
 | `aanvraagcheck_enkele_reisafstand_meer_dan_6_km` | Is de enkele reisafstand meer dan 6 km? | Keuzeveld (Ja/Nee) | Ja / Nee | — | — |
 | `aanvraagcheck_kan_zelfstandig_reizen` | Kan de leerling zelfstandig reizen? | Keuzeveld (dropdown, 4 opties) | Ja / Nee, maar kan het leren / Nee, jonger dan 10 jaar / Nee, handicap — **volledig bevestigd door Doorstroompunt, 1-2 sep 2026** | — | Bepaalt welke vervolgvraag(en) het formulier toont bij `aanvraagcheck_hoe_gaat_leerling_naar_school` |
 | `aanvraagcheck_hoe_gaat_leerling_naar_school` | Hoe gaat de leerling naar school? | Keuzeveld (dropdown, beschrijvend) | **Volledig bevestigd, 1-2 sep 2026.** Bij "Ja": Met de fiets (€0,11/km) / Met het OV (OV-pas). Bij de 3 "Nee"-varianten toont het formulier een andere vraag ("Begeleiden de ouders...?") met eigen opties (fiets/OV/eigen vervoer/nee) | **Aanname (voorstel de Solution Innovator (ontwikkelaar), 2 sep 2026):** dit is functioneel dezelfde vraag, hergebruikt onder dezelfde veldnaam met andere getoonde opties per situatie - net als `vervoer_maandagfiets` e.d. Geen mappingwijziging nodig, we sturen nu al door wat er ook binnenkomt. **Nog niet bevestigd met een echte testcapture** (alle beschikbare tests kozen "Ja") | Beschrijvende teksten i.p.v. korte labels |
@@ -150,9 +150,37 @@ extraElement verstuurd. eHerkenning blijft, zoals eerder afgesproken, buiten sco
 | CAReL-veld (echte naam) | Type | Voorbeeldwaarde | Opmerking Atabix | Toelichting |
 |---|---|---|---|---|
 | `school_naam` | Tekst | *Publiek, uit een testcase: "Súdwester"* | Bij SBO/SO/VSO uit de schoolkeuzelijst; bij Regulier Basis Onderwijs vrij tekstveld | Ongewijzigd |
-| `school_adres` | Tekst | *Publiek: Kaatsland 5b, 8608CX, Sneek (hoort bij "Súdwester")* | **⚙️** Bij SBO/SO/VSO met bekende school vult het formulier dit automatisch en gesplitst. Bij Regulier Basis Onderwijs/"Andere school" is het een vrij, niet-gesplitst tekstveld | **Bouwpunt:** moet BAG-conform en gesplitst worden aangeleverd (straat/huisnummer/huisletter/toevoeging/postcode/plaats); huidige mapping stuurt alleen straat. Nodig voor routebepaling van het vervoer (bestemmingsadres, niet alleen de locatie van de leerling) |
-| `school_postcode` | Tekst | *Publiek: 8608CX* | — | Onderdeel van dezelfde adres-splitsing hierboven |
-| `school_plaats` | Tekst | *Publiek: "Sneek"* | — | Onderdeel van dezelfde adres-splitsing hierboven |
+| `school_openbare_ruimte_naam` | Tekst | *Publiek: "Kaatsland"* | **⚙️** Bij SBO/SO/VSO met bekende school vult het formulier dit automatisch en gesplitst. Bij Regulier Basis Onderwijs/"Andere school" moet de splitsing ook aangeboden worden | Onderdeel van het BAG-conform gesplitste schooladres |
+| `school_huisnummer` | Tekst (numeriek) | *Publiek: 5* | **⚙️** Idem | Onderdeel van het BAG-conform gesplitste schooladres |
+| `school_huisletter` | Tekst (1 letter) | *Publiek: "b"* | **⚙️** Idem | Onderdeel van het BAG-conform gesplitste schooladres. Leeg = niet van toepassing |
+| `school_huisnummertoevoeging` | Tekst | *Leeg in dit voorbeeld* | **⚙️** Idem | Onderdeel van het BAG-conform gesplitste schooladres. Leeg = niet van toepassing |
+| `school_postcode` | Tekst | *Publiek: 8608CX* | — | Onderdeel van het BAG-conform gesplitste schooladres |
+| `school_woonplaats` | Tekst | *Publiek: "Sneek"* | — | Onderdeel van het BAG-conform gesplitste schooladres |
+
+**Schooladres BAG-conform gesplitst — vastgesteld (3 sep. 2026).** Het samengestelde veld `school_adres`
+**vervalt** en wordt vervangen door zes losse velden, met **BAG-naamgeving als leidend principe** voor de
+veldnamen. Reden: CAReL zoekt adressen zelf op via de BAG om te controleren of ze kloppen, en heeft
+daarvoor alle onderdelen los nodig — zie het besluit bij `Open punten`, punt 3 van de reactie van de
+CAReL-leverancier (Eljakim): dit geldt voor **alle** adressen, niet alleen school. Het schooladres is
+daarbij het bestemmingsadres voor de routebepaling van het vervoer, niet slechts een registratiegegeven.
+
+**Naamgevingsregel: de BAG is leidend.** De veldnamen volgen de BAG-attribuutnamen, dezelfde die de
+StUF/BG-structuur voor het leerlingadres al gebruikt (`gor.openbareRuimteNaam`, `aoa.huisnummer`,
+`aoa.huisletter`, `aoa.huisnummertoevoeging`, `aoa.postcode`, `wpl.woonplaatsNaam`), in de
+snake_case-schrijfwijze van de overige `extraElementen`. Twee gevolgen ten opzichte van de eerdere
+veldenlijst:
+
+- de straat heet `school_openbare_ruimte_naam`, niet `school_straat` of `school_straatnaam` — "openbare
+  ruimte" is de BAG-term, een straat is één soort openbare ruimte;
+- het bestaande `school_plaats` is hernoemd naar `school_woonplaats`, de BAG-term.
+
+Dat laatste raakt een veld dat er al was: Atabix en CAReL moeten die naam dus meenemen. Dat is een bewuste
+keuze — één consistente naamgeving over alle adressen is meer waard dan het sparen van één bestaande naam.
+
+De brondveldnamen aan de Atabix-kant zijn voor de bekende scholen (SBO/SO/VSO) al gesplitst beschikbaar;
+welke XML-namen het formulier precies levert is nog niet met een capture geverifieerd. Dat blokkeert dit
+contract niet: contract en testberichten gaan voorop, en als het webformulier daarop aangepast moet
+worden, dan is dat zo — het proces is iteratief (zie `docs/werkwijze_integraties.md`).
 
 ### Eigen bijdrage
 
@@ -211,9 +239,11 @@ dinsdag/donderdag-velden leeg.*
 **Bevestigd gebouwd door Atabix (4 sep. 2026):** de Atabix-formulierbeheerder heeft dit exacte model al
 in het formulier gebouwd (screenshot: "Maandag heentijdstip", "Maandag terugtijdstip", enz. voor alle 5
 dagen) en er een testaanvraag mee ingediend (referentienummer 1900887058, via de toen nog oude,
-gedeployde integratie). De echte XML-brondveldnamen van dat formulier zijn nog niet met een capture
-geverifieerd tegen onze aanname (`<dag>vervoerheentijd`/`terugtijd`) — dat is de enige nog openstaande
-technische check, geen bouwpunt meer.
+gedeployde integratie). De echte XML-brondveldnamen zijn inmiddels
+geverifieerd met een live testcapture van de Atabix-formulierbeheerder (8 sep. 2026,
+`leerlingenvervoer_2026.xml`): de tijden staan genest in een `<taxi>`-container onder
+`fleerlingenvervoerv3vervoer`, als `<dag>heentijdstip` / `<dag>terugtijdstip`. De integratie leest die
+structuur. Dit punt is daarmee afgerond — geen bouwpunt en geen openstaande check meer.
 
 ### Toelichting
 
@@ -223,9 +253,110 @@ technische check, geen bouwpunt meer.
 
 ---
 
+## 4. Bronveldnamen Atabix
+
+Geverifieerd met de live testcapture van de Atabix-formulierbeheerder (8 sep. 2026,
+`leerlingenvervoer_2026.xml`). Deze kolom hoort **niet** tot het contract met CAReL — CAReL ziet alleen
+de linkerkolom — maar staat hier zodat duidelijk is waar de integratie de gegevens vandaan haalt en
+welke bronvelden nog ontbreken.
+
+| CAReL-veld | Atabix-bronveld (pad onder `FORMULIER/ELEMENTEN/form/answers`) |
+|---|---|
+| `aanvraagcheck_*` (7 velden) | `fleerlingenvervoeraanvraagcheckv2/...` |
+| `aanvraag_schooljaar` | `fleerlingenvervoerv3aanvraag/welkschooljaar` |
+| `aanvraag_vanaf_datum_gebruik_leerlingenvervoer` | `fleerlingenvervoerv3aanvraag/ingangsdatum` |
+| `aanvraag_namens_burger_of_organisatie` | `fleerlingenvervoerv3aanvraag/burgerbedrijf` |
+| `aanvrager_*` | `fleerlingenvervoerv3gegevensburger/...` |
+| leerlinggegevens + verblijfsadres | `fleerlingenvervoerv3gegevensleerling/...` |
+| `school_naam` | `fleerlingenvervoeraanvraagcheckv2/welkeschoolkeuze` |
+| `school_openbare_ruimte_naam` | `fleerlingenvervoeraanvraagcheckv2/schooladres` (bevat alleen de straatnaam) |
+| `school_huisnummer` | `fleerlingenvervoeraanvraagcheckv2/schoolhuisnr` |
+| `school_huisletter` | `fleerlingenvervoeraanvraagcheckv2/schoolhuisletter` |
+| `school_huisnummertoevoeging` | `fleerlingenvervoeraanvraagcheckv2/schoolhuistoevoeg` |
+| `school_postcode` | `fleerlingenvervoeraanvraagcheckv2/schoolpostcode` |
+| `school_woonplaats` | `fleerlingenvervoeraanvraagcheckv2/schoolplaats` |
+| `vervoer_type` | `fleerlingenvervoerv3vervoer/typevergoedingvervoer` |
+| `vervoer_<dag>_heentijd` / `_terugtijd` | `fleerlingenvervoerv3vervoer/taxi/<dag>heentijdstip` / `<dag>terugtijdstip` |
+| `toelichting` | `fleerlingenvervoerv3toelichting/extratoelichting` |
+| `eigenbijdrage_verzamelinkomen_vorig_jaar` | **ontbreekt in het formulier** — zie `Open punten` |
+| `eigenbijdrage_upload_belastingaangifte` | **ontbreekt in het formulier** — zie `Open punten` |
+
+### Naampatroon aan de Atabix-kant
+
+Het formulier volgt een herkenbaar patroon, dat we graag zo houden:
+
+- **Secties** krijgen een `f`-prefix plus de formuliernaam, aaneengeschreven en in kleine letters, met
+  het versienummer erin: `fleerlingenvervoeraanvraagcheckv2`, `fleerlingenvervoerv3vervoer`.
+- **Velden** staan plat in hun sectie, in kleine letters aaneengeschreven, zonder scheidingstekens:
+  `welkonderwijsvolgtleerling`, `typevergoedingvervoer`.
+- **Autogen-blokken** (`<sectie>efautogenN`) zijn opmaakcontainers zonder betekenis; de integratie
+  gebruikt ze niet en gaat ervan uit dat velden plat in hun sectie leesbaar blijven.
+
+**Afspraak: ook aan de bronkant BAG-termen, voluit.** Het formulier conformeert zich hieraan. De
+formulierbeheerder bepaalt de naamgeving binnen zijn eigen systeem, maar waar het contract een term
+vastlegt geldt die term aan beide kanten: elke afwijking is een vertaalslag die stilletjes fout kan gaan,
+en die willen we niet in de integratie verstoppen. Wijkt een naam af, dan vragen we om aanpassing.
+
+Wordt een afwijking om een goede reden gehandhaafd, dan is dat een **aandachtspunt** (zie hieronder) dat
+tot een aanbeveling leidt en zo nodig tot bijstelling van dit contract — niet tot een uitzondering in de
+mapping. Tot die bijstelling er is, vangt de integratie de afwijking tijdelijk op zodat het bouwen niet
+stilligt. Nu nog inconsistent:
+
+| Waar | Nu | Liever |
+|---|---|---|
+| school | `schooladres` (= alleen straatnaam) | `schoolopenbareruimtenaam` |
+| school | `schoolhuisnr` | `schoolhuisnummer` |
+| school | `schoolhuistoevoeg` | `schoolhuisnummertoevoeging` |
+| school | `schoolplaats` | `schoolwoonplaats` |
+| leerling | `nummer` | `huisnummer` |
+| leerling | `nummertoevoeging` | `huisnummertoevoeging` |
+| leerling | `straat` | `openbareruimtenaam` |
+
+Deze lijst is de eerste set aandachtspunten voor het formulier.
+
+---
+
 ## Open punten
 
-**Opgelost:**
+**Nieuw, uit de doorlichting van 10 sep. 2026** (mapping gedraaid tegen de echte capture van 8 sep.,
+alle contractvelden nagelopen):
+
+1. **Eigen bijdrage heeft geen bronveld.** `eigenbijdrage_verzamelinkomen_vorig_jaar` en
+   `eigenbijdrage_upload_belastingaangifte` staan in het contract en in de testberichten, maar het
+   formulier levert ze niet: de sectie waar de mapping ze zocht (`fleerlingenvervoerv3eigenbijdrage`)
+   bestaat niet in de capture. Wel aanwezig is `belastingjaar`, op twee plekken en met twee verschillende
+   waarden (2017 en 2024) — onduidelijk wat daarvan bedoeld is. **Vraag aan de formulierbeheerder:** in
+   welke sectie en onder welke namen komen de Ja/Nee-vraag en de upload straks binnen? Ketenstap 3.
+2. ~~**Leerlinggegevens staan dubbel in het bericht.**~~ — **besloten en doorgevoerd (10 sep. 2026).**
+   De leerling ging als volledig NPS-object mee in `heeftBetrekkingOp` (sectie 1) én nog eens als zes
+   losse `leerling_*`-extraElementen. Die zes zijn verwijderd uit de mapping en uit alle testberichten:
+   het contract kent ze niet, en de integratie stuurt alleen door wat is afgesproken, op de afgesproken
+   manier. Dat het formulier de gegevens levert is prima — dubbel versturen is dat niet. Zelfde lijn als
+   de `aanvrager_*`-opschoning van 2 sep. 2026.
+3. **Velden in het formulier die het contract niet kent** — weggezet als **aandachtspunt**. De capture
+   bevat `structurelebeperking`, `rekeninghoudenmet`, `bijzonderhedenschooltijdenjaneetaxi` en
+   `anderadreswelopderoutejanee`. Die klinken relevant voor het inplannen van vervoer, maar horen bij
+   geen enkel CAReL-veld. Gaat mee in de aandachtspuntenronde hieronder; als daar een aanbeveling uit
+   komt om ze op te nemen, stellen we dit contract bij.
+
+---
+
+## Aandachtspunten webformulier
+
+Signalen die uit het bouwen en testen naar boven komen en die het **formulier** raken. Ze zijn geen
+blokkade voor de integratie: we verzamelen ze, maken er aanbevelingen van, bespreken die met de
+formulierbeheerder, en stellen zo nodig dit contract bij. Daarna volgt de mapping. Dat is de vaste
+kringloop — zie `docs/werkwijze_integraties.md`.
+
+| # | Aandachtspunt | Herkomst | Vervolg |
+|---|---|---|---|
+| A1 | Adresveldnamen wijken af van de BAG-termen (`schoolhuisnr`, `schoolhuistoevoeg`, `schooladres` voor alleen de straatnaam, `nummer`/`nummertoevoeging` bij de leerling) | doorlichting 10 sep. 2026 | Aanbeveling: hernoemen conform de tabel in sectie 4 |
+| A2 | Geen bronveld voor de eigen bijdrage; wel een `belastingjaar` dat op twee plekken staat met twee waarden (2017 en 2024) | mapping tegen capture, 10 sep. 2026 | Vraag welke sectie en namen dit worden; contract volgt |
+| A3 | Vier formuliervelden zonder CAReL-bestemming (`structurelebeperking`, `rekeninghoudenmet`, `bijzonderhedenschooltijdenjaneetaxi`, `anderadreswelopderoutejanee`) | capture 8 sep. 2026 | Voorleggen aan de CAReL-leverancier: wil CAReL deze hebben? |
+| A4 | Waarden bevatten omringende witruimte (`"Wetterwille "` uit de schoolkeuzelijst) | mapping tegen capture, 10 sep. 2026 | Integratie trimt nu zelf; nette invoer blijft wenselijk |
+| A5 | `efautogenN`-blokken zijn betekenisloze opmaakcontainers | doorlichting 10 sep. 2026 | Verzoek: velden plat en stabiel benoembaar houden |
+
+**Opgelost:****Opgelost:**
 - ~~Volledige keuzelijst `aanvraagcheck_hoe_gaat_leerling_naar_school`~~ — beantwoord door Doorstroompunt
   op 1 en 2 september 2026 (alle 4 takken van `aanvraagcheck_kan_zelfstandig_reizen`, inclusief de twee
   vervolgvragen bij de "Nee"-varianten). Zie secties 3 hierboven. Twee onderdelen daarvan zijn een
@@ -255,9 +386,11 @@ en/of de CAReL-leverancier (Eljakim) worden vastgezet.
    versturen, en de kopieerlogica (aanvrageradres → leerlingveld indien van toepassing) ligt bij Atabix
    (weblogica), niet bij de integratie. Eigen leerlingadresveld blijft een bouwpunt bij de Atabix-formulierbeheerder
    (formulierveld bestaat nog niet). Zie sectie 1 hierboven.
-3. **Schooladres gesplitst:** de recent (op verzoek van de Doorstroommedewerker en een collega) ingerichte opzet lijkt te
-   voldoen — nog te bevestigen. Zie ook de CAReL-leverancier (Eljakim)'s punt 3 hieronder: geldt inmiddels voor alle adressen,
-   niet alleen school.
+3. **Schooladres gesplitst — vastgesteld.** De recent (op verzoek van de Doorstroommedewerker en een
+   collega) ingerichte opzet voldoet. Conform punt 3 van de CAReL-leverancier (Eljakim) hieronder geldt dit
+   voor alle adressen, niet alleen school. Het contract legt de CAReL-veldnamen vast in sectie `School`:
+   `school_openbare_ruimte_naam` / `school_huisnummer` / `school_huisletter` / `school_huisnummertoevoeging` /
+   `school_postcode` / `school_woonplaats`; `school_adres` vervalt.
 4. **Organisatie-naamveld:** blijkt al te bestaan (compleet "Gegevens Organisatie"-blok met BAG-conform
    adres, getoond via screenshot). Voorstel voor de CAReL-scope: alleen organisatienaam,
    contactpersoonnaam en telefoonnummer — geen adres, geen eHerkenning. Zie sectie "Aanvullende vrije
@@ -288,9 +421,9 @@ en/of de CAReL-leverancier (Eljakim) worden vastgezet.
    huisnummertoevoeging/postcode/plaats los. **Besloten (de Solution Innovator (ontwikkelaar), 3 sep. 2026):** dit passen we toe op
    alle adressen conform BAG. Voor het leerlingadres (sectie 1) betekent dit dat ook huisletter en
    huisnummertoevoeging nog aan de mapping/het formulier toegevoegd moeten worden — nog niet gebouwd.
-   Voor schooladres (zie punt 3 hierboven bij de Atabix-formulierbeheerder) en organisatie-adres (dat sowieso niet verstuurd
-   wordt, zie sectie "Aanvullende vrije velden bij de aanvrager") is dit al bekend resp. niet van
-   toepassing.
+   Voor het schooladres is dit vastgelegd in sectie `School` (zes losse velden, `school_adres` vervalt);
+   het organisatie-adres wordt sowieso niet verstuurd (zie sectie "Aanvullende vrije velden bij de
+   aanvrager") en is dus niet van toepassing.
 
 **Aangenomen (stilzwijgend akkoord, geen actieve bevestiging):**
 - Geboorteplaats aanvrager als gemeentecode i.p.v. plaatsnaam — nog steeds niet met Eljakim afgestemd.
