@@ -28,6 +28,14 @@
     </xsl:function>
     
     <xsl:template match="/">
+        <!-- Structuurcontrole vooraf. Zonder deze check levert een aanvraag met een onverwachte
+             structuur (bv. <form> als root, zonder de FORMULIER/ELEMENTEN-laag) geen fout op maar
+             een leeg bericht: apply-templates vindt dan simpelweg niets. Dat is in juli 2026 ook
+             echt gebeurd - CAReL kreeg een lege SOAP-body en de aanvraag verdween geruisloos.
+             Liever een harde, leesbare fout terug naar Atabix dan stilte. -->
+        <xsl:if test="empty(/FORMULIER/ELEMENTEN/form/answers)">
+            <xsl:message terminate="yes">Onverwachte structuur in de aanvraag-XML: /FORMULIER/ELEMENTEN/form/answers is niet gevonden. Gevonden root-element: "<xsl:value-of select="(name(/*), '(geen)')[1]"/>". De aanvraag moet de FORMULIER/ELEMENTEN-laag om het form-element heen bevatten - zie docs/carel/WebformulierenVerwerker_Passthrough.xml.</xsl:message>
+        </xsl:if>
         <xsl:apply-templates select="/FORMULIER/ELEMENTEN/form/answers"/>
     </xsl:template>
     
