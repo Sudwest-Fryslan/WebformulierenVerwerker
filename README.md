@@ -39,3 +39,21 @@ The description above does not describe every pipe in the pipeline, but it is sa
 4. Send the request
 5. Unwrap the response
 6. Check if response is succesful
+
+## Werkwijze bij koppelingen
+
+Voor het bouwen en wijzigen van koppelingen geldt een vaste volgorde: **contract → testbericht →
+bronsysteem → integratie**. Het veldencontract is de basis; de integratie is de laatste plek waar we
+repareren, niet de eerste. Gaat er iets mis, dan gaan we terug de keten in naar de stap waar de
+aanpassing thuishoort. Het proces is iteratief: contract en testberichten wachten niet op het
+bronsysteem.
+
+Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving,
+inclusief de naamgevingsregel (domeinstandaard leidend, voor adressen de BAG).
+
+## Reviewproces
+
+**Alle pull requests worden ter controle voorgelegd aan WeAreFrank.** Zij nemen deze applicatie
+uiteindelijk in beheer, dus wijzigingen moeten aansluiten bij de manier waarop zij Frank!-configuraties
+onderhouden. Merge daarom niet zonder hun review, ook niet bij ogenschijnlijk kleine of puur
+documentaire wijzigingen.
