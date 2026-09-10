@@ -122,13 +122,7 @@
                             <BG:voorvoegselGeslachtsnaam><xsl:value-of select="swf:trim(fleerlingenvervoerv3gegevensleerling/tussenvoegsel)"/></BG:voorvoegselGeslachtsnaam>
                             <BG:geslachtsnaam><xsl:value-of select="swf:trim(fleerlingenvervoerv3gegevensleerling/achternaam)"/></BG:geslachtsnaam>
                             <BG:geboortedatum><xsl:call-template name="normalize-date"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geboortedatum"/></xsl:call-template></BG:geboortedatum>
-                            <BG:geslachtsaanduiding>
-                                <xsl:choose>
-                                    <xsl:when test="fleerlingenvervoerv3gegevensleerling/geslacht = 'Jongen'">M</xsl:when>
-                                    <xsl:when test="fleerlingenvervoerv3gegevensleerling/geslacht = 'Meisje'">V</xsl:when>
-                                    <xsl:otherwise>O</xsl:otherwise>
-                                </xsl:choose>
-                            </BG:geslachtsaanduiding>
+                            <BG:geslachtsaanduiding><xsl:call-template name="map-gender"><xsl:with-param name="input" select="fleerlingenvervoerv3gegevensleerling/geslacht"/></xsl:call-template></BG:geslachtsaanduiding>
                             <!-- Adres leerling: altijd sturen, zonder eigen Ja/Nee-keuze (zie toelichting
                                  hierboven). Brondveldnamen bevestigd met live testcapture van de
                                  Atabix-formulierbeheerder (8 sep. 2026, leerlingenvervoer_2026.xml): de
@@ -292,6 +286,38 @@
         </xsl:if>
     </xsl:template>
 
+    <!-- Geslacht naar de StUF-ZKN-code M/V/O. Overgenomen uit PR #108 (WeAreFrank), met een
+         aanpassing: daar liep elke onbekende waarde op een harde fout, hier vallen de vier
+         formulieropties uit het veldencontract expliciet goed. "Anders" en "Wil ik liever niet
+         zeggen" horen volgens het contract onder O; dat is een afspraak, geen restcategorie.
+         Alleen een waarde die het contract niet kent stopt de verwerking - dat is precies het
+         signaal dat het formulier een nieuwe optie heeft gekregen en het contract bijgesteld moet
+         worden. Een lege waarde levert O op en geen fout: dan is er niets ingevuld, en dat is geen
+         nieuwe optie. Zie docs/carel/veldencontract_leerlingenvervoer.md, sectie 1. -->
+    <xsl:template name="map-gender">
+        <xsl:param name="input" as="node()?"/>
+        
+        <xsl:variable name="gender" select="normalize-space(string($input))"/>
+        <xsl:variable name="elementname" select="if ($input) then local-name($input) else ''"/>
+        
+        <xsl:choose>
+            <xsl:when test="$gender = ('M', 'm', 'Man', 'man', 'MAN', 'Jongen', 'jongen', 'JONGEN')">M</xsl:when>
+            <xsl:when test="$gender = ('V', 'v', 'Vrouw', 'vrouw', 'VROUW', 'Meisje', 'meisje', 'MEISJE')">V</xsl:when>
+            <xsl:when test="$gender = ('O', 'o', 'Onbekend', 'onbekend', 'ONBEKEND', 'Anders', 'anders', 'ANDERS')">O</xsl:when>
+            
+            <!-- Contractuele restcategorie: "Wil ik liever niet zeggen" valt onder O -->
+            <xsl:when test="lower-case($gender) = 'wil ik liever niet zeggen'">O</xsl:when>
+            
+            <!-- Niets ingevuld: geen nieuwe optie, dus geen fout -->
+            <xsl:when test="$gender = ''">O</xsl:when>
+            
+            <!-- Onbekende waarde: het formulier kent een optie die het contract niet kent -->
+            <xsl:otherwise>
+                <xsl:message terminate="yes">Onbekende geslachtswaarde: <xsl:value-of select="concat($elementname, '=', $gender)"/>. Het veldencontract kent Jongen, Meisje, Anders en "Wil ik liever niet zeggen"; een nieuwe optie hoort eerst in het contract.</xsl:message>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
     <xsl:template name="normalize-date">
         <xsl:param name="input" as="node()?"/>
         
