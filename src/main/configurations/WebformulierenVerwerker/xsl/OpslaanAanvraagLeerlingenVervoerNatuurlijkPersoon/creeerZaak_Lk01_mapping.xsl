@@ -43,7 +43,7 @@
     
     <!-- Main template -->
     <xsl:template match="answers">
-        <!-- Verplichte velden conform veldencontract (tmp/20260901-velden_carel_met_types.md):
+        <!-- Verplichte velden conform veldencontract (docs/carel/veldencontract_leerlingenvervoer.md):
              BSN leerling, BSN aanvrager en vervoer_upload_vervoersverklaring. Ontbreekt een van
              deze, dan stopt de mapping direct met een duidelijke foutmelding i.p.v. een onvolledig
              bericht naar CAReL te sturen - komt via de bestaande foutafhandeling (isErrorXML) terug
@@ -108,7 +108,7 @@
                      verwijzing naar een bekend persoon, geen volledige persoonsregistratie - vandaar
                      dat schema-technisch niets hier verplicht is (zie docs/carel/scopedocument.md §7).
                      Verblijfsadres leerling: bevestigd besluit (3 sep. 2026, na reactie Lorenzo) dat dit
-                     altijd verstuurd moet worden, zie tmp/20260901-velden_carel_met_types_baseline.md
+                     altijd verstuurd moet worden, zie docs/carel/veldencontract_leerlingenvervoer.md
                      sectie 1. Het kopiëren van het aanvrageradres naar het leerlingveld (indien "leerling
                      heeft ander adres dan aanvrager" = Nee) is weblogica bij Atabix, niet bij de
                      integratie - de mapping stuurt daarom altijd gewoon het leerling-adresveld, zonder
@@ -158,7 +158,7 @@
                      zelf ingelogd met DigiD, die authenticatie legt de identiteit al vast, en CAReL
                      haalt de overige persoonsgegevens zelf op via GBAV op basis van het BSN. Overige
                      NPS-velden zouden hoe dan ook dezelfde waarde opleveren, en zijn dus overbodig
-                     (principe 1, zie tmp/20260901-velden_carel_met_types_baseline.md - bevestigd door
+                     (principe 1, zie docs/carel/veldencontract_leerlingenvervoer.md - bevestigd door
                      CAReL/Eljakim, mailwisseling "260820 toevoeging aanpassing nav overleg vervoer",
                      1 sep 2026). verwerkingssoort="I" op het NPS-object: alleen een verwijzing naar een
                      bekend persoon. -->
@@ -237,13 +237,13 @@
                     <StUF:extraElement naam="school_woonplaats"><xsl:value-of select="swf:trim(fleerlingenvervoeraanvraagcheckv2/schoolplaats)"/></StUF:extraElement>
                     <!-- Eigen bijdrage. Hernoemd per contract (was eigenbijdrage_verzamelinkomen_2023,
                          nu jaar-onafhankelijk Ja/Nee i.p.v. inkomensklasse), zie
-                         tmp/20260901-velden_carel_met_types_baseline.md. -->
+                         docs/carel/veldencontract_leerlingenvervoer.md. -->
                     <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_vorig_jaar"><xsl:value-of select="swf:trim(fleerlingenvervoerv3eigenbijdrage/newyear/hetverzamelinkomen)"/></StUF:extraElement>
                     <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"><xsl:value-of select="swf:trim(fleerlingenvervoerv3eigenbijdrage/belastingaangifte)"/></StUF:extraElement>
                     <!-- Soort vervoer. vervoer_upload_routeplanner en vervoer_vanaf_datum_nodig zijn
                          vervallen (routeplanner-check gebeurt nu bij CAReL zelf; vanaf-datum was dubbel
                          met aanvraag_vanaf_datum_gebruik_leerlingenvervoer), zie
-                         tmp/20260901-velden_carel_met_types_baseline.md. -->
+                         docs/carel/veldencontract_leerlingenvervoer.md. -->
                     <StUF:extraElement naam="vervoer_type"><xsl:value-of select="swf:trim(fleerlingenvervoerv3vervoer/typevergoedingvervoer)"/></StUF:extraElement>
                     <StUF:extraElement naam="vervoer_upload_vervoersverklaring"><xsl:value-of select="swf:trim(fleerlingenvervoerv3vervoer/bijlagen)"/></StUF:extraElement>
 
