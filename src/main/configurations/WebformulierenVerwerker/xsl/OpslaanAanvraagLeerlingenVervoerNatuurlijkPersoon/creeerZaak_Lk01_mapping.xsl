@@ -23,8 +23,14 @@
          waarden, en een spatie aan het eind is geen betekenisvol gegeven. Alleen leidende/sluitende
          witruimte - interne opmaak (regeleindes in een toelichting) blijft staan. -->
     <xsl:function name="swf:trim" as="xs:string">
-        <xsl:param name="value"/>
-        <xsl:sequence select="replace(replace(string($value), '^\s+', ''), '\s+$', '')"/>
+        <xsl:param name="value" as="item()*"/>
+        <!-- item()* en string-join, niet string(): een pad kan meer dan een knoop opleveren
+             (sommige formulieren leveren kenmerkaanvraag twee keer aan). string() weigert dat met
+             "A sequence of more than one item is not allowed"; xsl:value-of voegde ze van oudsher
+             met een spatie samen. Die betekenis houden we aan - alleen de omringende witruimte
+             verdwijnt. -->
+        <xsl:variable name="joined" select="string-join(for $v in $value return string($v), ' ')"/>
+        <xsl:sequence select="replace(replace($joined, '^\s+', ''), '\s+$', '')"/>
     </xsl:function>
     
     <xsl:template match="/">
@@ -34,7 +40,10 @@
              echt gebeurd - CAReL kreeg een lege SOAP-body en de aanvraag verdween geruisloos.
              Liever een harde, leesbare fout terug naar Atabix dan stilte. -->
         <xsl:if test="empty(/FORMULIER/ELEMENTEN/form/answers)">
-            <xsl:message terminate="yes">Onverwachte structuur in de aanvraag-XML: /FORMULIER/ELEMENTEN/form/answers is niet gevonden. Gevonden root-element: "<xsl:value-of select="(name(/*), '(geen)')[1]"/>". De aanvraag moet de FORMULIER/ELEMENTEN-laag om het form-element heen bevatten - zie docs/carel/WebformulierenVerwerker_Passthrough.xml.</xsl:message>
+            <xsl:sequence select="error((), concat(
+                'Onverwachte structuur in de aanvraag-XML: /FORMULIER/ELEMENTEN/form/answers is niet gevonden. Gevonden root-element: &quot;',
+                (name(/*), '(geen)')[1],
+                '&quot;. De aanvraag moet de FORMULIER/ELEMENTEN-laag om het form-element heen bevatten - zie docs/carel/WebformulierenVerwerker_Passthrough.xml.'))"/>
         </xsl:if>
         <xsl:apply-templates select="/FORMULIER/ELEMENTEN/form/answers"/>
     </xsl:template>
@@ -275,14 +284,14 @@
     </xsl:template>
     
     <!-- Verplichte-veldcontrole: zelfde patroon als normalize-date's foutafhandeling hieronder
-         (xsl:message terminate="yes") - stopt de transformatie met een duidelijke melding i.p.v.
+         (fn:error) - stopt de transformatie met een duidelijke melding i.p.v.
          een StUF-bericht met een leeg verplicht veld naar CAReL te sturen. -->
     <xsl:template name="require-field">
         <xsl:param name="veldnaam" as="xs:string"/>
         <xsl:param name="waarde" as="xs:string?"/>
 
         <xsl:if test="normalize-space($waarde) = ''">
-            <xsl:message terminate="yes">Verplicht veld ontbreekt of is leeg: <xsl:value-of select="$veldnaam"/></xsl:message>
+            <xsl:sequence select="error((), concat('Verplicht veld ontbreekt of is leeg: ', $veldnaam))"/>
         </xsl:if>
     </xsl:template>
 
@@ -313,7 +322,9 @@
             
             <!-- Onbekende waarde: het formulier kent een optie die het contract niet kent -->
             <xsl:otherwise>
-                <xsl:message terminate="yes">Onbekende geslachtswaarde: <xsl:value-of select="concat($elementname, '=', $gender)"/>. Het veldencontract kent Jongen, Meisje, Anders en "Wil ik liever niet zeggen"; een nieuwe optie hoort eerst in het contract.</xsl:message>
+                <xsl:sequence select="error((), concat(
+                    'Onbekende geslachtswaarde: ', $elementname, '=', $gender,
+                    '. Het veldencontract kent Jongen, Meisje, Anders en &quot;Wil ik liever niet zeggen&quot;; een nieuwe optie hoort eerst in het contract.'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -353,9 +364,7 @@
             
             <!-- Fallback -->
             <xsl:otherwise>
-                <xsl:message terminate="yes">
-                    Unrecognized date format: <xsl:value-of select="swf:trim(concat($elementname, '_',  $date))"/>
-                </xsl:message>
+                <xsl:sequence select="error((), concat('Onbekend datumformaat in veld ', $elementname, ': ', $date))"/>
             </xsl:otherwise>
             
         </xsl:choose>
