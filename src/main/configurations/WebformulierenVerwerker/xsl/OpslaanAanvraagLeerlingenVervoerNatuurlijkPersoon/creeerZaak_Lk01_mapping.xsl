@@ -87,11 +87,16 @@
                 <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
                 <ZKN:kenmerk>
                     <ZKN:kenmerk><xsl:value-of select="swf:trim(globals/kenmerkaanvraag)"/></ZKN:kenmerk>
-                    <ZKN:bron>Kodision</ZKN:bron>
+                    <ZKN:bron>Kodison</ZKN:bron>
                 </ZKN:kenmerk>
                 <ZKN:startdatum><xsl:value-of select="format-dateTime(/FORMULIER/DATUMVERZENDING, '[Y0001][M01][D01]')"/></ZKN:startdatum><!-- {atribuut startDateTime} -->
                 <ZKN:registratiedatum><xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001][M01][D01]')"/></ZKN:registratiedatum><!-- {atribuut startDateTime} -->
-                <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+                <!-- verwerkingssoort="T" op de relatie-entiteit ZAKZKT, "I" op de gerelateerde ZKT.
+                     StUF 03.01 par. 5.2.6, tabel 5.7, rij "Toevoegen relatie bij toevoegen object":
+                     bij mutatiesoort T krijgt de topfundamenteel T, de relatie-entiteit T en de
+                     gerelateerde I of T. "I" voor de gerelateerde, want het zaaktype bestaat al bij
+                     CAReL - we voegen geen zaaktype toe, we verwijzen ernaar. -->
+                <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
                         <ZKN:code>LV-001</ZKN:code>
                         <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>

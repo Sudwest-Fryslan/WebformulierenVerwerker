@@ -81,9 +81,11 @@ Referentie is `docs/carel/20260302/creeerzaak_carel.xml`, het voorbeeldbericht v
 | `ZKN:identificatie` | *bv. `1900887058`* | OpenZaakBrug, `genereerZaakIdentificatie` | Uitgegeven door het zaaksysteem, niet door ons bedacht |
 | `ZKN:omschrijving` | `Aanvraag leerlingenvervoer` | vast | Conform CAReL-referentie |
 | `ZKN:kenmerk/kenmerk` | *bv. `SWF-f4c0b8ae9934`* | `globals/kenmerkaanvraag` uit het formulier | **Toevoeging door ons** — staat niet in de CAReL-referentie |
-| `ZKN:kenmerk/bron` | `Kodision` | vast | **Toevoeging door ons** — zie aandachtspunt A7 |
+| `ZKN:kenmerk/bron` | `Kodison` | vast | **Toevoeging door ons** — staat niet in de CAReL-referentie |
 | `ZKN:startdatum` | `JJJJMMDD` | `FORMULIER/DATUMVERZENDING` | Datum waarop de burger het formulier verzond |
 | `ZKN:registratiedatum` | `JJJJMMDD` | verwerkingsmoment | Datum waarop de integratie het bericht opbouwt |
+| `ZKN:isVan` (relatie-entiteit ZAKZKT) | `verwerkingssoort="T"` | vast | Conform StUF 03.01 §5.2.6, tabel 5.7 |
+| `ZKN:isVan/gerelateerde` (ZKT) | `verwerkingssoort="I"` | vast | Zaaktype bestaat al bij CAReL; alleen verwijzen |
 | `ZKN:isVan/gerelateerde/code` | `LV-001` | vast | Conform CAReL-referentie |
 | `ZKN:isVan/gerelateerde/omschrijving` | `Leerlingenvervoer aanvraag` | vast | Conform CAReL-referentie |
 | `ZKN:isVan/gerelateerde/ingangsdatumObject` | leeg (`noValue="geenWaarde"`) | vast | Conform CAReL-referentie |
@@ -395,17 +397,23 @@ alle contractvelden nagelopen):
    `anderadreswelopderoutejanee`. Die klinken relevant voor het inplannen van vervoer, maar horen bij
    geen enkel CAReL-veld. Gaat mee in de aandachtspuntenronde hieronder; als daar een aanbeveling uit
    komt om ze op te nemen, stellen we dit contract bij.
-4. **`verwerkingssoort` op het zaaktype wijkt af van de CAReL-referentie.** De mapping stuurt
-   `ZKN:isVan` en de bijbehorende `gerelateerde` met `verwerkingssoort="I"`; `creeerzaak_carel.xml` van
-   CAReL zelf gebruikt daar `"T"`. Onduidelijk of dat betekenisverschil oplevert bij het verwerken — de
-   testberichten zijn tot nu toe geaccepteerd. **Vraag aan de CAReL-leverancier:** welke waarde hoort
-   hier, en maakt het verschil?
-5. **`ZKN:kenmerk` is een eigen toevoeging, met een afwijkend gespelde bron.** Het blok komt niet voor in
-   de CAReL-referentie; het is bij de bouw toegevoegd om het Kodison-formulierkenmerk (bv.
-   `SWF-f4c0b8ae9934`) mee te geven. De bronwaarde luidt `Kodision`, terwijl het systeem elders in dit
-   project `Kodison` heet. **Twee vragen aan de CAReL-leverancier:** gebruikt CAReL dit kenmerk, en zo
-   ja, welke spelling van de bron verwacht hij? Niet eigenhandig wijzigen — als CAReL erop matcht, is
-   een correctie een berichtwijziging.
+4. ~~**`verwerkingssoort` op het zaaktype wijkt af van de CAReL-referentie.**~~ — **opgezocht in de
+   standaard en gecorrigeerd (10 sep. 2026).** StUF 03.01 §5.2.6, tabel 5.7, rij "Toevoegen relatie bij
+   toevoegen object": bij mutatiesoort `T` krijgt de topfundamenteel `T`, de **relatie-entiteit `T`** en
+   de gerelateerde `I` of `T`. Onze `ZKN:isVan` (ZAKZKT) stond op `I` en is nu `T`; de gerelateerde ZKT
+   blijft `I`, want het zaaktype bestaat al bij CAReL — we voegen er geen toe, we verwijzen ernaar. De
+   CAReL-referentie `creeerzaak_carel.xml` gebruikt op beide plekken `T`; dat is voor de gerelateerde
+   toegestaan maar niet nodig. Doorgevoerd in de mapping en in alle zes testberichten.
+
+   *Niet aangepast:* `voegZaakdocumentToe_Lk01` houdt op beide plekken `I`. Daar wordt het **document**
+   toegevoegd en is de zaak alleen identificerend (`ZAK` met `verwerkingssoort="I"`); tabel 5.7 gaat over
+   het object dat wordt toegevoegd, en dat is daar niet de zaak.
+5. ~~**`ZKN:kenmerk` is een eigen toevoeging, met een afwijkend gespelde bron.**~~ — **spelling
+   gecorrigeerd (10 sep. 2026).** De bronwaarde luidde `Kodision` en is nu `Kodison`, gelijk aan hoe het
+   systeem elders in dit project heet. Doorgevoerd in de mapping en in alle zes testberichten. Het blok
+   zelf blijft een toevoeging ten opzichte van de CAReL-referentie: het geeft het
+   Kodison-formulierkenmerk mee (bv. `SWF-f4c0b8ae9934`). Of CAReL er iets mee doet is niet bevestigd —
+   mocht CAReL op de oude spelling matchen, dan komt dat bij de eerstvolgende test naar boven.
 
 ---
 

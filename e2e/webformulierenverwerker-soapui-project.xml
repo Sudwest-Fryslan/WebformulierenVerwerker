@@ -17896,11 +17896,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-testcontract-20260901</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260903</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
@@ -18188,11 +18188,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-voorbeeld-A-basisscenario</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
@@ -18302,11 +18302,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-voorbeeld-B-so-eigen-adres</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
@@ -18417,11 +18417,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-voorbeeld-C-organisatie</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
@@ -18531,11 +18531,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-voorbeeld-D-geen-vervoer</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
@@ -18645,11 +18645,11 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
       <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
       <ZKN:kenmerk>
          <ZKN:kenmerk>SWF-voorbeeld-E-asymmetrisch</ZKN:kenmerk>
-         <ZKN:bron>Kodision</ZKN:bron>
+         <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
       <ZKN:startdatum>20260903</ZKN:startdatum>
       <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
-      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="I">
+      <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
             <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
