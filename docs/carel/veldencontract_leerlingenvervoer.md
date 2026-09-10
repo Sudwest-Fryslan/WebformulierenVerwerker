@@ -48,6 +48,63 @@ integratie. De integratie ontvangt alleen de uitkomst.
 
 ---
 
+## 0. Zaakniveau: stuurgegevens en zaakobject
+
+De omhulling om de twee rollen (secties 1 en 2) en de vrije velden (sectie 3) heen. Deze velden komen
+niet uit het formulier maar uit vaste waarden, applicatieproperties of het zaaksysteem. Ze stonden tot
+10 sep. 2026 alleen in de mapping en in geen enkele afspraak — vandaar dat de statuskolom hier eerlijk
+onderscheid maakt tussen "terug te voeren op de CAReL-referentie" en "door ons toegevoegd".
+
+Referentie is `docs/carel/20260302/creeerzaak_carel.xml`, het voorbeeldbericht van CAReL zelf.
+
+### Stuurgegevens en parameters
+
+| Element | Waarde | Herkomst | Status |
+|---|---|---|---|
+| `StUF:berichtcode` | `Lk01` | vast | Conform CAReL-referentie |
+| `StUF:zender/organisatie` | `1900` | property `stuf_zender_organisatie` | Configureerbaar per omgeving |
+| `StUF:zender/applicatie` | `WebformulierenKoppeling` | property `stuf_zender_applicatie` | Configureerbaar per omgeving |
+| `StUF:zender/gebruiker` | `Gebruiker` | property `stuf_zender_gebruiker` | Configureerbaar per omgeving |
+| `StUF:ontvanger/organisatie` | `1900` | property `stuf_ontvanger_organisatie` | Configureerbaar per omgeving |
+| `StUF:ontvanger/applicatie` | `CAREL` | property `stuf_ontvanger_applicatie` | Configureerbaar per omgeving |
+| `StUF:referentienummer` | UUID per bericht | gegenereerd | Komt terug als `crossRefnummer` in het `Bv03Bericht` |
+| `StUF:tijdstipBericht` | `JJJJMMDDuummsshh` | gegenereerd | Verzendmoment, tot op honderdsten |
+| `StUF:entiteittype` | `ZAK` | vast | Conform CAReL-referentie |
+| `StUF:mutatiesoort` | `T` (toevoeging) | vast | Conform CAReL-referentie |
+| `StUF:indicatorOvername` | `V` (volledig) | vast | Conform CAReL-referentie |
+
+### Zaakobject (`ZKN:object`, `entiteittype="ZAK"`, `verwerkingssoort="T"`)
+
+| Element | Waarde | Herkomst | Status |
+|---|---|---|---|
+| `StUF:sleutelVerzendend` | zaakidentificatie | OpenZaakBrug | Zelfde waarde als `ZKN:identificatie` |
+| `ZKN:identificatie` | *bv. `1900887058`* | OpenZaakBrug, `genereerZaakIdentificatie` | Uitgegeven door het zaaksysteem, niet door ons bedacht |
+| `ZKN:omschrijving` | `Aanvraag leerlingenvervoer` | vast | Conform CAReL-referentie |
+| `ZKN:kenmerk/kenmerk` | *bv. `SWF-f4c0b8ae9934`* | `globals/kenmerkaanvraag` uit het formulier | **Toevoeging door ons** — staat niet in de CAReL-referentie |
+| `ZKN:kenmerk/bron` | `Kodision` | vast | **Toevoeging door ons** — zie aandachtspunt A7 |
+| `ZKN:startdatum` | `JJJJMMDD` | `FORMULIER/DATUMVERZENDING` | Datum waarop de burger het formulier verzond |
+| `ZKN:registratiedatum` | `JJJJMMDD` | verwerkingsmoment | Datum waarop de integratie het bericht opbouwt |
+| `ZKN:isVan/gerelateerde/code` | `LV-001` | vast | Conform CAReL-referentie |
+| `ZKN:isVan/gerelateerde/omschrijving` | `Leerlingenvervoer aanvraag` | vast | Conform CAReL-referentie |
+| `ZKN:isVan/gerelateerde/ingangsdatumObject` | leeg (`noValue="geenWaarde"`) | vast | Conform CAReL-referentie |
+
+### Verplichte velden — het bericht wordt niet verstuurd zonder
+
+De integratie stopt met een leesbare fout, in plaats van een half bericht naar CAReL te sturen:
+
+| Controle | Melding bij ontbreken |
+|---|---|
+| Structuur `FORMULIER/ELEMENTEN/form/answers` aanwezig | noemt het gevonden root-element en verwijst naar de passthrough-stylesheet |
+| BSN leerling | noemt veldnaam en bronpad |
+| BSN aanvrager | noemt veldnaam en bronpad |
+| `vervoer_upload_vervoersverklaring` | noemt veldnaam en bronpad |
+
+Die fout komt via de exception-afhandeling als SOAP Fault met HTTP 500 terug bij Atabix. Velden die het
+formulier extra meestuurt en die dit contract niet kent, leveren bewust **geen** fout op: die worden
+genegeerd, zodat het formulier vooruit kan lopen zonder de koppeling te breken.
+
+---
+
 ## 1. Rol: leerling (`heeftBetrekkingOp`, StUF-ZKN NPS-object)
 
 | Echte naam (StUF-tag) | Vriendelijke naam | Type | Voorbeeldwaarde | Toelichting |
@@ -338,6 +395,17 @@ alle contractvelden nagelopen):
    `anderadreswelopderoutejanee`. Die klinken relevant voor het inplannen van vervoer, maar horen bij
    geen enkel CAReL-veld. Gaat mee in de aandachtspuntenronde hieronder; als daar een aanbeveling uit
    komt om ze op te nemen, stellen we dit contract bij.
+4. **`verwerkingssoort` op het zaaktype wijkt af van de CAReL-referentie.** De mapping stuurt
+   `ZKN:isVan` en de bijbehorende `gerelateerde` met `verwerkingssoort="I"`; `creeerzaak_carel.xml` van
+   CAReL zelf gebruikt daar `"T"`. Onduidelijk of dat betekenisverschil oplevert bij het verwerken — de
+   testberichten zijn tot nu toe geaccepteerd. **Vraag aan de CAReL-leverancier:** welke waarde hoort
+   hier, en maakt het verschil?
+5. **`ZKN:kenmerk` is een eigen toevoeging, met een afwijkend gespelde bron.** Het blok komt niet voor in
+   de CAReL-referentie; het is bij de bouw toegevoegd om het Kodison-formulierkenmerk (bv.
+   `SWF-f4c0b8ae9934`) mee te geven. De bronwaarde luidt `Kodision`, terwijl het systeem elders in dit
+   project `Kodison` heet. **Twee vragen aan de CAReL-leverancier:** gebruikt CAReL dit kenmerk, en zo
+   ja, welke spelling van de bron verwacht hij? Niet eigenhandig wijzigen — als CAReL erop matcht, is
+   een correctie een berichtwijziging.
 
 ---
 
