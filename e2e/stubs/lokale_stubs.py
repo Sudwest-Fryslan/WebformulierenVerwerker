@@ -1,6 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Minimale stubs voor OpenZaakBrug (7772) en CAReL (7771), zodat de hele
-pijplijn lokaal doorlopen kan worden zonder die systemen."""
+"""Minimale stubs voor OpenZaakBrug en CAReL, zodat de integratie lokaal de hele
+pijplijn kan doorlopen zonder die systemen.
+
+Gebruik (naast `docker compose -f compose.frank.dev.yaml up -d --build`):
+
+    python e2e/stubs/lokale_stubs.py
+
+Poort 7772 speelt OpenZaakBrug en geeft een vaste zaakidentificatie terug; poort
+7771 speelt CAReL en bevestigt met een Bv03. Beide schrijven het ontvangen
+bericht weg in stub_<poort>.log, zodat je kunt nakijken wat de integratie
+werkelijk verstuurd heeft - dat is waar je de mapping op controleert.
+
+De poorten komen uit DeploymentSpecifics.properties (host.docker.internal:7771
+en :7772). Dit vervangt trap 1 tot en met 4 uit docs/werkwijze_integraties.md
+niet: het toont aan dat de integratie draait en een compleet bericht opbouwt,
+niet dat CAReL het accepteert.
+"""
 import threading, sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 

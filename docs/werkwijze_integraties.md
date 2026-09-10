@@ -225,15 +225,37 @@ Dezelfde regel die de pipeline draait:
 jar cvf /tmp/WebformulierenVerwerker.jar -C src/main/configurations WebformulierenVerwerker
 ```
 
-### 6. Bouwt de Docker-image?
+### 6. Draait de integratie, en komt er een compleet bericht uit?
+
+Bouwen alleen zegt weinig. Start hem en stuur er berichten doorheen:
 
 ```bash
-docker compose -f compose.frank.dev.yaml build
+docker compose -f compose.frank.dev.yaml up -d --build
+curl -s http://localhost:8080/iaf/api/server/health          # {"status":"OK"}
+curl -s http://localhost:8080/iaf/api/adapters               # alle adapters "started"
 ```
 
-Dit is de enige controle die een draaiende Docker-daemon vereist en dus niet overal kan. Kun je het niet
-draaien, **zeg dat dan** in de pull request in plaats van het stilzwijgend over te slaan — de pipeline
-bouwt hem alsnog bij de PR, maar de reviewer moet weten wat er wel en niet lokaal is nagegaan.
+De keten roept OpenZaakBrug en CAReL aan. Die zijn lokaal niet bereikbaar, dus zet er stubs voor neer:
+
+```bash
+python e2e/stubs/lokale_stubs.py
+```
+
+Stuur daarna een `opslaanAanvraagNatuurlijkPersoon` uit het SoapUI-project naar
+`http://localhost:8080/services/WebformulierenVerwerker` en kijk in `stub_7771.log` wat de integratie
+werkelijk naar CAReL stuurde. Herhaal met een kapot bericht — verminkte structuur, leeg verplicht veld —
+en controleer of de foutmelding **leesbaar** terugkomt en niet als regelnummer.
+
+Let op: `docker compose restart` laadt je wijziging niet; de configuratie zit in de image gebakken.
+Gebruik `up -d --build --force-recreate`, of `--watch` voor hot-reload.
+
+Deze stap vereist een draaiende Docker-daemon en kan dus niet overal. Kun je het niet draaien, **zeg dat
+dan** in de pull request in plaats van het stilzwijgend over te slaan. Het loont: bij het schrijven van
+deze sectie kwamen hier twee fouten boven die de losse XSLT-test niet had gevonden — een pad dat meer dan
+een knoop opleverde, en foutmeldingen waarvan de tekst de aanroeper nooit bereikte.
+
+**Test met meer dan een bericht.** Beide fouten hierboven bleven verborgen omdat de eerste test toevallig
+een payload gebruikte waarin het probleem niet voorkwam.
 
 ### 7. Staan er geen persoonsgegevens in de diff?
 
