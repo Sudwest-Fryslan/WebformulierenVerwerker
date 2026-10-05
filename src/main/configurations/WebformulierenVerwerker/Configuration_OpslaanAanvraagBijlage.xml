@@ -9,7 +9,7 @@
         <Pipeline>
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS"/>
-                <Exit name="EXCEPTION" state="ERROR"/>
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
             
             <Locker objectId="opslaanAanvraagBijlage" numRetries="3" retryDelay="5000"/>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+  xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310"
+  xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+    <ZKN:zakLk01>
+      <ZKN:stuurgegevens>
+        <StUF:berichtcode>Lk01</StUF:berichtcode>
+        <StUF:zender>
+          <StUF:organisatie>1900</StUF:organisatie>
+          <StUF:applicatie>WebformulierenKoppeling</StUF:applicatie>
+          <StUF:gebruiker>SYSTEM</StUF:gebruiker>
+        </StUF:zender>
+        <StUF:ontvanger>
+          <StUF:organisatie>1900</StUF:organisatie>
+          <StUF:applicatie>CAREL</StUF:applicatie>
+        </StUF:ontvanger>
+        <StUF:referentienummer>1900-ZAAK-00000123</StUF:referentienummer>
+        <StUF:tijdstipBericht>2026012909350000</StUF:tijdstipBericht>
+        <StUF:entiteittype>ZAK</StUF:entiteittype>
+      </ZKN:stuurgegevens>
+
+      <ZKN:parameters>
+        <StUF:mutatiesoort>T</StUF:mutatiesoort>
+        <StUF:indicatorOvername>V</StUF:indicatorOvername>
+      </ZKN:parameters>
+
+      <ZKN:object
+        StUF:sleutelVerzendend="1900-ZAAK-00000123"
+        StUF:entiteittype="ZAK"
+        StUF:verwerkingssoort="T">
+
+        <!-- Zaakidentificatie zoals door zaaksysteem uitgegeven -->
+        <ZKN:identificatie>1900-ZAAK-00000123</ZKN:identificatie>
+
+        <ZKN:omschrijving>Aanvraag leerlingenvervoer</ZKN:omschrijving>
+        <ZKN:startdatum>20260129</ZKN:startdatum>
+        <ZKN:registratiedatum>20260129</ZKN:registratiedatum>
+
+        <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
+          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="T">
+            <ZKN:code>LV-001</ZKN:code>
+            <ZKN:omschrijving>Leerlingenvervoer aanvraag</ZKN:omschrijving>
+            <ZKN:ingangsdatumObject xsi:nil="true" StUF:noValue="geenWaarde"/>
+          </ZKN:gerelateerde>
+        </ZKN:isVan>
+
+        <!-- Rol volgens standaard: kind/leerling -->
+        <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
+          <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
+              <BG:inp.bsn>111222333</BG:inp.bsn>
+              <BG:geslachtsnaam>TestAchternaam</BG:geslachtsnaam>
+              <BG:voorvoegselGeslachtsnaam>testtussenvoegs</BG:voorvoegselGeslachtsnaam>
+              <BG:voornamen>testvoornaam</BG:voornamen>
+              <BG:geslachtsaanduiding>V</BG:geslachtsaanduiding>
+              <BG:geboortedatum StUF:indOnvolledigeDatum="V">20161201</BG:geboortedatum>
+            </ZKN:natuurlijkPersoon>
+          </ZKN:gerelateerde>
+          <ZKN:omschrijving>Leerling</ZKN:omschrijving>
+        </ZKN:heeftBetrekkingOp>
+
+        <!-- Rol volgens standaard: aanvrager (ouder/verzorger) -->
+        <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI" StUF:verwerkingssoort="T">
+          <ZKN:gerelateerde>
+            <ZKN:natuurlijkPersoon StUF:entiteittype="NPS" StUF:verwerkingssoort="T">
+              <BG:inp.bsn>444555666</BG:inp.bsn>
+              <BG:geslachtsnaam>Jansen</BG:geslachtsnaam>
+              <BG:voorletters>E.Y.</BG:voorletters>
+              <BG:voornamen>de Solution Innovator (ontwikkelaar) Yeb</BG:voornamen>
+              <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
+              <BG:geboortedatum StUF:indOnvolledigeDatum="V">19770101</BG:geboortedatum>
+            </ZKN:natuurlijkPersoon>
+          </ZKN:gerelateerde>
+        </ZKN:heeftAlsInitiator>
+
+        <!-- Formulierantwoorden (alles wat niet netjes in vaste zaakvelden past) -->
+        <StUF:extraElementen>
+
+          <!-- Samenvatting -->
+          <StUF:extraElement naam="samenvatting_datum">29-01-2026</StUF:extraElement>
+          <StUF:extraElement naam="samenvatting_tijd">09:35 uur</StUF:extraElement>
+
+          <!-- Aanvraagcheck -->
+          <StUF:extraElement naam="aanvraagcheck_woont_in_swf_op_schooldagen">Ja</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_dichtstbijzijnde_toegankelijke_school">Ja</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_welk_onderwijs">Regulier Basis Onderwijs</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_enkele_reisafstand_meer_dan_6_km">Ja</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_kan_zelfstandig_reizen">Ja</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_hoe_gaat_leerling_naar_school">Met de fiets. (Dan is de fietsvergoeding € 0,09 per kilometer van huis naar school en terug).</StUF:extraElement>
+          <StUF:extraElement naam="aanvraagcheck_wil_leerlingenvervoer_aanvragen">Ja</StUF:extraElement>
+
+          <!-- Aanvraag -->
+          <StUF:extraElement naam="aanvraag_schooljaar">2025 - 2026</StUF:extraElement>
+          <StUF:extraElement naam="aanvraag_vanaf_datum_gebruik_leerlingenvervoer">29-01-2026</StUF:extraElement>
+          <StUF:extraElement naam="aanvraag_namens_burger_of_organisatie">Burger</StUF:extraElement>
+
+          <!-- Gegevens aanvrager -->
+          <StUF:extraElement naam="aanvrager_bsn">444555666</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_voornamen">E.Y.</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_tussenvoegsel"></StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_achternaam">Jansen</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_geboortedatum">01-01-1977</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_adres">Kerkstraat 12</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_postcode">8601AB</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_plaats">Sneek</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_telefoonnummer">0612345678</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
+          <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
+
+          <!-- IBAN gegevens -->
+          <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
+          <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
+          <StUF:extraElement naam="iban_naam_rekeninghouder">wedfew</StUF:extraElement>
+
+          <!-- Gegevens leerling -->
+          <StUF:extraElement naam="leerling_bsn">111222333</StUF:extraElement>
+          <StUF:extraElement naam="leerling_roepnaam">testvoornaam</StUF:extraElement>
+          <StUF:extraElement naam="leerling_tussenvoegsel">testtussenvoegs</StUF:extraElement>
+          <StUF:extraElement naam="leerling_achternaam">TestAchternaam</StUF:extraElement>
+          <StUF:extraElement naam="leerling_geslacht">Meisje</StUF:extraElement>
+          <StUF:extraElement naam="leerling_geboortedatum">1-12-2016</StUF:extraElement>
+          <StUF:extraElement naam="leerling_adres_gelijk_aan_aanvrager">Ja</StUF:extraElement>
+
+          <!-- School -->
+          <StUF:extraElement naam="school_naam">Testschool</StUF:extraElement>
+          <StUF:extraElement naam="school_adres">Marktstraat 15</StUF:extraElement>
+          <StUF:extraElement naam="school_postcode">8601CR</StUF:extraElement>
+          <StUF:extraElement naam="school_plaats">Sneek</StUF:extraElement>
+
+          <!-- Eigen bijdrage -->
+          <StUF:extraElement naam="eigenbijdrage_verzamelinkomen_2023">Minder dan € 31.500</StUF:extraElement>
+          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">Checklist beoordeling externe inhuur zzp (2).pdf</StUF:extraElement>
+
+          <!-- Soort vervoer -->
+          <StUF:extraElement naam="vervoer_type">Fiets</StUF:extraElement>
+          <StUF:extraElement naam="vervoer_upload_routeplanner">Aanvraagformulier gehandicaptenparkeerkaart (GPK) (1).pdf</StUF:extraElement>
+          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">Beschadigde container.pdf</StUF:extraElement>
+          <StUF:extraElement naam="vervoer_vanaf_datum_nodig">29-01-2026</StUF:extraElement>
+
+          <!-- Dagen vervoer -->
+          <StUF:extraElement naam="vervoer_maandag"></StUF:extraElement>
+          <StUF:extraElement naam="vervoer_dinsdag"></StUF:extraElement>
+          <StUF:extraElement naam="vervoer_woensdag"></StUF:extraElement>
+          <StUF:extraElement naam="vervoer_donderdag"></StUF:extraElement>
+          <StUF:extraElement naam="vervoer_vrijdag">Ochtend, Middag</StUF:extraElement>
+
+          <!-- Toelichting -->
+          <StUF:extraElement naam="toelichting">bla bla</StUF:extraElement>
+        </StUF:extraElementen>
+      </ZKN:object>
+    </ZKN:zakLk01>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

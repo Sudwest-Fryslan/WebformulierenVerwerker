@@ -9,7 +9,7 @@
         <Pipeline>
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS"/>
-                <Exit name="EXCEPTION" state="ERROR"/>
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
             
             <Locker objectId="opslaanAanvraagNatuurlijkPersoon" numRetries="3" retryDelay="5000"/>
@@ -20,10 +20,15 @@
             </XsltPipe>
             
             <Base64Pipe name="DecodeEncodedXML" direction="DECODE" storeResultInSessionKey="decodedxml">
-                <Forward name="success" path="GenerateRandomUUID1"/>
+                <Forward name="success" path="CheckAtabixStylesheetVersion"/>
                 <Forward name="exception" path="isErrorXML"/>
             </Base64Pipe>
-            
+
+            <XsltPipe name="CheckAtabixStylesheetVersion" styleSheetName="xsl/OpslaanAanvraagNatuurlijkPersoon/CheckAtabixStylesheetVersion.xsl" getInputFromSessionKey="decodedxml">
+                <Forward name="success" path="GenerateRandomUUID1"/>
+                <Forward name="exception" path="GenerateRandomUUID1"/>
+            </XsltPipe>
+
             <UUIDGeneratorPipe name="GenerateRandomUUID1"
                                storeResultInSessionKey="GeneratedRandomUUID1">
                 <Forward name="success" path="Transform_GenereerZaakIdentificatie_Di02"/>

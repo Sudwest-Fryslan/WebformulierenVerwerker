@@ -9,21 +9,21 @@
     <xsl:param name="corsaErrorMessage" as="xs:string" />
 
     <xsl:template match="/">
-        <tns:Fault>
-            <tns:faultcode>SOAP-ENV:Server</tns:faultcode>
-            <tns:faultstring>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>
                 <xsl:value-of select="$corsaErrorMessage" />
-            </tns:faultstring>
-            <tns:detail>
-                Something wrent wrong. See faultstring for information or try again later.
+            </faultstring>
+            <detail>
+                Something went wrong. See faultstring for information or try again later.
                 <!-- Left out to prevent data exposure. -->
-                <!-- <tns:Message>
+                <!-- <Message>
                     <xsl:value-of
                         select="
                     concat(
                         concat(
                             concat(
-                                concat(codepoints-to-string(10),' Soap Action: '), 
+                                concat(codepoints-to-string(10),' Soap Action: '),
                             $soapAction),
                             concat(
                                 concat(codepoints-to-string(10),' Request: '),
@@ -31,8 +31,8 @@
                             concat(
                                 concat(codepoints-to-string(10),' Response: '),
                             $corsaResponse))" />
-                </tns:Message> -->
-            </tns:detail>
-        </tns:Fault>
+                </Message> -->
+            </detail>
+        </SOAP-ENV:Fault>
     </xsl:template>
 </xsl:stylesheet>

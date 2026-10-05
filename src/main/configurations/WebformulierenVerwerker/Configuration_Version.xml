@@ -10,7 +10,7 @@
 
             <Exits>
                 <Exit name="SUCCESS" state="SUCCESS" />
-                <Exit name="EXCEPTION" state="ERROR" />
+                <Exit name="EXCEPTION" state="ERROR" code="500"/>
             </Exits>
 
             <XsltPipe name="ExtractVersion" styleSheetName="xsl/Version/Response2Version.xsl">

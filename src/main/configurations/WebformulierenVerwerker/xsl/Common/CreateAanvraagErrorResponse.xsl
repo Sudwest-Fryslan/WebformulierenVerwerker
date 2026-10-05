@@ -10,22 +10,22 @@
     <xsl:param name="errorInfo" as="xs:string" />
 
     <xsl:template match="/">
-        <tns:Fault>
-            <tns:faultcode>SOAP-ENV:Server</tns:faultcode>
-            <tns:faultstring>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>
                 <xsl:value-of select="$aanvraagErrorMessage" />
-            </tns:faultstring>
-            <tns:detail>
-                Something wrent wrong. See faultstring for information or try again later.
-                <tns:Message><xsl:value-of select="$errorInfo" /></tns:Message>
+            </faultstring>
+            <detail>
+                Something went wrong. See faultstring for information or try again later.
+                <Message><xsl:value-of select="$errorInfo" /></Message>
                 <!-- Left out to prevent data exposure. -->
-                <!-- <tns:Message>
+                <!-- <Message>
                     <xsl:value-of
                         select="
                     concat(
                         concat(
                             concat(
-                                concat(codepoints-to-string(10),' Soap Action: '), 
+                                concat(codepoints-to-string(10),' Soap Action: '),
                             $soapAction),
                             concat(
                                 concat(codepoints-to-string(10),' Request: '),
@@ -33,8 +33,8 @@
                             concat(
                                 concat(codepoints-to-string(10),' Response: '),
                             $aanvraagResponse))" />
-                </tns:Message> -->
-            </tns:detail>
-        </tns:Fault>
+                </Message> -->
+            </detail>
+        </SOAP-ENV:Fault>
     </xsl:template>
 </xsl:stylesheet>
