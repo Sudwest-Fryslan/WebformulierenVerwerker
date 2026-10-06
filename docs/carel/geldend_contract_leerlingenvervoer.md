@@ -12,9 +12,9 @@ contract.
 | 1.1 | 12 jun 2026 | Leerling als eigen rol (`heeftBetrekkingOp`), personen met `verwerkingssoort="I"` | Leverancier CAReL |
 | 1.2 | 24 jul 2026 | Aanvrager: alleen BSN. CAReL haalt de overige gegevens zelf op via de BRP | Leverancier CAReL |
 | 1.3 | 20 aug 2026 | Keuzelijsten: onderwijstype, namens burger/organisatie, relatie tot leerling, geslacht, vervoertype, IBAN-type | Functioneel beheerder CAReL |
-| 1.4 | 1–2 sep 2026 | Keuzelijsten: kan zelfstandig reizen, hoe gaat de leerling naar school | Functioneel beheerder CAReL |
-| 1.5 | 3–4 sep 2026 | Alle adressen gesplitst. Adres leerling altijd mee. Vervoer per dag als heen- en terugtijd. Organisatie: naam, contactpersoon en telefoon | Leverancier CAReL, functioneel beheerder CAReL, bouwer webformulier |
-| 1.6 | 10 sep 2026 | Veldnamen adressen volgens de BAG. Geslacht als code M/V/O. Zaakniveau vastgelegd | Opdrachtgever integratie |
+| 1.4 | 1 sep 2026 | Veldenoverzicht `velden_carel_met_types.md` gedeeld, met alle veldnamen. Keuzelijsten: kan zelfstandig reizen, hoe gaat de leerling naar school | Leverancier CAReL, functioneel beheerder CAReL |
+| 1.5 | 3–4 sep 2026 | Alle adressen gesplitst. Adres leerling altijd mee. Vervoer per dag als heen- en terugtijd (`vervoer_<dag>_heentijd` / `_terugtijd`). Organisatie: naam, contactpersoon en telefoon | Leverancier CAReL, functioneel beheerder CAReL, bouwer webformulier |
+| 1.6 | 10 sep 2026 | Schooladres gesplitst met BAG-veldnamen, naar aanleiding van de afspraak van 3 sep 2026 en de opmerkingen van de leverancier CAReL ("alle adressen los"): `school_adres` wordt `school_openbare_ruimte_naam`, `school_huisnummer`, `school_huisletter`, `school_huisnummertoevoeging`; `school_plaats` wordt `school_woonplaats`. Geslacht als code M/V/O. Zaakniveau vastgelegd | Opdrachtgever integratie |
 
 **Rollen:** leverancier CAReL (Eljakim), functioneel beheerder CAReL (Doorstroompunt), bouwer webformulier
 (TriplEforms/Atabix, SWF), opdrachtgever integratie (IDT SWF), integratiepartij (WeAreFrank).
