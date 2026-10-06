@@ -2,10 +2,9 @@ Test.properties
 /.idea/
 /target/
 /data/
+/.github/semantic-release/node_modules/
 *.iml
 
 # .env should be made in the environment.
 # It is an additional file to StageSpecifics_LOC to keep it more generic.
 .env
-
-FrankConfig.xsd
