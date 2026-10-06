@@ -1,5 +1,63 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [6.23.0](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.22.2...v6.23.0) (2026-10-06)
+
+### 🍕 Features
+
+* beperk heeftAlsInitiator tot BSN, ruim overbodige extraElementen op ([4594f6b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4594f6bac9c7a87935d898bbdd3ba54fbc889e6e))
+* breid heeftAlsInitiator uit met volledige aanvragergegevens ([8cae5b8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/8cae5b8826b2c2cdb11594165da36b52f7a11e3b)), closes [#7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/7)
+* dagdeel-structuur, eigenbijdrage-hernoeming en verplichte-veldvalidatie in CAReL-mapping ([0b8751a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/0b8751a953d8dfc6005910e4aa79512f140b1044))
+* dagen vervoer naar heen-/terugtijdstip, leerlingadres zonder eigen Ja/Nee-keuze ([dcc8a0c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dcc8a0c96266637a39b1c2917d913abfffd5906e))
+* geslachtsmapping via map-gender, onbekende waarde stopt de verwerking ([688ae32](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/688ae32ccea7f079e720f21fd4a0075447bd7d47)), closes [#108](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/108)
+* leerlingadres altijd sturen + organisatievelden in CAReL-mapping ([c1ca033](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c1ca0330cb3532fd9413186735fb87929176159e))
+* voeg heeftBetrekkingOp (leerling) toe aan CAReL-mapping ([56509eb](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/56509eb3ec8f7032774fdd9e87d6483dda0a069a))
+
+### 🐛 Bug Fixes
+
+* foutmeldingen bereiken de aanroeper, en trim werkt op meerdere knopen ([11684a8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/11684a8cf22364710344b058e514f02bb5fa4136))
+* gebruik overal het vaste SWF/Logius-testBSN als aanvrager ([bbeae0f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/bbeae0f3d94c923a815bcfa7cbe5222781d35a9e))
+* harde fout bij onverwachte structuur in de aanvraag-XML ([96d5a2c](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/96d5a2c9ce3f51df0c605945b54fecf5c4672aa9))
+* lees vervoer-tijden en leerlingadres uit de echte formulierstructuur ([a732d28](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a732d2892b86b617f136dbaf1d045722b89056b6))
+* mapping leest de echte formulierstructuur, trimt waarden, volgt het contract ([e69d748](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e69d7483b1939b48c4559573fcf9cba198ce6146))
+* verwerkingssoort zaaktyperelatie conform StUF-standaard, bronspelling Kodison ([6bc9a69](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/6bc9a69ccbb4a9a940e84c4ed1b28d99623b8c7c))
+* WSDL opslaanInk-operatie, dode legacy-operaties, foutafhandeling en credential-typo ([c744aca](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c744acad5f77f4184c1fac2d7204d42781a16f37))
+* WSDL-contract, foutafhandeling en CAReL-mapping ([92c9191](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/92c9191105d2664b4dc04604eab8fceb053b8594))
+
+### 📝 Documentation
+
+* CAReL-scopedocument, meerwerk-specificatie en opschoning ([28c0eba](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/28c0eba4e3bb8a75a22a2f7cb55c43c6acdcd24f))
+* controles vastgelegd die je vóór een pull request draait ([4697dd3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4697dd3d86b7caee76dea175f0066383ae55f66a))
+* correctie framing — voorstellen i.p.v. 'geïmplementeerd/bevestigd' ([d4a2148](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d4a21489f4f760e3053f6dcd3ddbbe228896c43e))
+* corrigeer TODO - Corsa-tests zitten al in nieuw SoapUI-project ([37edbcd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/37edbcd5f19e5bf2e0dcaf6fe4f90ca3c147be47))
+* dagen vervoer omgezet naar heen-/terugtijdstip per dag (conform Lorenzo) ([af2709f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/af2709fbe868aead9ed47fb1a6867f1d0a10993b))
+* dagen-vervoer-structuur consolideren als vastgesteld ([3ac5b71](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3ac5b7170cb542c12a9cba6c8de3ccd96deae761))
+* expliciteren dat afwijkende Atabix-veldnamen bij dagen vervoer opgelost worden in de integratie ([a734214](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/a7342148ca677a404c6c59694f9f7f15fd8f8207))
+* lokale stubs opgenomen en de draai-controle uitgebreid ([4e075dd](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/4e075dd2548416352a4887c078984e105cb13cec))
+* releaseproces aangevuld met de deploy- en terugvalafspraken ([3078756](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3078756ca799f26fc451e132669f9feb822e8b2d))
+* schooladres BAG-conform in contract, bronveldnamen en aandachtspunten ([25ead9b](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/25ead9bdbd35d6cd9b99265b6fba8d3ac84d3b9c))
+* testladder, releasestraat en omgevingsbegrippen vastgelegd ([d231ab8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/d231ab8c556fecfe2252d0dbc760980fd7378c36))
+* veldencontract afronden met reactie Atabix-formulierbeheerder (3 sep 2026) ([cb3b485](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cb3b485ecc24db7ca793ad74f099e67306946909))
+* verwerk reactie Lorenzo (Eljakim) op dagen vervoer, leerlingadres en adressplitsing ([60ce964](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/60ce9640d3d5b3c4ce93e91038365fb34aa9c0f1))
+* voeg CAReL scopedocument en meerwerk-specificatie toe ([3ab00a3](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/3ab00a39712cc3aa4602bb6d2fadd7519d1bff3d))
+* voeg TODO-lijst toe voor opschoning en structuur ([c36c1bf](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/c36c1bfe8f4a75a6d9865dbaeeb50e295511706a))
+* werkwijze voor integraties vastleggen + reviewproces WeAreFrank ([ea36ad8](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ea36ad8cd0d274bb157c010ef845488213f9b790))
+* WSDL-structuurfix (poging + rollback) en bijgewerkt overzicht ([dd1e088](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/dd1e088878abd93e584b54a0ac2a695256db9a2c))
+* XSLT-commentaar verwijst naar het contract in de repo ([e16645e](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/e16645ebb5558dd2c3fcc9162d82dbfda44aceb9))
+* zaakniveau toegevoegd aan het veldencontract ([66d91e1](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/66d91e1b93562ffc7a0246ec56748d3c93fd2746))
+
+### ✅ Tests
+
+* CAReL-testberichten gelijkgetrokken met het veldencontract ([18dfc69](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/18dfc69ae2f259e4432c437b0430c605dafdc142))
+* e2e-teststap toevoegen voor nieuwe dagdeel-velden in opslaanAanvraagNatuurlijkPersoon ([2fbda4a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/2fbda4ab7ee970a80c83a508d65e12061aa27cb6))
+* handmatig CAReL-testbericht + docs bijgewerkt met Eljakim-terugkoppeling ([7404c59](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/7404c59da71ac28d599eb04d650cd2ae5fa73ae9)), closes [#7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/7) [#7](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/7) [#6](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/6)
+* opgeschoond SoapUI-testproject voor CAReL/Corsa-koppeling ([394a86d](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/394a86d24f0bf463cb16f4c18bce39166c03284e))
+* SoapUI-testbericht bijwerken naar veldencontract van 1 sep 2026 ([ec3cd5a](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/ec3cd5a4a98834025734d4d185f1dc0ecf0da888))
+* voeg 5 CAReL-voorbeeldscenario's toe aan Carel Endpoint TestCase ([cf697f5](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/cf697f5c46c1bca00ff1252b7afbe8fbe038bb75)), closes [#109](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/issues/109)
+
+### 🔁 Continuous Integration
+
+* refactor semantic-release dependency management ([140237f](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/commit/140237fd6a9c4ad5f76236464afa3a0bd3e69b4a))
+
 ## [6.22.2](https://github.com/Sudwest-Fryslan/WebformulierenVerwerker/compare/v6.22.1...v6.22.2) (2026-05-22)
 
 ### 🐛 Bug Fixes
