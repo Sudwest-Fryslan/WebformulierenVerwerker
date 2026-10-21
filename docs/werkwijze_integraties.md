@@ -141,9 +141,9 @@ Integratie én SoapUI draaien op de VDI (`docker compose -f compose.frank.dev.ya
 Vergeet de CAReL-URL in `DeploymentSpecifics.properties` niet om te zetten van de mock naar
 CAReL-acceptatie. Ladybug (in de Frank!Console) laat zien wat er werkelijk de deur uit ging.
 
-### Trap 3 — Heins aangepaste formulier door dezelfde integratie
+### Trap 3 — Het aangepaste formulier van de formulierbouwer door dezelfde integratie
 
-Hein past het webformulier aan, wij krijgen de resulterende aanvraag-XML en spelen die via SoapUI door de
+De bouwer van het webformulier past het formulier aan, wij krijgen de resulterende aanvraag-XML en spelen die via SoapUI door de
 integratie op de VDI. Nieuwe onbekende: **de echte invoer**.
 
 Dit is de trap die in juli en september de meeste fouten opleverde — hernoemde secties, ontbrekende
