@@ -42,16 +42,15 @@ The description above does not describe every pipe in the pipeline, but it is sa
 
 ## Werkwijze bij koppelingen
 
-Voor het bouwen en wijzigen van koppelingen geldt een vaste volgorde: **contract → testbericht →
-bronsysteem → integratie**. Het veldencontract is de basis; de integratie is de laatste plek waar we
-repareren, niet de eerste. Gaat er iets mis, dan gaan we terug de keten in naar de stap waar de
-aanpassing thuishoort. Het proces is iteratief: contract en testberichten wachten niet op het
-bronsysteem.
+Voor het bouwen en wijzigen van koppelingen geldt een vaste volgorde: **contract → testberichten →
+integratie groen → acceptatie → pas dan het bronsysteem → ketentest → productie**. Het veldencontract is
+de basis; zolang het niet definitief is, hoeft het bronsysteem niets te doen. Gaat er iets mis, dan gaan
+we terug de keten in naar de stap waar de aanpassing thuishoort.
 
 Beproeven gebeurt in vier trappen, elk met precies één nieuwe onbekende: SoapUI rechtstreeks naar
-CAReL-acceptatie, dan via de integratie op de VDI-ontwikkelmachine, dan met het aangepaste webformulier
-van Atabix, en pas daarna de hele keten op de SWF-acceptatieomgeving. Productie volgt alleen als
-acceptatie volledig goed gaat.
+CAReL-acceptatie, dan via de integratie op de VDI-ontwikkelmachine, dan via de integratie op de
+SWF-acceptatieomgeving, en pas daarna het aangepaste webformulier door de hele keten. Formulier en
+integratie gaan samen naar productie, alleen als acceptatie volledig goed gaat.
 
 Voordat een pull request opengaat draai je acht controles: mapping op echte formulierdata, XSLT's
 compileren, XML-welgevormdheid, contract en testberichten gelijk, de JAR-stap, de Docker-build, geen
@@ -59,7 +58,7 @@ persoonsgegevens in de diff, en of de commit-types de bedoelde versie opleveren.
 in het werkwijzedocument.
 
 Zie [`docs/werkwijze_integraties.md`](docs/werkwijze_integraties.md) voor de volledige beschrijving:
-de vier stappen, de testladder, de controles vóór een pull request, de releasestraat, de naamgevingsregel
+de stappen, de testladder, de controles vóór een pull request, de releasestraat, de naamgevingsregel
 (domeinstandaard leidend, voor adressen de BAG) en de versienummering.
 
 ## Reviewproces

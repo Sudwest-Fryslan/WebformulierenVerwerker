@@ -385,7 +385,7 @@ alle contractvelden nagelopen):
    formulier levert ze niet: de sectie waar de mapping ze zocht (`fleerlingenvervoerv3eigenbijdrage`)
    bestaat niet in de capture. Wel aanwezig is `belastingjaar`, op twee plekken en met twee verschillende
    waarden (2017 en 2024) — onduidelijk wat daarvan bedoeld is. **Vraag aan de formulierbeheerder:** in
-   welke sectie en onder welke namen komen de Ja/Nee-vraag en de upload straks binnen? Ketenstap 3.
+   welke sectie en onder welke namen komen de Ja/Nee-vraag en de upload straks binnen? Ketenstap 9 (bronsysteem).
 2. ~~**Leerlinggegevens staan dubbel in het bericht.**~~ — **besloten en doorgevoerd (10 sep. 2026).**
    De leerling ging als volledig NPS-object mee in `heeftBetrekkingOp` (sectie 1) én nog eens als zes
    losse `leerling_*`-extraElementen. Die zes zijn verwijderd uit de mapping en uit alle testberichten:

@@ -20,22 +20,46 @@ mailwisseling. Voor de CAReL-koppeling is dat `docs/carel/veldencontract_leerlin
   ergens anders in het bericht staat, is een reden om het juist níét nog eens los mee te sturen. Wat niet
   in het contract staat, gaat niet mee — hoogstens wordt het een aandachtspunt.
 
-## De vier stappen
+## De stappen
 
-**1. Contract bepalen.** Leg de veldnamen en hun betekenis vast in het contractdocument. Dit gebeurt
-samen met de ontvangende partij (voor CAReL: de leverancier), want zij moeten er iets mee kunnen.
+Eerst de afspraak, dan een integratie die aantoonbaar werkt, en pas daarna het bronsysteem. Zo bouwt het
+bronsysteem één keer, tegen een afspraak die al bewezen werkt.
 
-**2. Testbericht maken.** Zet die velden in een echt voorbeeldbericht in het SoapUI-project
-(`e2e/webformulierenverwerker-soapui-project.xml`) en stuur dat naar de ontvangende partij. Zonder
-voorbeeldbericht is het contract niet toetsbaar en kan de ontvanger er niets mee — een veld dat alleen
-beschreven staat, bestaat in de praktijk nog niet.
+**1. Contract helder krijgen.** Leg de veldnamen, hun betekenis en wat verplicht is vast in het
+contractdocument. Dit gebeurt samen met de ontvangende partij (voor CAReL: de leverancier), want zij
+moeten er iets mee kunnen. Leg daarbij ook vast welke bronvelden het bronsysteem aanlevert, zodat de
+integratie daartegen gebouwd kan worden.
 
-**3. Bronsysteem laat aanleveren.** Pas daarna vraag je het bronsysteem (voor CAReL: het Atabix-
-webformulier) om de input zo goed mogelijk conform het contract te leveren. Moet het formulier daarvoor
-aangepast worden, dan is dat zo — dat is een normale uitkomst van stap 1 en 2, geen probleem.
+**2. Contract definitief maken.** Via een pull request op het contract, met een nieuwe regel in de
+versiegeschiedenis. Pas dan ligt de afspraak vast.
 
-**4. Integratie bouwen.** De mapping (XSLT) vertaalt wat stap 3 levert naar wat stap 1 en 2 vastleggen.
-Dit is de laatste stap, niet de eerste.
+**3. Testberichten bijwerken.** Zet de velden in echte voorbeeldberichten in het SoapUI-project
+(`e2e/webformulierenverwerker-soapui-project.xml`): zowel de berichten naar de ontvangende partij als de
+aanvragen zoals het bronsysteem ze volgens het contract gaat aanleveren. Zonder voorbeeldbericht is het
+contract niet toetsbaar — een veld dat alleen beschreven staat, bestaat in de praktijk nog niet.
+
+**4. Integratie aanpassen.** De mapping (XSLT) vertaalt de aanvraag naar het bericht dat het contract
+vastlegt.
+
+**5. Testen tot alles op groen staat.** Testberichten door de integratie naar de acceptatieomgeving van de
+ontvanger (testladder trap 1 en 2). De ontvangende partij bevestigt per zaak dat alles goed binnenkomt.
+
+**6. Review en release.** WeAreFrank keurt de pull request met de aangepaste integratie goed en er komt
+een nieuwe versie (zie de releasestraat hieronder).
+
+**7. Uitrollen naar SWF-acceptatie.** Die versie wordt op onze acceptatieomgeving gezet.
+
+**8. Testen op SWF-acceptatie.** Testberichten naar de integratie op acceptatie sturen en controleren dat
+ze goed bij de ontvanger aankomen (trap 3).
+
+**9. Pas dan het bronsysteem laten aanpassen.** Nu vraag je het bronsysteem (voor CAReL: het Atabix-
+webformulier) om precies volgens het contract aan te leveren. Daarvoor hoeft niemand eerder iets te
+bouwen: het formulier wordt pas aangepast als de rest van de keten aantoonbaar werkt.
+
+**10. Ketentest met het echte formulier.** Een aanvraag uit het aangepaste testformulier gaat door de hele
+keten tot bij de ontvanger (trap 4).
+
+**11. Productie.** Formulier en integratie gaan samen live.
 
 ## Bij een fout: terug de keten in
 
@@ -44,10 +68,10 @@ automatisch een integratieprobleem:
 
 | Symptoom | Hoort thuis bij |
 |---|---|
-| Veld ontbreekt of heet anders dan afgesproken | stap 1, contract |
-| Ontvanger kan het veld niet uitproberen | stap 2, testbericht |
-| Bronsysteem levert het gegeven niet (of samengevoegd) | stap 3, formulier |
+| Veld ontbreekt of heet anders dan afgesproken | stap 1–2, contract |
+| Ontvanger kan het veld niet uitproberen | stap 3, testbericht |
 | Bron en contract kloppen, vertaling niet | stap 4, integratie |
+| Bronsysteem levert het gegeven niet (of samengevoegd) | stap 9, formulier |
 
 De integratie is de laatste plek waar je repareert, niet de eerste. Anders compenseert de mapping
 aannames die verderop in de keten thuishoren, en verdwijnt de afspraak uit het zicht.
@@ -65,7 +89,8 @@ binnenkomt. Die verdwijnen niet in de mapping en ook niet in iemands hoofd — z
    (formulierbeheerder, leverancier).
 3. **Contract bijstellen** — komt er een besluit uit, dan gaat dat eerst het contract in, niet meteen de
    code.
-4. **Keten opnieuw** — daarna volgen testbericht, bronsysteem en integratie, in die volgorde.
+4. **Keten opnieuw** — daarna volgen testberichten, integratie en pas dan het bronsysteem, in die
+   volgorde.
 
 Zo blijft de afspraak sturend en wordt de integratie geen verzamelplaats van uitzonderingen. Een
 afwijking die om een goede reden blijft bestaan, hoort thuis in het contract als expliciete keuze — niet
@@ -74,9 +99,10 @@ opvangen, zodat het bouwen doorloopt; dat is een overbrugging, geen eindstation.
 
 ## Het proces is iteratief
 
-Stap 1 en 2 wachten niet op stap 3. We stellen het contract vast en sturen testberichten; blijkt daaruit
-dat het webformulier iets moet toevoegen of splitsen, dan volgt die aanpassing daarna. Zo stuurt de
-afspraak het bouwwerk aan, in plaats van andersom.
+Contract, testberichten en integratie wachten niet op het bronsysteem. We stellen het contract vast,
+sturen testberichten en maken de integratie groen; blijkt daaruit dat het webformulier iets moet toevoegen
+of splitsen, dan volgt die aanpassing daarna. Omgekeerd: zolang het contract niet definitief is, hoeft het
+bronsysteem niets te doen. Zo stuurt de afspraak het bouwwerk aan, in plaats van andersom.
 
 ## Naamgeving: volg de standaard van het domein
 
@@ -141,30 +167,33 @@ Integratie én SoapUI draaien op de VDI (`docker compose -f compose.frank.dev.ya
 Vergeet de CAReL-URL in `DeploymentSpecifics.properties` niet om te zetten van de mock naar
 CAReL-acceptatie. Ladybug (in de Frank!Console) laat zien wat er werkelijk de deur uit ging.
 
-### Trap 3 — Het aangepaste formulier van de formulierbouwer door dezelfde integratie
+### Trap 3 — SoapUI naar de integratie op SWF-acceptatie
 
-De bouwer van het webformulier past het formulier aan, wij krijgen de resulterende aanvraag-XML en spelen die via SoapUI door de
-integratie op de VDI. Nieuwe onbekende: **de echte invoer**.
+Kan pas ná de releasestraat hieronder, want hiervoor moet de nieuwe versie gedeployed zijn. Dezelfde
+testberichten, maar nu naar de integratie op SWF-acceptatie, die doorstuurt naar CAReL-acceptatie. Nieuwe
+onbekenden: de echte omgeving, echte netwerkpaden, echte credentials.
 
-Dit is de trap die in juli en september de meeste fouten opleverde — hernoemde secties, ontbrekende
-velden, een afwijkende structuur. Zie ook de mapping-controles: een aanvraag met een onverwachte
-structuur hoort een leesbare fout op te leveren, geen leeg bericht.
+### Trap 4 — het aangepaste formulier door de hele keten
 
-### Trap 4 — de hele keten op SWF-acceptatie
+Pas nu wordt het webformulier aangepast (stap 9). Daarna de hele keten:
+**Kodison-acceptatie → integratie op SWF-acceptatie → CAReL-acceptatie**. Nieuwe onbekende: **de echte
+invoer**.
 
-Kan pas ná de releasestraat hieronder, want hiervoor moet de nieuwe versie gedeployed zijn:
-**Kodison-acceptatie → integratie op SWF-acceptatie → CAReL-acceptatie**. Nieuwe onbekenden: de echte
-omgeving, echte netwerkpaden, echte credentials.
+Dit is de invoer die in juli en september de meeste fouten opleverde — hernoemde secties, ontbrekende
+velden, een afwijkende structuur. Gaat het mis, speel de aanvraag-XML uit het formulier dan eerst via
+SoapUI door de integratie, zodat je ziet of het aan het formulier of aan de mapping ligt. Een aanvraag met
+een onverwachte structuur hoort een leesbare fout op te leveren, geen leeg bericht.
 
 ### Daarna pas productie
 
-Alleen als trap 4 volledig goed gaat. Zelfde route, zelfde image, andere omgeving.
+Alleen als trap 4 volledig goed gaat. Formulier en integratie gaan samen live: zelfde route, zelfde
+image, andere omgeving.
 
 ---
 
 ## Voordat je een pull request opent
 
-Trap 1 tot en met 3 tonen aan dat de koppeling **functioneel** klopt. Deze controles tonen aan dat de
+Trap 1 en 2 tonen aan dat de koppeling **functioneel** klopt. Deze controles tonen aan dat de
 wijziging **bouwbaar** is. Ze kosten samen een paar minuten en voorkomen dat de reviewer of de
 build-pipeline een fout vindt die je zelf had kunnen zien. Loop ze in deze volgorde af.
 
@@ -282,7 +311,7 @@ te deployen. Zie de versietabel hieronder.
 
 ## Van pull request naar acceptatieomgeving
 
-Gaan trap 1 tot en met 3 goed, dan pas een pull request. Deze stappen zijn afgesproken met WeAreFrank
+Gaan trap 1 en 2 goed, dan pas een pull request. Deze stappen zijn afgesproken met WeAreFrank
 (mailwisseling "Benodigde acties", 14-20 augustus 2026).
 
 1. **Pull request op `main`.** De build draait al bij een PR, maar publiceert nog niets. De pull request
@@ -304,8 +333,10 @@ Gaan trap 1 tot en met 3 goed, dan pas een pull request. Deze stappen zijn afges
    ```
 
    Daarna wordt de applicatie met dat versienummer gestart.
-6. **Trap 4** kan draaien: de hele keten op acceptatie.
-7. **Naar productie**, dezelfde image en hetzelfde versienummer, als iedereen akkoord is.
+6. **Trap 3** kan draaien: testberichten naar de integratie op acceptatie.
+7. **Bronsysteem aanpassen en trap 4**: pas nu het webformulier, daarna de hele keten op acceptatie.
+8. **Naar productie**, formulier en integratie samen, met dezelfde image en hetzelfde versienummer, als
+   iedereen akkoord is.
 
 ### Wie deployt
 
@@ -348,6 +379,7 @@ Het gevolg: **hoe je je commit-bericht schrijft, bepaalt het versienummer.** Een
 ## Waarom zo
 
 - De ontvangende partij kan pas meedenken als er een concreet bericht ligt, niet bij een beschrijving.
-- Het bronsysteem hoeft maar één keer te bouwen, tegen een vastgelegde afspraak.
+- Het bronsysteem hoeft maar één keer te bouwen, tegen een vastgelegde afspraak en een integratie die
+  aantoonbaar werkt.
 - Bij een storing is meteen duidelijk wie aan zet is, omdat elke stap een eigen eigenaar heeft.
 - De integratie blijft een vertaling, geen verzameling stille aannames.
