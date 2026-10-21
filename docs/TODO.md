@@ -93,9 +93,9 @@ met versie 1.1, alle vier end-to-end gecontroleerd in de Ladybug-logs — CAReL 
 Kodison. **Dit punt is afgerond.** Verplaatst naar "Afgehandeld" zodra de Atabix-formulierbeheerder dit ook zelf bevestigt.
 
 **Update 22 juli 2026, SoapUI bijgewerkt met bevestigd-werkende data:** de `01a`-stap van
-"WebformulierenVerwerker Carel TestCase (2026)" gebruikte tot nu toe de kapotte data van Heins eerste
+"WebformulierenVerwerker Carel TestCase (2026)" gebruikte tot nu toe de kapotte data van de eerste test van de bouwer van het webformulier
 (mislukte) poging. Vervangen door de echte, geslaagde aanvraag van 13:34 uur. Daarnaast 3 losse
-teststappen toegevoegd met Heins overige geslaagde tests (14:10, 14:14, 14:24 uur) — elk met een ander
+teststappen toegevoegd met de overige geslaagde tests van de formulierbouwer (14:10, 14:14, 14:24 uur) — elk met een ander
 vervoertype (Fiets, Fiets+OV, OV zelfstandig), voor regressiedekking op de vervoertype-afhankelijke
 dag-velden-logica in `creeerZaak_Lk01_mapping.xsl`. Alle payloads byte-voor-byte geverifieerd tegen de
 Ladybug-captures.
