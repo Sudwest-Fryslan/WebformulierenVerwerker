@@ -255,7 +255,7 @@
                          betrouwbaar, wél tijden. Vervangt het eerdere Brengen/Ophalen/Geen-voorstel
                          (15 Ja/Nee-velden), dat nooit aan de formulierbouwer is gevraagd. Het formulier heeft deze
                          tijdvelden nog niet (groter bouwpunt dan het vorige voorstel) - de bronveldnamen
-                         hieronder zijn een AANNAME van de opdrachtgever integratie, nog niet door de formulierbouwer bevestigd. -->
+                         hieronder zijn een AANNAME van Eduard, nog niet door de formulierbouwer bevestigd. -->
                     <xsl:apply-templates select="fleerlingenvervoerv3vervoer"/>
                     
                     <!-- Toelichting -->
