@@ -15,6 +15,7 @@ contract.
 | 1.4 | 1 sep 2026 | Veldenoverzicht `velden_carel_met_types.md` gedeeld, met alle veldnamen. Keuzelijsten: kan zelfstandig reizen, hoe gaat de leerling naar school | Leverancier CAReL, functioneel beheerder CAReL |
 | 1.5 | 3–4 sep 2026 | Alle adressen gesplitst. Adres leerling altijd mee. Vervoer per dag als heen- en terugtijd (`vervoer_<dag>_heentijd` / `_terugtijd`). Organisatie: naam, contactpersoon en telefoon | Leverancier CAReL, functioneel beheerder CAReL, bouwer webformulier |
 | 1.6 | 10 sep 2026 | Schooladres gesplitst met BAG-veldnamen, naar aanleiding van de afspraak van 3 sep 2026 en de opmerkingen van de leverancier CAReL ("alle adressen los"): `school_adres` wordt `school_openbare_ruimte_naam`, `school_huisnummer`, `school_huisletter`, `school_huisnummertoevoeging`; `school_plaats` wordt `school_woonplaats`. Geslacht als code M/V/O. Zaakniveau vastgelegd | Opdrachtgever integratie |
+| 1.7 | 29 okt 2026 | Velden voor haal- en brengtijden verwijderd uit de XML-uitwisseling met CAReL. Deze gegevens blijven beschikbaar in de PDF van het formulier. | Leverancier CAReL |
 
 **Rollen:** leverancier CAReL (Eljakim), functioneel beheerder CAReL (Doorstroompunt), bouwer webformulier
 (TriplEforms/Atabix, SWF), opdrachtgever integratie (IDT SWF), integratiepartij (WeAreFrank).
@@ -144,21 +145,11 @@ op via de BRP.
 | `eigenbijdrage_upload_belastingaangifte` | Bestandsnaam |
 
 ### Vervoer
-
+Vanaf versie 1.7 worden haal- en brengtijden niet meer opgenomen in de XML-uitwisseling met CAReL. Deze informatie blijft beschikbaar in de PDF van het formulier.
 | Veld | Waarden |
 |---|---|
 | `vervoer_type` | Fiets / Fiets en Openbaar vervoer / Openbaar vervoer zelfstandig / Openbaar Vervoer onder begeleiding ouder / Eigen vervoer (auto) / Groepstaxi vervoer |
 | `vervoer_upload_vervoersverklaring` | Bestandsnaam, verplicht |
-| `vervoer_maandag_heentijd` | Tijdstip `uu:mm`, leeg = geen vervoer |
-| `vervoer_maandag_terugtijd` | Tijdstip `uu:mm`, leeg = geen vervoer |
-| `vervoer_dinsdag_heentijd` | idem |
-| `vervoer_dinsdag_terugtijd` | idem |
-| `vervoer_woensdag_heentijd` | idem |
-| `vervoer_woensdag_terugtijd` | idem |
-| `vervoer_donderdag_heentijd` | idem |
-| `vervoer_donderdag_terugtijd` | idem |
-| `vervoer_vrijdag_heentijd` | idem |
-| `vervoer_vrijdag_terugtijd` | idem |
 
 ### Toelichting
 
