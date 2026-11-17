@@ -1,5 +1,8 @@
 # Veldencontract leerlingenvervoer: Atabix-webformulier → CAReL
 
+> **Het geldende contract staat in [`geldend_contract_leerlingenvervoer.md`](geldend_contract_leerlingenvervoer.md).**
+> Dit document is het werkdocument met achtergrond en historie.
+
 **Bron:** afgeleid van het werkdocument `velden_carel_met_types.md` (fb-carel), bijgewerkt na de
 reactie van de Atabix-formulierbeheerder op de 5 formulierpunten (3 september 2026). Persoonsgegevens
 in dit document zijn overal verzonnen/geanonimiseerd of vervangen door rollen.
