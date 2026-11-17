@@ -17883,8 +17883,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer>5be7596d-7e68-4328-a902-6654f1ccd613</StUF:referentienummer>
-      <StUF:tijdstipBericht>2026090300000000</StUF:tijdstipBericht>
+      <StUF:referentienummer>${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht>${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype>ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -17898,8 +17898,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-testcontract-20260901</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260903</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -17967,19 +17967,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="vervoer_type">Fiets</StUF:extraElement>
          <!-- vervoer_upload_routeplanner en vervoer_vanaf_datum_nodig zijn vervallen, bewust niet meegestuurd -->
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <!-- Nieuwe dagdeel-structuur: 15 velden i.p.v. de oude 5 kommagescheiden vervoer_<dag>-velden.
-              Voorbeeldweek uit het contract: ma/wo/vr heen+terug, di/do geen vervoer nodig. -->
-         <StUF:extraElement naam="vervoer_maandag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd">15:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd">12:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">15:30</StUF:extraElement>
-         <StUF:extraElement naam="toelichting">Testbericht conform het veldencontract van 1 september 2026 - nieuwe dagdeel-structuur en BSN-only aanvrager.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Testbericht conform geldend contract v1.7 - zonder haal-/brengtijden, aanvrager alleen BSN.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
@@ -18172,8 +18160,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">3656dfdf-6735-4382-815f-b1bbcaa7f8c8</StUF:referentienummer>
-      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714441098</StUF:tijdstipBericht>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -18190,8 +18178,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-voorbeeld-A-basisscenario</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -18256,17 +18244,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
          <StUF:extraElement naam="vervoer_type">Fiets</StUF:extraElement>
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd">15:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd">12:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">15:30</StUF:extraElement>
-         <StUF:extraElement naam="toelichting">Voorbeeldbericht A - basisscenario, standaard weekpatroon met heen-/terugtijden.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht A - basisscenario (contract v1.7), relatie tot leerling: Ouder.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
@@ -18286,8 +18264,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">7eafa262-1f45-4ffd-81d5-2cdbd860a88e</StUF:referentienummer>
-      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455389</StUF:tijdstipBericht>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -18304,8 +18282,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-voorbeeld-B-so-eigen-adres</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -18371,17 +18349,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
          <StUF:extraElement naam="vervoer_type">Openbaar vervoer zelfstandig</StUF:extraElement>
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_heentijd">08:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd">14:45</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd">08:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">14:45</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd">12:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd">08:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd">14:45</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">12:15</StUF:extraElement>
-         <StUF:extraElement naam="toelichting">Voorbeeldbericht B - SO-onderwijs, leerling heeft een eigen adres (anders dan de aanvrager), volledige schoolweek.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht B - SO-onderwijs, leerling heeft een eigen adres (anders dan de aanvrager), relatie tot leerling: Verzorger.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
@@ -18401,8 +18369,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">634a404b-38a2-4fff-8bce-ac0a30c9a9d7</StUF:referentienummer>
-      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455475</StUF:tijdstipBericht>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -18419,8 +18387,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-voorbeeld-C-organisatie</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -18485,17 +18453,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte"/>
          <StUF:extraElement naam="vervoer_type">Eigen vervoer (auto)</StUF:extraElement>
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_heentijd">08:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd">15:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd">08:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">15:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd">15:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd">08:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd">15:00</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd">15:00</StUF:extraElement>
-         <StUF:extraElement naam="toelichting">Voorbeeldbericht C - namens organisatie, eigen vervoer, eigen bijdrage niet van toepassing.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht C - namens organisatie, eigen vervoer, eigen bijdrage niet van toepassing, relatie tot leerling: Bewindvoerder.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
@@ -18515,8 +18473,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">b848c382-74ff-40de-b23c-b38c199ac9e6</StUF:referentienummer>
-      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455578</StUF:tijdstipBericht>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -18533,8 +18491,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-voorbeeld-D-geen-vervoer</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -18599,17 +18557,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
          <StUF:extraElement naam="vervoer_type">Openbaar vervoer zelfstandig</StUF:extraElement>
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_heentijd"/>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd"/>
-         <StUF:extraElement naam="toelichting">Voorbeeldbericht D - randgeval: geen enkele dag vervoer nodig, test dat alle 10 tijdvelden leeg mogen zijn zonder dat de mapping crasht.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht D - openbaar vervoer zelfstandig (contract v1.7: haal-/brengtijden staan alleen in de PDF), relatie tot leerling: Ouder.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
@@ -18629,8 +18577,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:organisatie>1900</StUF:organisatie>
          <StUF:applicatie>CAREL</StUF:applicatie>
       </StUF:ontvanger>
-      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">d98d6e2a-7b15-4651-b6b7-dccfec4a5270</StUF:referentienummer>
-      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">2026090714455669</StUF:tijdstipBericht>
+      <StUF:referentienummer xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=java.util.UUID.randomUUID().toString()}</StUF:referentienummer>
+      <StUF:tijdstipBericht xmlns:StUF="http://www.egem.nl/StUF/StUF0301">${=new java.text.SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date())}</StUF:tijdstipBericht>
       <StUF:entiteittype xmlns:StUF="http://www.egem.nl/StUF/StUF0301">ZAK</StUF:entiteittype>
    </ZKN:stuurgegevens>
    <ZKN:parameters>
@@ -18647,8 +18595,8 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <ZKN:kenmerk>SWF-voorbeeld-E-asymmetrisch</ZKN:kenmerk>
          <ZKN:bron>Kodison</ZKN:bron>
       </ZKN:kenmerk>
-      <ZKN:startdatum>20260903</ZKN:startdatum>
-      <ZKN:registratiedatum>20260907</ZKN:registratiedatum>
+      <ZKN:startdatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:startdatum>
+      <ZKN:registratiedatum>${=new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())}</ZKN:registratiedatum>
       <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
          <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="I">
             <ZKN:code>LV-001</ZKN:code>
@@ -18698,7 +18646,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="aanvrager_emailadres">voorbeeld@email.nl</StUF:extraElement>
          <StUF:extraElement naam="aanvrager_organisatie_naam"/>
          <StUF:extraElement naam="aanvrager_naam"/>
-         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Ouder</StUF:extraElement>
+         <StUF:extraElement naam="aanvrager_relatie_tot_leerling">Voogd</StUF:extraElement>
          <StUF:extraElement naam="iban_type">Mijn eigen IBAN</StUF:extraElement>
          <StUF:extraElement naam="iban_nummer">NL91ABNA0417164300</StUF:extraElement>
          <StUF:extraElement naam="iban_naam_rekeninghouder">J. de Vries</StUF:extraElement>
@@ -18713,17 +18661,7 @@ log.info("Atabix-stylesheetversie OK: ${major}.${minor} (minimaal vereist: ${MIN
          <StUF:extraElement naam="eigenbijdrage_upload_belastingaangifte">belastingaangifte_2025.pdf</StUF:extraElement>
          <StUF:extraElement naam="vervoer_type">Groepstaxi vervoer</StUF:extraElement>
          <StUF:extraElement naam="vervoer_upload_vervoersverklaring">vervoersverklaring_school.pdf</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_maandag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_dinsdag_terugtijd">12:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_woensdag_terugtijd">15:30</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_donderdag_heentijd"/>
-         <StUF:extraElement naam="vervoer_donderdag_terugtijd"/>
-         <StUF:extraElement naam="vervoer_vrijdag_heentijd">08:15</StUF:extraElement>
-         <StUF:extraElement naam="vervoer_vrijdag_terugtijd"/>
-         <StUF:extraElement naam="toelichting">Voorbeeldbericht E - onafhankelijke heen-/terugtijden per dag: sommige dagen maar een richting nodig.</StUF:extraElement>
+         <StUF:extraElement naam="toelichting">Voorbeeldbericht E - groepstaxi (contract v1.7: haal-/brengtijden staan alleen in de PDF), relatie tot leerling: Voogd.</StUF:extraElement>
       </StUF:extraElementen>
    </ZKN:object>
 </ZKN:zakLk01>
