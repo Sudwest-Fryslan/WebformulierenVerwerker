@@ -56,7 +56,7 @@
              BSN leerling, BSN aanvrager en vervoer_upload_vervoersverklaring. Ontbreekt een van
              deze, dan stopt de mapping direct met een duidelijke foutmelding i.p.v. een onvolledig
              bericht naar CAReL te sturen - komt via de bestaande foutafhandeling (isErrorXML) terug
-             als SOAP-fault naar Atabix/Hein. Extra, hier onbekende velden die Hein meestuurt leveren
+             als SOAP-fault naar Atabix/de formulierbouwer. Extra, hier onbekende velden die het formulier meestuurt leveren
              bewust geen fout op: xsl:template match="@*|node()" hierboven negeert die stilzwijgend. -->
         <xsl:call-template name="require-field">
             <xsl:with-param name="veldnaam" select="'BSN leerling (fleerlingenvervoerv3gegevensleerling/bsnleerling)'"/>
@@ -116,12 +116,12 @@
                      verwerkingssoort="I" op het NPS-object (Identificatie): dit is bewust alleen een
                      verwijzing naar een bekend persoon, geen volledige persoonsregistratie - vandaar
                      dat schema-technisch niets hier verplicht is (zie docs/carel/scopedocument.md §7).
-                     Verblijfsadres leerling: bevestigd besluit (3 sep. 2026, na reactie Lorenzo) dat dit
+                     Verblijfsadres leerling: bevestigd besluit (3 sep. 2026, na reactie leverancier CAReL) dat dit
                      altijd verstuurd moet worden, zie docs/carel/veldencontract_leerlingenvervoer.md
                      sectie 1. Het kopiëren van het aanvrageradres naar het leerlingveld (indien "leerling
                      heeft ander adres dan aanvrager" = Nee) is weblogica bij Atabix, niet bij de
                      integratie - de mapping stuurt daarom altijd gewoon het leerling-adresveld, zonder
-                     eigen Ja/Nee-keuze. Dat veld bestaat nog niet in het formulier (bouwpunt bij Hein),
+                     eigen Ja/Nee-keuze. Dat veld bestaat nog niet in het formulier (bouwpunt bij de formulierbouwer),
                      dus dit blok levert tot die tijd niets op. -->
                 <ZKN:heeftBetrekkingOp StUF:entiteittype="ZAKOBJ" StUF:verwerkingssoort="T">
                     <ZKN:gerelateerde>
@@ -208,8 +208,8 @@
                          geen adres (bestaat al gesplitst in het formulier, maar CAReL heeft het niet
                          nodig) en geen eHerkenning. AANNAME voor de brondveldnamen (container
                          fleerlingenvervoerv3gegevensorganisatie met bedrijfsnaam/voornamen/
-                         tussenvoegsel/achternaam, naar het "Gegevens Organisatie"-blok uit Heins
-                         screenshot van 3 sep. 2026) - nog niet met Hein geverifieerd. Bij "Burger"
+                         tussenvoegsel/achternaam, naar het "Gegevens Organisatie"-blok uit de
+                         screenshot van de formulierbouwer van 3 sep. 2026) - nog niet met de formulierbouwer geverifieerd. Bij "Burger"
                          bestaat dit blok niet, dus leveren deze velden gewoon leeg op. -->
                     <StUF:extraElement naam="aanvrager_organisatie_naam"><xsl:value-of select="swf:trim(fleerlingenvervoerv3gegevensorganisatie/bedrijfsnaam)"/></StUF:extraElement>
                     <StUF:extraElement naam="aanvrager_naam"><xsl:value-of select="swf:trim(string-join((fleerlingenvervoerv3gegevensorganisatie/voornamen, fleerlingenvervoerv3gegevensorganisatie/tussenvoegsel, fleerlingenvervoerv3gegevensorganisatie/achternaam)[normalize-space(.) != ''], ' '))"/></StUF:extraElement>
@@ -251,11 +251,11 @@
                     <StUF:extraElement naam="vervoer_upload_vervoersverklaring"><xsl:value-of select="swf:trim(fleerlingenvervoerv3vervoer/bijlagen)"/></StUF:extraElement>
 
                     <!-- Dagdeel-structuur: heen-/terugtijdstip per dag (10 velden), per besluit van
-                         3 sep. 2026 na reactie Lorenzo (Eljakim) - CAReL verwerkt Ja/Nee-vlaggen niet
+                         3 sep. 2026 na reactie leverancier CAReL (Eljakim) - CAReL verwerkt Ja/Nee-vlaggen niet
                          betrouwbaar, wél tijden. Vervangt het eerdere Brengen/Ophalen/Geen-voorstel
-                         (15 Ja/Nee-velden), dat nooit aan Hein is gevraagd. Het formulier heeft deze
+                         (15 Ja/Nee-velden), dat nooit aan de formulierbouwer is gevraagd. Het formulier heeft deze
                          tijdvelden nog niet (groter bouwpunt dan het vorige voorstel) - de bronveldnamen
-                         hieronder zijn een AANNAME van Eduard, nog niet door Hein bevestigd. -->
+                         hieronder zijn een AANNAME van Eduard, nog niet door de formulierbouwer bevestigd. -->
                     <xsl:apply-templates select="fleerlingenvervoerv3vervoer"/>
                     
                     <!-- Toelichting -->

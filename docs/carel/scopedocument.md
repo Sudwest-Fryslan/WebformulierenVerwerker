@@ -307,7 +307,7 @@ scenario naar buiten te krijgen voor deze test. Die stylesheet zet elk element, 
 naar een los `<element><name>/<value></element>` en laat daarbij ook de tussenliggende containers zelf
 als apart element staan (met alle onderliggende tekst aan elkaar geplakt als waarde). Dit verklaart het
 waargenomen patroon exact (dubbele veldnamen, lange tekstbrij-waarden) en is dus **niet** een wijziging
-vanuit Atabix/CAReL/het formulierenplatform zelf, maar een bijproduct van Heins eigen teststap.
+vanuit Atabix/CAReL/het formulierenplatform zelf, maar een bijproduct van een eigen teststap van de formulierbouwer.
 
 **Open vraag (uitstaand bij de Atabix-formulierbeheerder, 22 juli 2026):** was deze stylesheet-stap nodig omdat de Atabix-formulierbeheerder handmatig
 vanuit de scenario-editor testte (in plaats van een echte aanvraag via de live site)? Zo ja, dan komt een
@@ -354,7 +354,7 @@ CAReL gestuurd — vandaar de generieke fout "Something went wrong... No Error I
 `FORMULIER`/`FORMULIERID`/`DATUMVERZENDING`/`ELEMENTEN`-laag om het binnenkomende `<form>`-element heen
 (gebruikt `form/@startDateTime` voor DATUMVERZENDING en `form/scenarioName` voor FORMULIERID — geen
 formulier-specifieke veldnamen, dus generiek voor elk Kodison-scenario), en kopieert de rest ongewijzigd
-door. Getest tegen de echte data uit Heins laatste testaanvraag (lxml/XPath): alle paden die de mapping
+door. Getest tegen de echte data uit de laatste testaanvraag van de formulierbouwer (lxml/XPath): alle paden die de mapping
 nodig heeft (`globals/bsn`, `globals/stuf/...`, `fleerlingenvervoerv3gegevensburger/telefoonnummer`,
 etc.) resolven na deze wrap naar de juiste waarden. **Status: klaar om naar de Atabix-formulierbeheerder te sturen.**
 
